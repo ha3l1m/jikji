@@ -1,0 +1,386 @@
+{
+  "nav": {
+    "company": {
+      "label": "Company",
+      "href": "/company"
+    },
+    "products": {
+      "label": "Products",
+      "href": "/products",
+      "items": [
+        { "label": "GPU Cloud", "href": "/products#gpucloud" },
+        { "label": "Platform", "href": "/products#platform" }
+      ]
+    },
+    "ai_infrastructure": {
+      "label": "AI Infrastructure",
+      "href": "/infrastructure",
+      "items": [
+        { "label": "Sovereign Region", "href": "/infrastructure#region" },
+        { "label": "Enterprise Isolation", "href": "/infrastructure#isolation" }
+      ]
+    },
+    "pricing": {
+      "label": "Pricing",
+      "href": "/pricing"
+    },
+    "support": {
+      "label": "Support",
+      "href": "/support",
+      "items": [
+        {
+          "label": "Documentation",
+          "href": "https://example.com/docs",
+          "external": true
+        }
+      ]
+    },
+    "console": "Console"
+  },
+  "company": {
+    "about": {
+      "title": "JIKJI Labs' Vision and Core Business Areas",
+      "subtitle": "Reducing the burden of building and operating AI infrastructure, allowing customers to fully focus on AI innovation.",
+      "desc1": "The pace of AI industry development is faster than ever. Many companies are leveraging AI technology to innovate productivity and strengthen competitiveness. Companies need more powerful computing power and flexible infrastructure. However, the biggest practical barrier for companies trying to apply AI technology to their business is the difficulty of building and operating AI infrastructure.",
+      "desc2": "JIKJI Labs provides AI infrastructure solutions that can immediately respond to the rapidly changing AI environment. We present a direction for customers to build and utilize a computing environment that can be immediately expanded in line with the latest AI trends, and we aim to be the infrastructure partner that most strongly supports customers' AI innovation."
+    },
+    "path": {
+      "title": "Our Path",
+      "subtitle": "Since its inception in 1999, N3N has accumulated video intelligence technology, data structuring and visualization technology, patents and experience. Based on this, we provide solutions that innovatively address the different demands of various industries.",
+      "timeline": [
+        { "year": "1999", "desc": "Founded N3N" },
+        { "year": "2000", "desc": "Developed CCTV Integrated Control S/W" },
+        { "year": "2010", "desc": "Launched Smart Factory Solution" },
+        { "year": "2020", "desc": "Urban GPU CLOUD DATA CENTER" }
+      ]
+    },
+    "news": {
+      "title": "News",
+      "view_all": "View all",
+      "items": [
+        {
+          "title": "JIKJI Labs Introduces AI Computing Infrastructure Trends",
+          "desc": "AI infrastructure brand 'JIKJI Labs' is hosting an event to explore the AI computing industry infrastructure."
+        },
+        {
+          "title": "JIKJI Labs Introduces AI Computing Infrastructure Trends",
+          "desc": "AI infrastructure brand 'JIKJI Labs' is hosting an event to explore the AI computing industry infrastructure."
+        },
+        {
+          "title": "JIKJI Labs Introduces AI Computing Infrastructure Trends",
+          "desc": "AI infrastructure brand 'JIKJI Labs' is hosting an event to explore the AI computing industry infrastructure."
+        },
+        {
+          "title": "JIKJI Labs Introduces AI Computing Infrastructure Trends",
+          "desc": "AI infrastructure brand 'JIKJI Labs' is hosting an event to explore the AI computing industry infrastructure."
+        }
+      ]
+    },
+    "promotion": {
+      "title": "JIKJI Labs GPU Instance when you need it, as much as you need",
+      "subtitle": "Speed up your work with JIKJI Labs GPU instances. Auto-deployment inference Endpoint is not difficult. It's a powerful Serverless API generation tool equipped with MLOps.",
+      "btn_free": "Apply for Free",
+      "btn_inquiry": "Inquiry"
+    }
+  },
+  "products": {
+    "gpucloud": {
+      "title": "JIKJI Labs GPU Instance when you need it, as much as you need",
+      "contact": "Quote & Technical Consultation: business@jikji.ai",
+      "features": {
+        "title": "Features",
+        "items": [
+          {
+            "title": "Performance Optimized Instance",
+            "desc": "Kernel/driver/runtime tuning tailored to training/inference profiles reduces latency and costs simultaneously"
+          },
+          {
+            "title": "Dynamic Storage Expansion",
+            "desc": "Instantly expand/shrink capacity according to workload. Cost optimization by selecting hot/warm tiers"
+          },
+          {
+            "title": "Enhanced Network Security",
+            "desc": "Provides project-level isolation, layered firewall policies, and granular inbound/outbound rules"
+          },
+          {
+            "title": "Elastic Scaling",
+            "desc": "Supports demand-based auto-scaling, dedicated bare metal/dedicated node options"
+          },
+          {
+            "title": "Operational Reliability",
+            "desc": "SLA target monitoring, alerts, technical support"
+          }
+        ]
+      },
+      "oneclick": {
+        "title": "OneClick Start",
+        "subtitle": "Standard toolchain ready to use from development to operation",
+        "items": [
+          {
+            "title": "One-click Development Environment",
+            "desc": "Provides VS Code Server, Docker-based templates"
+          },
+          {
+            "title": "Framework Compatibility",
+            "desc": "Pre-configured PyTorch / TensorFlow / CUDA runtime"
+          },
+          {
+            "title": "File Storage",
+            "desc": "GPU-dedicated high-performance scalable file system and enterprise security"
+          }
+        ]
+      }
+    },
+    "platform": {
+      "inference": {
+        "title": "Auto Deployment \u2192 Inference Endpoint Integration\nPowerful Serverless API Generation Tool with MLOps",
+        "features": [
+          {
+            "title": "Dedicated + Auto Scaling",
+            "desc": "Dedicated GPU pool + Active instances, auto scale up/down based on traffic"
+          },
+          {
+            "title": "Optimal Cost/Performance",
+            "desc": "Usage-based billing, latency SLO-based scaling"
+          },
+          {
+            "title": "Easy API Integration",
+            "desc": "REST/gRPC(WebSocket), Rate Limit/Token control"
+          },
+          {
+            "title": "Observability/Operation",
+            "desc": "Dashboard, logs, metrics, SLA response monitoring"
+          },
+          {
+            "title": "Security/Isolation",
+            "desc": "VPC isolation, firewall, secret management, encryption, audit logs"
+          }
+        ]
+      },
+      "agents": {
+        "title": "Just connect the endpoint, and the latest Agentic Workflow runs immediately",
+        "features": [
+          { "title": "Model Selection", "desc": "Supports Qwen / Exaone, optimized for Korean" },
+          {
+            "title": "Private Cloud/VPC Deployment",
+            "desc": "Data isolation/encryption, compliance with corporate security policies"
+          },
+          {
+            "title": "Data & Retrieval",
+            "desc": "Internal document/DB integration + RAG/web search, provides up-to-date and verifiable answers"
+          },
+          {
+            "title": "Memory & Personalization",
+            "desc": "Provides session/short-term/long-term memory, personal information control policies"
+          },
+          {
+            "title": "Operation/Observability",
+            "desc": "Latency/accuracy/error rate dashboard, logs/alerts, zero-downtime rollout"
+          }
+        ]
+      },
+      "video": {
+        "title": "Analyzes large-scale video data in real-time through advanced Vision AI technology and proprietary algorithms, providing insights optimized for industrial sites.",
+        "subtitle": "We provide vivid insights from the field.",
+        "features": [
+          {
+            "title": "VIDEO INTELLIGENCE",
+            "desc": "POD (Pixel On Demand)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)"
+          },
+          {
+            "title": "DATA INTELLIGENCE",
+            "desc": "DTG(Dynamic Topology Generator)\nDATA PLATFORM"
+          },
+          {
+            "title": "OPERATION INTELLIGENCE",
+            "desc": "SOP (Standard Operation Procedure)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)"
+          },
+          {
+            "title": "DATA VISUALIZATION",
+            "desc": "LOCATION BASED VISUALIZTION\nMULTI LATER & ZOOMABLE UI\nDIGITAL TIME-SPACE CREATION"
+          }
+        ]
+      }
+    }
+  },
+  "infrastructure": {
+    "region": {
+      "title": "Build the Korean GPU-optimized AI data center service your company needs with JIKJI Labs.",
+      "services": [
+        {
+          "title": "AI Data Center",
+          "subtitle": "Data center construction solution",
+          "items": [
+            "Data center completion",
+            "Cooling, power design/installation",
+            "Shortest period modular approach",
+            "Domestic and overseas SCM partners"
+          ]
+        },
+        {
+          "title": "Colocation",
+          "subtitle": "JIKJI Labs space rental service",
+          "items": [
+            "RACK rental + pay-as-you-go power",
+            "High-density power system provided",
+            "Minimize operating costs with low PUE design",
+            "DC control, DCIM integration"
+          ]
+        },
+        {
+          "title": "IT infrastructure",
+          "subtitle": "JIKJI Labs IT sales / installation / operation",
+          "items": [
+            "Topology design",
+            "IT installation/setup service",
+            "GPU/CPU Server, Storage, Network Switch, etc.",
+            "7/24 maintenance"
+          ]
+        },
+        {
+          "title": "Bare-metal",
+          "subtitle": "JIKJI Labs bare metal IDC service",
+          "items": [
+            "IT rental subscription + pay-as-you-go power",
+            "AI dedicated server Topology design/installation",
+            "Latest GPU and infrastructure technology",
+            "GPU Clustering construction",
+            "Infrastructure operation, SLA, security"
+          ]
+        },
+        {
+          "title": "AI Cloud",
+          "subtitle": "JIKJI Labs AI Cloud Service",
+          "items": ["GPU Instance", "Inference Service", "Agent Service"]
+        }
+      ],
+      "cluster": {
+        "title": "JIKJI Labs' Distributed AI DC",
+        "subtitle": "Goal to create an AI Data Center cluster of 25 locations in the Seoul metropolitan area",
+        "stats": [
+          { "value": "100", "label": "MW", "desc": "Total power capacity" },
+          { "value": "1,000", "label": "Racks", "desc": "Liquid-Cooled" },
+          { "value": "32,000", "label": "B200, H200 GPUs", "desc": "Latest GPUs" },
+          { "value": "25", "label": "sites: commissioning & operations", "desc": "DC deployment" }
+        ]
+      }
+    },
+    "isolation": {
+      "title": "Why PMDC ??",
+      "subtitle": "In environments requiring rapid deployment such as universities and enterprises, PMDC provides one-stop services from design and construction to operation.",
+      "desc": "\"With AI First design, we complete next-generation AI infrastructure that overcomes the limitations of existing data centers.\"",
+      "features": [
+        {
+          "title": "AI First Design",
+          "desc": "PMDC designs an AI-centric structure from the beginning. We build a sustainable growth structure, not just short-term project completion."
+        },
+        {
+          "title": "Scalable Architecture",
+          "desc": "Innovatively reduces time and cost with an immediately executable structural design."
+        },
+        {
+          "title": "Optimized Cost",
+          "desc": "Sensitive data protection, enterprise environment optimization"
+        },
+        {
+          "title": "Enterprise Isolation",
+          "desc": "Sensitive data protection, enterprise environment optimization"
+        }
+      ],
+      "cta": "Inquire about PMDC Infrastructure Configuration"
+    }
+  },
+  "pricing_page": {
+    "title": "Pricing",
+    "subtitle": "Experience the highest performance AI infrastructure at a reasonable price.",
+    "tabs": {
+      "b200": "B200",
+      "h200": "H200",
+      "rtx": "RTX"
+    },
+    "table": {
+      "headers": ["Instance", "vRAM", "vCPU", "On-demand", "Reserved 1Month", "Reserved 1 Year"],
+      "b200": [
+        { "name": "8 x B200 180GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩31,200", "1month": "₩27,768", "1year": "₩24,336" },
+        { "name": "4 x B200 180GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩15,680", "1month": "₩13,955", "1year": "₩12,230" },
+        { "name": "2 x B200 180GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩7,860", "1month": "₩6,995", "1year": "₩6,131" },
+        { "name": "B200 180GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩3,935", "1month": "₩3,502", "1year": "₩3,069" }
+      ],
+      "h200": [
+        { "name": "8 x H200 80GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩22,776", "1month": "₩20,271", "1year": "₩17,765" },
+        { "name": "4 x H200 80GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩11,446", "1month": "₩10,187", "1year": "₩8,928" },
+        { "name": "2 x H200 80GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩5,738", "1month": "₩5,107", "1year": "₩4,475" },
+        { "name": "H200 80GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩2,873", "1month": "₩2,557", "1year": "₩2,241" }
+      ],
+      "rtx": [
+        { "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "640GB", "vcpu": "128vCore", "ondemand": "₩7,880", "1month": "₩7,013", "1year": "₩6,146" },
+        { "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "320GB", "vcpu": "64vCore", "ondemand": "₩3,940", "1month": "₩3,507", "1year": "₩3,073" },
+        { "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "160GB", "vcpu": "32vCore", "ondemand": "₩1,990", "1month": "₩1,771", "1year": "₩1,552" },
+        { "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "80GB", "vcpu": "16vCore", "ondemand": "₩1,000", "1month": "₩890", "1year": "₩780" }
+      ]
+    },
+    "consulting": {
+      "title": "Custom Architecture & Consulting",
+      "desc1": "JIKJI Labs GPU Instance when you need it, as much as you need",
+      "desc2": "Auto Deployment \u2192 Inference Endpoint Integration\nPowerful Serverless API Generation Tool with MLOps",
+      "contact": "Quote & Technical Consultation: business@jikji.ai"
+    }
+  },
+  "support_page": {
+    "title": "We will contact customers who have applied for the promotion individually.\nAfter consultation, GPU resources will be allocated sequentially.",
+    "subtitle": "( Provides a 1-month free trial service based on H100 GPU )",
+    "highlight": "\"H100 GPU (MIG virtualization), up to 1 month free trial - Experience high-performance AI infrastructure immediately\"",
+    "form": {
+      "title": "Applicant Information",
+      "company": "Company Name",
+      "industry": "Industry",
+      "name": "Contact Name",
+      "contact": "Contact Number",
+      "email": "Email",
+      "submit": "Apply",
+      "success_title": "Application complete!",
+      "success_desc": "We will contact you as soon as possible."
+    }
+  },
+  "hero": {
+    "badge": "Introducing JIKJI AI 2.0",
+    "title": "Accelerate Your AI Solutions with N3N",
+    "description": "Push the boundaries of your business with cutting-edge AI technology. JIKJI provides the fastest and most reliable AI pipeline from data to models.",
+    "cta_primary": "Start for free",
+    "cta_secondary": "View demo"
+  },
+  "features": {
+    "title": "The all-in-one AI platform",
+    "description": "Focus only on model development and business logic without complex infrastructure management.",
+    "items": [
+      {
+        "title": "Ultra-fast Data Processing",
+        "description": "A powerful pipeline to process and analyze large-scale datasets in real-time."
+      },
+      {
+        "title": "Flexible Model Deployment",
+        "description": "Deploy and scale your models to production environments with just a few clicks."
+      },
+      {
+        "title": "Robust Security",
+        "description": "Protect your valuable data and models safely with enterprise-grade security."
+      }
+    ]
+  },
+  "quote": {
+    "title": "Request a Custom Quote",
+    "description": "We will propose the optimal plan tailored to your business requirements.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "message": "Requirements Details",
+      "submit": "Request Quote",
+      "success": "Request submitted successfully!",
+      "error": "An error occurred during the request."
+    }
+  },
+  "footer": {
+    "copyright": "\u00a9 2026 JIKJI Labs. All rights reserved."
+  }
+}

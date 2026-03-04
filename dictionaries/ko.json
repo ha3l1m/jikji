@@ -1,0 +1,386 @@
+{
+  "nav": {
+    "company": {
+      "label": "Company",
+      "href": "/company"
+    },
+    "products": {
+      "label": "Products",
+      "href": "/products",
+      "items": [
+        { "label": "GPU Cloud", "href": "/products#gpucloud" },
+        { "label": "Platform", "href": "/products#platform" }
+      ]
+    },
+    "ai_infrastructure": {
+      "label": "AI Infrastructure",
+      "href": "/infrastructure",
+      "items": [
+        { "label": "Sovereign Region", "href": "/infrastructure#region" },
+        { "label": "Enterprise Isolation", "href": "/infrastructure#isolation" }
+      ]
+    },
+    "pricing": {
+      "label": "Pricing",
+      "href": "/pricing"
+    },
+    "support": {
+      "label": "Support",
+      "href": "/support",
+      "items": [
+        {
+          "label": "Documentation",
+          "href": "https://example.com/docs",
+          "external": true
+        }
+      ]
+    },
+    "console": "Console"
+  },
+  "company": {
+    "about": {
+      "title": "Full-Stack AI, 우리가 만듭니다.",
+      "subtitle": "From GPU to deployment, one platform",
+      "desc1": "AI 산업의 발전 속도는 그 어느 때보다 빠릅니다. 많은 기업들이 AI 기술을 활용하여 생산성 혁신과 경쟁력 강화를 도모하고 있습니다. 기업들은 더 강력한 연산 능력과 유연한 인프라가 필요합니다. 그러나, AI 기술을 사업에 적용하려는 기업들이 마주하는 가장 큰 현실적인 장벽은 AI 인프라 구축과 운영의 어려움입니다.",
+      "desc2": "직지랩스는 빠르게 변화하는 AI 환경에 즉각 대응할 수 있는 AI 인프라 솔루션을 제공합니다. 고객사들로 하여금 최신 AI 트렌드에 맞춰 즉시 확장 가능한 컴퓨팅 환경을 구축, 활용할 수 있는 방향을 제시하며, 고객사의 AI 혁신을 가장 강력하게 뒷받침하는 인프라 파트너가 되고자 합니다."
+    },
+    "path": {
+      "title": "Our Path",
+      "subtitle": "Since its inception in 1999, N3N has accumulated video intelligence technology, data structuring and visualization technology, patents and experience. Based on this, we provide solutions that innovatively address the different demands of various industries.",
+      "timeline": [
+        { "year": "1999", "desc": "N3N 창업" },
+        { "year": "2000", "desc": "CCTV 통합관제 S/W 개발" },
+        { "year": "2010", "desc": "스마트 팩토리 솔루션 출시" },
+        { "year": "2020", "desc": "도심형 GPU CLOUD DATA CENTER" }
+      ]
+    },
+    "news": {
+      "title": "News",
+      "view_all": "View all",
+      "items": [
+        {
+          "title": "직지랩스, AI 컴퓨팅 인프라 트렌드 소개",
+          "desc": "인공지능(AI) 인프라 브랜드 '직지랩스'가 AI 컴퓨팅 산업 인프라를 살펴볼 수 있는 행사를 개최합니다."
+        },
+        {
+          "title": "직지랩스, AI 컴퓨팅 인프라 트렌드 소개",
+          "desc": "인공지능(AI) 인프라 브랜드 '직지랩스'가 AI 컴퓨팅 산업 인프라를 살펴볼 수 있는 행사를 개최합니다."
+        },
+        {
+          "title": "직지랩스, AI 컴퓨팅 인프라 트렌드 소개",
+          "desc": "인공지능(AI) 인프라 브랜드 '직지랩스'가 AI 컴퓨팅 산업 인프라를 살펴볼 수 있는 행사를 개최합니다."
+        },
+        {
+          "title": "직지랩스, AI 컴퓨팅 인프라 트렌드 소개",
+          "desc": "인공지능(AI) 인프라 브랜드 '직지랩스'가 AI 컴퓨팅 산업 인프라를 살펴볼 수 있는 행사를 개최합니다."
+        }
+      ]
+    },
+    "promotion": {
+      "title": "필요한 순간 필요한 만큼 직지랩스 GPU 인스턴스",
+      "subtitle": "직지랩스 GPU 인스턴스로 업무 속도를 올리세요 자동배포 추론 Endpoint 어렵지 않아요 ~~ MLOps 를 탑재한 강력한 Serverless API 생성 툴입니다용~",
+      "btn_free": "무료 신청하기",
+      "btn_inquiry": "도입문의"
+    }
+  },
+  "products": {
+    "gpucloud": {
+      "title": "필요한 순간, 필요한 만큼. 직지랩스 GPU 인스턴스로 AI 속도를 올리세요",
+      "contact": "견적 및 기술 상담: business@jikji.ai",
+      "features": {
+        "title": "Features",
+        "items": [
+          {
+            "title": "성능 최적화 인스턴스",
+            "desc": "학습·추론 프로파일에 맞춘 커널/드라이버/런타임 튜닝으로 지연 시간과 비용을 동시에 절감"
+          },
+          {
+            "title": "동적 스토리지 확장",
+            "desc": "워크로드에 따라 용량을 즉시 확대/축소. 핫/웜 티어 선택으로 비용 최적화"
+          },
+          {
+            "title": "강화된 네트워크 보안",
+            "desc": "프로젝트 단위 격리, 레이어드 방화벽 정책, 인바운드/아웃바운드 세분화 규칙 제공"
+          },
+          {
+            "title": "탄력적 확장",
+            "desc": "수요 기반 자동 스케일, 전용 베어메탈/전용 노드 옵션 지원"
+          },
+          {
+            "title": "운영 신뢰성",
+            "desc": "SLA 대상 모니터링, 알림, 기술 지원"
+          }
+        ]
+      },
+      "oneclick": {
+        "title": "OneClick Start",
+        "subtitle": "개발부터 운영까지 바로 쓰는 표준 툴체인",
+        "items": [
+          {
+            "title": "원클릭 개발 환경",
+            "desc": "VS Code Server, Docker 기반 템플릿 제공"
+          },
+          {
+            "title": "프레임워크 호환",
+            "desc": "PyTorch / TensorFlow / CUDA 런타임 사전 구성"
+          },
+          {
+            "title": "파일 스토리지",
+            "desc": "GPU 전용 고성능 확장형 파일시스템과 엔터프라이즈 보안"
+          }
+        ]
+      }
+    },
+    "platform": {
+      "inference": {
+        "title": "자동 배포 → 추론 Endpoint 연동\nMLOps를 탑재한 강력한 Serverless API 생성 Tool",
+        "features": [
+          {
+            "title": "Dedicated + Auto Scaling",
+            "desc": "전용 GPU 풀 + Active 인스턴스, 트래픽에 따라 자동 확장/축소"
+          },
+          {
+            "title": "최적 비용·성능",
+            "desc": "사용량 기반 과금, 지연 시간 SLO 기반 스케일링"
+          },
+          {
+            "title": "API 통합 용이성",
+            "desc": "REST/gRPC(WebSocket), Rate Limit·토큰 제어"
+          },
+          {
+            "title": "관측·운영",
+            "desc": "대시보드·로그·메트릭, SLA 대응 모니터링"
+          },
+          {
+            "title": "보안·격리",
+            "desc": "VPC 격리·방화벽·비밀관리, 암호화·감사 로그"
+          }
+        ]
+      },
+      "agents": {
+        "title": "엔드포인트만 연결하면, 최신 Agentic Workflow가 바로 동작합니다",
+        "features": [
+          { "title": "모델 선택", "desc": "Qwen / Exaone 지원, 한국어 최적화" },
+          {
+            "title": "프라이빗 클라우드/VPC 배포",
+            "desc": "데이터 격리·암호화, 기업 보안 정책 준수"
+          },
+          {
+            "title": "Data & Retrieval",
+            "desc": "사내 문서·DB 연동 + RAG·웹 검색, 최신·검증 가능한 답변 제공"
+          },
+          {
+            "title": "Memory & Personalization",
+            "desc": "세션·장단기 메모리, 개인정보 제어 정책 제공"
+          },
+          {
+            "title": "운영/관측",
+            "desc": "지연·정확도·오류율 대시보드, 로그·알림·무중단 롤아웃"
+          }
+        ]
+      },
+      "video": {
+        "title": "첨단 Vision AI 기술과 자체 알고리즘을 통해 대규모 영상 데이터를 실시간으로 분석하고, 산업 현장에 최적화된 인사이트를 제공합니다.",
+        "subtitle": "현장의 생생한 인사이트를 제공해 드립니다.",
+        "features": [
+          {
+            "title": "VIDEO INTELLIGENCE",
+            "desc": "POD (Pixel On Demand)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)"
+          },
+          {
+            "title": "DATA INTELLIGENCE",
+            "desc": "DTG(Dynamic Topology Generator)\nDATA PLATFORM"
+          },
+          {
+            "title": "OPERATION INTELLIGENCE",
+            "desc": "SOP (Standard Operation Procedure)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)"
+          },
+          {
+            "title": "DATA VISUALIZATION",
+            "desc": "LOCATION BASED VISUALIZTION\nMULTI LATER & ZOOMABLE UI\nDIGITAL TIME-SPACE CREATION"
+          }
+        ]
+      }
+    }
+  },
+  "infrastructure": {
+    "region": {
+      "title": "직지랩스와 함께 귀사에 필요한 한국형 GPU 최적화 AI 데이터센터 서비스를 구축하세요.",
+      "services": [
+        {
+          "title": "AI 데이터센터",
+          "subtitle": "데이터센터 구축 솔루션",
+          "items": [
+            "데이터센터 준공",
+            "냉각, 전력 설계/설치",
+            "최단기간 모듈러 방식",
+            "국내외 SCM 협력사"
+          ]
+        },
+        {
+          "title": "Colocation",
+          "subtitle": "직지랩스 상면임대 서비스",
+          "items": [
+            "RACK 임대 + 전력 종량제",
+            "고밀도 전력 시스템 제공",
+            "낮은 PUE설계로 운영비용 최소화",
+            "DC 관제, DCIM 연동"
+          ]
+        },
+        {
+          "title": "IT infrastructure",
+          "subtitle": "직지랩스 IT 판매 / 설치 / 운영",
+          "items": [
+            "Topology 설계",
+            "IT 설치/설정 서비스",
+            "GPU/CPU Server, Storage, Network Switch 등",
+            "7/24 유지보수"
+          ]
+        },
+        {
+          "title": "Bare-metal",
+          "subtitle": "직지랩스 베어메탈 IDC 서비스",
+          "items": [
+            "IT 임대 구독료 + 전력 종량제",
+            "AI 전용 서버 Topology 설계/설치",
+            "최신 GPU 및 인프라 기술",
+            "GPU Clustering 구축",
+            "인프라 운영, SLA, 보안"
+          ]
+        },
+        {
+          "title": "AI Cloud",
+          "subtitle": "직지랩스 AI Cloud Service",
+          "items": ["GPU Instance", "Inference Service", "Agent Service"]
+        }
+      ],
+      "cluster": {
+        "title": "직지랩스의 분산형 AI DC",
+        "subtitle": "서울권 총 25개소 AI Data Center 클러스터 조성 목표",
+        "stats": [
+          { "value": "100", "label": "MW", "desc": "Total power capacity" },
+          { "value": "1,000", "label": "Racks", "desc": "Liquid-Cooled" },
+          { "value": "32,000", "label": "B200, H200 GPUs", "desc": "Latest GPUs" },
+          { "value": "25", "label": "sites: commissioning & operations", "desc": "DC deployment" }
+        ]
+      }
+    },
+    "isolation": {
+      "title": "Why PMDC ??",
+      "subtitle": "대학교, 기업 등 빠른 구축이 필요한 환경에서, PMDC는 설계·구축·운영까지 원스톱 서비스를 제공합니다.",
+      "desc": "\u201cAI First 설계로, 기존 데이터센터의 한계를 뛰어넘는 차세대 AI 인프라를 완성합니다..\u201d",
+      "features": [
+        {
+          "title": "AI First Design",
+          "desc": "PMDC는 처음부터 AI 중심 구조를 설계합니다. 단기 프로젝트 완수가 아닌, 지속 가능한 성장 구조를 구축합니다."
+        },
+        {
+          "title": "Scalable Architecture",
+          "desc": "즉시 실행 가능한 구조 설계로 시간과 비용을 혁신적으로 절감합니다."
+        },
+        {
+          "title": "Optimized Cost",
+          "desc": "민감 데이터 보호, 기업 환경 최적화"
+        },
+        {
+          "title": "Enterprise Isolation",
+          "desc": "민감 데이터 보호, 기업 환경 최적화"
+        }
+      ],
+      "cta": "PMDC 인프라 구성 문의하기"
+    }
+  },
+  "pricing_page": {
+    "title": "Pricing",
+    "subtitle": "합리적인 가격으로 최고 성능의 AI 인프라를 경험하세요.",
+    "tabs": {
+      "b200": "B200",
+      "h200": "H200",
+      "rtx": "RTX"
+    },
+    "table": {
+      "headers": ["인스턴스", "vRAM", "vCPU", "On-demand", "Reserved 1Month", "Reserved 1 Year"],
+      "b200": [
+        { "name": "8 x B200 180GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩31,200", "1month": "₩27,768", "1year": "₩24,336" },
+        { "name": "4 x B200 180GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩15,680", "1month": "₩13,955", "1year": "₩12,230" },
+        { "name": "2 x B200 180GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩7,860", "1month": "₩6,995", "1year": "₩6,131" },
+        { "name": "B200 180GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩3,935", "1month": "₩3,502", "1year": "₩3,069" }
+      ],
+      "h200": [
+        { "name": "8 x H200 80GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩22,776", "1month": "₩20,271", "1year": "₩17,765" },
+        { "name": "4 x H200 80GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩11,446", "1month": "₩10,187", "1year": "₩8,928" },
+        { "name": "2 x H200 80GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩5,738", "1month": "₩5,107", "1year": "₩4,475" },
+        { "name": "H200 80GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩2,873", "1month": "₩2,557", "1year": "₩2,241" }
+      ],
+      "rtx": [
+        { "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "640GB", "vcpu": "128vCore", "ondemand": "₩7,880", "1month": "₩7,013", "1year": "₩6,146" },
+        { "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "320GB", "vcpu": "64vCore", "ondemand": "₩3,940", "1month": "₩3,507", "1year": "₩3,073" },
+        { "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "160GB", "vcpu": "32vCore", "ondemand": "₩1,990", "1month": "₩1,771", "1year": "₩1,552" },
+        { "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "80GB", "vcpu": "16vCore", "ondemand": "₩1,000", "1month": "₩890", "1year": "₩780" }
+      ]
+    },
+    "consulting": {
+      "title": "Custom Architecture & Consulting",
+      "desc1": "필요한 순간, 필요한 만큼. 직지랩스 GPU 인스턴스로 AI 속도를 올리세요",
+      "desc2": "자동 배포 → 추론 Endpoint 연동\nMLOps를 탑재한 강력한 Serverless API 생성 Tool",
+      "contact": "견적 및 기술 상담: business@jikji.ai"
+    }
+  },
+  "support_page": {
+    "title": "프로모션을 신청하신 고객사에는 개별적으로 연락을 드립니다.\n상담 이후 GPU 자원을 순차적으로 할당해 드립니다.",
+    "subtitle": "( H100 GPU를 기반으로 한 1개월 무료 평가판 서비스 제공 )",
+    "highlight": "\u201cH100 GPU(MIG 가상화), 최대 1개월 무료 체험 \u2013 고성능 AI 인프라를 즉시 경험하세요\u201d",
+    "form": {
+      "title": "신청자 정보",
+      "company": "회사명",
+      "industry": "산업분야",
+      "name": "담당자 이름",
+      "contact": "연락처",
+      "email": "이메일",
+      "submit": "신청하기",
+      "success_title": "신청이 완료되었습니다!",
+      "success_desc": "빠른 시일 내에 연락 드리겠습니다."
+    }
+  },
+  "hero": {
+    "badge": "JIKJI AI 2.0 출시",
+    "title": "N3N과 함께 AI 솔루션을 가속화하세요",
+    "description": "최첨단 AI 기술로 비즈니스의 한계를 뛰어넘으세요. JIKJI는 데이터부터 모델까지 가장 빠르고 안정적인 AI 파이프라인을 제공합니다.",
+    "cta_primary": "무료로 시작하기",
+    "cta_secondary": "데모 보기"
+  },
+  "features": {
+    "title": "모든 것을 갖춘 AI 플랫폼",
+    "description": "복잡한 인프라 관리 없이 오직 모델 개발과 비즈니스 로직에만 집중하세요.",
+    "items": [
+      {
+        "title": "초고속 데이터 처리",
+        "description": "대규모 데이터셋을 실시간으로 처리하고 분석할 수 있는 강력한 파이프라인"
+      },
+      {
+        "title": "유연한 모델 배포",
+        "description": "클릭 몇 번으로 모델을 프로덕션 환경에 배포하고 스케일링하세요"
+      },
+      {
+        "title": "강력한 보안",
+        "description": "엔터프라이즈급 보안으로 귀중한 데이터와 모델을 안전하게 보호합니다"
+      }
+    ]
+  },
+  "quote": {
+    "title": "맞춤형 견적 요청",
+    "description": "비즈니스 요구사항에 맞는 최적의 플랜을 제안해 드립니다.",
+    "form": {
+      "name": "이름",
+      "email": "이메일",
+      "company": "회사명",
+      "message": "요구사항 상세",
+      "submit": "견적 요청하기",
+      "success": "성공적으로 요청되었습니다!",
+      "error": "요청 중 오류가 발생했습니다."
+    }
+  },
+  "footer": {
+    "copyright": "\u00a9 2026 JIKJI Labs. All rights reserved."
+  }
+}
