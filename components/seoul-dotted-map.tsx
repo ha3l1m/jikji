@@ -122,19 +122,39 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     if (!ctx) return;
     ctx.scale(dpr, dpr);
 
-    // Use an offscreen canvas to leverage isPointInPath against SVG Path2D
+    // Render all district paths onto an offscreen canvas as a merged bitmap
     const offscreen = document.createElement('canvas');
     offscreen.width = SVG_SIZE;
     offscreen.height = SVG_SIZE;
     const offCtx = offscreen.getContext('2d')!;
-    const paths = DISTRICT_PATHS.map((d) => new Path2D(d));
+
+    // Fill all districts
+    offCtx.fillStyle = 'white';
+    DISTRICT_PATHS.forEach((d) => {
+      const p = new Path2D(d);
+      offCtx.fill(p, 'evenodd');
+    });
+
+    // Stroke all districts with a small width to close inter-district gaps
+    offCtx.strokeStyle = 'white';
+    offCtx.lineWidth = 4;
+    DISTRICT_PATHS.forEach((d) => {
+      const p = new Path2D(d);
+      offCtx.stroke(p);
+    });
+
+    // Read the full pixel data once
+    const imageData = offCtx.getImageData(0, 0, SVG_SIZE, SVG_SIZE);
+    const pixels = imageData.data;
 
     const dots: DotData[] = [];
     for (let row = STEP / 2; row < H; row += STEP) {
       for (let col = STEP / 2; col < W; col += STEP) {
-        const svgX = col * (SVG_SIZE / W);
-        const svgY = row * (SVG_SIZE / H);
-        if (paths.some((p) => offCtx.isPointInPath(p, svgX, svgY, 'evenodd'))) {
+        const svgX = Math.round(col * (SVG_SIZE / W));
+        const svgY = Math.round(row * (SVG_SIZE / H));
+        const idx = (svgY * SVG_SIZE + svgX) * 4;
+        // Check alpha channel — any non-zero means this pixel is inside a district
+        if (pixels[idx + 3] > 0) {
           dots.push({
             fx: col,
             fy: row,
