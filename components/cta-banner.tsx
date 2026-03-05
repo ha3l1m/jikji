@@ -7,52 +7,76 @@ export function CTABanner() {
   const { t } = useI18n();
 
   return (
-    <section id="contact" className="py-20 bg-[#01071B] border-t border-white/5">
-      <div className="mx-auto max-w-4xl px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
-        >
-          {t.hero.title}
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-lg text-white/50 max-w-xl mx-auto mb-10 font-light"
-        >
-          {t.hero.description}
-        </motion.p>
-
+    <section id="contact" className="py-16 bg-[#01071B]">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.6 }}
+          className="relative rounded-3xl overflow-hidden"
         >
-          {/* Animated border CTA — same style as infrastructure page */}
-          <div className="relative inline-flex rounded-full p-[1px] overflow-hidden">
-            <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E1E3EE_0%,#5572E2_50%,#E1E3EE_100%)]" />
-            <a
-              href="mailto:business@jikji.ai"
-              className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#5572E2]/20 to-transparent hover:from-zinc-300/10 hover:via-[#5572E2]/30"
-            >
-              {t.hero.cta_primary}
-            </a>
-          </div>
+          {/* Card gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#111d52] via-[#0c1440] to-[#090e2c]" />
 
-          <a
-            href="#products"
-            onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/30 font-medium text-sm transition-colors"
-          >
-            {t.hero.cta_secondary}
-          </a>
+          {/* Blue radial glow – top-right */}
+          <div className="absolute right-0 top-0 w-3/4 h-full bg-[radial-gradient(ellipse_60%_80%_at_100%_0%,rgba(85,114,226,0.28)_0%,transparent_70%)]" />
+
+          {/* Warm purple glow – bottom-left accent */}
+          <div className="absolute left-0 bottom-0 w-1/2 h-2/3 bg-[radial-gradient(ellipse_50%_60%_at_0%_100%,rgba(120,80,220,0.12)_0%,transparent_70%)]" />
+
+          {/* Subtle border ring */}
+          <div className="absolute inset-0 rounded-3xl ring-1 ring-white/[0.07]" />
+
+          {/* Decorative dots grid – top-right corner */}
+          <div
+            className="absolute right-10 top-8 w-40 h-32 opacity-[0.07]"
+            style={{
+              backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+              backgroundSize: '16px 16px',
+            }}
+          />
+
+          {/* Content */}
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-10 px-10 py-14 md:px-16 md:py-16">
+            {/* Left: text */}
+            <div className="max-w-xl">
+              <p className="text-xs font-semibold tracking-widest text-[#5572E2]/80 uppercase mb-4">
+                Enterprise
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 leading-snug">
+                {t.pricing_page.consulting.title}
+              </h2>
+              <p className="text-base text-white/50 font-light leading-relaxed">
+                {t.pricing_page.consulting.desc1}
+              </p>
+            </div>
+
+            {/* Right: CTA button */}
+            <div className="shrink-0">
+              <a
+                href="mailto:business@jikji.ai"
+                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-[#0c1440] font-semibold text-sm hover:bg-white/90 transition-all duration-200 shadow-lg shadow-[#5572E2]/10"
+              >
+                {t.company.promotion.btn_inquiry}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

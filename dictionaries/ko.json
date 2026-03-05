@@ -114,7 +114,7 @@
         ]
       },
       "oneclick": {
-        "title": "OneClick Start",
+        "title": "필요한 순간, 필요한 만큼",
         "subtitle": "개발부터 운영까지 바로 쓰는 표준 툴체인",
         "items": [
           {
@@ -206,7 +206,7 @@
   },
   "infrastructure": {
     "region": {
-      "title": "직지랩스와 함께 귀사에 필요한 한국형 GPU 최적화 AI 데이터센터 서비스를 구축하세요.",
+      "title": "한국형 GPU 최적화 AI 데이터센터 서비스를 구축하세요.",
       "services": [
         {
           "title": "AI 데이터센터",
@@ -272,16 +272,20 @@
       "desc": "\u201cAI First 설계로, 기존 데이터센터의 한계를 뛰어넘는 차세대 AI 인프라를 완성합니다..\u201d",
       "features": [
         {
+          "title": "Fast Build",
+          "desc": "설계에서 설치까지 3개월, 변화하는 AI 환경에도 신속하게 대응합니다."
+        },
+        {
           "title": "AI First Design",
-          "desc": "PMDC는 처음부터 AI 중심 구조를 설계합니다. 단기 프로젝트 완수가 아닌, 지속 가능한 성장 구조를 구축합니다."
+          "desc": "PMDC는 처음부터 AI 중심 구조를 설계합니다. AI 수요 변화에 따라 유연하게 대응할 수 있습니다."
         },
         {
           "title": "Scalable Architecture",
-          "desc": "즉시 실행 가능한 구조 설계로 시간과 비용을 혁신적으로 절감합니다."
+          "desc": "단기 프로젝트 완수가 아닌, 지속 가능한 성장 구조를 구축합니다."
         },
         {
           "title": "Optimized Cost",
-          "desc": "민감 데이터 보호, 기업 환경 최적화"
+          "desc": "즉시 실행 가능한 구조 설계로 시간과 비용을 혁신적으로 절감합니다"
         },
         {
           "title": "Enterprise Isolation",
@@ -297,10 +301,11 @@
     "tabs": {
       "b200": "B200",
       "h200": "H200",
+      "h100": "H100",
       "rtx": "RTX"
     },
     "table": {
-      "headers": ["인스턴스", "vRAM", "vCPU", "On-demand", "Reserved 1Month", "Reserved 1 Year"],
+      "headers": ["인스턴스", "vRAM", "vCPU", "필요할 때 사용", "1개월 예약 할인", "1년 예약 할인"],
       "b200": [
         { "name": "8 x B200 180GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩31,200", "1month": "₩27,768", "1year": "₩24,336" },
         { "name": "4 x B200 180GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩15,680", "1month": "₩13,955", "1year": "₩12,230" },
@@ -313,6 +318,12 @@
         { "name": "2 x H200 80GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩5,738", "1month": "₩5,107", "1year": "₩4,475" },
         { "name": "H200 80GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩2,873", "1month": "₩2,557", "1year": "₩2,241" }
       ],
+      "h100": [
+        { "name": "8 x H100 SXM 80GB", "vram": "640GB", "vcpu": "192vCore", "ondemand": "₩33,600", "1month": "₩29,904", "1year": "₩26,208" },
+        { "name": "4 x H100 SXM 80GB", "vram": "320GB", "vcpu": "96vCore", "ondemand": "₩16,960", "1month": "₩15,094", "1year": "₩13,229" },
+        { "name": "2 x H100 SXM 80GB", "vram": "160GB", "vcpu": "48vCore", "ondemand": "₩8,520", "1month": "₩7,583", "1year": "₩6,646" },
+        { "name": "1 x H100 SXM 80GB", "vram": "80GB", "vcpu": "24vCore", "ondemand": "₩4,270", "1month": "₩3,800", "1year": "₩3,331" }
+      ],
       "rtx": [
         { "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "640GB", "vcpu": "128vCore", "ondemand": "₩7,880", "1month": "₩7,013", "1year": "₩6,146" },
         { "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "320GB", "vcpu": "64vCore", "ondemand": "₩3,940", "1month": "₩3,507", "1year": "₩3,073" },
@@ -320,6 +331,10 @@
         { "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "80GB", "vcpu": "16vCore", "ondemand": "₩1,000", "1month": "₩890", "1year": "₩780" }
       ]
     },
+    "notes": [
+      "모든 가격은 GPU 시간당 기준입니다.",
+      "해당 pricing은 프로모션 기간 동안 50% 할인 혜택이 적용됩니다."
+    ],
     "consulting": {
       "title": "Custom Architecture & Consulting",
       "desc1": "필요한 순간, 필요한 만큼. 직지랩스 GPU 인스턴스로 AI 속도를 올리세요",

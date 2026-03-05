@@ -86,6 +86,7 @@
   "products": {
     "gpucloud": {
       "title": "JIKJI Labs GPU Instance when you need it, as much as you need",
+      "subtitle": "Speed up your AI with JIKJI Labs GPU instances",
       "contact": "Quote & Technical Consultation: business@jikji.ai",
       "features": {
         "title": "Features",
@@ -270,6 +271,10 @@
       "subtitle": "In environments requiring rapid deployment such as universities and enterprises, PMDC provides one-stop services from design and construction to operation.",
       "desc": "\"With AI First design, we complete next-generation AI infrastructure that overcomes the limitations of existing data centers.\"",
       "features": [
+         {
+          "title": "Fast Build",
+          "desc": "From design to installation in just 3 months, enabling rapid response to evolving AI environments."
+        },
         {
           "title": "AI First Design",
           "desc": "PMDC designs an AI-centric structure from the beginning. We build a sustainable growth structure, not just short-term project completion."
@@ -296,10 +301,11 @@
     "tabs": {
       "b200": "B200",
       "h200": "H200",
+      "h100": "H100",
       "rtx": "RTX"
     },
     "table": {
-      "headers": ["Instance", "vRAM", "vCPU", "On-demand", "Reserved 1Month", "Reserved 1 Year"],
+      "headers": ["Instance", "vRAM", "vCPU", "On-demand", "Reserved 1 Month", "Reserved 1 Year"],
       "b200": [
         { "name": "8 x B200 180GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩31,200", "1month": "₩27,768", "1year": "₩24,336" },
         { "name": "4 x B200 180GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩15,680", "1month": "₩13,955", "1year": "₩12,230" },
@@ -312,6 +318,12 @@
         { "name": "2 x H200 80GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩5,738", "1month": "₩5,107", "1year": "₩4,475" },
         { "name": "H200 80GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩2,873", "1month": "₩2,557", "1year": "₩2,241" }
       ],
+      "h100": [
+        { "name": "8 x H100 SXM 80GB", "vram": "640GB", "vcpu": "192vCore", "ondemand": "₩33,600", "1month": "₩29,904", "1year": "₩26,208" },
+        { "name": "4 x H100 SXM 80GB", "vram": "320GB", "vcpu": "96vCore", "ondemand": "₩16,960", "1month": "₩15,094", "1year": "₩13,229" },
+        { "name": "2 x H100 SXM 80GB", "vram": "160GB", "vcpu": "48vCore", "ondemand": "₩8,520", "1month": "₩7,583", "1year": "₩6,646" },
+        { "name": "1 x H100 SXM 80GB", "vram": "80GB", "vcpu": "24vCore", "ondemand": "₩4,270", "1month": "₩3,800", "1year": "₩3,331" }
+      ],
       "rtx": [
         { "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "640GB", "vcpu": "128vCore", "ondemand": "₩7,880", "1month": "₩7,013", "1year": "₩6,146" },
         { "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "320GB", "vcpu": "64vCore", "ondemand": "₩3,940", "1month": "₩3,507", "1year": "₩3,073" },
@@ -319,6 +331,10 @@
         { "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "80GB", "vcpu": "16vCore", "ondemand": "₩1,000", "1month": "₩890", "1year": "₩780" }
       ]
     },
+    "notes": [
+      "All prices are per hour basis.",
+      "50% discount is applied during the promotional period."
+    ],
     "consulting": {
       "title": "Custom Architecture & Consulting",
       "desc1": "JIKJI Labs GPU Instance when you need it, as much as you need",

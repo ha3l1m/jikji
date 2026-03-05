@@ -8,11 +8,12 @@ import { Mail } from 'lucide-react';
 
 export function PricingSnippet() {
   const { t } = useI18n();
-  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'rtx'>('b200');
+  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'h100' | 'rtx'>('b200');
 
   const tabs = [
     { id: 'b200' as const, label: t.pricing_page.tabs.b200 },
     { id: 'h200' as const, label: t.pricing_page.tabs.h200 },
+    { id: 'h100' as const, label: t.pricing_page.tabs.h100 },
     { id: 'rtx' as const, label: t.pricing_page.tabs.rtx },
   ];
 
@@ -65,7 +66,7 @@ export function PricingSnippet() {
                 <thead>
                   <tr className="border-b border-white/10 bg-white/5">
                     {headers.map((h, i) => (
-                      <th key={i} className="px-6 py-4 text-sm font-medium text-white/60 whitespace-nowrap">
+                      <th key={i} className={`px-6 py-4 text-sm font-medium text-white/60 whitespace-nowrap${i >= 3 ? ' text-right' : ''}`}>
                         {h}
                       </th>
                     ))}
@@ -77,9 +78,9 @@ export function PricingSnippet() {
                       <td className="px-6 py-5 text-sm font-medium text-white whitespace-nowrap">{row.name}</td>
                       <td className="px-6 py-5 text-sm text-white/60 whitespace-nowrap">{row.vram}</td>
                       <td className="px-6 py-5 text-sm text-white/60 whitespace-nowrap">{row.vcpu}</td>
-                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap">{row.ondemand}</td>
-                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap">{row['1month']}</td>
-                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap">{row['1year']}</td>
+                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap text-right">{row.ondemand}</td>
+                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap text-right">{row['1month']}</td>
+                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap text-right">{row['1year']}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -88,10 +89,15 @@ export function PricingSnippet() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="mb-14" />
+        {/* Notes */}
+        <div className="mt-8 mb-10 space-y-2">
+          {t.pricing_page.notes.map((note, idx) => (
+            <p key={idx} className="text-sm text-white/80">* {note}</p>
+          ))}
+        </div>
 
         {/* Consulting CTA card */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -113,7 +119,7 @@ export function PricingSnippet() {
             <Mail className="w-4 h-4 text-[#5572E2]" />
             {t.pricing_page.consulting.contact}
           </a>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

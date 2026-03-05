@@ -3,9 +3,9 @@
 import { motion } from 'motion/react';
 import { useI18n } from './i18n-provider';
 import { SeoulDottedMap } from './seoul-dotted-map';
-import { ArrowRight, Server, Shield, Database, Cloud, Cpu, type LucideIcon } from 'lucide-react';
+import { ArrowRight, Server, Shield, Database, Cloud, Cpu, Zap, type LucideIcon } from 'lucide-react';
 
-const isolationIcons: LucideIcon[] = [Shield, Database, Cloud, Cpu];
+const isolationIcons: LucideIcon[] = [Zap, Shield, Database, Cloud, Cpu];
 
 export function InfraTeaser() {
   const { t } = useI18n();
@@ -24,37 +24,37 @@ export function InfraTeaser() {
         </div>
 
         <div className="mx-auto max-w-7xl px-6 relative z-10">
-          {/* Section header */}
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
-            >
-              {cluster.title}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-lg text-white/50 font-light"
-            >
-              {cluster.subtitle}
-            </motion.p>
-          </div>
-
           {/* Two-column layout */}
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Map */}
+            {/* Map with overlaid title */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="relative"
             >
+              {/* Title overlay - top-left */}
+              <div className="absolute top-0 left-0 z-10 pointer-events-none">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
+                >
+                  {cluster.title}
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-sm text-white/50 font-light"
+                >
+                  {cluster.subtitle}
+                </motion.p>
+              </div>
               <SeoulDottedMap className="w-full max-w-lg mx-auto" />
             </motion.div>
 
@@ -65,7 +65,7 @@ export function InfraTeaser() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="grid grid-cols-2 gap-4 mb-10">
+              <div className="grid grid-cols-2 gap-4">
                 {cluster.stats.map((stat, i) => (
                   <motion.div
                     key={i}
@@ -73,23 +73,28 @@ export function InfraTeaser() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.08 }}
-                    className="bg-white/[0.04] border border-white/8 rounded-2xl p-5"
+                    className="bg-white/[0.04] border border-white/8 rounded-2xl p-5 flex flex-col justify-between min-h-[140px]"
                   >
-                    <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                    <div className="text-xs font-medium text-[#5572E2]">{stat.label}</div>
-                    <div className="text-xs text-white/40 mt-1">{stat.desc}</div>
+                    <div className="text-xs text-white/50">{stat.desc}</div>
+                    <div className="flex flex-col items-end">
+                      <span className="text-3xl md:text-4xl font-bold text-white leading-tight">{stat.value}</span>
+                      <span className="text-[10px] font-medium text-white/60 mt-0.5 text-right whitespace-nowrap">{stat.label}</span>
+                    </div>
                   </motion.div>
                 ))}
               </div>
-
-              <a
-                href="mailto:business@jikji.ai"
-                className="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-[#5572E2]/10 hover:bg-[#5572E2]/20 border border-[#5572E2]/30 text-[#5572E2] font-medium text-sm transition-colors group"
-              >
-                AI Infrastructure 문의하기
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
             </motion.div>
+          </div>
+
+          {/* CTA below both columns */}
+          <div className="flex justify-center mt-12">
+            <a
+              href="mailto:business@jikji.ai"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-base transition-colors"
+            >
+              AI Infrastructure 문의하기
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
@@ -97,12 +102,12 @@ export function InfraTeaser() {
       {/* Services Grid */}
       <section className="py-24 bg-[#01071B] border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
+          <div className="mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-6 whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
             >
               {t.infrastructure.region.title}
             </motion.h2>
@@ -118,8 +123,8 @@ export function InfraTeaser() {
                 transition={{ delay: idx * 0.1 }}
                 className="bg-[#151C32] rounded-2xl p-6 border border-white/10"
               >
-                <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
-                <p className="text-sm text-white/50 mb-6 h-10">{service.subtitle}</p>
+                <h3 className="text-xl font-bold text-white mb-1">{service.title}</h3>
+                <p className="text-sm text-white/50 mb-2 h-10">{service.subtitle}</p>
                 <ul className="space-y-3">
                   {service.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="text-sm font-medium flex items-start gap-2">
