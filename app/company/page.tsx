@@ -51,15 +51,15 @@ export default function CompanyPage() {
               className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col items-center justify-center gap-4"
             >
               {/* Placeholder for the Business AX diagram */}
-              <div className="w-full bg-[#1C1C1E] rounded-xl p-4 text-center border border-white/10">
+              <div className="w-full bg-[#151C32] rounded-xl p-4 text-center border border-white/10">
                 <span className="font-semibold text-white">Business AX</span>
               </div>
               <div className="w-px h-8 bg-white/20" />
-              <div className="w-full bg-[#1C1C1E] rounded-xl p-4 text-center border border-white/10">
+              <div className="w-full bg-[#151C32] rounded-xl p-4 text-center border border-white/10">
                 <span className="font-semibold text-white">AI Applications</span>
               </div>
               <div className="w-px h-8 bg-white/20" />
-              <div className="w-full bg-[#1C1C1E] rounded-xl p-4 text-center border border-white/10">
+              <div className="w-full bg-[#151C32] rounded-xl p-4 text-center border border-white/10">
                 <span className="font-semibold text-white">AI Infrastructure</span>
               </div>
               <div className="w-full grid grid-cols-2 gap-4 mt-4">

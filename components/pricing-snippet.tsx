@@ -20,10 +20,10 @@ export function PricingSnippet() {
   const headers = t.pricing_page.table.headers;
 
   return (
-    <section id="pricing" className="py-24 bg-[#050505] border-t border-white/5 relative overflow-hidden">
+    <section id="pricing" className="py-24 bg-[#01071B] border-t border-white/5 relative overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#5EA5EA]/10 rounded-full blur-[100px] opacity-40 pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#5572E2]/10 rounded-full blur-[100px] opacity-40 pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-6 relative z-10">
         <SectionHeader
@@ -33,7 +33,7 @@ export function PricingSnippet() {
 
         {/* Tab selector */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex bg-[#111] p-1 rounded-xl border border-white/10">
+          <div className="inline-flex bg-[#151C32] p-1 rounded-xl border border-white/10">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -58,7 +58,7 @@ export function PricingSnippet() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="bg-[#0A0A0A] border border-white/10 rounded-2xl overflow-hidden shadow-2xl mb-6"
+            className="bg-[#01071B] border border-white/10 rounded-2xl overflow-hidden shadow-2xl mb-6"
           >
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
@@ -95,7 +95,7 @@ export function PricingSnippet() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-[#5EA5EA]/15 to-[#8B5CF6]/15 border border-[#5EA5EA]/20 rounded-3xl p-8 md:p-12 text-center max-w-3xl mx-auto"
+          className="bg-gradient-to-br from-[#5572E2]/15 to-[#4064EB]/15 border border-[#5572E2]/20 rounded-3xl p-8 md:p-12 text-center max-w-3xl mx-auto"
         >
           <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
             {t.pricing_page.consulting.title}
@@ -110,7 +110,7 @@ export function PricingSnippet() {
             href="mailto:business@jikji.ai"
             className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-white/90 transition-colors"
           >
-            <Mail className="w-4 h-4 text-[#5EA5EA]" />
+            <Mail className="w-4 h-4 text-[#5572E2]" />
             {t.pricing_page.consulting.contact}
           </a>
         </motion.div>

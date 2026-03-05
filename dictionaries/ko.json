@@ -6,10 +6,10 @@
     },
     "products": {
       "label": "Products",
-      "href": "#features",
+      "href": "#products",
       "items": [
-        { "label": "GPU Cloud", "href": "#features" },
-        { "label": "Platform", "href": "#features" }
+        { "label": "GPU Cloud", "href": "#gpucloud" },
+        { "label": "Platform", "href": "#platform" }
       ]
     },
     "ai_infrastructure": {
@@ -85,7 +85,8 @@
   },
   "products": {
     "gpucloud": {
-      "title": "필요한 순간, 필요한 만큼. 직지랩스 GPU 인스턴스로 AI 속도를 올리세요",
+      "title": "필요한 순간, 필요한 만큼",
+      "subtitle": "직지랩스 GPU 인스턴스로 AI 속도를 올리세요",
       "contact": "견적 및 기술 상담: business@jikji.ai",
       "features": {
         "title": "Features",
@@ -346,8 +347,8 @@
     "badge": "AI 인프라의 새로운 기준",
     "title": "AI Built from Infrastructure",
     "description": "복잡한 인프라 관리 없이 데이터센터부터 AI 서비스까지 한 번에 구축하세요.",
-    "cta_primary": "무료로 시작하기",
-    "cta_secondary": "데모 보기"
+    "cta_primary": "지금 시작하기",
+    "cta_secondary": "문의하기"
   },
   "features": {
     "title": "모든 것을 갖춘 AI 플랫폼",

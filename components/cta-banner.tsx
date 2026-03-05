@@ -7,7 +7,7 @@ export function CTABanner() {
   const { t } = useI18n();
 
   return (
-    <section id="contact" className="py-20 bg-[#0A0A0A] border-t border-white/5">
+    <section id="contact" className="py-20 bg-[#01071B] border-t border-white/5">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -37,18 +37,18 @@ export function CTABanner() {
         >
           {/* Animated border CTA — same style as infrastructure page */}
           <div className="relative inline-flex rounded-full p-[1px] overflow-hidden">
-            <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#B3D9F5_0%,#5EA5EA_50%,#B3D9F5_100%)]" />
+            <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E1E3EE_0%,#5572E2_50%,#E1E3EE_100%)]" />
             <a
               href="mailto:business@jikji.ai"
-              className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#5EA5EA]/20 to-transparent hover:from-zinc-300/10 hover:via-[#5EA5EA]/30"
+              className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#5572E2]/20 to-transparent hover:from-zinc-300/10 hover:via-[#5572E2]/30"
             >
               {t.hero.cta_primary}
             </a>
           </div>
 
           <a
-            href="#features"
-            onClick={(e) => { e.preventDefault(); document.getElementById('features')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+            href="#products"
+            onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/30 font-medium text-sm transition-colors"
           >
             {t.hero.cta_secondary}

@@ -34,7 +34,7 @@ export function QuoteForm() {
   const { isSubmitting, isSuccess, onSubmit } = useFormSubmit(reset);
 
   return (
-    <section id="quote" className="py-24 relative overflow-hidden bg-[#050505] border-t border-white/5">
+    <section id="quote" className="py-24 relative overflow-hidden bg-[#01071B] border-t border-white/5">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
 
       <div className="mx-auto max-w-3xl px-6 relative z-10">
@@ -45,7 +45,7 @@ export function QuoteForm() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl"
+          className="bg-[#01071B] border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl"
         >
           {isSuccess ? (
             <motion.div
