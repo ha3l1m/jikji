@@ -1,5 +1,7 @@
 import type {NextConfig} from 'next';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   eslint: {
@@ -12,8 +14,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   output: 'export',
-  basePath: '/jikji',
-  assetPrefix: '/jikji/',
+  basePath: isProd ? '/jikji' : '',
+  assetPrefix: isProd ? '/jikji/' : '',
   transpilePackages: ['motion'],
 };
 
