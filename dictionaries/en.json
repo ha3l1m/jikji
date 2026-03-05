@@ -2,31 +2,31 @@
   "nav": {
     "company": {
       "label": "Company",
-      "href": "/company"
+      "href": "#hero"
     },
     "products": {
       "label": "Products",
-      "href": "/products",
+      "href": "#features",
       "items": [
-        { "label": "GPU Cloud", "href": "/products#gpucloud" },
-        { "label": "Platform", "href": "/products#platform" }
+        { "label": "GPU Cloud", "href": "#features" },
+        { "label": "Platform", "href": "#features" }
       ]
     },
     "ai_infrastructure": {
       "label": "AI Infrastructure",
-      "href": "/infrastructure",
+      "href": "#infrastructure",
       "items": [
-        { "label": "Sovereign Region", "href": "/infrastructure#region" },
-        { "label": "Enterprise Isolation", "href": "/infrastructure#isolation" }
+        { "label": "Sovereign Region", "href": "#infrastructure" },
+        { "label": "Enterprise Isolation", "href": "#infrastructure" }
       ]
     },
     "pricing": {
       "label": "Pricing",
-      "href": "/pricing"
+      "href": "#pricing"
     },
     "support": {
       "label": "Support",
-      "href": "/support",
+      "href": "#contact",
       "items": [
         {
           "label": "Documentation",

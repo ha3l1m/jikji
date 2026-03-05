@@ -20,34 +20,69 @@ type NavSection = {
   items?: NavItem[];
 };
 
+function scrollToSection(href: string) {
+  if (href.startsWith('#')) {
+    const el = document.getElementById(href.slice(1));
+    if (el) {
+      const headerOffset = 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }
+}
+
+function NavLink({ href, className, children, onClick, external }: {
+  href: string; className?: string; children: React.ReactNode; onClick?: () => void; external?: boolean;
+}) {
+  if (external || !href.startsWith('#')) {
+    return (
+      <Link href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} className={className} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a
+      href={href}
+      className={className}
+      onClick={(e) => {
+        e.preventDefault();
+        scrollToSection(href);
+        onClick?.();
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
 function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: boolean }) {
   const linkCls = isLight
     ? 'flex items-center gap-1 text-sm font-medium text-black/60 hover:text-black transition-colors py-6'
     : 'flex items-center gap-1 text-sm font-medium text-white/70 hover:text-white transition-colors py-6';
 
   if (!section.items || section.items.length === 0) {
-    return <Link href={section.href} className={linkCls}>{section.label}</Link>;
+    return <NavLink href={section.href} className={linkCls}>{section.label}</NavLink>;
   }
 
   return (
     <div className="relative group/nav">
-      <Link href={section.href} className={linkCls}>
+      <NavLink href={section.href} className={linkCls}>
         {section.label}
         <ChevronDown className="w-3 h-3 opacity-50 group-hover/nav:rotate-180 transition-transform" />
-      </Link>
+      </NavLink>
 
       <div className="absolute top-full left-0 hidden group-hover/nav:block w-56 pt-2">
         <div className={`border rounded-xl p-2 shadow-2xl ${isLight ? 'bg-white border-black/10' : 'bg-[#1C1C1E] border-white/10'}`}>
           {section.items.map((item, idx) => (
-            <Link
+            <NavLink
               key={idx}
               href={item.href}
-              target={item.external ? '_blank' : undefined}
-              rel={item.external ? 'noopener noreferrer' : undefined}
+              external={item.external}
               className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -62,9 +97,9 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
     return (
       <div className="border-b border-white/10 last:border-0 py-2">
         <div className="flex items-center justify-between w-full text-left py-2 text-white/80 hover:text-white">
-          <Link href={section.href} onClick={closeMenu} className="font-medium flex-1">
+          <NavLink href={section.href} onClick={closeMenu} className="font-medium flex-1">
             {section.label}
-          </Link>
+          </NavLink>
         </div>
       </div>
     );
@@ -73,9 +108,9 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
   return (
     <div className="border-b border-white/10 last:border-0 py-2">
       <div className="flex items-center justify-between w-full text-left py-2 text-white/80 hover:text-white">
-        <Link href={section.href} onClick={closeMenu} className="font-medium flex-1">
+        <NavLink href={section.href} onClick={closeMenu} className="font-medium flex-1">
           {section.label}
-        </Link>
+        </NavLink>
         <button onClick={() => setIsOpen(!isOpen)} className="p-2">
           <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
         </button>
@@ -91,16 +126,15 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
           >
             <div className="pl-4 py-2 space-y-2 border-l border-white/10 ml-2">
               {section.items.map((item, idx) => (
-                <Link
+                <NavLink
                   key={idx}
                   href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  external={item.external}
                   onClick={closeMenu}
                   className="block text-sm text-white/60 hover:text-white py-1"
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </motion.div>
