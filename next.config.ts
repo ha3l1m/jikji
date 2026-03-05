@@ -1,7 +1,5 @@
 import type {NextConfig} from 'next';
 
-const isGithubPages = process.env.GITHUB_PAGES === 'true';
-
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   eslint: {
@@ -14,8 +12,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   output: 'export',
-  basePath: isGithubPages ? '/jikji' : '',
-  assetPrefix: isGithubPages ? '/jikji/' : '',
+  basePath: '/jikji',
+  assetPrefix: '/jikji/',
   transpilePackages: ['motion'],
 };
 
