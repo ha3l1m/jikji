@@ -12,7 +12,7 @@ export default function ProductsPage() {
   const { t } = useI18n();
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] selection:bg-white/30">
+    <main className="min-h-screen bg-[#01071B] selection:bg-white/30">
       <Header />
       
       {/* GPU Cloud Section */}
@@ -43,7 +43,7 @@ export default function ProductsPage() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-[#1C1C1E] rounded-3xl p-8 border border-white/10 h-full"
+              className="bg-[#151C32] rounded-3xl p-8 border border-white/10 h-full"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80 mb-8">
                 GPU CLOUD INSTANCE
@@ -71,7 +71,7 @@ export default function ProductsPage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-[#1C1C1E] rounded-3xl p-8 border border-white/10 h-full flex flex-col"
+              className="bg-[#151C32] rounded-3xl p-8 border border-white/10 h-full flex flex-col"
             >
               <h2 className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60 text-center">
                 {t.products.gpucloud.oneclick.title}
@@ -124,7 +124,7 @@ export default function ProductsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-[#1C1C1E] rounded-2xl p-6 border border-white/10"
+                  className="bg-[#151C32] rounded-2xl p-6 border border-white/10"
                 >
                   <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
@@ -157,7 +157,7 @@ export default function ProductsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-[#1C1C1E] rounded-2xl p-6 border border-white/10"
+                  className="bg-[#151C32] rounded-2xl p-6 border border-white/10"
                 >
                   <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>

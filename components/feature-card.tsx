@@ -17,12 +17,12 @@ export function FeatureCard({ title, description, icon: Icon, index = 0 }: Featu
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative p-8 rounded-2xl bg-[#0A0A0A] border border-white/5 hover:border-white/10 transition-all overflow-hidden flex flex-col h-full"
+      className="group relative p-8 rounded-2xl bg-[#01071B] border border-white/5 hover:border-white/10 transition-all overflow-hidden flex flex-col h-full"
     >
       <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-indigo-500/10 transition-colors" />
 
       {Icon && (
-        <div className="w-12 h-12 bg-[#111] rounded-xl flex items-center justify-center mb-8 border border-white/5 group-hover:border-white/10 transition-colors">
+        <div className="w-12 h-12 bg-[#151C32] rounded-xl flex items-center justify-center mb-8 border border-white/5 group-hover:border-white/10 transition-colors">
           <Icon className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" />
         </div>
       )}

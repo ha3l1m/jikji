@@ -21,13 +21,21 @@ type NavSection = {
 };
 
 function scrollToSection(href: string) {
-  if (href.startsWith('#')) {
-    const el = document.getElementById(href.slice(1));
-    if (el) {
-      const headerOffset = 80;
-      const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+  if (!href.startsWith('#')) return;
+
+  const id = href.slice(1);
+
+  // GPU Cloud / Platform are tabs inside #products — dispatch a tab-switch event
+  if (id === 'gpucloud' || id === 'platform') {
+    window.dispatchEvent(new CustomEvent('products-tab-switch', { detail: id }));
+    return;
+  }
+
+  const el = document.getElementById(id);
+  if (el) {
+    const headerOffset = 80;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
   }
 }
 
@@ -73,7 +81,7 @@ function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: b
       </NavLink>
 
       <div className="absolute top-full left-0 hidden group-hover/nav:block w-56 pt-2">
-        <div className={`border rounded-xl p-2 shadow-2xl ${isLight ? 'bg-white border-black/10' : 'bg-[#1C1C1E] border-white/10'}`}>
+        <div className={`border rounded-xl p-2 shadow-2xl ${isLight ? 'bg-white border-black/10' : 'bg-[#151C32] border-white/10'}`}>
           {section.items.map((item, idx) => (
             <NavLink
               key={idx}
@@ -175,7 +183,7 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${
         isLight
           ? 'border-black/10 bg-white/90'
-          : 'border-white/10 bg-black/80'
+          : 'border-white/10 bg-[#01071B]/80'
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
@@ -213,7 +221,7 @@ export function Header() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-[#0A0A0A] border-b border-white/10 p-6 max-h-[calc(100vh-70px)] overflow-y-auto"
+            className="lg:hidden absolute top-full left-0 right-0 bg-[#01071B] border-b border-white/10 p-6 max-h-[calc(100vh-70px)] overflow-y-auto"
           >
             <div className="flex flex-col gap-2 mb-6">
               {navSections.map((section, idx) => (

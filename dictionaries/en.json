@@ -6,10 +6,10 @@
     },
     "products": {
       "label": "Products",
-      "href": "#features",
+      "href": "#products",
       "items": [
-        { "label": "GPU Cloud", "href": "#features" },
-        { "label": "Platform", "href": "#features" }
+        { "label": "GPU Cloud", "href": "#gpucloud" },
+        { "label": "Platform", "href": "#platform" }
       ]
     },
     "ai_infrastructure": {

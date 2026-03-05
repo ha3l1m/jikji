@@ -11,7 +11,7 @@ export function Features() {
   const { t } = useI18n();
 
   return (
-    <section id="features" className="py-24 relative overflow-hidden bg-[#050505] border-t border-white/5">
+    <section id="features" className="py-24 relative overflow-hidden bg-[#01071B] border-t border-white/5">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader title={t.features.title} subtitle={t.features.description} />
 

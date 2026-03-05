@@ -7,7 +7,7 @@ const columns = [
     id: 'infrastructure',
     title: 'AI Infrastructure',
     borderColor: 'border-indigo-500/50',
-    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.15)]',
+    glowColor: 'shadow-[0_0_30px_rgba(85,114,226,0.15)]',
     items: [
       { label: '직지 edge\n데이터센터', icon: Server },
       { label: 'GPUaaS', icon: Cpu },
@@ -17,7 +17,7 @@ const columns = [
     id: 'platform',
     title: 'AI Platform',
     borderColor: 'border-violet-500/50',
-    glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.15)]',
+    glowColor: 'shadow-[0_0_30px_rgba(64,100,235,0.15)]',
     items: [
       { label: 'AI & MLOps\nPlatform', icon: BarChart3 },
       { label: '배포·추론\nAPI 서비스', icon: Zap },
@@ -27,7 +27,7 @@ const columns = [
     id: 'applications',
     title: 'AI Applications',
     borderColor: 'border-purple-400/70',
-    glowColor: 'shadow-[0_0_40px_rgba(168,85,247,0.25)]',
+    glowColor: 'shadow-[0_0_40px_rgba(64,100,235,0.25)]',
     items: [
       { label: 'Chat Agent\n서비스', icon: MessageSquare },
       { label: 'N3N 영상\nAI 서비스', icon: Video },

@@ -20,7 +20,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
       </head>
-      <body className="bg-black text-white antialiased font-sans selection:bg-white/30" suppressHydrationWarning>
+      <body className="bg-[#01071B] text-white antialiased font-sans selection:bg-white/30" suppressHydrationWarning>
         <I18nProvider>
           {children}
         </I18nProvider>

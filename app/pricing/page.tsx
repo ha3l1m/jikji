@@ -20,7 +20,7 @@ export default function PricingPage() {
   const currentData = t.pricing_page.table[activeTab];
 
   return (
-    <main className="min-h-screen bg-[#050505] selection:bg-white/30 flex flex-col">
+    <main className="min-h-screen bg-[#01071B] selection:bg-white/30 flex flex-col">
       <Header />
       
       <section className="flex-1 pt-32 pb-24 relative overflow-hidden">
@@ -72,7 +72,7 @@ export default function PricingPage() {
               </div>
             </div>
 
-            <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="bg-[#01071B] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>

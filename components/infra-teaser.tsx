@@ -14,7 +14,7 @@ export function InfraTeaser() {
   return (
     <>
       {/* Map + Stats Section */}
-      <section id="infrastructure" className="py-24 relative overflow-hidden bg-[#070708] border-t border-white/5">
+      <section id="infrastructure" className="py-24 relative overflow-hidden bg-[#01071B] border-t border-white/5">
         {/* Decorative blobs */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute left-[5%] top-0 w-[400px] h-[500px] mix-blend-overlay overflow-hidden">
@@ -76,7 +76,7 @@ export function InfraTeaser() {
                     className="bg-white/[0.04] border border-white/8 rounded-2xl p-5"
                   >
                     <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                    <div className="text-xs font-medium text-[#5EA5EA]">{stat.label}</div>
+                    <div className="text-xs font-medium text-[#5572E2]">{stat.label}</div>
                     <div className="text-xs text-white/40 mt-1">{stat.desc}</div>
                   </motion.div>
                 ))}
@@ -84,7 +84,7 @@ export function InfraTeaser() {
 
               <a
                 href="mailto:business@jikji.ai"
-                className="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-[#5EA5EA]/10 hover:bg-[#5EA5EA]/20 border border-[#5EA5EA]/30 text-[#5EA5EA] font-medium text-sm transition-colors group"
+                className="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-[#5572E2]/10 hover:bg-[#5572E2]/20 border border-[#5572E2]/30 text-[#5572E2] font-medium text-sm transition-colors group"
               >
                 AI Infrastructure 문의하기
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -95,7 +95,7 @@ export function InfraTeaser() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-[#0A0A0A] border-t border-white/5">
+      <section className="py-24 bg-[#01071B] border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
             <motion.h2
@@ -116,14 +116,14 @@ export function InfraTeaser() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-[#1C1C1E] rounded-2xl p-6 border border-white/10"
+                className="bg-[#151C32] rounded-2xl p-6 border border-white/10"
               >
                 <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
                 <p className="text-sm text-white/50 mb-6 h-10">{service.subtitle}</p>
                 <ul className="space-y-3">
                   {service.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="text-sm font-medium flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#5EA5EA] mt-1.5 shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#5572E2] mt-1.5 shrink-0" />
                       <span className="text-white/70">{item}</span>
                     </li>
                   ))}
@@ -135,7 +135,7 @@ export function InfraTeaser() {
       </section>
 
       {/* Enterprise Isolation / PMDC Section */}
-      <section id="isolation" className="py-24 bg-[#050505] border-t border-white/5">
+      <section id="isolation" className="py-24 bg-[#01071B] border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -149,15 +149,15 @@ export function InfraTeaser() {
               <p className="text-lg text-white/60 mb-8 leading-relaxed">
                 {t.infrastructure.isolation.subtitle}
               </p>
-              <p className="text-xl font-semibold text-[#5EA5EA] mb-12">
+              <p className="text-xl font-semibold text-[#5572E2] mb-12">
                 {t.infrastructure.isolation.desc}
               </p>
 
               <div className="space-y-8">
                 {t.infrastructure.isolation.features.map((feature, idx) => (
                   <div key={idx} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#5EA5EA]/10 flex items-center justify-center shrink-0">
-                      {(() => { const Icon = isolationIcons[idx]; return <Icon className="w-6 h-6 text-[#5EA5EA]" />; })()}
+                    <div className="w-12 h-12 rounded-xl bg-[#5572E2]/10 flex items-center justify-center shrink-0">
+                      {(() => { const Icon = isolationIcons[idx]; return <Icon className="w-6 h-6 text-[#5572E2]" />; })()}
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
@@ -169,10 +169,10 @@ export function InfraTeaser() {
 
               <div className="mt-12">
                 <div className="relative inline-flex rounded-full p-[1px] overflow-hidden">
-                  <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#B3D9F5_0%,#5EA5EA_50%,#B3D9F5_100%)]" />
+                  <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E1E3EE_0%,#5572E2_50%,#E1E3EE_100%)]" />
                   <a
                     href="mailto:business@jikji.ai"
-                    className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#5EA5EA]/20 to-transparent hover:from-zinc-300/10 hover:via-[#5EA5EA]/30"
+                    className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#5572E2]/20 to-transparent hover:from-zinc-300/10 hover:via-[#5572E2]/30"
                   >
                     {t.infrastructure.isolation.cta}
                   </a>
