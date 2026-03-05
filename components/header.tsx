@@ -3,9 +3,10 @@
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Logo } from './logo';
+import { ShinyButton } from './ui/shiny-button';
 
 type NavItem = {
   label: string;
@@ -19,31 +20,31 @@ type NavSection = {
   items?: NavItem[];
 };
 
-function DesktopDropdown({ section }: { section: NavSection }) {
+function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: boolean }) {
+  const linkCls = isLight
+    ? 'flex items-center gap-1 text-sm font-medium text-black/60 hover:text-black transition-colors py-6'
+    : 'flex items-center gap-1 text-sm font-medium text-white/70 hover:text-white transition-colors py-6';
+
   if (!section.items || section.items.length === 0) {
-    return (
-      <Link href={section.href} className="flex items-center gap-1 text-sm font-medium text-white/70 hover:text-white transition-colors py-6">
-        {section.label}
-      </Link>
-    );
+    return <Link href={section.href} className={linkCls}>{section.label}</Link>;
   }
 
   return (
     <div className="relative group/nav">
-      <Link href={section.href} className="flex items-center gap-1 text-sm font-medium text-white/70 hover:text-white transition-colors py-6">
+      <Link href={section.href} className={linkCls}>
         {section.label}
         <ChevronDown className="w-3 h-3 opacity-50 group-hover/nav:rotate-180 transition-transform" />
       </Link>
-      
+
       <div className="absolute top-full left-0 hidden group-hover/nav:block w-56 pt-2">
-        <div className="bg-[#1C1C1E] border border-white/10 rounded-xl p-2 shadow-2xl">
+        <div className={`border rounded-xl p-2 shadow-2xl ${isLight ? 'bg-white border-black/10' : 'bg-[#1C1C1E] border-white/10'}`}>
           {section.items.map((item, idx) => (
-            <Link 
-              key={idx} 
+            <Link
+              key={idx}
               href={item.href}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
-              className="block px-4 py-2.5 text-sm text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer' : undefined}
+              className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
             >
               {item.label}
             </Link>
@@ -79,10 +80,10 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
           <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
         </button>
       </div>
-      
+
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -90,11 +91,11 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
           >
             <div className="pl-4 py-2 space-y-2 border-l border-white/10 ml-2">
               {section.items.map((item, idx) => (
-                <Link 
-                  key={idx} 
+                <Link
+                  key={idx}
                   href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
                   onClick={closeMenu}
                   className="block text-sm text-white/60 hover:text-white py-1"
                 >
@@ -112,41 +113,59 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
 export function Header() {
   const { t } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const darkSection = document.getElementById('region');
+      if (darkSection) {
+        const rect = darkSection.getBoundingClientRect();
+        setIsLight(rect.bottom < 64);
+      }
+    };
+    checkTheme();
+    window.addEventListener('scroll', checkTheme, { passive: true });
+    return () => window.removeEventListener('scroll', checkTheme);
+  }, []);
 
   const navSections = [
     t.nav.company,
     t.nav.products,
     t.nav.ai_infrastructure,
     t.nav.pricing,
-    t.nav.support
+    t.nav.support,
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${
+        isLight
+          ? 'border-black/10 bg-white/90'
+          : 'border-white/10 bg-black/80'
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
         <div className="flex items-center gap-2 py-4">
-          <Logo />
+          <Logo light={isLight} />
         </div>
 
         <nav className="hidden lg:flex items-center gap-8">
           {navSections.map((section, idx) => (
-            <DesktopDropdown key={idx} section={section} />
+            <DesktopDropdown key={idx} section={section} isLight={isLight} />
           ))}
         </nav>
 
         <div className="hidden lg:flex items-center gap-4 py-4">
-          <a 
-            href="https://jikjicloud.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2 bg-[#2C3140] text-white text-sm font-medium rounded-lg hover:bg-[#3A4052] transition-colors"
+          <ShinyButton
+            className="!py-2 !px-5 !text-sm"
+            onClick={() => window.open('https://jikjicloud.io/', '_blank')}
           >
             {t.nav.console}
-          </a>
+          </ShinyButton>
         </div>
 
-        <button 
-          className="lg:hidden text-white/70 hover:text-white py-4"
+        <button
+          className={`lg:hidden py-4 transition-colors ${isLight ? 'text-black/70 hover:text-black' : 'text-white/70 hover:text-white'}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -156,7 +175,7 @@ export function Header() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -167,19 +186,19 @@ export function Header() {
                 <MobileNavSection key={idx} section={section} closeMenu={() => setIsMenuOpen(false)} />
               ))}
             </div>
-            
+
             <div className="h-px bg-white/10 my-4" />
-            
+
             <div className="flex flex-col gap-4">
-              <a 
-                href="https://jikjicloud.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMenuOpen(false)}
-                className="px-4 py-3 bg-[#2C3140] text-white text-sm font-medium rounded-lg text-center hover:bg-[#3A4052] transition-colors"
+              <ShinyButton
+                className="!py-3 !px-4 !text-sm w-full"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.open('https://jikjicloud.io/', '_blank');
+                }}
               >
                 {t.nav.console}
-              </a>
+              </ShinyButton>
             </div>
           </motion.div>
         )}

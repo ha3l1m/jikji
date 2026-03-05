@@ -16,6 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${inter.variable} dark`}>
+      <head>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+      </head>
       <body className="bg-black text-white antialiased font-sans selection:bg-white/30" suppressHydrationWarning>
         <I18nProvider>
           {children}

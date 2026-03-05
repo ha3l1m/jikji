@@ -5,6 +5,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { motion } from 'motion/react';
 import { Server, Database, Cloud, Shield, Cpu, type LucideIcon } from 'lucide-react';
+import { SeoulDottedMap } from '@/components/seoul-dotted-map';
 
 const isolationIcons: LucideIcon[] = [Shield, Database, Cloud, Cpu];
 
@@ -12,25 +13,88 @@ export default function InfrastructurePage() {
   const { t } = useI18n();
 
   return (
-    <main className="min-h-screen bg-[#F5F5F7] text-black selection:bg-black/10">
+    <main className="min-h-screen bg-white text-black selection:bg-black/10">
       <Header />
-      
-      {/* Sovereign Region Section */}
-      <section id="region" className="pt-32 pb-24 relative overflow-hidden">
+
+      {/* Dark map section */}
+      <section
+        id="region"
+        className="pt-32 pb-24 relative overflow-hidden text-white"
+        style={{ background: 'linear-gradient(180deg, #1B1B1D 0%, #070708 100%)' }}
+      >
+        {/* Decorative overlays */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* Green blob — left */}
+          <div className="w-[691px] h-[818px] absolute left-[7%] top-0 mix-blend-overlay overflow-hidden">
+            <div className="w-96 h-[882px] absolute left-[128px] -top-48 opacity-10 bg-green-200" />
+          </div>
+          {/* Pink blob — right */}
+          <div className="w-[519px] h-[724px] absolute right-[0%] top-0 mix-blend-overlay overflow-hidden">
+            <div className="w-80 h-[684px] absolute left-[99px] -top-[59px] opacity-20 bg-pink-200" />
+          </div>
+          {/* White streak — center */}
+          <div className="w-44 h-32 absolute left-[29%] top-[120px] mix-blend-overlay overflow-hidden">
+            <div className="w-20 h-6 absolute left-[52px] top-[42px] origin-top-left rotate-[15deg] opacity-40 bg-white" />
+          </div>
+          {/* White blur accent — right center */}
+          <div className="w-28 h-9 absolute left-[72%] top-[400px] origin-top-left -rotate-[25deg] opacity-5 mix-blend-overlay bg-white rounded-[55px] blur-lg" />
+          {/* Cyan glow — top center */}
+          <div className="w-[572px] h-[572px] absolute left-[calc(50%-286px)] -top-[125px] opacity-20 mix-blend-overlay bg-cyan-200 rounded-full blur-3xl" />
+          {/* Globe outline rings */}
+          <div className="w-[1911px] h-[1698px] absolute -left-[628px] -top-[342px] opacity-10 outline outline-1 outline-offset-[-0.5px] outline-white rounded-full" />
+          <div className="w-[1600px] h-[1420px] absolute left-[calc(50%-800px)] -top-[200px] opacity-5 outline outline-1 outline-offset-[-0.5px] outline-white rounded-full" />
+        </div>
+
         <div className="mx-auto max-w-7xl px-6 relative z-10">
+          <div className="text-center -mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+              {t.infrastructure.region.cluster.title}
+            </h2>
+            <p className="text-xl text-white/60">
+              {t.infrastructure.region.cluster.subtitle}
+            </p>
+          </div>
+
+          <div className="flex justify-center mb-12">
+            <SeoulDottedMap className="w-full max-w-2xl" />
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {t.infrastructure.region.cluster.stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-sm text-white/60 mb-2">{stat.desc}</div>
+                <div className="text-4xl md:text-6xl font-bold mb-2">{stat.value}</div>
+                <div className="text-sm font-medium text-white/80">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Light content section */}
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               className="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight"
             >
               {t.infrastructure.region.title}
             </motion.h1>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {t.infrastructure.region.services.map((service, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -43,46 +107,13 @@ export default function InfrastructurePage() {
                 <ul className="space-y-3">
                   {service.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="text-sm font-medium flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#5EA5EA] mt-1.5 shrink-0" />
                       <span className="text-black/80">{item}</span>
                     </li>
                   ))}
                 </ul>
               </motion.div>
             ))}
-          </div>
-
-          {/* Cluster Section */}
-          <div className="bg-black text-white rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
-            
-            <div className="relative z-10">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                  {t.infrastructure.region.cluster.title}
-                </h2>
-                <p className="text-xl text-white/60">
-                  {t.infrastructure.region.cluster.subtitle}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {t.infrastructure.region.cluster.stats.map((stat, idx) => (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="text-center"
-                  >
-                    <div className="text-sm text-white/60 mb-2">{stat.desc}</div>
-                    <div className="text-4xl md:text-6xl font-bold mb-2">{stat.value}</div>
-                    <div className="text-sm font-medium text-white/80">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -102,15 +133,15 @@ export default function InfrastructurePage() {
               <p className="text-lg text-black/70 mb-8 leading-relaxed">
                 {t.infrastructure.isolation.subtitle}
               </p>
-              <p className="text-xl font-semibold text-indigo-600 mb-12">
+              <p className="text-xl font-semibold text-[#5EA5EA] mb-12">
                 {t.infrastructure.isolation.desc}
               </p>
 
               <div className="space-y-8">
                 {t.infrastructure.isolation.features.map((feature, idx) => (
                   <div key={idx} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center shrink-0">
-                      {(() => { const Icon = isolationIcons[idx]; return <Icon className="w-6 h-6 text-indigo-600" />; })()}
+                    <div className="w-12 h-12 rounded-xl bg-[#5EA5EA]/10 flex items-center justify-center shrink-0">
+                      {(() => { const Icon = isolationIcons[idx]; return <Icon className="w-6 h-6 text-[#5EA5EA]" />; })()}
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
@@ -121,12 +152,16 @@ export default function InfrastructurePage() {
               </div>
 
               <div className="mt-12">
-                <a 
-                  href="mailto:business@jikji.ai"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#FF3B30] text-white font-semibold rounded-full hover:bg-[#FF3B30]/90 transition-all"
-                >
-                  {t.infrastructure.isolation.cta}
-                </a>
+                <div className="relative inline-flex rounded-full p-[1px] overflow-hidden">
+                  {/* Spinning conic gradient border */}
+                  <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#B3D9F5_0%,#5EA5EA_50%,#B3D9F5_100%)]" />
+                  <a
+                    href="mailto:business@jikji.ai"
+                    className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#5EA5EA]/20 to-transparent hover:from-zinc-300/10 hover:via-[#5EA5EA]/30"
+                  >
+                    {t.infrastructure.isolation.cta}
+                  </a>
+                </div>
               </div>
             </motion.div>
 
