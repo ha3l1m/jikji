@@ -9,11 +9,12 @@ import { useState } from 'react';
 
 export default function PricingPage() {
   const { t } = useI18n();
-  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'rtx'>('b200');
+  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'h100' | 'rtx'>('b200');
 
   const tabs = [
     { id: 'b200', label: t.pricing_page.tabs.b200 },
     { id: 'h200', label: t.pricing_page.tabs.h200 },
+    { id: 'h100', label: t.pricing_page.tabs.h100 },
     { id: 'rtx', label: t.pricing_page.tabs.rtx },
   ] as const;
 
@@ -111,9 +112,18 @@ export default function PricingPage() {
                 </table>
               </div>
             </div>
+
+            {/* Notes */}
+            <div className="mt-4 space-y-1">
+              {t.pricing_page.notes.map((note, idx) => (
+                <p key={idx} className="text-xs text-white/40">
+                  * {note}
+                </p>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Consulting Section */}
+          {/* Consulting Section --사용안함 */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

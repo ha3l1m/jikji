@@ -90,7 +90,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     for (const { fx, fy, nu, nv } of dots) {
       const sph = sphereProject(nu, nv, tilt);
       const globeFade = Math.max(0.25, Math.min(1, sph.zr + 0.6));
-      const opacity = (1 - progress) * 0.28 + progress * globeFade * 0.38;
+      const opacity = progress * ((1 - progress) * 0.28 + progress * globeFade * 0.38);
       if (opacity < 0.01) continue;
 
       const x = Math.round(fx + (sph.x - fx) * progress);
@@ -205,7 +205,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
         ref={canvasRef}
         style={{ width: '100%', height: 'auto', display: 'block' }}
       />
-      {/* Map Pin — appears after tilt animation completes */}
+      {/* Location marker — appears after tilt animation completes */}
       {tiltDone && (
         <div
           style={{
@@ -215,40 +215,47 @@ export function SeoulDottedMap({ className }: { className?: string }) {
             zIndex: 10,
           }}
         >
+          {/* Speech bubble */}
           <div
             style={{
-              width: 30,
-              height: 30,
-              borderRadius: '50% 50% 50% 0',
-              background: '#5572E2',
               position: 'absolute',
-              transform: 'rotate(-45deg)',
-              margin: '-30px 0 0 -15px',
-              animation: 'pinBounce 0.45s ease-out both',
+              bottom: '6px',
+              right: '-20px',
+              background: 'rgba(255, 255, 255, 0.95)',
+              borderRadius: '8px',
+              padding: '6px 12px',
+              whiteSpace: 'nowrap',
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#1a1a2e',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.18)',
+              animation: 'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
             }}
           >
+            First AI DC 2027 오픈
             <div
               style={{
-                content: '""',
-                width: 14,
-                height: 14,
-                margin: '8px 0 0 8px',
-                background: '#01071B',
                 position: 'absolute',
-                borderRadius: '50%',
+                top: '100%',
+                right: '14px',
+                width: 0,
+                height: 0,
+                borderLeft: '6px solid transparent',
+                borderRight: '6px solid transparent',
+                borderTop: '6px solid rgba(255, 255, 255, 0.95)',
               }}
             />
           </div>
+          {/* Pulse circle */}
           <div
             style={{
-              background: 'rgba(85, 114, 226, 0.3)',
+              background: 'rgba(255, 255, 255, 0.4)',
               borderRadius: '50%',
               height: 14,
               width: 14,
               position: 'absolute',
-              margin: '-3px 0 0 -7px',
-              transform: 'rotateX(55deg)',
-              zIndex: -1,
+              margin: '-7px 0 0 -7px',
+              zIndex: 1,
               opacity: 0,
               animation: 'shadowAppear 0.15s ease-out 0.3s forwards',
             }}
@@ -263,23 +270,23 @@ export function SeoulDottedMap({ className }: { className?: string }) {
                 animation: 'pinPulsate 1s ease-out infinite',
                 animationDelay: '0.6s',
                 opacity: 0,
-                boxShadow: '0 0 1px 2px #5572E2',
+                boxShadow: '0 0 1px 3px rgba(255,255,255,0.5)',
               }}
             />
           </div>
         </div>
       )}
       <style>{`
-        @keyframes pinBounce {
-          0% { opacity: 0; transform: rotate(-45deg) scale(0); }
-          30% { opacity: 1; transform: rotate(-45deg) scale(1.15); }
-          55% { transform: rotate(-45deg) scale(0.92); }
-          75% { transform: rotate(-45deg) scale(1.05); }
-          100% { transform: rotate(-45deg) scale(1); }
+        @keyframes bubbleBounce {
+          0%   { opacity: 0; transform: translateY(8px) scale(0.85); }
+          30%  { opacity: 1; transform: translateY(-4px) scale(1.06); }
+          55%  { transform: translateY(2px) scale(0.97); }
+          75%  { transform: translateY(-2px) scale(1.02); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes shadowAppear {
-          0% { opacity: 0; transform: rotateX(55deg) scale(0.3); }
-          100% { opacity: 1; transform: rotateX(55deg) scale(1); }
+          0% { opacity: 0; }
+          100% { opacity: 1; }
         }
         @keyframes pinPulsate {
           0% { transform: scale(0.1, 0.1); opacity: 0; }
