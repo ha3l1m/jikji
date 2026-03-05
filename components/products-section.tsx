@@ -1,42 +1,44 @@
 'use client';
 
 import { useI18n } from './i18n-provider';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { ArrowRight, Server, Database, Settings, type LucideIcon } from 'lucide-react';
-
-const oneclickIcons: LucideIcon[] = [Server, Settings, Database];
+import { ArrowRight } from 'lucide-react';
+import { AnimatedFeatureCard } from './ui/animated-feature-card';
 
 type Tab = 'gpucloud' | 'platform';
 
 export function ProductsSection() {
   const [activeTab, setActiveTab] = useState<Tab>('gpucloud');
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isSticky, setIsSticky] = useState(false);
+  const gpuCloudRef = useRef<HTMLDivElement>(null);
+  const platformRef = useRef<HTMLDivElement>(null);
 
-  // Track when section is in view to show sticky tab
+  // 스크롤 위치에 따라 탭 자동 전환
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const gpuEl = gpuCloudRef.current;
+    const platEl = platformRef.current;
+    if (!gpuEl || !platEl) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsSticky(entry.isIntersecting);
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveTab(entry.target.id as Tab);
+          }
+        });
       },
-      { threshold: 0 }
+      { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
     );
 
-    observer.observe(section);
+    observer.observe(gpuEl);
+    observer.observe(platEl);
     return () => observer.disconnect();
   }, []);
 
   const handleTabClick = useCallback((tab: Tab) => {
-    setActiveTab(tab);
-    // Scroll to top of section so the new content is visible
-    if (sectionRef.current) {
-      const headerHeight = 64;
-      const tabBarHeight = 80;
-      const y = sectionRef.current.getBoundingClientRect().top + window.scrollY - headerHeight - tabBarHeight + 10;
+    const ref = tab === 'gpucloud' ? gpuCloudRef : platformRef;
+    if (ref.current) {
+      const y = ref.current.getBoundingClientRect().top + window.scrollY - 64 - 80 + 10;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }, []);
@@ -54,33 +56,28 @@ export function ProductsSection() {
   }, [handleTabClick]);
 
   return (
-    <section ref={sectionRef} id="products" className="relative bg-[#17171D]">
+    <section id="products" className="relative bg-[#01071B]">
       {/* ── Sticky Tab Bar ── */}
-      <div
-        className={`sticky top-16 z-40 flex justify-center py-6 transition-colors duration-300 ${
-          isSticky ? 'bg-black' : 'bg-[#17171D]'
-        }`}
-      >
-        {/* Bottom fade gradient so content slides under smoothly */}
+      <div className="sticky top-16 z-40 flex justify-center py-6 bg-[#01071B]/80 backdrop-blur-md">
         <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-black/0 to-transparent pointer-events-none" />
 
-        <div className="inline-flex items-center gap-2 p-[6px] rounded-full bg-white/20 backdrop-blur-[32px]">
+        <div className="inline-flex bg-[#111] p-1 rounded-xl border border-white/10">
           <button
             onClick={() => handleTabClick('gpucloud')}
-            className={`px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 ${
+            className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === 'gpucloud'
-                ? 'bg-white text-[#1D1C20]'
-                : 'text-white hover:text-white/80'
+                ? 'bg-white text-black shadow-sm'
+                : 'text-white/60 hover:text-white hover:bg-white/5'
             }`}
           >
             GPU Cloud
           </button>
           <button
             onClick={() => handleTabClick('platform')}
-            className={`px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 ${
+            className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === 'platform'
-                ? 'bg-white text-[#1D1C20]'
-                : 'text-white hover:text-white/80'
+                ? 'bg-white text-black shadow-sm'
+                : 'text-white/60 hover:text-white hover:bg-white/5'
             }`}
           >
             Platform
@@ -88,32 +85,13 @@ export function ProductsSection() {
         </div>
       </div>
 
-      {/* ── Tab Content with crossfade ── */}
-      <AnimatePresence mode="wait">
-        {activeTab === 'gpucloud' ? (
-          <motion.div
-            key="gpucloud"
-            id="gpucloud"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-          >
-            <GpuCloudContent />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="platform"
-            id="platform"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-          >
-            <PlatformContent />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ── 두 섹션 항상 렌더, 스크롤로 탐색 ── */}
+      <div ref={gpuCloudRef} id="gpucloud">
+        <GpuCloudContent />
+      </div>
+      <div ref={platformRef} id="platform">
+        <PlatformContent />
+      </div>
     </section>
   );
 }
@@ -127,12 +105,12 @@ function GpuCloudContent() {
   return (
     <>
       {/* Tagline */}
-      <div className="flex flex-col items-center justify-center py-[72px] gap-4 bg-[#17171D]">
+      {/* <div className="flex flex-col items-center justify-center py-[72px] gap-4 bg-[#01071B]">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-[48px] font-bold leading-[1.33] text-center text-[#D9D9D9] max-w-5xl px-6"
+          className="text-xl md:text-[36px] font-bold leading-[1.33] text-center text-[#D9D9D9] max-w-5xl px-6"
         >
           {t.products.gpucloud.title}
         </motion.h2>
@@ -141,76 +119,63 @@ function GpuCloudContent() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-lg md:text-2xl text-white/60 text-center px-6"
+          className="text-sm md:text-base text-white/60 text-center px-6"
         >
           {t.products.gpucloud.subtitle}
         </motion.p>
-      </div>
+      </div> */}
 
       {/* OneClick Start */}
-      <div className="bg-[#17171D] pb-8">
-        <div className="mx-auto max-w-[1400px] px-6 flex flex-col items-center gap-[88px]">
+      <div className="bg-[#01071B] pt-10 pb-8">
+        <div className="mx-auto max-w-[1400px] px-6 flex flex-col items-center gap-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col items-center gap-6"
           >
-            <div className="inline-flex items-center px-3 py-[9px] rounded-full bg-white/10 border border-white/5">
+            {/* <div className="inline-flex items-center px-3 py-[9px] rounded-full bg-white/10 border border-white/5">
               <span className="text-sm tracking-[1.32px] uppercase text-white">
                 GPU Cloud Instance
               </span>
-            </div>
-            <h3 className="text-4xl md:text-[72px] font-bold leading-none text-center bg-gradient-to-l from-[#8DBFC4] to-[#A7C1D7] bg-clip-text text-transparent">
+            </div> */}
+            <h3 className="text-3xl md:text-[48px] font-bold leading-none text-center bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
               {t.products.gpucloud.oneclick.title}
             </h3>
-            <p className="text-lg md:text-2xl text-white text-center">
+            <p className="text-base md:text-lg text-white/60 text-center">
               {t.products.gpucloud.oneclick.subtitle}
             </p>
           </motion.div>
 
-          {/* 3 Cards */}
+          {/* 3 Animated Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] w-full">
-            {t.products.gpucloud.oneclick.items.map((item, idx) => {
-              const Icon = oneclickIcons[idx];
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="relative flex flex-col items-center justify-center rounded-[15px] p-12 md:p-[100px] overflow-hidden"
-                >
-                  <div className="absolute w-[396px] h-[396px] -top-[186px] left-1/2 -translate-x-1/2 bg-[rgba(140,221,255,0.1)] blur-[40px] rounded-full pointer-events-none" />
-                  <div className="relative z-10 flex flex-col items-center gap-8">
-                    <div className="w-16 h-16 flex items-center justify-center">
-                      <Icon className="w-16 h-16 text-[#40C6FF]" strokeWidth={1.5} />
-                    </div>
-                    <div className="flex flex-col items-center gap-4 text-center">
-                      <h4 className="text-2xl md:text-[30px] font-bold leading-[1.33] text-white">
-                        {item.title}
-                      </h4>
-                      <p className="text-lg md:text-2xl leading-[1.33] text-white/80">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {(['oneclick', 'framework', 'storage'] as const).map((variant, idx) => (
+              <motion.div
+                key={variant}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+              >
+                <AnimatedFeatureCard
+                  variant={variant}
+                  cardTitle={t.products.gpucloud.oneclick.items[idx].title}
+                  cardDescription={t.products.gpucloud.oneclick.items[idx].desc}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Features Grid */}
-      <div className="bg-[#17171D] py-[72px] px-6">
+      <div className="bg-[#01071B] py-[72px] px-6">
         <div className="mx-auto max-w-[1200px] flex flex-col items-center gap-10">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-[48px] font-bold leading-none text-center bg-gradient-to-l from-[#8DBFC4] to-[#A7C1D7] bg-clip-text text-transparent"
+            className="text-2xl md:text-[36px] font-bold leading-none text-center bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent"
           >
             {t.products.gpucloud.features.title}
           </motion.h3>
@@ -223,10 +188,10 @@ function GpuCloudContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#111111] border border-black/5 rounded-3xl min-h-[200px]"
+                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px]"
               >
                 <div className="flex flex-col gap-[15px]">
-                  <h4 className="text-xl md:text-[30px] font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
+                  <h4 className="text-base md:text-xl font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
                     {item.title}
                   </h4>
                   <p className="text-base leading-[1.4] text-white/80">
@@ -249,7 +214,7 @@ function PlatformContent() {
   const { t } = useI18n();
 
   return (
-    <div className="bg-[#17171D]">
+    <div className="bg-[#01071B]">
       <div className="mx-auto max-w-7xl px-6 py-24">
         {/* AI Inference Platform */}
         <div className="mb-32">
@@ -262,7 +227,7 @@ function PlatformContent() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/5 text-sm font-medium text-white/80 mb-6">
               AI INFERENCE
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight whitespace-pre-line bg-gradient-to-l from-[#8DBFC4] to-[#A7C1D7] bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight whitespace-pre-line bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
               {t.products.platform.inference.title}
             </h2>
           </motion.div>
@@ -275,9 +240,9 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#111111] border border-black/5 rounded-3xl min-h-[200px]"
+                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px]"
               >
-                <h4 className="text-xl md:text-[30px] font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
+                <h4 className="text-base md:text-xl font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
                   {item.title}
                 </h4>
                 <p className="text-base leading-[1.4] text-white/80 mt-2">
@@ -299,7 +264,7 @@ function PlatformContent() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/5 text-sm font-medium text-white/80 mb-6">
               CHAT AGENT
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight bg-gradient-to-l from-[#8DBFC4] to-[#A7C1D7] bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
               {t.products.platform.agents.title}
             </h2>
           </motion.div>
@@ -312,9 +277,9 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#111111] border border-black/5 rounded-3xl min-h-[200px]"
+                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px]"
               >
-                <h4 className="text-xl md:text-[30px] font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
+                <h4 className="text-base md:text-xl font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
                   {item.title}
                 </h4>
                 <p className="text-base leading-[1.4] text-white/80 mt-2">
@@ -333,10 +298,10 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight bg-gradient-to-l from-[#8DBFC4] to-[#A7C1D7] bg-clip-text text-transparent">
+            <h2 className="text-xl md:text-3xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
               {t.products.platform.video.title}
             </h2>
-            <div className="inline-block bg-white/10 px-6 py-3 rounded-lg border border-white/20 text-xl font-medium text-white/90">
+            <div className="inline-block bg-white/10 px-6 py-3 rounded-lg border border-white/20 text-base font-medium text-white/90">
               {t.products.platform.video.subtitle}
             </div>
           </motion.div>
@@ -349,7 +314,7 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#111111] border border-black/5 rounded-3xl min-h-[200px] group hover:bg-white/5 transition-colors"
+                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px] group hover:bg-white/5 transition-colors"
               >
                 <div className="flex items-center justify-between w-full mb-4">
                   <h4 className="text-xl font-bold bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
