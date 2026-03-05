@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 import { useInView } from 'motion/react';
 
 const W = 800;
@@ -70,6 +70,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
   const rafRef = useRef<number>(0);
   const dotsRef = useRef<DotData[]>([]);
   const inView = useInView(containerRef, { once: true, margin: '-80px' });
+  const [tiltDone, setTiltDone] = useState(false);
 
   const draw = useCallback((progress: number) => {
     const canvas = canvasRef.current;
@@ -178,7 +179,11 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     const loop = (now: number) => {
       const t = Math.min((now - t0) / DURATION, 1);
       draw(ease(t));
-      if (t < 1) rafRef.current = requestAnimationFrame(loop);
+      if (t < 1) {
+        rafRef.current = requestAnimationFrame(loop);
+      } else {
+        setTiltDone(true);
+      }
     };
     rafRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafRef.current);
@@ -189,6 +194,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
       ref={containerRef}
       className={className}
       style={{
+        position: 'relative',
         maskImage:
           'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
         WebkitMaskImage:
@@ -199,6 +205,88 @@ export function SeoulDottedMap({ className }: { className?: string }) {
         ref={canvasRef}
         style={{ width: '100%', height: 'auto', display: 'block' }}
       />
+      {/* Map Pin — appears after tilt animation completes */}
+      {tiltDone && (
+        <div
+          style={{
+            position: 'absolute',
+            left: '90%',
+            top: '75%',
+            zIndex: 10,
+          }}
+        >
+          <div
+            style={{
+              width: 30,
+              height: 30,
+              borderRadius: '50% 50% 50% 0',
+              background: '#00cae9',
+              position: 'absolute',
+              transform: 'rotate(-45deg)',
+              margin: '-30px 0 0 -15px',
+              animation: 'pinBounce 0.45s ease-out both',
+            }}
+          >
+            <div
+              style={{
+                content: '""',
+                width: 14,
+                height: 14,
+                margin: '8px 0 0 8px',
+                background: '#0a0a0a',
+                position: 'absolute',
+                borderRadius: '50%',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              background: 'rgba(0, 202, 233, 0.3)',
+              borderRadius: '50%',
+              height: 14,
+              width: 14,
+              position: 'absolute',
+              margin: '-3px 0 0 -7px',
+              transform: 'rotateX(55deg)',
+              zIndex: -1,
+              opacity: 0,
+              animation: 'shadowAppear 0.15s ease-out 0.3s forwards',
+            }}
+          >
+            <div
+              style={{
+                borderRadius: '50%',
+                height: 40,
+                width: 40,
+                position: 'absolute',
+                margin: '-13px 0 0 -13px',
+                animation: 'pinPulsate 1s ease-out infinite',
+                animationDelay: '0.6s',
+                opacity: 0,
+                boxShadow: '0 0 1px 2px #00cae9',
+              }}
+            />
+          </div>
+        </div>
+      )}
+      <style>{`
+        @keyframes pinBounce {
+          0% { opacity: 0; transform: rotate(-45deg) scale(0); }
+          30% { opacity: 1; transform: rotate(-45deg) scale(1.15); }
+          55% { transform: rotate(-45deg) scale(0.92); }
+          75% { transform: rotate(-45deg) scale(1.05); }
+          100% { transform: rotate(-45deg) scale(1); }
+        }
+        @keyframes shadowAppear {
+          0% { opacity: 0; transform: rotateX(55deg) scale(0.3); }
+          100% { opacity: 1; transform: rotateX(55deg) scale(1); }
+        }
+        @keyframes pinPulsate {
+          0% { transform: scale(0.1, 0.1); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: scale(1.2, 1.2); opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 }
