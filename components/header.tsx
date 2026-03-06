@@ -171,10 +171,10 @@ export function Header() {
   }, []);
 
   const navSections = [
-    t.nav.company,
     t.nav.products,
     t.nav.ai_infrastructure,
     t.nav.pricing,
+    t.nav.company,
     t.nav.support,
   ];
 

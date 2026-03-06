@@ -11,7 +11,7 @@ export function Hero() {
   const { t } = useI18n();
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#01071B]">
+    <section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden" style={{ background: 'linear-gradient(180deg, #0A0B11 0%, #343E5F 110.38%, #C6C3BD 152.83%)' }}>
       {/* Flow field animation background */}
       <div className="absolute inset-0 opacity-60" style={{ mask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)', WebkitMask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)' }}>
         <NeuralBackground
@@ -23,7 +23,7 @@ export function Hero() {
         />
       </div>
       {/* Gradient overlay to fade the animation toward the edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_20%,transparent_30%,#01071B_90%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_20%,transparent_30%,#0A0B11_90%)] pointer-events-none" />
 
       {/* Decorative gradient blobs + star dots */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -99,7 +99,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-20 relative w-full max-w-5xl mx-auto rounded-2xl border border-white/10 shadow-2xl bg-[#01071B] hidden md:block"
+          className="mt-20 relative w-full max-w-5xl mx-auto rounded-2xl border border-white/10 shadow-2xl bg-[#0A0B11] hidden md:block"
         >
           <FullStackDiagram />
         </motion.div>

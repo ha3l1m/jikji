@@ -2,7 +2,7 @@
   "nav": {
     "company": {
       "label": "Company",
-      "href": "#hero"
+      "href": "/company"
     },
     "products": {
       "label": "Products",
