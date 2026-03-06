@@ -56,18 +56,18 @@ export function ProductsSection() {
   }, [handleTabClick]);
 
   return (
-    <section id="products" className="relative bg-[#01071B]">
+    <section id="products" className="relative bg-white">
       {/* ── Sticky Tab Bar ── */}
-      <div className="sticky top-16 z-40 flex justify-center py-6 bg-[#01071B]/80 backdrop-blur-md">
-        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-black/0 to-transparent pointer-events-none" />
+      <div className="sticky top-16 z-40 flex justify-center py-6 bg-white/80 backdrop-blur-md">
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-white/0 to-transparent pointer-events-none" />
 
-        <div className="inline-flex bg-[#111] p-1 rounded-xl border border-white/10">
+        <div className="inline-flex bg-gray-100 p-1 rounded-xl border border-gray-200">
           <button
             onClick={() => handleTabClick('gpucloud')}
             className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === 'gpucloud'
-                ? 'bg-white text-black shadow-sm'
-                : 'text-white/60 hover:text-white hover:bg-white/5'
+                ? 'bg-gray-900 text-white shadow-sm'
+                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
             }`}
           >
             GPU Cloud
@@ -76,8 +76,8 @@ export function ProductsSection() {
             onClick={() => handleTabClick('platform')}
             className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === 'platform'
-                ? 'bg-white text-black shadow-sm'
-                : 'text-white/60 hover:text-white hover:bg-white/5'
+                ? 'bg-gray-900 text-white shadow-sm'
+                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
             }`}
           >
             Platform
@@ -126,23 +126,18 @@ function GpuCloudContent() {
       </div> */}
 
       {/* OneClick Start */}
-      <div className="bg-[#01071B] pt-10 pb-8">
-        <div className="mx-auto max-w-[1400px] px-6 flex flex-col items-center gap-14">
+      <div className="bg-white pt-8 pb-6">
+        <div className="mx-auto max-w-[1200px] px-6 flex flex-col items-center gap-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col items-center gap-6"
           >
-            {/* <div className="inline-flex items-center px-3 py-[9px] rounded-full bg-white/10 border border-white/5">
-              <span className="text-sm tracking-[1.32px] uppercase text-white">
-                GPU Cloud Instance
-              </span>
-            </div> */}
-            <h3 className="text-3xl md:text-[48px] font-bold leading-none text-center bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            <h3 className="text-3xl md:text-[48px] font-bold leading-none text-center text-gray-900">
               {t.products.gpucloud.oneclick.title}
             </h3>
-            <p className="text-base md:text-lg text-white/60 text-center">
+            <p className="text-base md:text-lg text-gray-500 text-center">
               {t.products.gpucloud.oneclick.subtitle}
             </p>
           </motion.div>
@@ -169,13 +164,13 @@ function GpuCloudContent() {
       </div>
 
       {/* Features Grid */}
-      <div className="bg-[#01071B] py-[72px] px-6">
+      <div className="bg-white py-[72px] px-6">
         <div className="mx-auto max-w-[1200px] flex flex-col items-center gap-10">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-[36px] font-bold leading-none text-center bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent"
+            className="text-2xl md:text-[36px] font-bold leading-none text-center text-gray-900"
           >
             {t.products.gpucloud.features.title}
           </motion.h3>
@@ -188,13 +183,13 @@ function GpuCloudContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px]"
+                className="flex flex-col items-start p-6 gap-2 bg-gray-50 border border-gray-200 rounded-2xl"
               >
                 <div className="flex flex-col gap-[15px]">
-                  <h4 className="text-base md:text-xl font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
+                  <h4 className="text-base md:text-xl font-bold leading-[1.33] text-gray-900">
                     {item.title}
                   </h4>
-                  <p className="text-base leading-[1.4] text-white/80">
+                  <p className="text-base leading-[1.4] text-gray-600">
                     {item.desc}
                   </p>
                 </div>
@@ -214,7 +209,7 @@ function PlatformContent() {
   const { t } = useI18n();
 
   return (
-    <div className="bg-[#01071B]">
+    <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-24">
         {/* AI Inference Platform */}
         <div className="mb-32">
@@ -224,10 +219,10 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/5 text-sm font-medium text-white/80 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 border border-gray-200 text-sm font-medium text-gray-600 mb-6">
               AI INFERENCE
             </div>
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight whitespace-pre-line bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight whitespace-pre-line text-gray-900">
               {t.products.platform.inference.title}
             </h2>
           </motion.div>
@@ -240,12 +235,12 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px]"
+                className="flex flex-col items-start p-6 gap-2 bg-gray-50 border border-gray-200 rounded-2xl"
               >
-                <h4 className="text-base md:text-xl font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
+                <h4 className="text-base md:text-xl font-bold leading-[1.33] text-gray-900">
                   {item.title}
                 </h4>
-                <p className="text-base leading-[1.4] text-white/80 mt-2">
+                <p className="text-base leading-[1.4] text-gray-600 mt-2">
                   {item.desc}
                 </p>
               </motion.div>
@@ -261,10 +256,10 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/5 text-sm font-medium text-white/80 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 border border-gray-200 text-sm font-medium text-gray-600 mb-6">
               CHAT AGENT
             </div>
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight text-gray-900">
               {t.products.platform.agents.title}
             </h2>
           </motion.div>
@@ -277,12 +272,12 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px]"
+                className="flex flex-col items-start p-6 gap-2 bg-gray-50 border border-gray-200 rounded-2xl"
               >
-                <h4 className="text-base md:text-xl font-bold leading-[1.33] bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
+                <h4 className="text-base md:text-xl font-bold leading-[1.33] text-gray-900">
                   {item.title}
                 </h4>
-                <p className="text-base leading-[1.4] text-white/80 mt-2">
+                <p className="text-base leading-[1.4] text-gray-600 mt-2">
                   {item.desc}
                 </p>
               </motion.div>
@@ -298,10 +293,10 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-xl md:text-3xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            <h2 className="text-xl md:text-3xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight text-gray-900">
               {t.products.platform.video.title}
             </h2>
-            <div className="inline-block bg-white/10 px-6 py-3 rounded-lg border border-white/20 text-base font-medium text-white/90">
+            <div className="inline-block bg-gray-100 px-6 py-3 rounded-lg border border-gray-200 text-base font-medium text-gray-700">
               {t.products.platform.video.subtitle}
             </div>
           </motion.div>
@@ -314,15 +309,15 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-start p-10 gap-2 bg-[#151C32] border border-white/10 rounded-3xl min-h-[200px] group hover:bg-white/5 transition-colors"
+                className="flex flex-col items-start p-6 gap-2 bg-gray-50 border border-gray-200 rounded-2xl group hover:bg-gray-100 transition-colors"
               >
                 <div className="flex items-center justify-between w-full mb-4">
-                  <h4 className="text-xl font-bold bg-gradient-to-br from-white via-white to-[#C1C5C5] bg-clip-text text-transparent">
+                  <h4 className="text-xl font-bold text-gray-900">
                     {item.title}
                   </h4>
-                  <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-white/60 transition-colors" />
+                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-gray-700 transition-colors" />
                 </div>
-                <p className="text-base leading-[1.4] text-white/80 whitespace-pre-line font-medium">
+                <p className="text-base leading-[1.4] text-gray-600 whitespace-pre-line font-medium">
                   {item.desc}
                 </p>
               </motion.div>
