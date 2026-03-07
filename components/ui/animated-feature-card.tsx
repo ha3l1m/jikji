@@ -21,33 +21,33 @@ type Props = {
 };
 
 /* ── Card 1: 원클릭 GPU 대시보드 ── */
+const buttonVariants = {
+  initial: {
+    scale: 1,
+    boxShadow: '0 0 0px rgba(139,92,246,0)',
+  },
+  hover: {
+    scale: [1, 1.02, 1],
+    boxShadow: [
+      '0 0 0px rgba(139,92,246,0)',
+      '0 0 22px rgba(139,92,246,0.75)',
+      '0 0 0px rgba(139,92,246,0)',
+    ],
+    transition: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' as const },
+  },
+};
+
+const dropdownVariants = {
+  closed: { scaleY: 0, opacity: 0, transformOrigin: 'top' },
+  open: {
+    scaleY: 1,
+    opacity: 1,
+    transformOrigin: 'top',
+    transition: { duration: 0.2, ease: 'easeOut' as const },
+  },
+};
+
 function DashboardMockAnimation({ isHovered }: { isHovered: boolean }) {
-  const buttonVariants = {
-    initial: {
-      scale: 1,
-      boxShadow: '0 0 0px rgba(139,92,246,0)',
-    },
-    hover: {
-      scale: [1, 1.02, 1],
-      boxShadow: [
-        '0 0 0px rgba(139,92,246,0)',
-        '0 0 22px rgba(139,92,246,0.75)',
-        '0 0 0px rgba(139,92,246,0)',
-      ],
-      transition: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' as const },
-    },
-  };
-
-  const dropdownVariants = {
-    closed: { scaleY: 0, opacity: 0, transformOrigin: 'top' },
-    open: {
-      scaleY: 1,
-      opacity: 1,
-      transformOrigin: 'top',
-      transition: { duration: 0.2, ease: 'easeOut' as const },
-    },
-  };
-
   return (
     <div className="w-full h-full flex items-center justify-center py-1 relative">
       {/* Ambient glow */}
