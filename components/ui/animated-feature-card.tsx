@@ -5,7 +5,6 @@ import { motion } from 'motion/react';
 import { useState } from 'react';
 import {
   FiTerminal,
-  FiPackage,
   FiCpu,
   FiFile,
   FiDatabase,
@@ -21,91 +20,179 @@ type Props = {
   cardDescription: string;
 };
 
-/* ── Card 1: 원클릭 개발 환경 ── */
-function OneclickAnimation({ isHovered }: { isHovered: boolean }) {
-  const containers = [
-    { id: 1, x: -44 },
-    { id: 2, x: 0 },
-    { id: 3, x: 44 },
-  ];
-
-  const particleVariants = {
-    initial: { opacity: 0, y: 0 },
-    hover: (i: number) => ({
-      opacity: [0, 1, 1, 0],
-      y: 64,
-      x: containers[i % containers.length].x,
-      transition: {
-        duration: 1.8,
-        repeat: Infinity,
-        delay: i * 0.35,
-        ease: 'easeOut' as const,
-      },
-    }),
-  };
-
-  const lightVariants = {
-    initial: { backgroundColor: '#d1d5db' },
-    hover: (i: number) => ({
-      backgroundColor: ['#d1d5db', '#22c55e', '#d1d5db'],
-      transition: {
-        duration: 1.8,
-        repeat: Infinity,
-        delay: i * 0.35 + 1.0,
-      },
-    }),
-  };
-
-  const clickVariants = {
-    initial: { scale: 1, opacity: 0.4 },
+/* ── Card 1: 원클릭 GPU 대시보드 ── */
+function DashboardMockAnimation({ isHovered }: { isHovered: boolean }) {
+  const buttonVariants = {
+    initial: {
+      scale: 1,
+      boxShadow: '0 0 0px rgba(139,92,246,0)',
+    },
     hover: {
-      scale: [1, 0.85, 1],
-      opacity: [0.4, 1, 0.4],
-      transition: { duration: 1.2, repeat: Infinity, ease: 'easeInOut' as const },
+      scale: [1, 1.02, 1],
+      boxShadow: [
+        '0 0 0px rgba(139,92,246,0)',
+        '0 0 22px rgba(139,92,246,0.75)',
+        '0 0 0px rgba(139,92,246,0)',
+      ],
+      transition: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' as const },
+    },
+  };
+
+  const dropdownVariants = {
+    closed: { scaleY: 0, opacity: 0, transformOrigin: 'top' },
+    open: {
+      scaleY: 1,
+      opacity: 1,
+      transformOrigin: 'top',
+      transition: { duration: 0.2, ease: 'easeOut' as const },
     },
   };
 
   return (
-    <div className="relative flex h-[170px] w-full flex-col items-center">
-      <FiTerminal className="size-10 text-neutral-400" />
-      <motion.div
-        variants={clickVariants}
-        initial="initial"
-        animate={isHovered ? 'hover' : 'initial'}
-        className="mt-2 text-xs font-mono text-blue-400 px-2 py-0.5 rounded border border-blue-200"
-      >
-        one-click
-      </motion.div>
-      <LuArrowDown className="size-5 text-neutral-600 mt-1" />
+    <div className="w-full h-full flex items-center justify-center py-1 relative">
+      {/* Ambient glow */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          inset: '-20px',
+          background:
+            'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139,92,246,0.22) 0%, transparent 70%)',
+          filter: 'blur(24px)',
+        }}
+      />
 
-      <div className="absolute bottom-0 flex w-full justify-around">
-        {containers.map((c, i) => (
-          <div key={c.id} className="flex flex-col items-center gap-2">
-            <FiPackage className="size-6 text-neutral-400" />
+      {/* Glass window */}
+      <div
+        className="relative w-full rounded-xl overflow-hidden border border-white/20"
+        style={{
+          background: 'rgba(13, 17, 23, 0.65)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          boxShadow:
+            'inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 52px rgba(0,0,0,0.5)',
+        }}
+      >
+        {/* Titlebar */}
+        <div
+          className="flex items-center gap-1.5 px-3 py-2 border-b border-white/[0.08]"
+          style={{ background: 'rgba(255,255,255,0.03)' }}
+        >
+          <span className="size-[7px] rounded-full bg-[#FF5F57]" />
+          <span className="size-[7px] rounded-full bg-[#FFBD2E]" />
+          <span className="size-[7px] rounded-full bg-[#28C840]" />
+          <span className="ml-2 text-[9px] font-medium tracking-wide text-white/40">
+            Dashboard
+          </span>
+        </div>
+
+        {/* Body: sidebar + content */}
+        <div className="flex">
+          {/* Sidebar */}
+          <div
+            className="flex flex-col items-center gap-2.5 px-1.5 py-2.5 border-r border-white/[0.06]"
+            style={{ minWidth: 28, background: 'rgba(255,255,255,0.015)' }}
+          >
+            <div className="w-3 h-0.5 rounded-full bg-white/25" />
+            <div className="w-3 h-0.5 rounded-full bg-white/15" />
+            <div className="w-3 h-0.5 rounded-full bg-white/15" />
+            <div className="w-3 h-0.5 rounded-full bg-white/15" />
+            <div className="mt-auto size-1.5 rounded-full bg-white/20" />
+          </div>
+
+          {/* Main content */}
+          <div className="flex-1 px-2 pt-2 pb-2 flex flex-col gap-1.5 relative">
+            {/* GPU Type */}
+            <div
+              className="relative flex items-center justify-between px-2.5 py-1.5 rounded-lg"
+              style={{ background: 'rgba(255,255,255,0.06)' }}
+            >
+              <span className="text-[9px] text-white/50">GPU Type</span>
+              <div
+                className="flex items-center gap-1 px-2 py-0.5 rounded-md border border-white/10"
+                style={{ background: 'rgba(255,255,255,0.08)' }}
+              >
+                <span className="text-[9px] text-white font-medium">A100</span>
+                <span className="text-white/30 text-[7px] leading-none">▼</span>
+              </div>
+
+              {/* Dropdown (hover 시 열림) */}
+              <motion.div
+                variants={dropdownVariants}
+                initial="closed"
+                animate={isHovered ? 'open' : 'closed'}
+                className="absolute right-2 z-10 rounded-lg overflow-hidden border border-white/15"
+                style={{
+                  top: 'calc(100% + 3px)',
+                  minWidth: 72,
+                  background: 'rgba(20, 24, 35, 0.92)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                }}
+              >
+                <div
+                  className="flex items-center gap-1.5 px-2.5 py-1.5"
+                  style={{ background: 'rgba(99,102,241,0.15)' }}
+                >
+                  <span className="size-1 rounded-full bg-indigo-400 shrink-0" />
+                  <span className="text-[9px] text-white font-medium">A100</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-2.5 py-1.5">
+                  <span className="size-1 rounded-full bg-transparent shrink-0" />
+                  <span className="text-[9px] text-white/50">H100</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Instance Count */}
+            <div
+              className="flex items-center justify-between px-2.5 py-1.5 rounded-lg"
+              style={{ background: 'rgba(255,255,255,0.06)' }}
+            >
+              <span className="text-[9px] text-white/50">Instance Count</span>
+              <div className="flex items-center gap-1.5">
+                <div
+                  className="w-[22px] h-3 rounded-full relative flex items-center px-0.5"
+                  style={{ background: '#6366f1' }}
+                >
+                  <div className="size-2 rounded-full bg-white ml-auto" />
+                </div>
+                <span className="text-[9px] text-white/60 w-3">1</span>
+              </div>
+            </div>
+
+            {/* Region */}
+            <div
+              className="flex items-center justify-between px-2.5 py-1.5 rounded-lg"
+              style={{ background: 'rgba(255,255,255,0.06)' }}
+            >
+              <span className="text-[9px] text-white/50">Region</span>
+              <div className="flex items-center gap-1.5">
+                <div
+                  className="w-[22px] h-3 rounded-full relative flex items-center px-0.5"
+                  style={{ background: '#6366f1' }}
+                >
+                  <div className="size-2 rounded-full bg-white ml-auto" />
+                </div>
+                <span className="text-[9px] text-white/60 w-8 truncate">Region</span>
+              </div>
+            </div>
+
+            {/* One-Click SSH Deployment button */}
             <motion.div
-              className="h-2 w-2 rounded-full"
-              variants={lightVariants}
+              variants={buttonVariants}
               initial="initial"
               animate={isHovered ? 'hover' : 'initial'}
-              custom={i}
-            />
+              className="w-full mt-0.5 py-1.5 rounded-lg text-[9px] font-semibold text-white flex items-center justify-center gap-1.5"
+              style={{
+                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+              }}
+            >
+              <FiTerminal className="size-2.5 shrink-0" />
+              <span>One-Click SSH Deployment</span>
+            </motion.div>
           </div>
-        ))}
+        </div>
       </div>
-
-      <motion.div
-        initial="initial"
-        animate={isHovered ? 'hover' : 'initial'}
-      >
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            custom={i}
-            variants={particleVariants}
-            className="absolute top-11 size-1.5 rounded-full bg-blue-400"
-          />
-        ))}
-      </motion.div>
     </div>
   );
 }
@@ -281,13 +368,13 @@ export function AnimatedFeatureCard({ variant, cardTitle, cardDescription }: Pro
       className={cn(
         'flex flex-col',
         'h-[22.4rem] w-full overflow-hidden',
-        'rounded-2xl border border-gray-200 bg-gray-50',
+        'rounded-2xl border border-white/10 bg-white/5',
       )}
     >
       {/* Top: title + description */}
-      <div className="px-6 pt-6 pb-5 border-b border-gray-200 shrink-0 min-h-[120px]">
-        <div className="text-base font-bold text-gray-900">{cardTitle}</div>
-        <div className="mt-1 text-sm leading-relaxed text-gray-500">{cardDescription}</div>
+      <div className="px-6 pt-6 pb-5 border-b border-white/10 shrink-0 min-h-[120px]">
+        <div className="text-base font-bold text-white">{cardTitle}</div>
+        <div className="mt-1 text-sm leading-relaxed text-white/50">{cardDescription}</div>
       </div>
 
       {/* Bottom: animation area */}
@@ -306,7 +393,7 @@ export function AnimatedFeatureCard({ variant, cardTitle, cardDescription }: Pro
           }}
         />
         <div className="absolute inset-0 flex items-center justify-center px-6">
-          {variant === 'oneclick' && <OneclickAnimation isHovered={isHovered} />}
+          {variant === 'oneclick' && <DashboardMockAnimation isHovered={isHovered} />}
           {variant === 'framework' && <FrameworkAnimation isHovered={isHovered} />}
           {variant === 'storage' && <StorageAnimation isHovered={isHovered} />}
         </div>
