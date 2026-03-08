@@ -487,7 +487,7 @@ export function AnimatedFeatureCard({ variant, cardTitle, cardDescription }: Pro
       )}
     >
       {/* Top: title + description */}
-      <div className="px-6 pt-6 pb-5 border-b border-white/10 shrink-0 min-h-[120px]">
+      <div className="px-6 pt-6 pb-5 border-b border-white/10 shrink-0">
         <div className="text-base font-bold text-white">{cardTitle}</div>
         <div className="mt-1 text-sm leading-relaxed text-white/50">{cardDescription}</div>
       </div>

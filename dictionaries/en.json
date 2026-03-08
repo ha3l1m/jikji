@@ -124,15 +124,15 @@
         "items": [
           {
             "title": "One-click Development Environment",
-            "desc": "Provides VS Code Server, Docker-based templates"
+            "desc": "Start instantly with VS Code · Docker templates"
           },
           {
             "title": "Framework Compatibility",
-            "desc": "Pre-configured PyTorch / TensorFlow / CUDA runtime"
+            "desc": "PyTorch · TensorFlow · CUDA pre-installed"
           },
           {
             "title": "File Storage",
-            "desc": "GPU-dedicated high-performance scalable file system and enterprise security"
+            "desc": "High-performance scalable storage with enterprise security"
           }
         ]
       }
