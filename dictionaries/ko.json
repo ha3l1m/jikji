@@ -124,15 +124,15 @@
         "items": [
           {
             "title": "원클릭 개발 환경",
-            "desc": "VS Code Server, Docker 기반 템플릿 제공"
+            "desc": "VS Code · Docker 템플릿으로 바로 시작"
           },
           {
             "title": "프레임워크 호환",
-            "desc": "PyTorch / TensorFlow / CUDA 런타임 사전 구성"
+            "desc": "PyTorch · TensorFlow · CUDA 사전 탑재"
           },
           {
             "title": "파일 스토리지",
-            "desc": "GPU 전용 고성능 확장형 파일시스템과 엔터프라이즈 보안"
+            "desc": "고성능 확장형 스토리지 · 엔터프라이즈 보안"
           }
         ]
       }
