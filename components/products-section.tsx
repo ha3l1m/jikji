@@ -3,7 +3,7 @@
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowRight, X, Shield, Activity } from 'lucide-react';
 import { AnimatedFeatureCard } from './ui/animated-feature-card';
 import { cn } from '@/lib/utils';
 
@@ -98,6 +98,44 @@ export function ProductsSection() {
 }
 
 /* ─────────────────────────────────────────
+   PERSPECTIVE GRID DECORATION
+   ───────────────────────────────────────── */
+function PerspectiveGrid() {
+  return (
+    <div className="absolute bottom-0 right-0 w-[70%] h-[55%] pointer-events-none overflow-hidden">
+      <svg
+        viewBox="0 0 200 120"
+        className="w-full h-full opacity-[0.12]"
+        preserveAspectRatio="xMaxYMax meet"
+      >
+        {[0, 20, 40, 60, 80, 100].map((y, i) => (
+          <line
+            key={`h${i}`}
+            x1={40 + (y / 100) * 60}
+            y1={y * 1.2}
+            x2={160 - (y / 100) * 60}
+            y2={y * 1.2}
+            stroke="white"
+            strokeWidth="0.5"
+          />
+        ))}
+        {[-3, -2, -1, 0, 1, 2, 3].map((x, i) => (
+          <line
+            key={`v${i}`}
+            x1={100 + x * 8}
+            y1={0}
+            x2={100 + x * 50}
+            y2={120}
+            stroke="white"
+            strokeWidth="0.5"
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────
    GPU CLOUD CONTENT
    ───────────────────────────────────────── */
 function GpuCloudContent() {
@@ -166,43 +204,114 @@ function GpuCloudContent() {
 
       {/* Features Grid */}
       <div className="py-[72px] px-6">
-        <div className="mx-auto max-w-[1200px] flex flex-col items-center gap-10">
+        <div className="mx-auto max-w-[1200px] flex flex-col gap-10">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-[36px] font-bold leading-none text-center text-white"
+            className="text-2xl md:text-[48px] font-bold leading-none text-white"
           >
             {t.products.gpucloud.features.title}
           </motion.h3>
 
-          <div className="border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 w-full">
-            {t.products.gpucloud.features.items.map((item, idx, arr) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                className={cn(
-                  'p-8 md:p-10',
-                  idx > 0 && 'border-t border-white/10',
-                  idx === 1 && 'md:border-t-0',
-                  idx % 2 === 1 && 'md:border-l border-white/10',
-                  arr.length % 2 === 1 && idx === arr.length - 1 && 'md:col-span-2',
-                )}
-              >
-                <div className="text-xs font-mono text-white/30 mb-4 tabular-nums">
-                  {String(idx + 1).padStart(2, '0')}
-                </div>
-                <h4 className="text-lg md:text-xl font-bold text-white mb-3">
-                  {item.title}
-                </h4>
-                <p className="text-base text-white/50 leading-relaxed">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] md:grid-rows-[220px_260px] gap-3 w-full">
+            {/* Card 01 — large left, spans 2 rows */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+              className="relative md:row-span-2 rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[300px]"
+            >
+              <div className="text-xs font-mono text-white/30 mb-4">01</div>
+              <h4 className="text-xl font-bold text-white mb-2">
+                {t.products.gpucloud.features.items[0].title}
+              </h4>
+              <p className="text-sm text-white/50 leading-relaxed">
+                {t.products.gpucloud.features.items[0].desc}
+              </p>
+              {/* TODO: Replace with <Image> when GPU asset is available */}
+              <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none">
+                <div className="w-[80%] h-[45%] rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10" />
+              </div>
+            </motion.div>
+
+            {/* Card 02 — top middle */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 }}
+              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+            >
+              <div className="text-xs font-mono text-white/30 mb-4">02</div>
+              <h4 className="text-xl font-bold text-white mb-2">
+                {t.products.gpucloud.features.items[1].title}
+              </h4>
+              <p className="text-sm text-white/50 leading-relaxed">
+                {t.products.gpucloud.features.items[1].desc}
+              </p>
+              <PerspectiveGrid />
+            </motion.div>
+
+            {/* Card 04 — top right */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.16 }}
+              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+            >
+              <div className="text-xs font-mono text-white/30 mb-4">04</div>
+              <h4 className="text-xl font-bold text-white mb-2">
+                {t.products.gpucloud.features.items[3].title}
+              </h4>
+              <p className="text-sm text-white/50 leading-relaxed">
+                {t.products.gpucloud.features.items[3].desc}
+              </p>
+              <PerspectiveGrid />
+            </motion.div>
+
+            {/* Card 03 — bottom middle */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.12 }}
+              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+            >
+              <div className="text-xs font-mono text-white/30 mb-4">03</div>
+              <h4 className="text-xl font-bold text-white mb-2">
+                {t.products.gpucloud.features.items[2].title}
+              </h4>
+              <p className="text-sm text-white/50 leading-relaxed">
+                {t.products.gpucloud.features.items[2].desc}
+              </p>
+              <div className="absolute bottom-5 right-5 text-white/10 pointer-events-none">
+                <Shield className="w-20 h-20 stroke-[1]" />
+              </div>
+            </motion.div>
+
+            {/* Card 05 — bottom right */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+            >
+              <div className="text-xs font-mono text-white/30 mb-4">05</div>
+              <h4 className="text-xl font-bold text-white mb-2">
+                {t.products.gpucloud.features.items[4].title}
+              </h4>
+              <p className="text-sm text-white/50 leading-relaxed">
+                {t.products.gpucloud.features.items[4].desc}
+              </p>
+              <div className="absolute bottom-5 right-5 text-white/10 pointer-events-none">
+                <Activity className="w-16 h-16 stroke-[1]" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
