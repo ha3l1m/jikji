@@ -2,91 +2,17 @@
 
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, X, Shield, Activity } from 'lucide-react';
 import { AnimatedFeatureCard } from './ui/animated-feature-card';
 import { cn } from '@/lib/utils';
 
-type Tab = 'gpucloud' | 'platform';
-
 export function ProductsSection() {
-  const [activeTab, setActiveTab] = useState<Tab>('gpucloud');
   const gpuCloudRef = useRef<HTMLDivElement>(null);
   const platformRef = useRef<HTMLDivElement>(null);
 
-  // 스크롤 위치에 따라 탭 자동 전환
-  useEffect(() => {
-    const gpuEl = gpuCloudRef.current;
-    const platEl = platformRef.current;
-    if (!gpuEl || !platEl) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveTab(entry.target.id as Tab);
-          }
-        });
-      },
-      { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
-    );
-
-    observer.observe(gpuEl);
-    observer.observe(platEl);
-    return () => observer.disconnect();
-  }, []);
-
-  const handleTabClick = useCallback((tab: Tab) => {
-    const ref = tab === 'gpucloud' ? gpuCloudRef : platformRef;
-    if (ref.current) {
-      const y = ref.current.getBoundingClientRect().top + window.scrollY - 64 - 80 + 10;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  }, []);
-
-  // Listen for custom tab-switch events from header nav
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const tab = (e as CustomEvent).detail as Tab;
-      if (tab === 'gpucloud' || tab === 'platform') {
-        handleTabClick(tab);
-      }
-    };
-    window.addEventListener('products-tab-switch', handler);
-    return () => window.removeEventListener('products-tab-switch', handler);
-  }, [handleTabClick]);
-
   return (
     <section id="products" className="relative bg-[#0A0B11]">
-      {/* ── Sticky Tab Bar ── */}
-      <div className="sticky top-16 z-40 flex justify-center py-6 bg-[#0A0B11]/80 backdrop-blur-md">
-        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent to-transparent pointer-events-none" />
-
-        <div className="inline-flex bg-white/10 p-1 rounded-xl border border-white/10">
-          <button
-            onClick={() => handleTabClick('gpucloud')}
-            className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
-              activeTab === 'gpucloud'
-                ? 'bg-white text-black shadow-sm'
-                : 'text-white/50 hover:text-white hover:bg-white/10'
-            }`}
-          >
-            GPU Cloud
-          </button>
-          <button
-            onClick={() => handleTabClick('platform')}
-            className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
-              activeTab === 'platform'
-                ? 'bg-white text-black shadow-sm'
-                : 'text-white/50 hover:text-white hover:bg-white/10'
-            }`}
-          >
-            Platform
-          </button>
-        </div>
-      </div>
-
-      {/* ── 두 섹션 항상 렌더, 스크롤로 탐색 ── */}
       <div ref={gpuCloudRef} id="gpucloud">
         <GpuCloudContent />
       </div>
@@ -205,15 +131,6 @@ function GpuCloudContent() {
       {/* Features Grid */}
       <div className="py-[72px] px-6">
         <div className="mx-auto max-w-[1200px] flex flex-col gap-10">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl md:text-[48px] font-bold leading-none text-white"
-          >
-            {t.products.gpucloud.features.title}
-          </motion.h3>
-
           <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] md:grid-rows-[220px_260px] gap-3 w-full">
             {/* Card 01 — large left, spans 2 rows */}
             <motion.div
