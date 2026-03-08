@@ -2,7 +2,6 @@
 
 import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
-import { FullStackDiagram } from './full-stack-diagram';
 import NeuralBackground from './ui/flow-field-background';
 import Link from 'next/link';
 import { ArrowRight, Server, Cpu, BarChart3, MessageSquare } from 'lucide-react';
@@ -27,14 +26,6 @@ export function Hero() {
 
       {/* Decorative gradient blobs + star dots */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Green blob - left */}
-        <div className="absolute left-[100px] top-0 w-[691px] h-[818px] mix-blend-overlay overflow-hidden">
-          <div className="absolute left-[128px] top-[-192px] w-96 h-[882px] opacity-10 bg-green-200" />
-        </div>
-        {/* Pink blob - right */}
-        <div className="absolute left-[907px] top-0 w-[519px] h-[724px] mix-blend-overlay overflow-hidden">
-          <div className="absolute left-[99px] top-[-59px] w-80 h-[684px] opacity-20 bg-pink-200" />
-        </div>
         {/* Cyan circle - center */}
         <div className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-20 mix-blend-overlay bg-cyan-200 rounded-full blur-3xl" />
         {/* White streak */}
@@ -92,16 +83,6 @@ export function Hero() {
             {t.hero.cta_secondary}
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </motion.div>
-
-        {/* Desktop diagram */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-20 relative w-full max-w-5xl mx-auto rounded-2xl border border-white/10 shadow-2xl bg-[#0A0B11] hidden md:block"
-        >
-          <FullStackDiagram />
         </motion.div>
 
         {/* Mobile fallback — simplified stacked cards */}
