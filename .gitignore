@@ -5,3 +5,9 @@ coverage/
 *.log
 .env*
 !.env.example
+out/
+skills/
+.claude/
+.kombai/
+tsconfig.tsbuildinfo
+docs/
