@@ -21,31 +21,23 @@ export function PricingSnippet() {
   return (
     <section id="pricing" className="py-24 bg-white border-t border-gray-100">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
-          <motion.h2
+        {/* Header + Tab selector */}
+        <div className="flex items-end justify-between mb-8">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 text-gray-900"
           >
-            {t.pricing_page.title}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-gray-500 max-w-2xl mx-auto font-light"
-          >
-            {t.pricing_page.subtitle}
-          </motion.p>
-        </div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-2">
+              {t.pricing_page.title}
+            </h2>
+            <p className="text-base text-gray-400 font-light">
+              {t.pricing_page.subtitle}
+            </p>
+          </motion.div>
 
-        {/* Tab selector */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex bg-gray-100 p-1 rounded-xl border border-gray-200">
+          <div className="inline-flex bg-gray-100 p-1 rounded-xl border border-gray-200 shrink-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -105,6 +97,17 @@ export function PricingSnippet() {
           {t.pricing_page.notes.map((note, idx) => (
             <p key={idx} className="text-sm text-gray-400">* {note}</p>
           ))}
+        </div>
+
+        {/* Inline CTA Banner */}
+        <div className="mt-12 rounded-2xl bg-gray-900 px-10 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">CTA Title</p>
+            <p className="text-white/50 text-sm">CTA description goes here.</p>
+          </div>
+          <button className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm">
+            CTA Button
+          </button>
         </div>
       </div>
     </section>

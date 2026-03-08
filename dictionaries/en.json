@@ -32,6 +32,12 @@
           "label": "Documentation",
           "href": "https://example.com/docs",
           "external": true
+        },
+        {
+          "label": "Help Center",
+          "href": "#",
+          "disabled": true,
+          "badge": "Coming Soon"
         }
       ]
     },
@@ -139,27 +145,30 @@
     },
     "platform": {
       "inference": {
-        "title": "Auto Deployment \u2192 Inference Endpoint Integration\nPowerful Serverless API Generation Tool with MLOps",
+        "title": "Inference Endpoint in One Shot — Serverless MLOps",
+        "steps": [
+          { "label": "Connect Repo", "desc": "Link customer GitHub/GitLab repository" },
+          { "label": "Auto Build", "desc": "Container image creation & vulnerability scan" },
+          { "label": "Runtime Config", "desc": "Model/framework selection, auto dependency injection" },
+          { "label": "Staging → Production", "desc": "Canary/Blue-Green deployment support" },
+          { "label": "Issue Endpoint", "desc": "Serverless API Key & domain instantly provided" }
+        ],
         "features": [
           {
-            "title": "Dedicated + Auto Scaling",
-            "desc": "Dedicated GPU pool + Active instances, auto scale up/down based on traffic"
+            "title": "Cost-Optimized Auto Scaling",
+            "desc": "Dedicated GPU pool, usage-based billing · SLO-driven scale up/down"
           },
           {
-            "title": "Optimal Cost/Performance",
-            "desc": "Usage-based billing, latency SLO-based scaling"
+            "title": "API Integration",
+            "desc": "REST · gRPC · WebSocket, Rate Limit · token control"
           },
           {
-            "title": "Easy API Integration",
-            "desc": "REST/gRPC(WebSocket), Rate Limit/Token control"
+            "title": "Observability & Operations",
+            "desc": "Dashboard · logs · metrics, SLA monitoring"
           },
           {
-            "title": "Observability/Operation",
-            "desc": "Dashboard, logs, metrics, SLA response monitoring"
-          },
-          {
-            "title": "Security/Isolation",
-            "desc": "VPC isolation, firewall, secret management, encryption, audit logs"
+            "title": "Security & Isolation",
+            "desc": "VPC isolation · firewall · secret management, encryption · audit logs"
           }
         ]
       },
@@ -219,48 +228,58 @@
     }
   },
   "infrastructure": {
+    "aidc": {
+      "title": "JIKJI Labs AI DC #1",
+      "badge": "Completion planned Q3 2027 · Ultra-fast data hub for the AI era",
+      "subtitle": "State-of-the-art PMDC (Purpose-Built Modular Data Center) designed for AI",
+      "specs": [
+        { "index": "01", "title": "Building Overview", "desc": "Site: 575m² (174 pyeong)\nFloor area: 2,280m² (690 pyeong)\n\nScale: 5F above, 1F below ground" },
+        { "index": "02", "title": "Power Capacity", "desc": "Total power: 4MW\nIT power: 2.72MW\n---\n**Racks: 40kW × 60ea, 16kW × 20ea\n10 modules per rack\nPer module: 400kW×6, 160kW×2" },
+        { "index": "03", "title": "Facility Overview", "desc": "Internal modular design\n• Server room\n• Electrical room\n• Generator: outdoor integrated or ESS\n• UPS room, battery room\n• Office, corridor, lobby, restroom" },
+        { "index": "04", "title": "Features", "desc": "Availability Model\n• Power: redundant (primary + standby)\n• Distribution: redundant, UPS 5MW dual\n• Cooling: N+1 (chiller N+1, FCU N+1)\n\nPUE estimate: 1.1 ~ 1.3" }
+      ]
+    },
     "region": {
       "title": "Build the Korean GPU-optimized AI data center service your company needs with JIKJI Labs.",
       "services": [
         {
           "title": "AI Data Center",
-          "subtitle": "Data center construction solution",
+          "subtitle": "Data Center Construction Solution",
           "items": [
             "Data center completion",
-            "Cooling, power design/installation",
-            "Shortest period modular approach",
-            "Domestic and overseas SCM partners"
+            "Cooling & power design/installation",
+            "Fastest modular deployment",
+            "Domestic & global SCM partners"
           ]
         },
         {
           "title": "Colocation",
-          "subtitle": "JIKJI Labs space rental service",
+          "subtitle": "JIKJI Labs Space Rental Service",
           "items": [
-            "RACK rental + pay-as-you-go power",
-            "High-density power system provided",
-            "Minimize operating costs with low PUE design",
-            "DC control, DCIM integration"
+            "RACK rental · metered power",
+            "High-density power system",
+            "Low-PUE cost minimization",
+            "DC monitoring · DCIM integration"
           ]
         },
         {
-          "title": "IT infrastructure",
-          "subtitle": "JIKJI Labs IT sales / installation / operation",
+          "title": "IT Infrastructure",
+          "subtitle": "JIKJI Labs IT Sales/Install/Ops",
           "items": [
             "Topology design",
-            "IT installation/setup service",
-            "GPU/CPU Server, Storage, Network Switch, etc.",
+            "IT installation/configuration",
+            "GPU/CPU · Storage · Network supply",
             "7/24 maintenance"
           ]
         },
         {
           "title": "Bare-metal",
-          "subtitle": "JIKJI Labs bare metal IDC service",
+          "subtitle": "JIKJI Labs Bare-metal IDC Service",
           "items": [
-            "IT rental subscription + pay-as-you-go power",
-            "AI dedicated server Topology design/installation",
-            "Latest GPU and infrastructure technology",
-            "GPU Clustering construction",
-            "Infrastructure operation, SLA, security"
+            "IT rental · metered power",
+            "AI server Topology design/install",
+            "GPU Clustering",
+            "Infra ops · SLA · security"
           ]
         },
         {
@@ -281,29 +300,30 @@
       }
     },
     "isolation": {
-      "title": "Why PMDC ??",
-      "subtitle": "In environments requiring rapid deployment such as universities and enterprises, PMDC provides one-stop services from design and construction to operation.",
+      "tag": "WHY PMDC",
+      "title": "AI First Design for Next-Gen Infrastructure",
+      "subtitle": "One-stop service from design to construction and operation, built for universities and enterprises",
       "desc": "\"With AI First design, we complete next-generation AI infrastructure that overcomes the limitations of existing data centers.\"",
       "features": [
-         {
+        {
           "title": "Fast Build",
-          "desc": "From design to installation in just 3 months, enabling rapid response to evolving AI environments."
+          "desc": "Design to installation in 3 months, immediate response to AI environment changes"
         },
         {
           "title": "AI First Design",
-          "desc": "PMDC designs an AI-centric structure from the beginning. We build a sustainable growth structure, not just short-term project completion."
+          "desc": "AI-centric design from the start, flexible scaling as demand evolves"
         },
         {
           "title": "Scalable Architecture",
-          "desc": "Innovatively reduces time and cost with an immediately executable structural design."
+          "desc": "Built for sustained growth, not just short-term delivery"
         },
         {
           "title": "Optimized Cost",
-          "desc": "Sensitive data protection, enterprise environment optimization"
+          "desc": "Immediately deployable design reduces time and cost"
         },
         {
           "title": "Enterprise Isolation",
-          "desc": "Sensitive data protection, enterprise environment optimization"
+          "desc": "Sensitive data protection, optimized for enterprise environments"
         }
       ],
       "cta": "Inquire about PMDC Infrastructure Configuration"
@@ -355,6 +375,13 @@
       "desc2": "Auto Deployment \u2192 Inference Endpoint Integration\nPowerful Serverless API Generation Tool with MLOps",
       "contact": "Quote & Technical Consultation: business@jikji.ai"
     }
+  },
+  "cta_banner": {
+    "title": "Experience High-Performance AI Infrastructure Now.",
+    "subtitle": "H100 GPU (MIG virtualization), up to 1 month free trial.",
+    "btn_free": "Apply for Free",
+    "btn_inquiry": "Contact Sales",
+    "disclaimer": "We will contact customers who applied for the promotion individually.\nGPU resources will be allocated sequentially after consultation. (No credit card required)"
   },
   "support_page": {
     "title": "We will contact customers who have applied for the promotion individually.\nAfter consultation, GPU resources will be allocated sequentially.",

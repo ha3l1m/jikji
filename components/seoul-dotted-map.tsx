@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useCallback, useState } from 'react';
+import { useRef, useEffect, useLayoutEffect, useCallback, useState } from 'react';
 import { useInView } from 'motion/react';
 
 const W = 800;
@@ -71,6 +71,35 @@ export function SeoulDottedMap({ className }: { className?: string }) {
   const dotsRef = useRef<DotData[]>([]);
   const inView = useInView(containerRef, { once: true, margin: '-80px' });
   const [tiltDone, setTiltDone] = useState(false);
+  const [visibleDCs, setVisibleDCs] = useState(1);
+  const [mapSize, setMapSize] = useState({ w: 0, h: 0 });
+
+  useLayoutEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => {
+      setMapSize({ w: el.offsetWidth, h: el.offsetHeight });
+    });
+    ro.observe(el);
+    setMapSize({ w: el.offsetWidth, h: el.offsetHeight });
+    return () => ro.disconnect();
+  }, []);
+
+
+  const DC_LOCATIONS = [
+    // DC#1 — existing, Gangdong area
+    { left: '90%', top: '75%', label: 'First AI DC', year: '2027' },
+    // DC#2 — Gangnam
+    { left: '68%', top: '68%', label: null, year: null },
+    // DC#3 — Jung-gu / Yongsan
+    { left: '50%', top: '52%', label: null, year: null },
+    // DC#4 — Mapo
+    { left: '32%', top: '44%', label: null, year: null },
+    // DC#5 — Dobong / Nowon
+    { left: '62%', top: '24%', label: null, year: null },
+    // DC#6 — Guro / Yangcheon (bottom-left)
+    { left: '22%', top: '72%', label: null, year: null },
+  ];
 
   const draw = useCallback((progress: number) => {
     const canvas = canvasRef.current;
@@ -189,92 +218,207 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     return () => cancelAnimationFrame(rafRef.current);
   }, [inView, draw]);
 
+  useEffect(() => {
+    if (!tiltDone) return;
+    if (visibleDCs >= DC_LOCATIONS.length) return;
+    const timer = setTimeout(() => {
+      setVisibleDCs((n) => n + 1);
+    }, visibleDCs === 1 ? 1500 : 800);
+    return () => clearTimeout(timer);
+  }, [tiltDone, visibleDCs]);
+
   return (
-    <div
-      ref={containerRef}
-      className={className}
-      style={{
-        position: 'relative',
-        maskImage:
-          'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
-        WebkitMaskImage:
-          'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        style={{ width: '100%', height: 'auto', display: 'block' }}
-      />
-      {/* Location marker — appears after tilt animation completes */}
-      {tiltDone && (
-        <div
+    <div ref={containerRef} className={className} style={{ position: 'relative' }}>
+      {/* Canvas with fade mask */}
+      <div
+        style={{
+          maskImage: 'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
+        }}
+      >
+        <canvas
+          ref={canvasRef}
+          style={{ width: '100%', height: 'auto', display: 'block' }}
+        />
+      </div>
+      {/* SVG arc overlay — pixel coordinate system via ResizeObserver */}
+      {mapSize.w > 0 && (
+        <svg
+          width={mapSize.w}
+          height={mapSize.h}
           style={{
             position: 'absolute',
-            left: '90%',
-            top: '75%',
-            zIndex: 10,
+            top: 0,
+            left: 0,
+            overflow: 'visible',
+            pointerEvents: 'none',
+            zIndex: 5,
           }}
         >
-          {/* Speech bubble */}
+          <defs>
+            <filter id="arcGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          {DC_LOCATIONS.slice(1).map((dc, i) => {
+            const idx = i + 1;
+            if (visibleDCs <= idx) return null;
+
+            const x1 = parseFloat(DC_LOCATIONS[0].left) / 100 * mapSize.w;
+            const y1 = parseFloat(DC_LOCATIONS[0].top) / 100 * mapSize.h;
+            const x2 = parseFloat(dc.left) / 100 * mapSize.w;
+            const y2 = parseFloat(dc.top) / 100 * mapSize.h;
+
+            const cx = (x1 + x2) / 2;
+            const cy = Math.min(y1, y2) - mapSize.h * 0.18;
+
+            return (
+              <path
+                key={`arc-${idx}-${visibleDCs}`}
+                d={`M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`}
+                fill="none"
+                stroke="rgba(215,195,150,0.55)"
+                strokeWidth="1.5"
+                filter="url(#arcGlow)"
+                style={{
+                  animation: `arcDraw 0.55s ease-out forwards`,
+                  strokeDasharray: 2000,
+                  strokeDashoffset: 2000,
+                }}
+              />
+            );
+          })}
+        </svg>
+      )}
+      {/* Location marker — outside mask so it never gets clipped */}
+      {tiltDone && (
+        <>
+          {/* Speech bubble — independent, centered above pulse anchor */}
           <div
             style={{
               position: 'absolute',
-              bottom: '6px',
-              right: '-20px',
-              background: 'rgba(255, 255, 255, 0.95)',
-              borderRadius: '8px',
-              padding: '6px 12px',
+              left: '90%',
+              top: '75%',
+              transform: 'translate(-50%, calc(-100% - 6px))',
+              zIndex: 20,
+              background: 'linear-gradient(135deg, rgba(30,28,40,0.92) 0%, rgba(18,16,28,0.96) 100%)',
+              borderRadius: '10px',
+              padding: '8px 14px',
               whiteSpace: 'nowrap',
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#1a1a2e',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.18)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.1)',
               animation: 'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1px',
             }}
           >
-            First AI DC 2027 오픈
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>2027 오픈</span>
+            {/* Tail — points down to pulse center */}
             <div
               style={{
                 position: 'absolute',
                 top: '100%',
-                right: '14px',
+                left: '50%',
+                transform: 'translateX(-50%)',
                 width: 0,
                 height: 0,
                 borderLeft: '6px solid transparent',
                 borderRight: '6px solid transparent',
-                borderTop: '6px solid rgba(255, 255, 255, 0.95)',
+                borderTop: '6px solid rgba(18,16,28,0.96)',
               }}
             />
           </div>
-          {/* Pulse circle */}
+
+          {/* Pulse circle — original position */}
           <div
             style={{
-              background: 'rgba(255, 255, 255, 0.4)',
-              borderRadius: '50%',
-              height: 14,
-              width: 14,
               position: 'absolute',
-              margin: '-7px 0 0 -7px',
-              zIndex: 1,
-              opacity: 0,
-              animation: 'shadowAppear 0.15s ease-out 0.3s forwards',
+              left: '90%',
+              top: '75%',
+              zIndex: 10,
             }}
           >
             <div
               style={{
+                background: 'rgba(201,168,76,0.3)',
                 borderRadius: '50%',
-                height: 40,
-                width: 40,
+                height: 14,
+                width: 14,
                 position: 'absolute',
-                margin: '-13px 0 0 -13px',
-                animation: 'pinPulsate 1s ease-out infinite',
-                animationDelay: '0.6s',
+                margin: '-7px 0 0 -7px',
+                zIndex: 1,
                 opacity: 0,
-                boxShadow: '0 0 1px 3px rgba(255,255,255,0.5)',
+                boxShadow: '0 0 8px rgba(201,168,76,0.4)',
+                animation: 'shadowAppear 0.15s ease-out 0.3s forwards',
               }}
-            />
+            >
+              <div
+                style={{
+                  borderRadius: '50%',
+                  height: 40,
+                  width: 40,
+                  position: 'absolute',
+                  margin: '-13px 0 0 -13px',
+                  animation: 'pinPulsate 1s ease-out infinite',
+                  animationDelay: '0.6s',
+                  opacity: 0,
+                  boxShadow: '0 0 1px 3px rgba(201,168,76,0.6)',
+                }}
+              />
+            </div>
           </div>
-        </div>
+          {/* Future DC markers */}
+          {DC_LOCATIONS.slice(1).map((dc, i) => {
+            const idx = i + 1;
+            if (visibleDCs <= idx) return null;
+            return (
+              <div
+                key={`marker-${idx}`}
+                style={{
+                  position: 'absolute',
+                  left: dc.left,
+                  top: dc.top,
+                  zIndex: 10,
+                  opacity: 0,
+                  animation: 'shadowAppear 0.2s ease-out forwards',
+                }}
+              >
+                <div
+                  style={{
+                    background: 'rgba(215,195,150,0.15)',
+                    borderRadius: '50%',
+                    height: 10,
+                    width: 10,
+                    position: 'absolute',
+                    margin: '-5px 0 0 -5px',
+                    zIndex: 1,
+                    boxShadow: '0 0 6px rgba(215,195,150,0.3)',
+                  }}
+                >
+                  <div
+                    style={{
+                      borderRadius: '50%',
+                      height: 28,
+                      width: 28,
+                      position: 'absolute',
+                      margin: '-9px 0 0 -9px',
+                      animation: 'pinPulsate 1.2s ease-out infinite',
+                      animationDelay: `${idx * 0.2}s`,
+                      opacity: 0,
+                      boxShadow: '0 0 1px 2px rgba(215,195,150,0.35)',
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </>
       )}
       <style>{`
         @keyframes bubbleBounce {
@@ -292,6 +436,9 @@ export function SeoulDottedMap({ className }: { className?: string }) {
           0% { transform: scale(0.1, 0.1); opacity: 0; }
           50% { opacity: 1; }
           100% { transform: scale(1.2, 1.2); opacity: 0; }
+        }
+        @keyframes arcDraw {
+          to { stroke-dashoffset: 0; }
         }
       `}</style>
     </div>
