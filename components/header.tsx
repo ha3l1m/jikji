@@ -12,6 +12,8 @@ type NavItem = {
   label: string;
   href: string;
   external?: boolean;
+  disabled?: boolean;
+  badge?: string;
 };
 
 type NavSection = {
@@ -82,16 +84,35 @@ function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: b
 
       <div className="absolute top-full left-0 hidden group-hover/nav:block w-56 pt-2">
         <div className={`border rounded-xl p-2 shadow-2xl ${isLight ? 'bg-white border-black/10' : 'bg-[#151C32] border-white/10'}`}>
-          {section.items.map((item, idx) => (
-            <NavLink
-              key={idx}
-              href={item.href}
-              external={item.external}
-              className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          {section.items.map((item, idx) =>
+            item.disabled ? (
+              <div
+                key={idx}
+                className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-white/30'}`}
+              >
+                {item.label}
+                {item.badge && (
+                  <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current">
+                    {item.badge}
+                  </span>
+                )}
+              </div>
+            ) : (
+              <NavLink
+                key={idx}
+                href={item.href}
+                external={item.external}
+                className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
+              >
+                {item.label}
+                {item.external && (
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40 shrink-0">
+                    <path d="M11.1 3C7.45 3.007 5.54 3.096 4.318 4.318C3 5.636 3 7.757 3 12C3 16.242 3 18.364 4.318 19.682C5.636 21 7.757 21 12 21C16.243 21 18.363 21 19.68 19.682C20.902 18.461 20.992 16.549 20.998 12.9M20.556 3.496L11.049 13.059M20.556 3.496C20.062 3.002 16.734 3.048 16.031 3.058M20.556 3.496C21.05 3.991 21.004 7.323 20.994 8.027" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </NavLink>
+            )
+          )}
         </div>
       </div>
     </div>
@@ -133,17 +154,28 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
             className="overflow-hidden"
           >
             <div className="pl-4 py-2 space-y-2 border-l border-white/10 ml-2">
-              {section.items.map((item, idx) => (
-                <NavLink
-                  key={idx}
-                  href={item.href}
-                  external={item.external}
-                  onClick={closeMenu}
-                  className="block text-sm text-white/60 hover:text-white py-1"
-                >
-                  {item.label}
-                </NavLink>
-              ))}
+              {section.items.map((item, idx) =>
+                item.disabled ? (
+                  <div key={idx} className="flex items-center gap-2 text-sm text-white/25 py-1 cursor-not-allowed select-none">
+                    {item.label}
+                    {item.badge && (
+                      <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current">
+                        {item.badge}
+                      </span>
+                    )}
+                  </div>
+                ) : (
+                  <NavLink
+                    key={idx}
+                    href={item.href}
+                    external={item.external}
+                    onClick={closeMenu}
+                    className="block text-sm text-white/60 hover:text-white py-1"
+                  >
+                    {item.label}
+                  </NavLink>
+                )
+              )}
             </div>
           </motion.div>
         )}
@@ -183,7 +215,7 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${
         isLight
           ? 'border-black/10 bg-white/90'
-          : 'border-white/10 bg-[#01071B]/80'
+          : 'border-white/10 bg-[#111111]/80'
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
@@ -221,7 +253,7 @@ export function Header() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-[#01071B] border-b border-white/10 p-6 max-h-[calc(100vh-70px)] overflow-y-auto"
+            className="lg:hidden absolute top-full left-0 right-0 bg-[#111111] border-b border-white/10 p-6 max-h-[calc(100vh-70px)] overflow-y-auto"
           >
             <div className="flex flex-col gap-2 mb-6">
               {navSections.map((section, idx) => (

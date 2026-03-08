@@ -3,7 +3,8 @@
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, X, Shield, Activity } from 'lucide-react';
+import { ArrowRight, X, Activity } from 'lucide-react';
+import Image from 'next/image';
 import { AnimatedFeatureCard } from './ui/animated-feature-card';
 import { cn } from '@/lib/utils';
 
@@ -99,16 +100,21 @@ function GpuCloudContent() {
             viewport={{ once: true }}
             className="flex flex-col items-center gap-6"
           >
-            <h3 className="text-3xl md:text-[48px] font-bold leading-none text-center text-white">
-              {t.products.gpucloud.oneclick.title}
-            </h3>
-            <p className="text-base md:text-lg text-white/50 text-center">
-              {t.products.gpucloud.oneclick.subtitle}
-            </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
+              GPU CLOUD
+            </div>
+            <div className="flex flex-col items-center gap-4">
+              <h3 className="text-3xl md:text-[48px] font-bold leading-tight text-center text-white">
+                {t.products.gpucloud.oneclick.title}
+              </h3>
+              <p className="text-base md:text-lg text-white/50 text-center">
+                {t.products.gpucloud.oneclick.subtitle}
+              </p>
+            </div>
           </motion.div>
 
           {/* 3 Animated Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {(['oneclick', 'framework', 'storage'] as const).map((variant, idx) => (
               <motion.div
                 key={variant}
@@ -129,25 +135,32 @@ function GpuCloudContent() {
       </div>
 
       {/* Features Grid */}
-      <div className="py-[72px] px-6">
-        <div className="mx-auto max-w-[1200px] flex flex-col gap-10">
-          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] md:grid-rows-[220px_260px] gap-3 w-full">
+      <div className="pt-6 pb-[72px]">
+        <div className="mx-auto max-w-[1200px] px-6 flex flex-col gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[220px_260px] gap-6 w-full">
             {/* Card 01 — large left, spans 2 rows */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0 }}
-              className="relative md:row-span-2 rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[300px]"
+              className="relative md:row-span-2 rounded-2xl overflow-hidden flex flex-col p-6 min-h-[300px]"
+              style={{
+                background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+              }}
             >
-              <div className="text-xs font-mono text-white/30 mb-4">01</div>
-              <h4 className="text-xl font-bold text-white mb-2">
+              {/* Top light reflection */}
+              <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
+                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">01</div>
+              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[0].title}
               </h4>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[0].desc}
               </p>
-              {/* TODO: Replace with <Image> when GPU asset is available */}
               <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none">
                 <div className="w-[80%] h-[45%] rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10" />
@@ -160,13 +173,20 @@ function GpuCloudContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+              className="relative rounded-2xl overflow-hidden flex flex-col p-6 min-h-[160px]"
+              style={{
+                background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+              }}
             >
-              <div className="text-xs font-mono text-white/30 mb-4">02</div>
-              <h4 className="text-xl font-bold text-white mb-2">
+              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">02</div>
+              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[1].title}
               </h4>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[1].desc}
               </p>
               <PerspectiveGrid />
@@ -178,13 +198,20 @@ function GpuCloudContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.16 }}
-              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+              className="relative rounded-2xl overflow-hidden flex flex-col p-6 min-h-[160px]"
+              style={{
+                background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+              }}
             >
-              <div className="text-xs font-mono text-white/30 mb-4">04</div>
-              <h4 className="text-xl font-bold text-white mb-2">
+              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">04</div>
+              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[3].title}
               </h4>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[3].desc}
               </p>
               <PerspectiveGrid />
@@ -196,17 +223,24 @@ function GpuCloudContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.12 }}
-              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+              className="relative rounded-2xl overflow-hidden flex flex-col p-6 min-h-[160px]"
+              style={{
+                background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+              }}
             >
-              <div className="text-xs font-mono text-white/30 mb-4">03</div>
-              <h4 className="text-xl font-bold text-white mb-2">
+              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">03</div>
+              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[2].title}
               </h4>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[2].desc}
               </p>
-              <div className="absolute bottom-5 right-5 text-white/10 pointer-events-none">
-                <Shield className="w-20 h-20 stroke-[1]" />
+              <div className="absolute bottom-4 right-4 pointer-events-none opacity-20">
+                <Image src="/images/security.png" alt="" width={96} height={96} className="object-contain" />
               </div>
             </motion.div>
 
@@ -216,13 +250,20 @@ function GpuCloudContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="relative rounded-2xl border border-white/10 bg-white/5 overflow-hidden flex flex-col p-6 min-h-[160px]"
+              className="relative rounded-2xl overflow-hidden flex flex-col p-6 min-h-[160px]"
+              style={{
+                background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+              }}
             >
-              <div className="text-xs font-mono text-white/30 mb-4">05</div>
-              <h4 className="text-xl font-bold text-white mb-2">
+              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">05</div>
+              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[4].title}
               </h4>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[4].desc}
               </p>
               <div className="absolute bottom-5 right-5 text-white/10 pointer-events-none">
@@ -240,14 +281,13 @@ function GpuCloudContent() {
    AGENT TERMINAL
    ───────────────────────────────────────── */
 function AgentTerminal() {
-  // Dracula theme tokens
-  const Kw   = (s: string) => <span style={{ color: '#ff79c6' }}>{s}</span>;  // pink:   keywords (curl)
-  const Flg  = (s: string) => <span style={{ color: '#8be9fd' }}>{s}</span>;  // cyan:   flags (-s -H -d)
-  const Str  = (s: string) => <span style={{ color: '#f1fa8c' }}>{s}</span>;  // yellow: strings
-  const Key  = (s: string) => <span style={{ color: '#50fa7b' }}>{s}</span>;  // green:  JSON keys
-  const Bool = (s: string) => <span style={{ color: '#bd93f9' }}>{s}</span>;  // purple: booleans
-  const Pnc  = (s: string) => <span style={{ color: '#f8f8f2' }}>{s}</span>;  // white:  punctuation
-  const Cmt  = (s: string) => <span style={{ color: '#6272a4' }}>{s}</span>;  // gray:   continuation \
+  const Kw   = (s: string) => <span style={{ color: '#E3E5E8' }}>{s}</span>;    // command — Glass Highlight
+  const Flg  = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>;    // flags — Metallic Silver
+  const Str  = (s: string) => <span style={{ color: '#D49D73' }}>{s}</span>;    // strings — Warm Amber
+  const Key  = (s: string) => <span style={{ color: '#9F7A5E' }}>{s}</span>;    // JSON keys — Copper Bronze
+  const Bool = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>;    // booleans — Metallic Silver
+  const Pnc  = (s: string) => <span style={{ color: 'rgba(142,147,153,0.5)' }}>{s}</span>;  // punctuation — dimmed
+  const Cmt  = (s: string) => <span style={{ color: 'rgba(142,147,153,0.25)' }}>{s}</span>; // continuation \
 
   return (
     <motion.div
@@ -255,42 +295,42 @@ function AgentTerminal() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="relative mx-auto max-w-3xl mb-4"
+      className="relative w-full mb-0"
     >
-      {/* Ambient glow behind glass */}
+      {/* Ambient glow — subtle copper */}
       <div
         className="absolute pointer-events-none"
         style={{
           inset: '-40px',
-          background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(139,92,246,0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(159,122,94,0.12) 0%, transparent 70%)',
           filter: 'blur(28px)',
         }}
       />
 
-      {/* Glass window — Dracula bg at 50% opacity */}
+      {/* Glass window */}
       <div
-        className="relative rounded-2xl overflow-hidden border border-white/[0.12]"
+        className="relative rounded-2xl overflow-hidden"
         style={{
-          background: 'rgba(40, 42, 54, 0.52)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
-          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07), 0 20px 52px rgba(0,0,0,0.5)',
+          background: 'linear-gradient(180deg, #1A1B1E 0%, #0E0E10 100%)',
+          border: '1px solid rgba(227,229,232,0.08)',
+          boxShadow: 'inset 0 1px 0 rgba(227,229,232,0.07)',
         }}
       >
         {/* Title bar */}
         <div
-          className="flex items-center gap-1.5 px-4 py-3 border-b border-white/[0.07]"
-          style={{ background: 'rgba(255,255,255,0.03)' }}
+          className="flex items-center gap-1.5 px-4 py-3 border-b"
+          style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(227,229,232,0.06)' }}
         >
-          <span className="size-3 rounded-full bg-[#FF5F57]" />
-          <span className="size-3 rounded-full bg-[#FFBD2E]" />
-          <span className="size-3 rounded-full bg-[#28C840]" />
+          <span className="size-3 rounded-full" style={{ background: 'rgba(142,147,153,0.25)' }} />
+          <span className="size-3 rounded-full" style={{ background: 'rgba(142,147,153,0.18)' }} />
+          <span className="size-3 rounded-full" style={{ background: 'rgba(142,147,153,0.12)' }} />
         </div>
 
         {/* Code body */}
-        <pre className="px-6 py-5 text-[13px] leading-[1.9] font-mono overflow-x-auto whitespace-pre">
+        <pre className="px-6 py-4 text-[11.5px] leading-[1.75] font-mono overflow-x-hidden whitespace-pre-wrap break-all">
           <span>{Kw('curl')} {Flg('-s')} {Str('https://api.jikjilabs.local/v1/chat/completions')} {Cmt('\\')}{'\n'}</span>
-          <span>{'  '}{Flg('-H')} {Str('"Authorization: Bearer <API_KEY>"')} {Flg('-H')} {Str('"Content-Type: application/json"')} {Cmt('\\')}{'\n'}</span>
+          <span>{'  '}{Flg('-H')} {Str('"Authorization: Bearer <API_KEY>"')} {Cmt('\\')}{'\n'}</span>
+          <span>{'  '}{Flg('-H')} {Str('"Content-Type: application/json"')} {Cmt('\\')}{'\n'}</span>
           <span>{'  '}{Flg('-d')} {Pnc("'{")}{'\n'}</span>
           <span>{'    '}{Key('"model"')}{Pnc(':')}{Str('"llama"')}{Pnc(',')}{'\n'}</span>
           <span>{'    '}{Key('"messages"')}{Pnc(':[')}
@@ -302,8 +342,9 @@ function AgentTerminal() {
             {Key('"web_search"')}{Pnc(':')}{Bool('true')}{Pnc('},')}{'\n'}</span>
           <span>{'    '}{Key('"memory"')}{Pnc(':{')}
             {Key('"session_id"')}{Pnc(':')}{Str('"cust-42"')}{Pnc('}')}{'\n'}</span>
-          <span>{'  '}{Pnc("}'")}<span className="inline-block w-[2px] h-[0.9em] bg-white/50 ml-0.5 animate-pulse align-middle" /></span>
+          <span>{'  '}{Pnc("}'")}<span className="inline-block w-[2px] h-[0.9em] ml-0.5 animate-pulse align-middle" style={{ background: '#9F7A5E' }} /></span>
         </pre>
+
       </div>
     </motion.div>
   );
@@ -343,46 +384,41 @@ function VideoModal({ item, onClose }: VideoModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="relative w-full max-w-lg rounded-2xl border border-white/15 overflow-hidden"
+            className="relative w-full max-w-3xl rounded-2xl overflow-hidden"
             style={{
-              background: 'rgba(13, 11, 30, 0.93)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              boxShadow: '0 24px 64px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06)',
+              background: '#ffffff',
+              boxShadow: '0 32px 80px rgba(0,0,0,0.22)',
             }}
             onClick={e => e.stopPropagation()}
           >
-            {/* Header */}
-            <div className="flex items-start justify-between p-6 pb-4">
-              <div className="flex flex-col gap-2">
-                <span className="text-xs font-mono tracking-widest text-white/30 uppercase">N3N VIDEO AI</span>
-                <h2 className="text-xl font-bold text-white leading-tight">{item.title}</h2>
-              </div>
+            {/* Header bar */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-black/8" style={{ background: '#f5f5f7' }}>
+              <span className="text-sm font-semibold text-black/70 uppercase tracking-wide">{item.title}</span>
               <button
                 onClick={onClose}
-                className="flex-shrink-0 ml-4 p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-2 rounded-lg text-black/30 hover:text-black hover:bg-black/8 transition-colors"
                 aria-label="Close"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Detail text */}
-            <div className="px-6 pb-4">
-              <p className="text-sm text-white/60 leading-relaxed">{item.detail}</p>
-            </div>
+            {/* Body */}
+            <div className="p-8 flex flex-col gap-6 max-h-[70vh] overflow-y-auto">
+              {/* Detail text */}
+              <p className="text-sm text-black/60 leading-relaxed whitespace-pre-line">{item.detail}</p>
 
-            {/* Divider */}
-            <div className="mx-6 border-t border-white/10" />
-
-            {/* Sub-items */}
-            <div className="p-6 pt-4 flex flex-col gap-3">
-              {item.desc.split('\n').map((tech, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-violet-400/70" />
-                  <span className="text-sm font-medium text-white/80">{tech}</span>
+              {/* Sub-items */}
+              {item.desc && item.desc.split('\n').filter(Boolean).length > 0 && (
+                <div className="border-t border-black/8 pt-6 flex flex-col gap-3">
+                  {item.desc.split('\n').filter(Boolean).map((tech, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className="flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-black/25" />
+                      <span className="text-sm text-black/70 leading-relaxed">{tech}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
           </motion.div>
         </motion.div>
@@ -401,7 +437,7 @@ function PlatformContent() {
 
   return (
     <div>
-      <div className="mx-auto max-w-7xl px-6 py-24">
+      <div className="mx-auto max-w-[1200px] px-6 py-24">
         {/* AI Inference Platform */}
         <div className="mb-32">
           <motion.div
@@ -413,12 +449,78 @@ function PlatformContent() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60 mb-6">
               AI INFERENCE
             </div>
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight whitespace-pre-line text-white">
-              {t.products.platform.inference.title}
-            </h2>
+            <div className="flex flex-col items-center gap-4">
+              <h2 className="text-3xl md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
+                Serverless MLOps, 배포하면 바로 API
+              </h2>
+              <p className="text-base text-white/50">
+                자동 배포부터 추론 Endpoint 연동까지 한 번에
+              </p>
+            </div>
           </motion.div>
 
-          <div className="border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+          {/* 5-Step Pipeline Diagram */}
+          <div className="mb-14 relative px-2">
+            {/* Connector line with traveling pulse */}
+            <div className="absolute top-[21px] left-[10%] right-[10%] hidden md:block overflow-hidden" style={{ height: '2px' }}>
+              {/* Static base line */}
+              <div className="absolute left-0 right-0" style={{ top: '0px', height: '1px', background: 'linear-gradient(90deg, #9F7A5E50, #9F7A5E80 50%, #9F7A5E50)' }} />
+              {/* Traveling pulse */}
+              <motion.div
+                className="absolute top-0 h-full"
+                style={{ width: '15%', background: 'linear-gradient(90deg, transparent, #FFCF9E 50%, transparent)' }}
+                animate={{ x: ['-100%', '500%'] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+              />
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4">
+              {t.products.platform.inference.steps.map((step, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex flex-col items-center text-center"
+                >
+                  {/* Dot */}
+                  <div className="relative mb-5 shrink-0 w-11 h-11">
+                    {/* Sequential pulse ring */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full"
+                      animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
+                      transition={{ duration: 1.0, repeat: Infinity, repeatDelay: 4.0, delay: idx * 1.0, ease: 'easeOut' }}
+                      style={{ background: 'rgba(212,157,115,0.4)' }}
+                    />
+                    <div
+                      className="absolute inset-0 rounded-full flex items-center justify-center"
+                      style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}
+                    >
+                      <div className="w-3.5 h-3.5 rounded-full" style={{ background: '#9F7A5E', boxShadow: '0 0 6px rgba(212,157,115,0.5)' }} />
+                    </div>
+                  </div>
+                  <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>
+                    {String(idx + 1).padStart(2, '0')}
+                  </p>
+                  <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>
+                    {step.label}
+                  </p>
+                  <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>
+                    {step.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
+            style={{
+              background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+            }}
+          >
             {t.products.platform.inference.features.map((item, idx, arr) => (
               <motion.div
                 key={idx}
@@ -427,20 +529,23 @@ function PlatformContent() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
                 className={cn(
-                  'p-8 md:p-10',
+                  'relative overflow-hidden p-6',
                   idx > 0 && 'border-t border-white/10',
                   idx === 1 && 'md:border-t-0',
                   idx % 2 === 1 && 'md:border-l border-white/10',
                   arr.length % 2 === 1 && idx === arr.length - 1 && 'md:col-span-2',
                 )}
               >
-                <div className="text-xs font-mono text-white/30 mb-4 tabular-nums">
+                {/* Top light reflection — first row only */}
+                {idx < 2 && <div className="absolute inset-x-0 top-0 pointer-events-none"
+                  style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />}
+                <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
-                <h4 className="text-lg md:text-xl font-bold text-white mb-3">
+                <h4 className="relative z-10 text-xl font-bold text-white mb-2">
                   {item.title}
                 </h4>
-                <p className="text-base text-white/50 leading-relaxed">
+                <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
@@ -459,66 +564,93 @@ function PlatformContent() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60 mb-6">
               CHAT AGENT
             </div>
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight text-white">
-              {t.products.platform.agents.title}
+            <h2 className="text-3xl md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
+              엔드포인트만 연결하면 바로 동작합니다
             </h2>
           </motion.div>
 
-          {/* Terminal Code Block */}
-          <AgentTerminal />
+          {/* Terminal + feature cards */}
+          <div className="flex flex-col gap-6 items-center">
+            {/* Terminal centered */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col gap-3 w-full max-w-2xl"
+            >
+              <div className="relative">
+                <AgentTerminal />
+                <div
+                  className="absolute inset-x-0 bottom-0 pointer-events-none rounded-b-2xl"
+                  style={{
+                    height: '80px',
+                    backdropFilter: 'blur(6px)',
+                    WebkitBackdropFilter: 'blur(6px)',
+                    maskImage: 'linear-gradient(to bottom, transparent, black)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, transparent, black)',
+                  }}
+                />
+              </div>
+            </motion.div>
 
-          <div className="border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 mt-10">
-            {t.products.platform.agents.features.map((item, idx, arr) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={cn(
-                  'p-8 md:p-10',
-                  idx > 0 && 'border-t border-white/10',
-                  idx === 1 && 'md:border-t-0',
-                  idx % 2 === 1 && 'md:border-l border-white/10',
-                  arr.length % 2 === 1 && idx === arr.length - 1 && 'md:col-span-2',
-                )}
-              >
-                <div className="text-xs font-mono text-white/30 mb-4 tabular-nums">
-                  {String(idx + 1).padStart(2, '0')}
-                </div>
-                <h4 className="text-lg md:text-xl font-bold text-white mb-3">
-                  {item.title}
-                </h4>
-                <p className="text-base text-white/50 leading-relaxed">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
+            {/* Feature cards below */}
+            <div className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 w-full"
+              style={{
+                background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+              }}
+            >
+              {t.products.platform.agents.features.map((item, idx, arr) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.08 }}
+                  className={cn(
+                    'relative overflow-hidden px-7 py-6 flex flex-col gap-1',
+                    idx > 0 && 'border-t border-white/10',
+                    idx === 1 && 'md:border-t-0',
+                    idx % 2 === 1 && 'md:border-l border-white/10',
+                    arr.length % 2 === 1 && idx === arr.length - 1 && 'md:col-span-2',
+                  )}
+                >
+                  {/* Top light reflection — first row only */}
+                  {idx < 2 && <div className="absolute inset-x-0 top-0 pointer-events-none"
+                    style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />}
+                  <h4 className="relative z-10 text-base font-bold text-white">{item.title}</h4>
+                  <p className="relative z-10 text-sm text-white/50 leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* N3N Video AI Platform */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-          {/* Left: title */}
+        <div className="flex flex-col gap-12">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:w-2/5 lg:sticky lg:top-32 flex flex-col gap-6"
+            className="text-center flex flex-col items-center gap-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60 w-fit">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
               N3N VIDEO AI
             </div>
-            <h2 className="text-xl md:text-2xl font-bold tracking-tight leading-snug text-white">
-              {t.products.platform.video.title}
-            </h2>
-            <p className="text-sm text-white/50 leading-relaxed">
-              {t.products.platform.video.subtitle}
-            </p>
+            <div className="flex flex-col items-center gap-4">
+              <h2 className="text-3xl md:text-[48px] font-bold tracking-tight leading-tight text-white">
+                대규모 영상 데이터 실시간 분석
+              </h2>
+              <p className="text-base text-white/50 leading-relaxed">
+                첨단 Vision AI와 자체 알고리즘으로 산업 현장에 최적화된 인사이트 제공
+              </p>
+            </div>
           </motion.div>
 
-          {/* Right: cards */}
-          <div className="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {t.products.platform.video.features.map((item, idx, arr) => (
               <motion.button
                 key={idx}
@@ -528,17 +660,29 @@ function PlatformContent() {
                 transition={{ delay: idx * 0.08 }}
                 onClick={() => setSelectedCard(idx)}
                 className={cn(
-                  'flex flex-col items-start p-6 gap-2 bg-white/5 border border-white/10 rounded-2xl group hover:bg-white/10 hover:border-white/20 transition-all text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/50',
-                  arr.length === 5 && idx === 4 && 'sm:col-span-2 sm:w-[calc(50%-8px)] sm:mx-auto',
+                  'relative overflow-hidden flex flex-col items-start p-6 rounded-2xl group transition-all text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50',
+                  arr.length === 5 && idx === 4 && 'sm:col-span-2',
                 )}
+                style={{
+                  background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+                }}
               >
-                <div className="flex items-center justify-between w-full mb-4">
-                  <h4 className="text-xl font-bold text-white">
-                    {item.title}
-                  </h4>
-                  <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all" />
+                {/* Top light reflection */}
+                <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
+                  style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
+                {/* Arrow — top right */}
+                <div className="absolute top-5 right-5 z-10">
+                  <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white/70 group-hover:translate-x-0.5 transition-all" />
                 </div>
-                <p className="text-base leading-[1.4] text-white/60 whitespace-pre-line font-medium">
+                <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
+                  {String(idx + 1).padStart(2, '0')}
+                </div>
+                <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+                  {item.title}
+                </h4>
+                <p className="relative z-10 text-sm text-white/50 leading-relaxed whitespace-pre-line">
                   {item.desc}
                 </p>
               </motion.button>
