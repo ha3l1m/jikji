@@ -3,7 +3,7 @@
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Logo } from './logo';
 import { ShinyButton } from './ui/shiny-button';
@@ -116,7 +116,7 @@ function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: b
                 <span className="flex items-center gap-1">
                   {item.label}
                   {item.external && (
-                    <ArrowUpRight className="w-3.5 h-3.5 opacity-100 shrink-0" />
+                    <ArrowUpRight className={`w-3.5 h-3.5 shrink-0 opacity-70`} />
                   )}
                 </span>
               </NavLink>
@@ -204,6 +204,78 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
   );
 }
 
+function SupportButton({ section, isLight }: { section: NavSection; isLight: boolean }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className={`flex items-center justify-between gap-4 pl-4 pr-2 py-2 rounded-xl text-sm font-medium transition-colors border ${
+          isLight
+            ? 'bg-black/5 border-black/10 text-black/70 hover:bg-black/10 hover:text-black'
+            : 'bg-white/8 border-white/10 text-white/70 hover:bg-white/12 hover:text-white'
+        }`}
+      >
+        {section.label}
+        <ChevronDown className={`w-3.5 h-3.5 opacity-50 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && section.items && (
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full right-0 w-48 pt-2 z-50"
+          >
+            <div
+              className={`border rounded-2xl p-2 ${isLight ? 'bg-white/80 border-black/10' : 'border-[#373737]'}`}
+              style={{ background: isLight ? undefined : 'rgba(26,26,26,0.98)', boxShadow: '0 4px 12px 0 rgba(0,0,0,0.4), 0 24px 48px 0 rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.06)' }}
+            >
+              {section.items.map((item, idx) =>
+                item.disabled ? (
+                  <div key={idx} className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-white/30'}`}>
+                    {item.label}
+                    {item.badge && (
+                      <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-white/10'}`}>
+                        {item.badge}
+                      </span>
+                    )}
+                  </div>
+                ) : (
+                  <NavLink
+                    key={idx}
+                    href={item.href}
+                    external={item.external}
+                    onClick={() => setOpen(false)}
+                    className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
+                  >
+                    <span className="flex items-center gap-1">
+                      {item.label}
+                      {item.external && <ArrowUpRight className={`w-3.5 h-3.5 shrink-0 opacity-70`} />}
+                    </span>
+                  </NavLink>
+                )
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export function Header() {
   const { t } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -227,7 +299,6 @@ export function Header() {
     t.nav.ai_infrastructure,
     t.nav.pricing,
     t.nav.company,
-    t.nav.support,
   ];
 
   return (
@@ -249,7 +320,8 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4 py-4">
+        <div className="hidden lg:flex items-center gap-3 py-4">
+          <SupportButton section={t.nav.support} isLight={isLight} />
           <ShinyButton
             className="!py-2 !px-5 !text-sm"
             onClick={() => window.open('https://jikjicloud.io/', '_blank')}
