@@ -538,7 +538,11 @@ function PlatformContent() {
                 </div>
               ))}
               {/* Step 5: centered in its own row */}
-              <div className="flex justify-center">
+              <div className="relative flex justify-center">
+                <div
+                  className="absolute top-[21px] inset-x-0 pointer-events-none"
+                  style={{ height: '1px', background: 'linear-gradient(90deg, transparent 2%, #9F7A5E80 15%, #9F7A5E80 85%, transparent 98%)' }}
+                />
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
