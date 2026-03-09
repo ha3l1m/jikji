@@ -82,7 +82,7 @@ function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: b
       </NavLink>
 
       <div className="absolute top-full left-0 hidden group-hover/nav:block w-56 pt-2">
-        <div className={`border rounded-xl p-2 shadow-2xl ${isLight ? 'bg-white border-black/10' : 'bg-[#151C32] border-white/10'}`}>
+        <div className={`border rounded-2xl p-2 ${isLight ? 'bg-white/80 border-black/10' : 'border-[#373737]'}`} style={{ background: isLight ? undefined : 'rgba(26,26,26,0.98)', boxShadow: '0 4px 12px 0 rgba(0,0,0,0.4), 0 24px 48px 0 rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.06)' }}>
           {section.items.map((item, idx) =>
             item.subItem ? (
               <NavLink
