@@ -450,7 +450,7 @@ function PlatformContent() {
               AI INFERENCE
             </div>
             <div className="flex flex-col items-center gap-4">
-              <h2 className="text-[18px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white whitespace-nowrap">
+              <h2 className="text-3xl md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
                 Serverless MLOps, 배포하면 바로 API
               </h2>
               <p className="text-base text-white/50">
