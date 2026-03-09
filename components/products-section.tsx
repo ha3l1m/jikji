@@ -100,11 +100,11 @@ function GpuCloudContent() {
             viewport={{ once: true }}
             className="flex flex-col items-center gap-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60">
               GPU CLOUD
             </div>
-            <div className="flex flex-col items-center gap-4">
-              <h3 className="text-3xl md:text-[48px] font-bold leading-tight text-center text-white">
+            <div className="flex flex-col items-center gap-2">
+              <h3 className="text-[28px] md:text-[48px] font-bold leading-tight text-center text-white">
                 {t.products.gpucloud.oneclick.title}
               </h3>
               <p className="text-base md:text-lg text-white/50 text-center">
@@ -446,11 +446,11 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60 mb-6">
               AI INFERENCE
             </div>
-            <div className="flex flex-col items-center gap-4">
-              <h2 className="text-3xl md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
+            <div className="flex flex-col items-center gap-2">
+              <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
                 Serverless MLOps, 배포하면 바로 API
               </h2>
               <p className="text-base text-white/50">
@@ -616,10 +616,10 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60 mb-2">
               CHAT AGENT
             </div>
-            <h2 className="text-3xl md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
+            <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
               엔드포인트만 연결하면 바로 동작합니다
             </h2>
           </motion.div>
@@ -691,11 +691,11 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center flex flex-col items-center gap-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60">
               N3N VIDEO AI
             </div>
-            <div className="flex flex-col items-center gap-4">
-              <h2 className="text-3xl md:text-[48px] font-bold tracking-tight leading-tight text-white">
+            <div className="flex flex-col items-center gap-2">
+              <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight leading-tight text-white">
                 대규모 영상 데이터 실시간 분석
               </h2>
               <p className="text-base text-white/50 leading-relaxed">
