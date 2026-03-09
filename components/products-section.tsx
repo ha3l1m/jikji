@@ -439,7 +439,7 @@ function PlatformContent() {
     <div>
       <div className="mx-auto max-w-[1200px] px-6 py-24">
         {/* AI Inference Platform */}
-        <div className="mb-32">
+        <div id="ai-inference" className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -609,7 +609,7 @@ function PlatformContent() {
         </div>
 
         {/* Enterprise AI Agents */}
-        <div className="mb-32">
+        <div id="chat-agent" className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -683,7 +683,7 @@ function PlatformContent() {
         </div>
 
         {/* N3N Video AI Platform */}
-        <div className="flex flex-col gap-12">
+        <div id="n3n-video-ai" className="flex flex-col gap-12">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

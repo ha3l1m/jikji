@@ -9,7 +9,10 @@
       "href": "#products",
       "items": [
         { "label": "GPU Cloud", "href": "#gpucloud" },
-        { "label": "Platform", "href": "#platform" }
+        { "label": "Platform", "href": "#platform" },
+        { "label": "AI INFERENCE", "href": "#ai-inference", "subItem": true },
+        { "label": "CHAT AGENT", "href": "#chat-agent", "subItem": true },
+        { "label": "N3N VIDEO AI", "href": "#n3n-video-ai", "subItem": true }
       ]
     },
     "ai_infrastructure": {
@@ -17,7 +20,7 @@
       "href": "#infrastructure",
       "items": [
         { "label": "Sovereign Region", "href": "#infrastructure" },
-        { "label": "Enterprise Isolation", "href": "#infrastructure" }
+        { "label": "Enterprise Isolation", "href": "#isolation" }
       ]
     },
     "pricing": {

@@ -9,7 +9,10 @@
       "href": "#products",
       "items": [
         { "label": "GPU Cloud", "href": "#gpucloud" },
-        { "label": "Platform", "href": "#platform" }
+        { "label": "Platform", "href": "#platform" },
+        { "label": "AI INFERENCE", "href": "#ai-inference", "subItem": true },
+        { "label": "CHAT AGENT", "href": "#chat-agent", "subItem": true },
+        { "label": "N3N VIDEO AI", "href": "#n3n-video-ai", "subItem": true }
       ]
     },
     "ai_infrastructure": {
@@ -17,7 +20,7 @@
       "href": "#infrastructure",
       "items": [
         { "label": "Sovereign Region", "href": "#infrastructure" },
-        { "label": "Enterprise Isolation", "href": "#infrastructure" }
+        { "label": "Enterprise Isolation", "href": "#isolation" }
       ]
     },
     "pricing": {
@@ -231,7 +234,6 @@
     "aidc": {
       "title": "직지랩스 1호 AI DC",
       "badge": "2027년 3분기 완공 예정 · AI 시대를 대비한 초고속 데이터 허브",
-      "subtitle": "AI를 위해 설계된 최첨단 PMDC (Purpose-Built Modular Data Center)",
       "specs": [
         { "index": "01", "title": "건축 개요", "desc": "면적: 대지 575m² (174평)\n연면적 2,280m² (690평)\n\n규모: 지상 5층, 지하 1층" },
         { "index": "02", "title": "전력 수용량", "desc": "전체 소비전력 4MW\nIT 소비전력 2.72MW\n---\n**랙 40kW × 60ea, 16kW × 20ea\n모듈당 10개\n모듈당 400kW×6, 160kW×2" },
