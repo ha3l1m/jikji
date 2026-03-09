@@ -297,44 +297,6 @@ export function SeoulDottedMap({ className }: { className?: string }) {
       {/* Location marker — outside mask so it never gets clipped */}
       {tiltDone && (
         <>
-          {/* Speech bubble — independent, centered above pulse anchor */}
-          <div
-            style={{
-              position: 'absolute',
-              left: '90%',
-              top: '75%',
-              transform: 'translate(-50%, calc(-100% - 6px))',
-              zIndex: 20,
-              background: 'linear-gradient(135deg, rgba(30,28,40,0.92) 0%, rgba(18,16,28,0.96) 100%)',
-              borderRadius: '10px',
-              padding: '8px 14px',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.1)',
-              animation: 'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1px',
-            }}
-          >
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>2027 오픈</span>
-            {/* Tail — points down to pulse center */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '100%',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 0,
-                height: 0,
-                borderLeft: '6px solid transparent',
-                borderRight: '6px solid transparent',
-                borderTop: '6px solid rgba(18,16,28,0.96)',
-              }}
-            />
-          </div>
-
           {/* Pulse circle — original position */}
           <div
             style={{
@@ -342,6 +304,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
               left: '90%',
               top: '75%',
               zIndex: 10,
+              isolation: 'isolate',
             }}
           >
             <div
@@ -372,6 +335,45 @@ export function SeoulDottedMap({ className }: { className?: string }) {
                 }}
               />
             </div>
+          </div>
+
+          {/* Speech bubble — independent, centered above pulse anchor */}
+          <div
+            style={{
+              position: 'absolute',
+              left: '90%',
+              top: '75%',
+              transform: 'translate(-50%, calc(-100% - 6px))',
+              zIndex: 50,
+              background: 'rgba(255,255,255,0.05)',
+              borderRadius: '10px',
+              border: '1px solid rgba(255,255,255,0.15)',
+              padding: '8px 14px',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 0 18px rgba(255,255,255,0.07), 0 0 6px rgba(255,255,255,0.04)',
+              animation: 'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1px',
+            }}
+          >
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>2027 오픈</span>
+            {/* Tail — points down to pulse center */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '100%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 0,
+                height: 0,
+                borderLeft: '6px solid transparent',
+                borderRight: '6px solid transparent',
+                borderTop: '6px solid rgba(255,255,255,0.05)',
+              }}
+            />
           </div>
           {/* Future DC markers */}
           {DC_LOCATIONS.slice(1).map((dc, i) => {

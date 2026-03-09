@@ -303,15 +303,13 @@ export function InfraTeaser() {
 
           {/* CTA */}
           <div className="flex justify-center">
-            <div className="relative inline-flex rounded-full p-[1px] overflow-hidden">
-              <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E3E5E8_0%,#C9A84C_50%,#E3E5E8_100%)]" />
-              <a
-                href="mailto:business@jikji.ai"
-                className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#C9A84C]/20 to-transparent hover:from-zinc-300/10 hover:via-[#C9A84C]/30"
-              >
-                {t.infrastructure.isolation.cta}
-              </a>
-            </div>
+            <a
+              href="mailto:business@jikji.ai"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-base transition-colors"
+            >
+              {t.infrastructure.isolation.cta}
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>

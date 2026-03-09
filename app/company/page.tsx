@@ -4,6 +4,7 @@ import { useI18n } from '@/components/i18n-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import { FiDatabase, FiCpu, FiActivity, FiCode, FiMessageSquare, FiPlay } from 'react-icons/fi';
 
 
@@ -15,7 +16,7 @@ export default function CompanyPage() {
       <Header />
 
       {/* About Section */}
-      <section id="about" className="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden">
+      <section id="about" className="pt-32 pb-8 md:pt-48 md:pb-12 relative overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[600px] h-[500px] bg-blue-600/8 rounded-full blur-[120px]" />
@@ -42,45 +43,29 @@ export default function CompanyPage() {
           </div>
 
         </div>
+
+        {/* Divider */}
+        <div className="mx-auto max-w-7xl px-6 mt-12">
+          <div className="h-px bg-white/8" />
+        </div>
       </section>
 
-      {/* Divider */}
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="h-px bg-white/8" />
-      </div>
-
       {/* Full Stack Diagram Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
+      <section className="pt-8 pb-20 md:pt-12 md:pb-28 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-violet-900/10 rounded-full blur-[140px]" />
         </div>
 
         <div className="mx-auto max-w-7xl px-6 relative z-10">
-          <div className="grid md:grid-cols-[340px_1fr] gap-12 md:gap-16 items-center">
+          <div>
 
-            {/* Left: heading + desc */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-5"
-            >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white">
-                {t.company.about.fullstack_title}
-              </h2>
-              <p className="text-sm md:text-base text-white/50 leading-relaxed">
-                {t.company.about.fullstack_desc}
-              </p>
-            </motion.div>
-
-            {/* Right: staircase diagram */}
+            {/* Staircase diagram */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="flex items-end gap-2 md:gap-3"
+              className="flex items-stretch gap-2 md:gap-3"
             >
               {/* Box 1: AI Infrastructure — bottom */}
               <div className="flex-1 rounded-2xl border border-[#5b4a9a]/40 bg-gradient-to-b from-[#1d1840]/90 to-[#13102a]/90 backdrop-blur-sm p-4 md:p-5">
@@ -98,14 +83,14 @@ export default function CompanyPage() {
               </div>
 
               {/* Arrow 1 */}
-              <div className="flex-shrink-0 mb-6 text-violet-500/40">
+              <div className="flex-shrink-0 flex items-center text-violet-500/40">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12H19M19 12L13 6M19 12L13 18" />
                 </svg>
               </div>
 
               {/* Box 2: AI Platform — mid */}
-              <div className="flex-1 rounded-2xl border border-[#5b4a9a]/40 bg-gradient-to-b from-[#1d1840]/90 to-[#13102a]/90 backdrop-blur-sm p-4 md:p-5 mb-8">
+              <div className="flex-1 rounded-2xl border border-[#5b4a9a]/40 bg-gradient-to-b from-[#1d1840]/90 to-[#13102a]/90 backdrop-blur-sm p-4 md:p-5">
                 <p className="text-xs font-bold text-white mb-3">AI Platform</p>
                 <div className="space-y-2">
                   <div className="rounded-xl bg-[#2d2560]/60 border border-white/5 px-3 py-2.5 flex items-center justify-between gap-2">
@@ -120,14 +105,14 @@ export default function CompanyPage() {
               </div>
 
               {/* Arrow 2 */}
-              <div className="flex-shrink-0 mb-14 text-violet-500/40">
+              <div className="flex-shrink-0 flex items-center text-violet-500/40">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12H19M19 12L13 6M19 12L13 18" />
                 </svg>
               </div>
 
               {/* Box 3: AI Applications — top, with glow */}
-              <div className="flex-1 rounded-2xl border border-violet-400/30 bg-gradient-to-b from-[#231f4a]/90 to-[#16133a]/90 backdrop-blur-sm p-4 md:p-5 mb-16 shadow-[0_0_40px_rgba(139,92,246,0.18)] ring-1 ring-violet-500/20">
+              <div className="flex-1 rounded-2xl border border-violet-400/30 bg-gradient-to-b from-[#231f4a]/90 to-[#16133a]/90 backdrop-blur-sm p-4 md:p-5 shadow-[0_0_40px_rgba(139,92,246,0.18)] ring-1 ring-violet-500/20">
                 <p className="text-xs font-bold text-white mb-3">AI Applications</p>
                 <div className="space-y-2">
                   <div className="rounded-xl bg-[#342d70]/60 border border-violet-400/10 px-3 py-2.5 flex items-center justify-between gap-2">
@@ -170,9 +155,9 @@ export default function CompanyPage() {
               className="space-y-8"
             >
               {/* Eyebrow */}
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-blue-400/80 border border-blue-400/20 rounded-full px-4 py-1.5 bg-blue-400/5">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
                 Our Origin
-              </span>
+              </div>
 
               {/* Main headline */}
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white">
@@ -180,7 +165,7 @@ export default function CompanyPage() {
               </h2>
 
               {/* Bold sub-statement */}
-              <p className="text-lg md:text-xl font-semibold text-white/90 leading-relaxed border-l-2 border-blue-500 pl-5">
+              <p className="text-lg md:text-xl font-semibold text-white/90 leading-relaxed">
                 {t.company.about.heritage_subtitle}
               </p>
 
@@ -196,36 +181,19 @@ export default function CompanyPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
+              className="relative flex justify-center"
             >
               {/* Decorative circuit/type card */}
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#0d1a3a] via-[#0a1628] to-[#060d1f] aspect-[4/3] flex items-center justify-center">
-                {/* Grid overlay */}
-                <div
-                  className="absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-                    backgroundSize: '40px 40px',
-                  }}
+              <div className="relative aspect-square w-full max-w-sm">
+                <Image
+                  src="/images/jijiimg.png"
+                  alt="Jikji"
+                  fill
+                  className="object-cover rounded-3xl"
                 />
-                {/* Center character block */}
-                <div className="relative z-10 text-center space-y-4">
-                  <div className="text-[96px] md:text-[120px] font-black text-white/10 leading-none select-none" style={{ fontFamily: 'serif' }}>
-                    직지
-                  </div>
-                  <div className="flex items-center gap-3 justify-center">
-                    <div className="h-px w-12 bg-blue-400/40" />
-                    <span className="text-xs tracking-[0.25em] uppercase text-blue-300/60 font-medium">1377</span>
-                    <div className="h-px w-12 bg-blue-400/40" />
-                  </div>
-                  <p className="text-xs text-white/30 tracking-widest uppercase">World&apos;s First Metal Movable Type</p>
-                </div>
-                {/* Corner accents */}
-                <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-blue-400/30 rounded-tl-sm" />
-                <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-blue-400/30 rounded-tr-sm" />
-                <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-blue-400/30 rounded-bl-sm" />
-                <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-blue-400/30 rounded-br-sm" />
+                {/* Edge fade overlays — fades into page background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none z-10" />
               </div>
             </motion.div>
           </div>
