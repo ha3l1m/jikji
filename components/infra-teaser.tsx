@@ -36,7 +36,7 @@ export function InfraTeaser() {
               className="relative"
             >
               {/* Title overlay - top-left */}
-              <div className="absolute top-0 left-0 z-10 pointer-events-none">
+              <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none text-center md:text-left">
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -115,13 +115,15 @@ export function InfraTeaser() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center px-3 py-1.5 rounded-full mb-4 text-xs font-medium" style={{ background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.25)', color: '#C9A84C' }}>
-                {t.infrastructure.aidc.badge}
+              <div className="flex justify-center md:justify-start mb-4">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium" style={{ background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.25)', color: '#C9A84C' }}>
+                  {t.infrastructure.aidc.badge}
+                </div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white text-center md:text-left">
                 {t.infrastructure.aidc.title}
               </h2>
-              <p className="text-base text-white/50 mb-10">
+              <p className="text-base text-white/50 mb-10 text-center md:text-left">
                 {t.infrastructure.aidc.subtitle}
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -151,9 +153,9 @@ export function InfraTeaser() {
                             <span className="text-xs leading-snug" style={{ color: '#8E9399' }}>{line.slice(2)}</span>
                           </div>
                         );
-                        if (line.startsWith('**')) return <p key={i} className="text-sm leading-snug font-semibold text-white">{line.slice(2)}</p>;
+                        if (line.startsWith('**')) return <p key={i} className="text-xs md:text-sm leading-snug font-semibold text-white">{line.slice(2)}</p>;
                         if (line === '') return <div key={i} className="h-1" />;
-                        return <p key={i} className="text-sm leading-snug" style={{ color: 'rgba(255,255,255,0.5)' }}>{line}</p>;
+                        return <p key={i} className="text-xs md:text-sm leading-snug" style={{ color: 'rgba(255,255,255,0.5)' }}>{line}</p>;
                       });
                       const parts = spec.desc.split('\n---\n');
                       if (parts.length === 1) return <div className="relative z-10 space-y-0.5">{renderLines(parts[0])}</div>;
@@ -216,7 +218,7 @@ export function InfraTeaser() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {t.infrastructure.region.services.map((service, idx) => (
               <motion.div
                 key={idx}
