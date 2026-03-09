@@ -2,7 +2,7 @@
 
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Logo } from './logo';
@@ -101,7 +101,7 @@ function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: b
               >
                 {item.label}
                 {item.badge && (
-                  <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current">
+                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-white/10'}`}>
                     {item.badge}
                   </span>
                 )}
@@ -113,12 +113,12 @@ function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: b
                 external={item.external}
                 className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
               >
-                {item.label}
-                {item.external && (
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40 shrink-0">
-                    <path d="M11.1 3C7.45 3.007 5.54 3.096 4.318 4.318C3 5.636 3 7.757 3 12C3 16.242 3 18.364 4.318 19.682C5.636 21 7.757 21 12 21C16.243 21 18.363 21 19.68 19.682C20.902 18.461 20.992 16.549 20.998 12.9M20.556 3.496L11.049 13.059M20.556 3.496C20.062 3.002 16.734 3.048 16.031 3.058M20.556 3.496C21.05 3.991 21.004 7.323 20.994 8.027" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )}
+                <span className="flex items-center gap-1">
+                  {item.label}
+                  {item.external && (
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-100 shrink-0" />
+                  )}
+                </span>
               </NavLink>
             )
           )}
