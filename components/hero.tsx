@@ -4,7 +4,6 @@ import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
 import NeuralBackground from './ui/flow-field-background';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
@@ -49,7 +48,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-8 max-w-5xl mx-auto leading-[1.1]"
+          className="text-[32px] md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-8 max-w-5xl mx-auto leading-[1.1] whitespace-nowrap md:whitespace-normal"
         >
           {t.hero.title}
         </motion.h1>
@@ -60,40 +59,28 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-8 leading-relaxed font-light"
         >
-          {t.hero.description}
+          <span className="md:hidden">
+            복잡한 인프라 관리 없이 데이터센터부터<br />AI 서비스까지 한 번에 구축하세요.
+          </span>
+          <span className="hidden md:inline">{t.hero.description}</span>
         </motion.p>
 
-        {/* Hero image */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mb-10"
-        >
-          <Image
-            src="/ai.png"
-            alt="AI Infrastructure"
-            width={400}
-            height={400}
-            className="mx-auto w-52 md:w-64 lg:w-72 drop-shadow-2xl"
-          />
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.45 }}
-          className="mb-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mb-12 flex flex-row items-center justify-center gap-3 md:gap-4"
         >
           <a
             href="mailto:business@jikji.ai"
-            className="inline-flex items-center justify-center px-10 py-3.5 rounded-[10px] bg-white hover:bg-white/90 text-black font-semibold text-base transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 md:px-10 md:py-3.5 rounded-[10px] bg-white hover:bg-white/90 text-black font-semibold text-sm md:text-base transition-colors"
           >
             {t.hero.cta_primary}
           </a>
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-base transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-3 md:px-8 md:py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-sm md:text-base transition-colors"
           >
             {t.hero.cta_secondary}
             <ArrowRight className="w-4 h-4" />
