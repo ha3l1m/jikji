@@ -15,8 +15,8 @@ export default function CompanyPage() {
     <main className="min-h-screen bg-black selection:bg-white/30">
       <Header />
 
-      {/* About Section */}
-      <section id="about" className="pt-32 pb-8 md:pt-48 md:pb-12 relative overflow-hidden">
+      {/* About Section — hidden */}
+      <section id="about" className="hidden pt-32 pb-8 md:pt-48 md:pb-12 relative overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[600px] h-[500px] bg-blue-600/8 rounded-full blur-[120px]" />
@@ -43,15 +43,10 @@ export default function CompanyPage() {
           </div>
 
         </div>
-
-        {/* Divider */}
-        <div className="mx-auto max-w-7xl px-6 mt-12">
-          <div className="h-px bg-white/8" />
-        </div>
       </section>
 
-      {/* Full Stack Diagram Section */}
-      <section className="pt-8 pb-20 md:pt-12 md:pb-28 relative overflow-hidden">
+      {/* Full Stack Diagram Section — hidden */}
+      <section className="hidden pt-8 pb-20 md:pt-12 md:pb-28 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-violet-900/10 rounded-full blur-[140px]" />
         </div>
@@ -131,28 +126,48 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="h-px bg-white/8" />
-      </div>
-
       {/* Heritage Section — 지식의 혁신, 그 맥을 잇다 */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[600px] h-[500px] bg-blue-600/8 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600/6 rounded-full blur-[100px]" />
-        </div>
-
+      <section className="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 relative z-10">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left: Text */}
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left: Visual card */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="relative flex justify-center"
+            >
+              {/* Glass card container */}
+              <div
+                className="relative w-4/5 rounded-2xl overflow-hidden p-3"
+                style={{
+                  background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15), 0 24px 48px rgba(0,0,0,0.4)',
+                }}
+              >
+                {/* Top light reflection */}
+                <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl z-10"
+                  style={{ height: '50%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 45%, transparent 70%)' }} />
+                <div className="relative aspect-square w-full rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/jikjiheritage.jpg"
+                    alt="Jikji"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right: Text */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-8"
+              className="space-y-4"
             >
               {/* Eyebrow */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
@@ -160,42 +175,18 @@ export default function CompanyPage() {
               </div>
 
               {/* Main headline */}
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[1.1] text-white whitespace-nowrap" style={{ fontFamily: "'ChosunIlboMyungjo', serif" }}>
                 {t.company.about.heritage_title}
               </h2>
 
-              {/* Bold sub-statement */}
-              <p className="text-lg md:text-xl font-semibold text-white/90 leading-relaxed">
-                {t.company.about.heritage_subtitle}
-              </p>
-
               {/* Body */}
-              <p className="text-base md:text-lg text-white/60 leading-relaxed">
-                {t.company.about.heritage_desc}
-              </p>
-            </motion.div>
-
-            {/* Right: Visual card */}
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex justify-center"
-            >
-              {/* Decorative circuit/type card */}
-              <div className="relative aspect-square w-full max-w-sm">
-                <Image
-                  src="/images/jijiimg.png"
-                  alt="Jikji"
-                  fill
-                  className="object-cover rounded-3xl"
-                />
-                {/* Edge fade overlays — fades into page background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none z-10" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none z-10" />
+              <div className="flex flex-col gap-8">
+                {t.company.about.heritage_desc.split('\n').map((line, i) => (
+                  <p key={i} className="text-base md:text-lg text-white/60 leading-relaxed">{line}</p>
+                ))}
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
