@@ -450,7 +450,7 @@ function PlatformContent() {
               AI INFERENCE
             </div>
             <div className="flex flex-col items-center gap-4">
-              <h2 className="text-3xl md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
+              <h2 className="text-[18px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white whitespace-nowrap">
                 Serverless MLOps, 배포하면 바로 API
               </h2>
               <p className="text-base text-white/50">
@@ -461,11 +461,9 @@ function PlatformContent() {
 
           {/* 5-Step Pipeline Diagram */}
           <div className="mb-14 relative px-2">
-            {/* Connector line with traveling pulse */}
+            {/* Desktop: single row with traveling pulse connector */}
             <div className="absolute top-[21px] left-[10%] right-[10%] hidden md:block overflow-hidden" style={{ height: '2px' }}>
-              {/* Static base line */}
               <div className="absolute left-0 right-0" style={{ top: '0px', height: '1px', background: 'linear-gradient(90deg, #9F7A5E50, #9F7A5E80 50%, #9F7A5E50)' }} />
-              {/* Traveling pulse */}
               <motion.div
                 className="absolute top-0 h-full"
                 style={{ width: '15%', background: 'linear-gradient(90deg, transparent, #FFCF9E 50%, transparent)' }}
@@ -474,7 +472,8 @@ function PlatformContent() {
               />
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4">
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-5 gap-4">
               {t.products.platform.inference.steps.map((step, idx) => (
                 <motion.div
                   key={idx}
@@ -484,33 +483,85 @@ function PlatformContent() {
                   transition={{ delay: idx * 0.1 }}
                   className="flex flex-col items-center text-center"
                 >
-                  {/* Dot */}
                   <div className="relative mb-5 shrink-0 w-11 h-11">
-                    {/* Sequential pulse ring */}
                     <motion.div
                       className="absolute inset-0 rounded-full"
                       animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
                       transition={{ duration: 1.0, repeat: Infinity, repeatDelay: 4.0, delay: idx * 1.0, ease: 'easeOut' }}
                       style={{ background: 'rgba(212,157,115,0.4)' }}
                     />
-                    <div
-                      className="absolute inset-0 rounded-full flex items-center justify-center"
-                      style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}
-                    >
+                    <div className="absolute inset-0 rounded-full flex items-center justify-center" style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}>
                       <div className="w-3.5 h-3.5 rounded-full" style={{ background: '#9F7A5E', boxShadow: '0 0 6px rgba(212,157,115,0.5)' }} />
                     </div>
                   </div>
-                  <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>
-                    {String(idx + 1).padStart(2, '0')}
-                  </p>
-                  <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>
-                    {step.label}
-                  </p>
-                  <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>
-                    {step.desc}
-                  </p>
+                  <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>{String(idx + 1).padStart(2, '0')}</p>
+                  <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>{step.label}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>{step.desc}</p>
                 </motion.div>
               ))}
+            </div>
+
+            {/* Mobile: 2-col rows with horizontal connectors */}
+            <div className="md:hidden flex flex-col gap-8">
+              {([[0, 1], [2, 3]] as const).map((pair, pairIdx) => (
+                <div key={pairIdx} className="relative grid grid-cols-2 gap-8">
+                  {/* Horizontal connector line at dot center */}
+                  <div
+                    className="absolute top-[21px] inset-x-0 pointer-events-none"
+                    style={{ height: '1px', background: 'linear-gradient(90deg, transparent 2%, #9F7A5E80 15%, #9F7A5E80 85%, transparent 98%)' }}
+                  />
+                  {pair.map((stepIdx) => (
+                    <motion.div
+                      key={stepIdx}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: stepIdx * 0.1 }}
+                      className="flex flex-col items-center text-center relative z-10"
+                    >
+                      <div className="relative mb-5 shrink-0 w-11 h-11">
+                        <motion.div
+                          className="absolute inset-0 rounded-full"
+                          animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
+                          transition={{ duration: 1.0, repeat: Infinity, repeatDelay: 4.0, delay: stepIdx * 1.0, ease: 'easeOut' }}
+                          style={{ background: 'rgba(212,157,115,0.4)' }}
+                        />
+                        <div className="absolute inset-0 rounded-full flex items-center justify-center" style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}>
+                          <div className="w-3.5 h-3.5 rounded-full" style={{ background: '#9F7A5E', boxShadow: '0 0 6px rgba(212,157,115,0.5)' }} />
+                        </div>
+                      </div>
+                      <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>{String(stepIdx + 1).padStart(2, '0')}</p>
+                      <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>{t.products.platform.inference.steps[stepIdx].label}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>{t.products.platform.inference.steps[stepIdx].desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              ))}
+              {/* Step 5: centered in its own row */}
+              <div className="flex justify-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="flex flex-col items-center text-center w-[calc(50%-16px)]"
+                >
+                  <div className="relative mb-5 shrink-0 w-11 h-11">
+                    <motion.div
+                      className="absolute inset-0 rounded-full"
+                      animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
+                      transition={{ duration: 1.0, repeat: Infinity, repeatDelay: 4.0, delay: 4.0, ease: 'easeOut' }}
+                      style={{ background: 'rgba(212,157,115,0.4)' }}
+                    />
+                    <div className="absolute inset-0 rounded-full flex items-center justify-center" style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}>
+                      <div className="w-3.5 h-3.5 rounded-full" style={{ background: '#9F7A5E', boxShadow: '0 0 6px rgba(212,157,115,0.5)' }} />
+                    </div>
+                  </div>
+                  <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>05</p>
+                  <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>{t.products.platform.inference.steps[4].label}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>{t.products.platform.inference.steps[4].desc}</p>
+                </motion.div>
+              </div>
             </div>
           </div>
 
