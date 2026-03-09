@@ -339,18 +339,19 @@ export function SeoulDottedMap({ className }: { className?: string }) {
 
           {/* Speech bubble — independent, centered above pulse anchor */}
           <div
+            className="dc-speech-bubble"
             style={{
               position: 'absolute',
               left: '90%',
               top: '75%',
               transform: 'translate(-50%, calc(-100% - 6px))',
               zIndex: 50,
-              background: 'rgba(255,255,255,0.05)',
+              background: 'rgba(10,10,15,0.85)',
               borderRadius: '10px',
               border: '1px solid rgba(255,255,255,0.15)',
               padding: '8px 14px',
               whiteSpace: 'nowrap',
-              boxShadow: '0 0 18px rgba(255,255,255,0.07), 0 0 6px rgba(255,255,255,0.04)',
+              boxShadow: '0 0 18px rgba(0,0,0,0.4), 0 0 6px rgba(0,0,0,0.3)',
               animation: 'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
               display: 'flex',
               flexDirection: 'column',
@@ -360,20 +361,6 @@ export function SeoulDottedMap({ className }: { className?: string }) {
           >
             <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
             <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>2027 오픈</span>
-            {/* Tail — points down to pulse center */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '100%',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 0,
-                height: 0,
-                borderLeft: '6px solid transparent',
-                borderRight: '6px solid transparent',
-                borderTop: '6px solid rgba(255,255,255,0.05)',
-              }}
-            />
           </div>
           {/* Future DC markers */}
           {DC_LOCATIONS.slice(1).map((dc, i) => {
@@ -429,6 +416,11 @@ export function SeoulDottedMap({ className }: { className?: string }) {
           55%  { transform: translateY(2px) scale(0.97); }
           75%  { transform: translateY(-2px) scale(1.02); }
           100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @media (max-width: 768px) {
+          .dc-speech-bubble {
+            left: 68% !important;
+          }
         }
         @keyframes shadowAppear {
           0% { opacity: 0; }

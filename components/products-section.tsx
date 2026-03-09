@@ -155,7 +155,7 @@ function GpuCloudContent() {
               <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
                 style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
               <div className="relative z-10 text-xs font-mono text-white/30 mb-4">01</div>
-              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+              <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[0].title}
               </h4>
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
@@ -183,7 +183,7 @@ function GpuCloudContent() {
               <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
                 style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
               <div className="relative z-10 text-xs font-mono text-white/30 mb-4">02</div>
-              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+              <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[1].title}
               </h4>
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
@@ -208,7 +208,7 @@ function GpuCloudContent() {
               <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
                 style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
               <div className="relative z-10 text-xs font-mono text-white/30 mb-4">04</div>
-              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+              <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[3].title}
               </h4>
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
@@ -233,7 +233,7 @@ function GpuCloudContent() {
               <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
                 style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
               <div className="relative z-10 text-xs font-mono text-white/30 mb-4">03</div>
-              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+              <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[2].title}
               </h4>
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
@@ -260,7 +260,7 @@ function GpuCloudContent() {
               <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
                 style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
               <div className="relative z-10 text-xs font-mono text-white/30 mb-4">05</div>
-              <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+              <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[4].title}
               </h4>
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
@@ -597,7 +597,7 @@ function PlatformContent() {
                 <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
-                <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+                <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                   {item.title}
                 </h4>
                 <p className="relative z-10 text-sm text-white/50 leading-relaxed">
@@ -734,7 +734,7 @@ function PlatformContent() {
                 <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
-                <h4 className="relative z-10 text-xl font-bold text-white mb-2">
+                <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                   {item.title}
                 </h4>
                 <p className="relative z-10 text-sm text-white/50 leading-relaxed whitespace-pre-line">
