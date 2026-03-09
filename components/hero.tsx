@@ -3,8 +3,6 @@
 import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
 import NeuralBackground from './ui/flow-field-background';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
   const { t } = useI18n();
@@ -78,13 +76,7 @@ export function Hero() {
           >
             {t.hero.cta_primary}
           </a>
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 px-5 py-3 md:px-8 md:py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-sm md:text-base transition-colors"
-          >
-            {t.hero.cta_secondary}
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          {/* cta_secondary hidden */}
         </motion.div>
 
       </div>
