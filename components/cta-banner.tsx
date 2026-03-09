@@ -2,22 +2,24 @@
 
 import { motion } from 'motion/react';
 import { useI18n } from './i18n-provider';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ShinyButton } from './ui/shiny-button';
 
 export function CTABanner() {
   const { t } = useI18n();
+  const router = useRouter();
 
   return (
     <section id="contact" className="py-24 bg-white border-t border-gray-100">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+      <div className="mx-auto max-w-5xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {/* Title */}
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-4 leading-tight">
+          {/* Title — single line */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4 whitespace-nowrap">
             {t.cta_banner.title}
           </h2>
 
@@ -26,20 +28,14 @@ export function CTABanner() {
             {t.cta_banner.subtitle}
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Link
-              href="/support"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 rounded-xl bg-[#5572E2] text-white font-semibold text-base hover:bg-[#4461d1] transition-colors"
-            >
-              {t.cta_banner.btn_free}
-            </Link>
-            <a
-              href="mailto:business@jikji.ai"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 rounded-xl border-2 border-gray-900 text-gray-900 font-semibold text-base hover:bg-gray-50 transition-colors"
+          {/* Single button */}
+          <div className="flex items-center justify-center mb-8">
+            <ShinyButton
+              className="!py-3 !px-8 !text-base"
+              onClick={() => router.push('/support')}
             >
               {t.cta_banner.btn_inquiry}
-            </a>
+            </ShinyButton>
           </div>
 
           {/* Disclaimer */}

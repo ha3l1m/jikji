@@ -99,15 +99,20 @@ export function PricingSnippet() {
           ))}
         </div>
 
+
         {/* Inline CTA Banner */}
         <div className="mt-12 rounded-2xl bg-gray-900 px-10 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">CTA Title</p>
-            <p className="text-white/50 text-sm">CTA description goes here.</p>
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">Custom Architecture &amp; Consulting</p>
+            <p className="text-white text-xl md:text-2xl font-bold mb-1">우리 환경에 맞는 AI 인프라가 필요하다면</p>
+            <p className="text-white/50 text-sm">요구사항에 맞춘 아키텍처 설계부터 기술 상담까지</p>
           </div>
-          <button className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm">
-            CTA Button
-          </button>
+          <a
+            href="mailto:business@jikji.ai"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
+          >
+            견적 및 기술 상담 문의
+          </a>
         </div>
       </div>
     </section>
