@@ -14,6 +14,7 @@ type NavItem = {
   external?: boolean;
   disabled?: boolean;
   badge?: string;
+  subItem?: boolean;
 };
 
 type NavSection = {
@@ -27,16 +28,14 @@ function scrollToSection(href: string) {
 
   const id = href.slice(1);
 
-  // GPU Cloud / Platform are tabs inside #products — dispatch a tab-switch event
+  // Dispatch tab-switch event for products section
   if (id === 'gpucloud' || id === 'platform') {
     window.dispatchEvent(new CustomEvent('products-tab-switch', { detail: id }));
-    return;
   }
 
   const el = document.getElementById(id);
   if (el) {
-    const headerOffset = 80;
-    const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const top = el.getBoundingClientRect().top + window.scrollY - (window.innerHeight - el.offsetHeight) / 2;
     window.scrollTo({ top, behavior: 'smooth' });
   }
 }
@@ -85,7 +84,17 @@ function DesktopDropdown({ section, isLight }: { section: NavSection; isLight: b
       <div className="absolute top-full left-0 hidden group-hover/nav:block w-56 pt-2">
         <div className={`border rounded-xl p-2 shadow-2xl ${isLight ? 'bg-white border-black/10' : 'bg-[#151C32] border-white/10'}`}>
           {section.items.map((item, idx) =>
-            item.disabled ? (
+            item.subItem ? (
+              <NavLink
+                key={idx}
+                href={item.href}
+                external={item.external}
+                className={`flex items-center pl-7 pr-4 py-2 text-xs rounded-lg transition-colors ${isLight ? 'text-black/50 hover:text-black hover:bg-black/5' : 'text-white/50 hover:text-white hover:bg-white/5'}`}
+              >
+                <span className={`mr-2 w-1 h-1 rounded-full shrink-0 ${isLight ? 'bg-black/30' : 'bg-white/30'}`} />
+                {item.label}
+              </NavLink>
+            ) : item.disabled ? (
               <div
                 key={idx}
                 className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-white/30'}`}
@@ -155,7 +164,18 @@ function MobileNavSection({ section, closeMenu }: { section: NavSection; closeMe
           >
             <div className="pl-4 py-2 space-y-2 border-l border-white/10 ml-2">
               {section.items.map((item, idx) =>
-                item.disabled ? (
+                item.subItem ? (
+                  <NavLink
+                    key={idx}
+                    href={item.href}
+                    external={item.external}
+                    onClick={closeMenu}
+                    className="flex items-center gap-2 text-xs text-white/45 hover:text-white py-1 pl-3"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-white/25 shrink-0" />
+                    {item.label}
+                  </NavLink>
+                ) : item.disabled ? (
                   <div key={idx} className="flex items-center gap-2 text-sm text-white/25 py-1 cursor-not-allowed select-none">
                     {item.label}
                     {item.badge && (
