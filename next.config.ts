@@ -11,7 +11,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './imageLoader.ts',
   },
   output: 'export',
   basePath: isProd ? '/jikji' : '',
