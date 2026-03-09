@@ -130,7 +130,7 @@ export default function CompanyPage() {
       <section className="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Left: Visual card */}
+            {/* Left: Image */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -138,26 +138,13 @@ export default function CompanyPage() {
               transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="relative flex justify-center"
             >
-              {/* Glass card container */}
-              <div
-                className="relative w-4/5 rounded-2xl overflow-hidden p-3"
-                style={{
-                  background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15), 0 24px 48px rgba(0,0,0,0.4)',
-                }}
-              >
-                {/* Top light reflection */}
-                <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl z-10"
-                  style={{ height: '50%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 45%, transparent 70%)' }} />
-                <div className="relative aspect-square w-full rounded-xl overflow-hidden">
-                  <Image
-                    src="/images/jikjiheritage.jpg"
-                    alt="Jikji"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              <div className="relative aspect-square w-4/5 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/jikjiheritage.jpg"
+                  alt="Jikji"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </motion.div>
 
@@ -180,7 +167,7 @@ export default function CompanyPage() {
               </h2>
 
               {/* Body */}
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col">
                 {t.company.about.heritage_desc.split('\n').map((line, i) => (
                   <p key={i} className="text-base md:text-lg text-white/60 leading-relaxed">{line}</p>
                 ))}
