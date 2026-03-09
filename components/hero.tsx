@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import NeuralBackground from './ui/flow-field-background';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Server, Cpu, BarChart3, MessageSquare } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
   const { t } = useI18n();
@@ -100,36 +100,6 @@ export function Hero() {
           </Link>
         </motion.div>
 
-        {/* Mobile fallback — simplified stacked cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-12 w-full flex flex-col gap-3 md:hidden"
-        >
-          {[
-            { title: 'AI Infrastructure', items: ['직지 edge 데이터센터', 'GPUaaS'], icons: [Server, Cpu] },
-            { title: 'AI Platform', items: ['AI & MLOps Platform', '배포·추론 API'], icons: [BarChart3, BarChart3] },
-            { title: 'AI Applications', items: ['Chat Agent 서비스', 'N3N 영상 AI'], icons: [MessageSquare, MessageSquare] },
-          ].map((col) => (
-            <div key={col.title} className="rounded-2xl p-4" style={{ background: '#1A1B1E', border: '1px solid rgba(227,229,232,0.08)', boxShadow: '0 0 20px rgba(159,122,94,0.06)' }}>
-              <h3 className="font-bold text-sm mb-3" style={{ color: '#E3E5E8' }}>{col.title}</h3>
-              <div className="flex gap-2">
-                {col.items.map((label, i) => {
-                  const Icon = col.icons[i];
-                  return (
-                    <div key={label} className="flex-1 flex items-center gap-2 rounded-xl px-3 py-2" style={{ background: 'rgba(227,229,232,0.04)', border: '1px solid rgba(227,229,232,0.08)' }}>
-                      <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(159,122,94,0.12)', border: '1px solid rgba(212,157,115,0.2)' }}>
-                        <Icon className="w-3.5 h-3.5" style={{ color: '#D49D73' }} />
-                      </div>
-                      <span className="text-xs font-medium leading-snug" style={{ color: '#8E9399' }}>{label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
