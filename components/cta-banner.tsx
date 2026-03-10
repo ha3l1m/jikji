@@ -32,7 +32,8 @@ export function CTABanner() {
           <div className="flex items-center justify-center mb-8">
             <ShinyButton
               className="!py-3 !px-8 !text-base"
-              onClick={() => router.push('/support')}
+              // onClick={() => router.push('/support')}
+              onClick={() => router.push('https://forms.gle/2hcY59NMnXeYeJKQ6')}
             >
               {t.cta_banner.btn_inquiry}
             </ShinyButton>

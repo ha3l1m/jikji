@@ -3,6 +3,7 @@
 import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
 import NeuralBackground from './ui/flow-field-background';
+import Link from 'next/link';
 
 export function Hero() {
   const { t } = useI18n();
@@ -70,12 +71,13 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.45 }}
           className="mb-12 flex flex-row items-center justify-center gap-3 md:gap-4"
         >
-          <a
-            href="mailto:business@jikji.ai"
+          <Link
+            href="https://forms.gle/2hcY59NMnXeYeJKQ6"
             className="inline-flex items-center justify-center px-6 py-3 md:px-10 md:py-3.5 rounded-[10px] bg-white hover:bg-white/90 text-black font-semibold text-sm md:text-base transition-colors"
+            target="_blank"
           >
             {t.hero.cta_primary}
-          </a>
+          </Link>
           {/* cta_secondary hidden */}
         </motion.div>
 

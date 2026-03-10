@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useI18n } from './i18n-provider';
+import Link from 'next/link';
 
 export function PricingSnippet() {
   const { t } = useI18n();
@@ -42,11 +43,10 @@ export function PricingSnippet() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                  activeTab === tab.id
-                    ? 'bg-gray-900 text-white shadow-sm'
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
-                }`}
+                className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${activeTab === tab.id
+                  ? 'bg-gray-900 text-white shadow-sm'
+                  : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
+                  }`}
               >
                 {tab.label}
               </button>
@@ -107,12 +107,13 @@ export function PricingSnippet() {
             <p className="text-white text-xl md:text-2xl font-bold mb-1">우리 환경에 맞는 AI 인프라가 필요하다면</p>
             <p className="text-white/50 text-sm">요구사항에 맞춘 아키텍처 설계부터 기술 상담까지</p>
           </div>
-          <a
-            href="mailto:business@jikji.ai"
+          <Link
+            href="https://forms.gle/2hcY59NMnXeYeJKQ6"
+            target="_blank"
             className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
           >
             견적 및 기술 상담 문의
-          </a>
+          </Link>
         </div>
       </div>
     </section>
