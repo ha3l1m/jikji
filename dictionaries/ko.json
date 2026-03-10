@@ -58,7 +58,8 @@
         {
           "label": "Documentation",
           "href": "https://example.com/docs",
-          "external": true
+          "disabled": true,
+          "badge": "준비중"
         },
         {
           "label": "Help Center",
