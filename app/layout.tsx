@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'JIKJI AI',
   description: 'Accelerate Your AI Solutions with N3N',
+  icons: {
+    icon: '/logo_jikji.ico',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
