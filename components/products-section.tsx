@@ -240,7 +240,7 @@ function GpuCloudContent() {
                 {t.products.gpucloud.features.items[2].desc}
               </p>
               <div className="absolute bottom-4 right-4 pointer-events-none opacity-20">
-                <Image src="/images/security.png" alt="" width={96} height={96} className="object-contain" />
+                <Image src="/images/security.png" alt="보안 아이콘" width={96} height={96} className="object-contain" />
               </div>
             </motion.div>
 

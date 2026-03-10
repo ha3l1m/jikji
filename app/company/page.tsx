@@ -7,6 +7,9 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import { FiDatabase, FiCpu, FiActivity, FiCode, FiMessageSquare, FiPlay } from 'react-icons/fi';
 
+// Note: Metadata export is not available in client components
+// Consider converting to Server Component or use next/head in the future
+
 
 export default function CompanyPage() {
   const { t } = useI18n();
@@ -141,8 +144,11 @@ export default function CompanyPage() {
               <div className="relative aspect-square w-4/5 rounded-xl overflow-hidden">
                 <Image
                   src="/images/jikjiheritage.jpg"
-                  alt="Jikji"
+                  alt="직지 반도체"
                   fill
+                  sizes=''
+                  unoptimized
+                  priority
                   className="object-cover"
                 />
               </div>
