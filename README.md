@@ -1,5 +1,6 @@
 # JIKJI AI Landing Page
 
+직지 홈페이지 프로젝트입니다.
 A modern, responsive, multilingual landing page for JIKJI AI.
 
 ## Run Locally
