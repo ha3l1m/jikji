@@ -3,7 +3,7 @@
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, X, Activity } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import Image from 'next/image';
 import { AnimatedFeatureCard } from './ui/animated-feature-card';
 import { cn } from '@/lib/utils';
@@ -24,49 +24,13 @@ export function ProductsSection() {
   );
 }
 
-/* ─────────────────────────────────────────
-   PERSPECTIVE GRID DECORATION
-   ───────────────────────────────────────── */
-function PerspectiveGrid() {
-  return (
-    <div className="absolute bottom-0 right-0 w-[70%] h-[55%] pointer-events-none overflow-hidden">
-      <svg
-        viewBox="0 0 200 120"
-        className="w-full h-full opacity-[0.12]"
-        preserveAspectRatio="xMaxYMax meet"
-      >
-        {[0, 20, 40, 60, 80, 100].map((y, i) => (
-          <line
-            key={`h${i}`}
-            x1={40 + (y / 100) * 60}
-            y1={y * 1.2}
-            x2={160 - (y / 100) * 60}
-            y2={y * 1.2}
-            stroke="white"
-            strokeWidth="0.5"
-          />
-        ))}
-        {[-3, -2, -1, 0, 1, 2, 3].map((x, i) => (
-          <line
-            key={`v${i}`}
-            x1={100 + x * 8}
-            y1={0}
-            x2={100 + x * 50}
-            y2={120}
-            stroke="white"
-            strokeWidth="0.5"
-          />
-        ))}
-      </svg>
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────
    GPU CLOUD CONTENT
    ───────────────────────────────────────── */
 function GpuCloudContent() {
   const { t } = useI18n();
+  const [shieldActive, setShieldActive] = useState(false);
 
   return (
     <>
@@ -137,7 +101,7 @@ function GpuCloudContent() {
       {/* Features Grid */}
       <div className="pt-6 pb-[72px]">
         <div className="mx-auto max-w-[1200px] px-6 flex flex-col gap-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[220px_260px] gap-6 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[200px_200px] gap-6 w-full">
             {/* Card 01 — large left, spans 2 rows */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -161,9 +125,16 @@ function GpuCloudContent() {
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[0].desc}
               </p>
-              <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none">
-                <div className="w-[80%] h-[45%] rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10" />
+              <div className="absolute bottom-2 left-3 right-4 pointer-events-none"
+                style={{
+                  height: '54%',
+                  maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
+                  maskComposite: 'intersect',
+                  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
+                  WebkitMaskComposite: 'source-in',
+                }}
+              >
+                <Image src="/images/optimize2.png" alt="" fill className="object-contain object-bottom" />
               </div>
             </motion.div>
 
@@ -189,7 +160,6 @@ function GpuCloudContent() {
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[1].desc}
               </p>
-              <PerspectiveGrid />
             </motion.div>
 
             {/* Card 04 — top right */}
@@ -214,7 +184,6 @@ function GpuCloudContent() {
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[3].desc}
               </p>
-              <PerspectiveGrid />
             </motion.div>
 
             {/* Card 03 — bottom middle */}
@@ -223,12 +192,13 @@ function GpuCloudContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.12 }}
-              className="relative rounded-2xl overflow-hidden flex flex-col p-6 min-h-[160px]"
+              className="relative rounded-2xl overflow-hidden flex flex-col p-6 min-h-[160px] cursor-pointer"
               style={{
                 background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
                 border: '1px solid rgba(255,255,255,0.1)',
                 boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
               }}
+              onClick={() => setShieldActive(v => !v)}
             >
               <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
                 style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
@@ -239,7 +209,7 @@ function GpuCloudContent() {
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[2].desc}
               </p>
-              <div className="absolute bottom-4 right-4 pointer-events-none opacity-20">
+              <div className="hidden">
                 <Image src="/images/security.png" alt="" width={96} height={96} className="object-contain" />
               </div>
             </motion.div>
@@ -266,9 +236,7 @@ function GpuCloudContent() {
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[4].desc}
               </p>
-              <div className="absolute bottom-5 right-5 text-white/10 pointer-events-none">
-                <Activity className="w-16 h-16 stroke-[1]" />
-              </div>
+
             </motion.div>
           </div>
         </div>
