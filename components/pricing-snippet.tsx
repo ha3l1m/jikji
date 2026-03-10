@@ -20,7 +20,7 @@ export function PricingSnippet() {
 
   return (
     <section id="pricing" className="py-24 bg-white border-t border-gray-100">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-[1200px] px-6">
         {/* Header + Tab selector */}
         <div className="flex items-end justify-between mb-8">
           <motion.div
@@ -95,7 +95,9 @@ export function PricingSnippet() {
         {/* Notes */}
         <div className="mt-8 space-y-2">
           {t.pricing_page.notes.map((note, idx) => (
-            <p key={idx} className="text-sm text-gray-400">* {note}</p>
+            <p key={idx} className="text-sm text-gray-400">* {note.split('50%').map((part, i, arr) =>
+              i < arr.length - 1 ? <>{part}<span className="font-bold text-gray-500">50%</span></> : part
+            )}</p>
           ))}
         </div>
 
@@ -103,15 +105,15 @@ export function PricingSnippet() {
         {/* Inline CTA Banner */}
         <div className="mt-12 rounded-2xl bg-gray-900 px-10 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">Custom Architecture &amp; Consulting</p>
-            <p className="text-white text-xl md:text-2xl font-bold mb-1">우리 환경에 맞는 AI 인프라가 필요하다면</p>
-            <p className="text-white/50 text-sm">요구사항에 맞춘 아키텍처 설계부터 기술 상담까지</p>
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">H100 GPU · MIG 가상화, 최대 1개월 무료 체험</p>
+            <p className="text-white text-xl md:text-2xl font-bold mb-1">지금 바로 AI 인프라 경험해보세요</p>
+            <p className="text-white/50 text-sm">신청 후 개별 연락 · 상담 후 순차 할당 · 신용카드 불필요</p>
           </div>
           <a
             href="mailto:business@jikji.ai"
             className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
           >
-            견적 및 기술 상담 문의
+            프로모션 문의하기
           </a>
         </div>
       </div>
