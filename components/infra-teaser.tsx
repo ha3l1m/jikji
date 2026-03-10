@@ -5,6 +5,7 @@ import { useI18n } from './i18n-provider';
 import { SeoulDottedMap } from './seoul-dotted-map';
 import { ArrowRight, Shield, Database, Cloud, Cpu, Zap, type LucideIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const isolationIcons: LucideIcon[] = [Zap, Shield, Database, Cloud, Cpu];
 
@@ -94,13 +95,14 @@ export function InfraTeaser() {
 
           {/* CTA below both columns */}
           <div className="flex justify-center mt-12">
-            <a
-              href="mailto:business@jikji.ai"
+            <Link
+              href="https://forms.gle/2hcY59NMnXeYeJKQ6"
+              target="_blank"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-base transition-colors"
             >
               AI Infrastructure 문의하기
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -123,9 +125,9 @@ export function InfraTeaser() {
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white text-center md:text-left">
                 {t.infrastructure.aidc.title}
               </h2>
-              <p className="text-base text-white/50 mb-10 text-center md:text-left">
+              {/* <p className="text-base text-white/50 mb-10 text-center md:text-left">
                 {t.infrastructure.aidc.subtitle}
-              </p>
+              </p> */}
               <div className="grid grid-cols-2 gap-4">
                 {t.infrastructure.aidc.specs.map((spec, idx) => (
                   <motion.div
@@ -305,13 +307,14 @@ export function InfraTeaser() {
 
           {/* CTA */}
           <div className="flex justify-center">
-            <a
-              href="mailto:business@jikji.ai"
+            <Link
+              href="https://forms.gle/2hcY59NMnXeYeJKQ6"
+              target="_blank"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-base transition-colors"
             >
               {t.infrastructure.isolation.cta}
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

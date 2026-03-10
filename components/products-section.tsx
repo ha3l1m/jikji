@@ -281,13 +281,13 @@ function GpuCloudContent() {
    AGENT TERMINAL
    ───────────────────────────────────────── */
 function AgentTerminal() {
-  const Kw   = (s: string) => <span style={{ color: '#E3E5E8' }}>{s}</span>;    // command — Glass Highlight
-  const Flg  = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>;    // flags — Metallic Silver
-  const Str  = (s: string) => <span style={{ color: '#D49D73' }}>{s}</span>;    // strings — Warm Amber
-  const Key  = (s: string) => <span style={{ color: '#9F7A5E' }}>{s}</span>;    // JSON keys — Copper Bronze
+  const Kw = (s: string) => <span style={{ color: '#E3E5E8' }}>{s}</span>;    // command — Glass Highlight
+  const Flg = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>;    // flags — Metallic Silver
+  const Str = (s: string) => <span style={{ color: '#D49D73' }}>{s}</span>;    // strings — Warm Amber
+  const Key = (s: string) => <span style={{ color: '#9F7A5E' }}>{s}</span>;    // JSON keys — Copper Bronze
   const Bool = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>;    // booleans — Metallic Silver
-  const Pnc  = (s: string) => <span style={{ color: 'rgba(142,147,153,0.5)' }}>{s}</span>;  // punctuation — dimmed
-  const Cmt  = (s: string) => <span style={{ color: 'rgba(142,147,153,0.25)' }}>{s}</span>; // continuation \
+  const Pnc = (s: string) => <span style={{ color: 'rgba(142,147,153,0.5)' }}>{s}</span>;  // punctuation — dimmed
+  const Cmt = (s: string) => <span style={{ color: 'rgba(142,147,153,0.25)' }}>{s}</span>; // continuation \
 
   return (
     <motion.div
