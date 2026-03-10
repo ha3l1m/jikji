@@ -220,11 +220,10 @@ function SupportButton({ section, isLight }: { section: NavSection; isLight: boo
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center justify-between gap-4 pl-4 pr-2 py-2 rounded-xl text-sm font-medium transition-colors border ${
-          isLight
-            ? 'bg-black/5 border-black/10 text-black/70 hover:bg-black/10 hover:text-black'
-            : 'bg-white/8 border-white/10 text-white/70 hover:bg-white/12 hover:text-white'
-        }`}
+        className={`flex items-center justify-between gap-4 pl-4 pr-2 py-2 rounded-xl text-sm font-medium transition-colors border ${isLight
+          ? 'bg-black/5 border-black/10 text-black/70 hover:bg-black/10 hover:text-black'
+          : 'bg-white/8 border-white/10 text-white/70 hover:bg-white/12 hover:text-white'
+          }`}
       >
         {section.label}
         <ChevronDown className={`w-3.5 h-3.5 opacity-50 transition-transform ${open ? 'rotate-180' : ''}`} />
@@ -245,11 +244,12 @@ function SupportButton({ section, isLight }: { section: NavSection; isLight: boo
             >
               {section.items.map((item, idx) =>
                 item.disabled ? (
-                  <div key={idx} className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-white/30'}`}>
+                  <div key={idx} className={`flex items-center gap-2 px-2.5 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-white/30'}`}>
                     {item.label}
                     {item.badge && (
                       <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-white/10'}`}>
                         {item.badge}
+                        {/* external: true 로 변경 추후 */}
                       </span>
                     )}
                   </div>
@@ -303,11 +303,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${
-        isLight
-          ? 'border-black/10 bg-white/90'
-          : 'border-white/10 bg-[#111111]/80'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${isLight
+        ? 'border-black/10 bg-white/90'
+        : 'border-white/10 bg-[#111111]/80'
+        }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
         <div className="flex items-center gap-2 py-4">
