@@ -25,7 +25,7 @@ export function InfraTeaser() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 relative z-10">
+        <div className="mx-auto max-w-[1200px] px-6 relative z-10">
           {/* Two-column layout */}
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Map with overlaid title */}
@@ -109,7 +109,7 @@ export function InfraTeaser() {
 
       {/* AI DC #1 Specs */}
       <section className="py-24 border-t border-white/5" style={{ background: 'linear-gradient(180deg, #0a0a0c 0%, #0c0c0e 100%)' }}>
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1200px] px-6">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
             {/* Left: title + 2x2 grid */}
             <motion.div
@@ -208,7 +208,7 @@ export function InfraTeaser() {
 
       {/* Services Grid */}
       <section className="pt-8 pb-24 border-t border-white/5" style={{ background: 'linear-gradient(180deg, #0c0c0e 0%, #0E0E10 50%, #0a0a0c 100%)' }}>
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1200px] px-6">
           <div className="mb-10 text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -256,7 +256,7 @@ export function InfraTeaser() {
 
       {/* Enterprise Isolation / PMDC Section */}
       <section id="isolation" className="py-24 border-t border-white/5" style={{ background: 'linear-gradient(180deg, #0a0a0c 0%, #0c0c0e 50%, #0E0E10 100%)' }}>
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1200px] px-6">
 
           {/* Centered header — Products style */}
           <motion.div
@@ -294,7 +294,7 @@ export function InfraTeaser() {
               >
                 <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
                   style={{ height: '60%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 45%, transparent 70%)' }} />
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 relative z-10" style={{ background: 'rgba(180,120,20,0.12)', border: '1px solid rgba(196,146,42,0.25)' }}>
+                <div className="hidden w-10 h-10 rounded-xl flex items-center justify-center shrink-0 relative z-10" style={{ background: 'rgba(180,120,20,0.12)', border: '1px solid rgba(196,146,42,0.25)' }}>
                   {(() => { const Icon = isolationIcons[idx]; return <Icon className="w-5 h-5" style={{ color: '#C4922A' }} />; })()}
                 </div>
                 <div className="relative z-10">

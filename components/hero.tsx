@@ -2,67 +2,75 @@
 
 import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
-import NeuralBackground from './ui/flow-field-background';
+import { EtheralShadow } from './ui/etheral-shadow';
+// import { DottedSurface } from './ui/dotted-surface';
+// import { AuroraBackground } from './ui/aurora-background';
+// import NeuralBackground from './ui/flow-field-background';
 import Link from 'next/link';
 
 export function Hero() {
   const { t } = useI18n();
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden" style={{ background: 'linear-gradient(180deg, #0E0E10 0%, #0E0E10 100%)' }}>
-      {/* Flow field animation background */}
-      <div className="absolute inset-0 opacity-40" style={{ mask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)', WebkitMask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)' }}>
+    <section id="hero" className="relative min-h-[85vh] pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden" style={{ background: 'linear-gradient(180deg, #0E0E10 0%, #0E0E10 100%)' }}>
+      {/* Etheral shadow animation background */}
+      <EtheralShadow
+        className="pointer-events-none opacity-20"
+        style={{ position: 'absolute', inset: 0, maskImage: 'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)' }}
+        color="rgba(89, 91, 95, 1)"
+        animation={{ scale: 100, speed: 90 }}
+        noise={{ opacity: 0.5, scale: 1.2 }}
+        sizing="fill"
+      />
+
+      {/* Flow field animation background (hidden) */}
+      {/* <div className="absolute inset-0 opacity-20" style={{ mask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)', WebkitMask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)' }}>
         <NeuralBackground
-          color="#C9A84C"
-          colorEnd="#F0C040"
-          trailOpacity={0.05}
+          color="#595B5F"
+          colorEnd="#595B5F"
+          trailOpacity={0.06}
           particleCount={350}
           speed={0.4}
+          flowScale={0.002}
         />
-      </div>
+      </div> */}
+
       {/* Gradient overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 20%, transparent 30%, #0E0E10 90%)' }} />
 
       {/* Decorative gradient blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Gold glow - center top */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-10 mix-blend-overlay rounded-full blur-3xl" style={{ background: '#F0C040' }} />
+        <div className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-10 mix-blend-overlay rounded-full blur-3xl" style={{ background: '#595B5F' }} />
         {/* Gold streak */}
         <div className="absolute left-[420px] top-[120px] w-44 h-32 mix-blend-overlay overflow-hidden">
-          <div className="absolute left-[52px] top-[42px] w-20 h-6 origin-top-left rotate-[15deg] opacity-20 rounded-full blur-sm" style={{ background: '#C9A84C' }} />
+          <div className="absolute left-[52px] top-[42px] w-20 h-6 origin-top-left rotate-[15deg] opacity-20 rounded-full blur-sm" style={{ background: '#595B5F' }} />
         </div>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 relative z-10 text-center flex flex-col items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60 mb-4"
-        >
-          <span>{t.hero.badge}</span>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-[32px] md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-8 max-w-5xl mx-auto leading-[1.1] whitespace-nowrap md:whitespace-normal"
-        >
-          {t.hero.title}
-        </motion.h1>
+        {/* badge hidden */}
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-8 leading-relaxed font-light"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 leading-relaxed font-light"
         >
           <span className="md:hidden">
-            복잡한 인프라 관리 없이 데이터센터부터<br />AI 서비스까지 한 번에 구축하세요.
+            데이터센터부터 AI 서비스까지, 한 번에
           </span>
           <span className="hidden md:inline">{t.hero.description}</span>
         </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-[32px] md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-10 max-w-5xl mx-auto leading-[1.1] whitespace-nowrap md:whitespace-normal"
+        >
+          {t.hero.title}
+        </motion.h1>
 
 
         <motion.div
