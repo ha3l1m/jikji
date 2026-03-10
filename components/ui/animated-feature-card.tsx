@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export type AnimatedFeatureCardVariant = 'oneclick' | 'framework' | 'storage';
@@ -20,7 +21,9 @@ const thumbnailMap: Record<AnimatedFeatureCardVariant, string> = {
 /* ── Main exported component ── */
 export function AnimatedFeatureCard({ variant, cardTitle, cardDescription }: Props) {
   return (
-    <div
+    <motion.div
+      whileHover={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2), 0 0 0 1px rgba(255,255,255,0.18), 0 0 28px rgba(255,255,255,0.07)' }}
+      transition={{ duration: 0.3 }}
       className={cn(
         'relative flex flex-col',
         'h-[22.4rem] w-full overflow-hidden',
@@ -57,6 +60,6 @@ export function AnimatedFeatureCard({ variant, cardTitle, cardDescription }: Pro
           className="object-contain p-6"
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
