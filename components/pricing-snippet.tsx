@@ -96,7 +96,7 @@ export function PricingSnippet() {
         <div className="mt-8 space-y-2">
           {t.pricing_page.notes.map((note, idx) => (
             <p key={idx} className="text-sm text-gray-400">* {note.split('50%').map((part, i, arr) =>
-              i < arr.length - 1 ? <>{part}<span className="font-bold text-gray-500">50%</span></> : part
+              i < arr.length - 1 ? <span key={i}>{part}<span className="font-bold text-gray-500">50%</span></span> : <span key={i}>{part}</span>
             )}</p>
           ))}
         </div>
