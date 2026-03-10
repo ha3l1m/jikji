@@ -8,19 +8,43 @@
       "label": "Products",
       "href": "#products",
       "items": [
-        { "label": "GPU Cloud", "href": "#gpucloud" },
-        { "label": "Platform", "href": "#platform" },
-        { "label": "AI INFERENCE", "href": "#ai-inference", "subItem": true },
-        { "label": "CHAT AGENT", "href": "#chat-agent", "subItem": true },
-        { "label": "N3N VIDEO AI", "href": "#n3n-video-ai", "subItem": true }
+        {
+          "label": "GPU Cloud",
+          "href": "#gpucloud"
+        },
+        {
+          "label": "Platform",
+          "href": "#platform"
+        },
+        {
+          "label": "AI INFERENCE",
+          "href": "#ai-inference",
+          "subItem": true
+        },
+        {
+          "label": "CHAT AGENT",
+          "href": "#chat-agent",
+          "subItem": true
+        },
+        {
+          "label": "N3N VIDEO AI",
+          "href": "#n3n-video-ai",
+          "subItem": true
+        }
       ]
     },
     "ai_infrastructure": {
       "label": "AI Infrastructure",
       "href": "#infrastructure",
       "items": [
-        { "label": "Sovereign Region", "href": "#infrastructure" },
-        { "label": "Enterprise Isolation", "href": "#isolation" }
+        {
+          "label": "Sovereign Region",
+          "href": "#infrastructure"
+        },
+        {
+          "label": "Enterprise Isolation",
+          "href": "#isolation"
+        }
       ]
     },
     "pricing": {
@@ -53,7 +77,7 @@
       "desc1": "AI 산업의 발전 속도는 그 어느 때보다 빠릅니다. 많은 기업들이 AI 기술을 활용하여 생산성 혁신과 경쟁력 강화를 도모하고 있습니다. 기업들은 더 강력한 연산 능력과 유연한 인프라가 필요합니다. 그러나, AI 기술을 사업에 적용하려는 기업들이 마주하는 가장 큰 현실적인 장벽은 AI 인프라 구축과 운영의 어려움입니다.",
       "desc2": "직지랩스는 빠르게 변화하는 AI 환경에 즉각 대응할 수 있는 AI 인프라 솔루션을 제공합니다. 고객사들로 하여금 최신 AI 트렌드에 맞춰 즉시 확장 가능한 컴퓨팅 환경을 구축, 활용할 수 있는 방향을 제시하며, 고객사의 AI 혁신을 가장 강력하게 뒷받침하는 인프라 파트너가 되고자 합니다.",
       "heritage_title": "지식의 혁신, 그 맥을 잇다",
-      "heritage_desc": "1377년, 세계 최초의 금속활자본 《직지》는 지식을 더 빠르게 세상에 전한 혁신이었습니다. 직지랩스는 그 정신을 이어받아 디지털 시대의 새로운 인쇄술을 설계합니다.\n기술로 인류의 생각을 가장 빠르고 정확하게, 의미 있게 연결합니다.",
+      "heritage_desc": "1377년, 세계 최초의 금속활자본 《직지》는 지식을 더 빠르게 세상에 전한 혁신이었습니다. 직지랩스는 그 정신을 이어받아 디지털 시대의 새로운 인쇄술을 설계합니다.\n 우리는 디지털 시대의 새로운 인쇄술을 구현하며, 인류의 생각과 지식이 가장 빠르고 정확하게, 의미 있게 연결되는 길을 만들어 갑니다. 직지랩스는 이러한 철학과 기술을 바탕으로, 미래의 디지털 지식 환경을 설계하고 구축하는 회사로 나아가겠습니다.",
       "fullstack_title": "데이터센터부터 AI Full Stack 서비스를 구현합니다",
       "fullstack_desc": "인프라 네이티브 AI Full Stack 기업. 프라이빗 격리, SLA 보장, 투명한 관측성, 그리고 강력한 보안을 단일 플랫폼에서 제공합니다."
     },
@@ -61,10 +85,22 @@
       "title": "Our Path",
       "subtitle": "Since its inception in 1999, N3N has accumulated video intelligence technology, data structuring and visualization technology, patents and experience. Based on this, we provide solutions that innovatively address the different demands of various industries.",
       "timeline": [
-        { "year": "1999", "desc": "N3N 창업" },
-        { "year": "2000", "desc": "CCTV 통합관제 S/W 개발" },
-        { "year": "2010", "desc": "스마트 팩토리 솔루션 출시" },
-        { "year": "2020", "desc": "도심형 GPU CLOUD DATA CENTER" }
+        {
+          "year": "1999",
+          "desc": "N3N 창업"
+        },
+        {
+          "year": "2000",
+          "desc": "CCTV 통합관제 S/W 개발"
+        },
+        {
+          "year": "2010",
+          "desc": "스마트 팩토리 솔루션 출시"
+        },
+        {
+          "year": "2020",
+          "desc": "도심형 GPU CLOUD DATA CENTER"
+        }
       ]
     },
     "news": {
@@ -149,11 +185,26 @@
       "inference": {
         "title": "추론 Endpoint를 한 번에 — Serverless MLOps",
         "steps": [
-          { "label": "Repo 연결", "desc": "고객 GitHub/GitLab 저장소 연동" },
-          { "label": "자동 빌드", "desc": "컨테이너 이미지 생성·취약점 스캔" },
-          { "label": "런타임 설정", "desc": "모델/프레임워크 선택, 의존성 자동 주입" },
-          { "label": "스테이징 검증 → 프로덕션 배포", "desc": "Canary/Blue-Green 배포 지원" },
-          { "label": "엔드포인트 발급", "desc": "Serverless API Key·도메인 즉시 제공" }
+          {
+            "label": "Repo 연결",
+            "desc": "고객 GitHub/GitLab 저장소 연동"
+          },
+          {
+            "label": "자동 빌드",
+            "desc": "컨테이너 이미지 생성·취약점 스캔"
+          },
+          {
+            "label": "런타임 설정",
+            "desc": "모델/프레임워크 선택, 의존성 자동 주입"
+          },
+          {
+            "label": "스테이징 검증 → 프로덕션 배포",
+            "desc": "Canary/Blue-Green 배포 지원"
+          },
+          {
+            "label": "엔드포인트 발급",
+            "desc": "Serverless API Key·도메인 즉시 제공"
+          }
         ],
         "features": [
           {
@@ -177,7 +228,10 @@
       "agents": {
         "title": "엔드포인트만 연결하면, 최신 Agentic Workflow가 바로 동작합니다",
         "features": [
-          { "title": "모델 선택", "desc": "Qwen / Exaone 지원, 한국어 최적화" },
+          {
+            "title": "모델 선택",
+            "desc": "Qwen / Exaone 지원, 한국어 최적화"
+          },
           {
             "title": "프라이빗 클라우드/VPC 배포",
             "desc": "데이터 격리·암호화, 기업 보안 정책 준수"
@@ -234,10 +288,26 @@
       "title": "직지랩스 1호 AI DC",
       "badge": "2027년 3분기 완공 예정 · AI 시대를 대비한 초고속 데이터 허브",
       "specs": [
-        { "index": "01", "title": "건축 개요", "desc": "면적: 대지 575m² (174평)\n연면적 2,280m² (690평)\n\n규모: 지상 5층, 지하 1층" },
-        { "index": "02", "title": "전력 수용량", "desc": "전체 소비전력 4MW\nIT 소비전력 2.72MW\n---\n**랙 40kW × 60ea, 16kW × 20ea\n모듈당 10개\n모듈당 400kW×6, 160kW×2" },
-        { "index": "03", "title": "시설 개요", "desc": "내부 Modular 방식 적용\n• 서버실\n• 전기실\n• 발전기 : 옥외용 일체형 발전기 or ESS\n• UPS실, 배터리실\n• 사무실, 복도, 로비, 화장실" },
-        { "index": "04", "title": "Features", "desc": "가용성 모델\n• 수전: 이중화 (상용, 예비)\n• 배전: 이중화, UPS 5MW 이중화\n• 냉각: N+1 (냉동기 N+1, 실내기 N+1)\n\nPUE 예측 1.1 ~ 1.3" }
+        {
+          "index": "01",
+          "title": "건축 개요",
+          "desc": "면적: 대지 575m² (174평)\n연면적 2,280m² (690평)\n\n규모: 지상 5층, 지하 1층"
+        },
+        {
+          "index": "02",
+          "title": "전력 수용량",
+          "desc": "전체 소비전력 4MW\nIT 소비전력 2.72MW\n---\n**랙 40kW × 60ea, 16kW × 20ea\n모듈당 10개\n모듈당 400kW×6, 160kW×2"
+        },
+        {
+          "index": "03",
+          "title": "시설 개요",
+          "desc": "내부 Modular 방식 적용\n• 서버실\n• 전기실\n• 발전기 : 옥외용 일체형 발전기 or ESS\n• UPS실, 배터리실\n• 사무실, 복도, 로비, 화장실"
+        },
+        {
+          "index": "04",
+          "title": "Features",
+          "desc": "가용성 모델\n• 수전: 이중화 (상용, 예비)\n• 배전: 이중화, UPS 5MW 이중화\n• 냉각: N+1 (냉동기 N+1, 실내기 N+1)\n\nPUE 예측 1.1 ~ 1.3"
+        }
       ]
     },
     "region": {
@@ -286,17 +356,37 @@
         {
           "title": "AI Cloud",
           "subtitle": "직지랩스 AI Cloud Service",
-          "items": ["GPU Instance", "Inference Service", "Agent Service"]
+          "items": [
+            "GPU Instance",
+            "Inference Service",
+            "Agent Service"
+          ]
         }
       ],
       "cluster": {
         "title": "직지랩스의 분산형 AI DC",
         "subtitle": "서울권 총 25개소 AI Data Center 클러스터 조성 목표",
         "stats": [
-          { "value": "100", "label": "MW", "desc": "Total power capacity" },
-          { "value": "1,000", "label": "Racks", "desc": "Liquid-Cooled" },
-          { "value": "32,000", "label": "B200, H200 GPUs", "desc": "Latest GPUs" },
-          { "value": "25", "label": "sites: commissioning & operations", "desc": "DC deployment" }
+          {
+            "value": "100",
+            "label": "MW",
+            "desc": "Total power capacity"
+          },
+          {
+            "value": "1,000",
+            "label": "Racks",
+            "desc": "Liquid-Cooled"
+          },
+          {
+            "value": "32,000",
+            "label": "B200, H200 GPUs",
+            "desc": "Latest GPUs"
+          },
+          {
+            "value": "25",
+            "label": "sites: commissioning & operations",
+            "desc": "DC deployment"
+          }
         ]
       }
     },
@@ -340,30 +430,149 @@
       "rtx": "RTX"
     },
     "table": {
-      "headers": ["인스턴스", "vRAM", "vCPU", "필요할 때 사용", "1개월 예약 할인", "1년 예약 할인"],
+      "headers": [
+        "인스턴스",
+        "vRAM",
+        "vCPU",
+        "필요할 때 사용",
+        "1개월 예약 할인",
+        "1년 예약 할인"
+      ],
       "b200": [
-        { "name": "8 x B200 180GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩31,200", "1month": "₩27,768", "1year": "₩24,336" },
-        { "name": "4 x B200 180GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩15,680", "1month": "₩13,955", "1year": "₩12,230" },
-        { "name": "2 x B200 180GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩7,860", "1month": "₩6,995", "1year": "₩6,131" },
-        { "name": "B200 180GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩3,935", "1month": "₩3,502", "1year": "₩3,069" }
+        {
+          "name": "8 x B200 180GB SXM",
+          "vram": "1440GB",
+          "vcpu": "192vCore",
+          "ondemand": "₩62,400",
+          "1month": "₩55,536",
+          "1year": "₩48,672"
+        },
+        {
+          "name": "4 x B200 180GB SXM",
+          "vram": "720GB",
+          "vcpu": "96vCore",
+          "ondemand": "₩31,360",
+          "1month": "₩27,910",
+          "1year": "₩24,461"
+        },
+        {
+          "name": "2 x B200 180GB SXM",
+          "vram": "360GB",
+          "vcpu": "48vCore",
+          "ondemand": "₩15,720",
+          "1month": "₩13,991",
+          "1year": "₩12,262"
+        },
+        {
+          "name": "B200 180GB SXM",
+          "vram": "180GB",
+          "vcpu": "24vCore",
+          "ondemand": "₩7,870",
+          "1month": "₩7,004",
+          "1year": "₩6,139"
+        }
       ],
       "h200": [
-        { "name": "8 x H200 80GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩22,776", "1month": "₩20,271", "1year": "₩17,765" },
-        { "name": "4 x H200 80GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩11,446", "1month": "₩10,187", "1year": "₩8,928" },
-        { "name": "2 x H200 80GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩5,738", "1month": "₩5,107", "1year": "₩4,475" },
-        { "name": "H200 80GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩2,873", "1month": "₩2,557", "1year": "₩2,241" }
+        {
+          "name": "8 x H200 80GB SXM",
+          "vram": "1440GB",
+          "vcpu": "192vCore",
+          "ondemand": "₩45,552",
+          "1month": "₩40,541",
+          "1year": "₩35,531"
+        },
+        {
+          "name": "4 x H200 80GB SXM",
+          "vram": "720GB",
+          "vcpu": "96vCore",
+          "ondemand": "₩22,893",
+          "1month": "₩20,375",
+          "1year": "₩17,856"
+        },
+        {
+          "name": "2 x H200 80GB SXM",
+          "vram": "360GB",
+          "vcpu": "48vCore",
+          "ondemand": "₩11,476",
+          "1month": "₩10,213",
+          "1year": "₩8,951"
+        },
+        {
+          "name": "H200 80GB SXM",
+          "vram": "180GB",
+          "vcpu": "24vCore",
+          "ondemand": "₩5,745",
+          "1month": "₩5,113",
+          "1year": "₩4,481"
+        }
       ],
       "h100": [
-        { "name": "8 x H100 SXM 80GB", "vram": "640GB", "vcpu": "192vCore", "ondemand": "₩33,600", "1month": "₩29,904", "1year": "₩26,208" },
-        { "name": "4 x H100 SXM 80GB", "vram": "320GB", "vcpu": "96vCore", "ondemand": "₩16,960", "1month": "₩15,094", "1year": "₩13,229" },
-        { "name": "2 x H100 SXM 80GB", "vram": "160GB", "vcpu": "48vCore", "ondemand": "₩8,520", "1month": "₩7,583", "1year": "₩6,646" },
-        { "name": "1 x H100 SXM 80GB", "vram": "80GB", "vcpu": "24vCore", "ondemand": "₩4,270", "1month": "₩3,800", "1year": "₩3,331" }
+        {
+          "name": "8 x H100 SXM 80GB",
+          "vram": "640GB",
+          "vcpu": "192vCore",
+          "ondemand": "₩33,600",
+          "1month": "₩29,904",
+          "1year": "₩26,208"
+        },
+        {
+          "name": "4 x H100 SXM 80GB",
+          "vram": "320GB",
+          "vcpu": "96vCore",
+          "ondemand": "₩16,960",
+          "1month": "₩15,094",
+          "1year": "₩13,229"
+        },
+        {
+          "name": "2 x H100 SXM 80GB",
+          "vram": "160GB",
+          "vcpu": "48vCore",
+          "ondemand": "₩8,520",
+          "1month": "₩7,583",
+          "1year": "₩6,646"
+        },
+        {
+          "name": "1 x H100 SXM 80GB",
+          "vram": "80GB",
+          "vcpu": "24vCore",
+          "ondemand": "₩4,270",
+          "1month": "₩3,800",
+          "1year": "₩3,331"
+        }
       ],
       "rtx": [
-        { "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "640GB", "vcpu": "128vCore", "ondemand": "₩7,880", "1month": "₩7,013", "1year": "₩6,146" },
-        { "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "320GB", "vcpu": "64vCore", "ondemand": "₩3,940", "1month": "₩3,507", "1year": "₩3,073" },
-        { "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "160GB", "vcpu": "32vCore", "ondemand": "₩1,990", "1month": "₩1,771", "1year": "₩1,552" },
-        { "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "80GB", "vcpu": "16vCore", "ondemand": "₩1,000", "1month": "₩890", "1year": "₩780" }
+        {
+          "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "640GB",
+          "vcpu": "128vCore",
+          "ondemand": "₩7,880",
+          "1month": "₩7,013",
+          "1year": "₩6,146"
+        },
+        {
+          "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "320GB",
+          "vcpu": "64vCore",
+          "ondemand": "₩7,880",
+          "1month": "₩7,013",
+          "1year": "₩6,146"
+        },
+        {
+          "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "160GB",
+          "vcpu": "32vCore",
+          "ondemand": "₩3,980",
+          "1month": "₩3,542",
+          "1year": "₩3,104"
+        },
+        {
+          "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "80GB",
+          "vcpu": "16vCore",
+          "ondemand": "₩2,000",
+          "1month": "₩1,780",
+          "1year": "₩1,560"
+        }
       ]
     },
     "notes": [
