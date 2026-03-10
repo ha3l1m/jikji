@@ -34,7 +34,8 @@
         {
           "label": "Documentation",
           "href": "https://example.com/docs",
-          "external": true
+          "disabled": false,
+          "badge": ""
         },
         {
           "label": "Help Center",
