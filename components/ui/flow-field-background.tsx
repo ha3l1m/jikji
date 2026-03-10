@@ -8,6 +8,7 @@ interface NeuralBackgroundProps {
   trailOpacity?: number;
   particleCount?: number;
   speed?: number;
+  flowScale?: number;
 }
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -25,6 +26,7 @@ interface ParticleState {
   color: string;
   startRgb: [number, number, number];
   endRgb: [number, number, number] | null;
+  flowScale: number;
 }
 
 class Particle {
@@ -41,12 +43,15 @@ class Particle {
     this.vx = 0;
     this.vy = 0;
     this.age = 0;
-    this.life = Math.random() * 200 + 100;
+    this.life = Math.random() * 400 + 200;
   }
 
   update() {
-    const { width, height, mouse, speed } = this.state;
-    const angle = (Math.cos(this.x * 0.005) + Math.sin(this.y * 0.005)) * Math.PI;
+    const { width, height, mouse, speed, flowScale } = this.state;
+    const angle = (
+      Math.cos(this.x * flowScale + this.y * flowScale * 1.3) +
+      Math.sin(this.y * flowScale * 0.9 - this.x * flowScale * 0.7)
+    ) * Math.PI;
     this.vx += Math.cos(angle) * 0.2 * speed;
     this.vy += Math.sin(angle) * 0.2 * speed;
 
@@ -84,7 +89,7 @@ class Particle {
     this.vx = 0;
     this.vy = 0;
     this.age = 0;
-    this.life = Math.random() * 200 + 100;
+    this.life = Math.random() * 400 + 200;
   }
 
   draw(context: CanvasRenderingContext2D) {
@@ -107,7 +112,7 @@ class Particle {
     context.fillStyle = fillColor;
     const alpha = 1 - Math.abs((this.age / this.life) - 0.5) * 2;
     context.globalAlpha = alpha;
-    context.fillRect(this.x, this.y, 1.5, 1.5);
+    context.fillRect(this.x, this.y, 2, 2);
   }
 }
 
@@ -118,6 +123,7 @@ export default function NeuralBackground({
   trailOpacity = 0.15,
   particleCount = 600,
   speed = 1,
+  flowScale = 0.003,
 }: NeuralBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -138,6 +144,7 @@ export default function NeuralBackground({
       color,
       startRgb: hexToRgb(color),
       endRgb: colorEnd ? hexToRgb(colorEnd) : null,
+      flowScale,
     };
 
     let particles: Particle[] = [];
@@ -199,7 +206,7 @@ export default function NeuralBackground({
       container.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [color, colorEnd, trailOpacity, particleCount, speed]);
+  }, [color, colorEnd, trailOpacity, particleCount, speed, flowScale]);
 
   return (
     <div ref={containerRef} className={cn("relative w-full h-full bg-black overflow-hidden", className)}>
