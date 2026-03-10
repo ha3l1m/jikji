@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css'; // Global styles
-import { ClientProviders } from '@/components/client-providers';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -70,9 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={`${inter.variable} dark`}>
       <body className="bg-[#01071B] text-white antialiased font-sans selection:bg-white/30">
-        <ClientProviders>
-          {children}
-        </ClientProviders>
+        {children}
       </body>
     </html>
   );
