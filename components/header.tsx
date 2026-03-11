@@ -5,8 +5,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Logo } from './logo';
 import { ShinyButton } from './ui/shiny-button';
+import { scrollToSection } from '@/lib/scroll-to-section';
 
 type NavItem = {
   label: string;
@@ -23,28 +25,6 @@ type NavSection = {
   items?: NavItem[];
 };
 
-function scrollToSection(href: string) {
-  if (!href.startsWith('#')) return;
-
-  const id = href.slice(1);
-
-  // Dispatch tab-switch event for products section
-  if (id === 'gpucloud' || id === 'platform') {
-    window.dispatchEvent(
-      new CustomEvent('products-tab-switch', { detail: id }),
-    );
-  }
-
-  const el = document.getElementById(id);
-  if (el) {
-    const top =
-      el.getBoundingClientRect().top +
-      window.scrollY -
-      (window.innerHeight - el.offsetHeight) / 2;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
-}
-
 function NavLink({
   href,
   className,
@@ -58,6 +38,9 @@ function NavLink({
   onClick?: () => void;
   external?: boolean;
 }) {
+  const pathname = usePathname();
+  const router = useRouter();
+
   if (external || !href.startsWith('#')) {
     return (
       <Link
@@ -77,7 +60,12 @@ function NavLink({
       className={className}
       onClick={(e) => {
         e.preventDefault();
-        scrollToSection(href);
+        if (pathname !== '/') {
+          sessionStorage.setItem('pendingScroll', href);
+          router.push('/');
+        } else {
+          scrollToSection(href);
+        }
         onClick?.();
       }}
     >
