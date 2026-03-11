@@ -22,6 +22,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(60, w / h, 1, 10000);
 		camera.position.set(0, 355, 1220);
+		camera.lookAt(0, 0, 0);
 
 		const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 		renderer.setPixelRatio(window.devicePixelRatio);
@@ -42,12 +43,16 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
 		for (let ix = 0; ix < AMOUNTX; ix++) {
 			for (let iy = 0; iy < AMOUNTY; iy++) {
+				const z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
 				positions.push(
 					ix * SEPARATION - (AMOUNTX * SEPARATION) / 2,
 					0,
-					iy * SEPARATION - (AMOUNTY * SEPARATION) / 2,
+					z,
 				);
-				colors.push(0.63, 0.63, 0.67);
+				// Fade near (foreground) dots: camera is at z=1220, visible range ~-4500 to 1219
+				const proximity = Math.max(0, (1219 - z) / 5719); // 0 = near, 1 = far
+				const brightness = Math.pow(proximity, 0.5);
+				colors.push(0.63 * brightness, 0.63 * brightness, 0.67 * brightness);
 			}
 		}
 

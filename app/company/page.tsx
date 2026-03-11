@@ -132,9 +132,8 @@ export default function CompanyPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Left: Image */}
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="relative flex justify-center"
             >
@@ -150,14 +149,13 @@ export default function CompanyPage() {
 
             {/* Right: Text */}
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-4"
+              className="w-4/5 mx-auto md:w-full md:mx-0 space-y-4"
             >
               {/* Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
+              <div className="hidden items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
                 Our Origin
               </div>
 
@@ -167,9 +165,9 @@ export default function CompanyPage() {
               </h2>
 
               {/* Body */}
-              <div className="flex flex-col">
-                {t.company.about.heritage_desc.split('\n').map((line, i) => (
-                  <p key={i} className="text-base md:text-lg text-white/60 leading-relaxed">{line}</p>
+              <div className="flex flex-col gap-4">
+                {t.company.about.heritage_desc.split('\n\n').map((para, i) => (
+                  <p key={i} className="text-base md:text-lg text-white/60 leading-relaxed">{para}</p>
                 ))}
               </div>
             </motion.div>

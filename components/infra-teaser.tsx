@@ -42,7 +42,7 @@ export function InfraTeaser() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
+                  className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-white"
                 >
                   {cluster.title}
                 </motion.h2>
@@ -56,7 +56,11 @@ export function InfraTeaser() {
                   {cluster.subtitle}
                 </motion.p>
               </div>
-              <SeoulDottedMap className="w-full max-w-lg mx-auto" />
+              <div style={{ perspective: '580px' }}>
+                <div style={{ transform: 'rotateX(46deg)', transformOrigin: 'center 60%' }}>
+                  <SeoulDottedMap className="w-full max-w-lg mx-auto" />
+                </div>
+              </div>
             </motion.div>
 
             {/* Stats + CTA */}
@@ -116,7 +120,7 @@ export function InfraTeaser() {
               viewport={{ once: true }}
             >
               <div className="flex justify-center md:justify-start mb-4">
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium" style={{ background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.25)', color: '#C9A84C' }}>
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium" style={{ background: 'rgba(159,122,94,0.1)', border: '1px solid rgba(212,157,115,0.3)', color: '#D4A574' }}>
                   {t.infrastructure.aidc.badge}
                 </div>
               </div>
@@ -153,9 +157,9 @@ export function InfraTeaser() {
                             <span className="text-xs leading-snug" style={{ color: '#8E9399' }}>{line.slice(2)}</span>
                           </div>
                         );
-                        if (line.startsWith('**')) return <p key={i} className="text-xs md:text-sm leading-snug font-semibold text-white">{line.slice(2)}</p>;
+                        if (line.startsWith('**')) return <p key={i} className="text-xs md:text-sm leading-snug font-semibold" style={{ color: '#8e9399' }}>{line.slice(2)}</p>;
                         if (line === '') return <div key={i} className="h-1" />;
-                        return <p key={i} className="text-xs md:text-sm leading-snug" style={{ color: 'rgba(255,255,255,0.5)' }}>{line}</p>;
+                        return <p key={i} className="text-xs md:text-sm leading-snug" style={{ color: '#8e9399' }}>{line}</p>;
                       });
                       const parts = spec.desc.split('\n---\n');
                       if (parts.length === 1) return <div className="relative z-10 space-y-0.5">{renderLines(parts[0])}</div>;
@@ -193,7 +197,7 @@ export function InfraTeaser() {
                 }}
               >
                 <Image
-                  src="/images/jikjiaidc.png"
+                  src="/images/jikjidc.jpg"
                   alt="직지 AI DC"
                   fill
                   className="object-cover"
