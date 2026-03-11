@@ -12,11 +12,24 @@ export function Hero() {
   const { t } = useI18n();
 
   return (
-    <section id="hero" className="relative min-h-[85vh] pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden" style={{ background: 'linear-gradient(180deg, #0E0E10 0%, #0E0E10 100%)' }}>
+    <section
+      id="hero"
+      className="relative min-h-[85vh] pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden"
+      style={{
+        background: 'linear-gradient(180deg, #0E0E10 0%, #0E0E10 100%)',
+      }}
+    >
       {/* Etheral shadow animation background */}
       <EtheralShadow
         className="pointer-events-none opacity-20"
-        style={{ position: 'absolute', inset: 0, maskImage: 'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)' }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          maskImage:
+            'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)',
+        }}
         color="rgba(89, 91, 95, 1)"
         animation={{ scale: 100, speed: 90 }}
         noise={{ opacity: 0.5, scale: 1.2 }}
@@ -36,15 +49,27 @@ export function Hero() {
       </div> */}
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 20%, transparent 30%, #0E0E10 90%)' }} />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 50% at 50% 20%, transparent 30%, #0E0E10 90%)',
+        }}
+      />
 
       {/* Decorative gradient blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Gold glow - center top */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-10 mix-blend-overlay rounded-full blur-3xl" style={{ background: '#595B5F' }} />
+        <div
+          className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-10 mix-blend-overlay rounded-full blur-3xl"
+          style={{ background: '#595B5F' }}
+        />
         {/* Gold streak */}
         <div className="absolute left-[420px] top-[120px] w-44 h-32 mix-blend-overlay overflow-hidden">
-          <div className="absolute left-[52px] top-[42px] w-20 h-6 origin-top-left rotate-[15deg] opacity-20 rounded-full blur-sm" style={{ background: '#595B5F' }} />
+          <div
+            className="absolute left-[52px] top-[42px] w-20 h-6 origin-top-left rotate-[15deg] opacity-20 rounded-full blur-sm"
+            style={{ background: '#595B5F' }}
+          />
         </div>
       </div>
 
@@ -72,7 +97,6 @@ export function Hero() {
           {t.hero.title}
         </motion.h1>
 
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,7 +112,6 @@ export function Hero() {
           </Link>
           {/* cta_secondary hidden */}
         </motion.div>
-
       </div>
     </section>
   );

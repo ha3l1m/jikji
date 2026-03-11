@@ -8,7 +8,11 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-export function SectionHeader({ title, subtitle, className = '' }: SectionHeaderProps) {
+export function SectionHeader({
+  title,
+  subtitle,
+  className = '',
+}: SectionHeaderProps) {
   return (
     <div className={`text-center mb-16 md:mb-24 ${className}`}>
       <motion.h2

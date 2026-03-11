@@ -1,6 +1,6 @@
-"use client";
-import { cn } from "@/lib/utils";
-import React, { ReactNode } from "react";
+'use client';
+import { cn } from '@/lib/utils';
+import React, { ReactNode } from 'react';
 
 interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children?: ReactNode;
@@ -14,10 +14,7 @@ export const AuroraBackground = ({
   ...props
 }: AuroraBackgroundProps) => {
   return (
-    <div
-      className={cn("relative overflow-hidden", className)}
-      {...props}
-    >
+    <div className={cn('relative overflow-hidden', className)} {...props}>
       <div className="absolute inset-0 overflow-hidden">
         <div
           className={cn(
@@ -42,7 +39,7 @@ export const AuroraBackground = ({
             pointer-events-none
             absolute -inset-[10px] opacity-50 will-change-transform`,
             showRadialGradient &&
-              `[mask-image:radial-gradient(ellipse_at_50%_0%,black_20%,var(--transparent)_75%)]`
+              `[mask-image:radial-gradient(ellipse_at_50%_0%,black_20%,var(--transparent)_75%)]`,
           )}
         />
       </div>

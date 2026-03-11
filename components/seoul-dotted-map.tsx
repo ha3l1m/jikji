@@ -1,6 +1,12 @@
 'use client';
 
-import { useRef, useEffect, useLayoutEffect, useCallback, useState } from 'react';
+import {
+  useRef,
+  useEffect,
+  useLayoutEffect,
+  useCallback,
+  useState,
+} from 'react';
 import { useInView } from 'motion/react';
 
 const W = 800;
@@ -85,7 +91,6 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     return () => ro.disconnect();
   }, []);
 
-
   const DC_LOCATIONS = [
     // DC#1 — existing, Gangdong area
     { left: '90%', top: '75%', label: 'First AI DC', year: '2027' },
@@ -119,7 +124,8 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     for (const { fx, fy, nu, nv } of dots) {
       const sph = sphereProject(nu, nv, tilt);
       const globeFade = Math.max(0.25, Math.min(1, sph.zr + 0.6));
-      const opacity = progress * ((1 - progress) * 0.28 + progress * globeFade * 0.38);
+      const opacity =
+        progress * ((1 - progress) * 0.28 + progress * globeFade * 0.38);
       if (opacity < 0.01) continue;
 
       const x = Math.round(fx + (sph.x - fx) * progress);
@@ -133,8 +139,14 @@ export function SeoulDottedMap({ className }: { className?: string }) {
       const projH = Math.abs(sphD.y - sphU.y) / flatNvSpan;
       const projW = Math.abs(sphR.x - sphL.x) / flatNuSpan;
 
-      const dh = Math.max(1, Math.round(DOT * (1 - progress + projH * progress)));
-      const dw = Math.max(1, Math.round(DOT * (1 - progress + projW * progress)));
+      const dh = Math.max(
+        1,
+        Math.round(DOT * (1 - progress + projH * progress)),
+      );
+      const dw = Math.max(
+        1,
+        Math.round(DOT * (1 - progress + projW * progress)),
+      );
 
       ctx.fillStyle = `rgba(255,255,255,${opacity.toFixed(3)})`;
       ctx.fillRect(x - dw / 2, y - dh / 2, dw, dh);
@@ -221,19 +233,28 @@ export function SeoulDottedMap({ className }: { className?: string }) {
   useEffect(() => {
     if (!tiltDone) return;
     if (visibleDCs >= DC_LOCATIONS.length) return;
-    const timer = setTimeout(() => {
-      setVisibleDCs((n) => n + 1);
-    }, visibleDCs === 1 ? 1500 : 800);
+    const timer = setTimeout(
+      () => {
+        setVisibleDCs((n) => n + 1);
+      },
+      visibleDCs === 1 ? 1500 : 800,
+    );
     return () => clearTimeout(timer);
   }, [tiltDone, visibleDCs]);
 
   return (
-    <div ref={containerRef} className={className} style={{ position: 'relative' }}>
+    <div
+      ref={containerRef}
+      className={className}
+      style={{ position: 'relative' }}
+    >
       {/* Canvas with fade mask */}
       <div
         style={{
-          maskImage: 'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
+          maskImage:
+            'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
         }}
       >
         <canvas
@@ -268,10 +289,10 @@ export function SeoulDottedMap({ className }: { className?: string }) {
             const idx = i + 1;
             if (visibleDCs <= idx) return null;
 
-            const x1 = parseFloat(DC_LOCATIONS[0].left) / 100 * mapSize.w;
-            const y1 = parseFloat(DC_LOCATIONS[0].top) / 100 * mapSize.h;
-            const x2 = parseFloat(dc.left) / 100 * mapSize.w;
-            const y2 = parseFloat(dc.top) / 100 * mapSize.h;
+            const x1 = (parseFloat(DC_LOCATIONS[0].left) / 100) * mapSize.w;
+            const y1 = (parseFloat(DC_LOCATIONS[0].top) / 100) * mapSize.h;
+            const x2 = (parseFloat(dc.left) / 100) * mapSize.w;
+            const y2 = (parseFloat(dc.top) / 100) * mapSize.h;
 
             const cx = (x1 + x2) / 2;
             const cy = Math.min(y1, y2) - mapSize.h * 0.18;
@@ -352,15 +373,36 @@ export function SeoulDottedMap({ className }: { className?: string }) {
               padding: '8px 14px',
               whiteSpace: 'nowrap',
               boxShadow: '0 0 18px rgba(0,0,0,0.4), 0 0 6px rgba(0,0,0,0.3)',
-              animation: 'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
+              animation:
+                'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               gap: '1px',
             }}
           >
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>2027 오픈</span>
+            <span
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 400,
+                fontSize: '14px',
+                lineHeight: '18px',
+                color: 'rgba(255,255,255,0.75)',
+              }}
+            >
+              First AI DC
+            </span>
+            <span
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 700,
+                fontSize: '16px',
+                lineHeight: '20px',
+                color: '#ffffff',
+              }}
+            >
+              2027 오픈
+            </span>
           </div>
           {/* Future DC markers */}
           {DC_LOCATIONS.slice(1).map((dc, i) => {

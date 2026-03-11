@@ -1,47 +1,51 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
 interface ShinyButtonProps {
-  children: React.ReactNode
-  onClick?: () => void
-  className?: string
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
 }
 
-export function ShinyButton({ children, onClick, className = "" }: ShinyButtonProps) {
+export function ShinyButton({
+  children,
+  onClick,
+  className = '',
+}: ShinyButtonProps) {
   return (
     <>
       <style jsx>{`
         @property --gradient-angle {
-          syntax: "<angle>";
+          syntax: '<angle>';
           initial-value: 0deg;
           inherits: false;
         }
 
         @property --gradient-angle-offset {
-          syntax: "<angle>";
+          syntax: '<angle>';
           initial-value: 0deg;
           inherits: false;
         }
 
         @property --gradient-percent {
-          syntax: "<percentage>";
+          syntax: '<percentage>';
           initial-value: 5%;
           inherits: false;
         }
 
         @property --gradient-shine {
-          syntax: "<color>";
+          syntax: '<color>';
           initial-value: white;
           inherits: false;
         }
 
         .shiny-cta {
           --shiny-cta-bg: #000000;
-          --shiny-cta-bg-subtle: #151C32;
+          --shiny-cta-bg-subtle: #151c32;
           --shiny-cta-fg: #ffffff;
-          --shiny-cta-highlight: #5572E2;
-          --shiny-cta-highlight-subtle: #4064EB;
+          --shiny-cta-highlight: #5572e2;
+          --shiny-cta-highlight-subtle: #4064eb;
           --animation: gradient-angle linear infinite;
           --duration: 3s;
           --shadow-size: 2px;
@@ -60,24 +64,28 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           border: 1px solid transparent;
           border-radius: 10px;
           color: var(--shiny-cta-fg);
-          background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
+          background:
+            linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg))
+              padding-box,
             conic-gradient(
-              from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
-              transparent,
-              var(--shiny-cta-highlight) var(--gradient-percent),
-              var(--gradient-shine) calc(var(--gradient-percent) * 2),
-              var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
-              transparent calc(var(--gradient-percent) * 4)
-            ) border-box;
+                from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+                transparent,
+                var(--shiny-cta-highlight) var(--gradient-percent),
+                var(--gradient-shine) calc(var(--gradient-percent) * 2),
+                var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+                transparent calc(var(--gradient-percent) * 4)
+              )
+              border-box;
           box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
           transition: var(--transition);
-          transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+          transition-property:
+            --gradient-angle-offset, --gradient-percent, --gradient-shine;
         }
 
         .shiny-cta::before,
         .shiny-cta::after,
         .shiny-cta span::before {
-          content: "";
+          content: '';
           pointer-events: none;
           position: absolute;
           inset-inline-start: 50%;
@@ -98,10 +106,11 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           width: var(--size);
           height: var(--size);
           background: radial-gradient(
-            circle at var(--position) var(--position),
-            white calc(var(--position) / 4),
-            transparent 0
-          ) padding-box;
+              circle at var(--position) var(--position),
+              white calc(var(--position) / 4),
+              transparent 0
+            )
+            padding-box;
           background-size: var(--space) var(--space);
           background-repeat: space;
           mask-image: conic-gradient(
@@ -148,7 +157,8 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
         .shiny-cta,
         .shiny-cta::before,
         .shiny-cta::after {
-          animation: var(--animation) var(--duration),
+          animation:
+            var(--animation) var(--duration),
             var(--animation) calc(var(--duration) / 0.4) reverse paused;
           animation-composition: add;
         }
@@ -182,7 +192,8 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
         }
 
         @keyframes breathe {
-          from, to {
+          from,
+          to {
             scale: 1;
           }
           50% {
@@ -195,5 +206,5 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
         <span>{children}</span>
       </button>
     </>
-  )
+  );
 }
