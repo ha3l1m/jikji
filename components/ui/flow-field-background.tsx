@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React, { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface NeuralBackgroundProps {
   className?: string;
@@ -14,7 +14,11 @@ interface NeuralBackgroundProps {
 function hexToRgb(hex: string): [number, number, number] {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
-    ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)]
+    ? [
+        parseInt(result[1], 16),
+        parseInt(result[2], 16),
+        parseInt(result[3], 16),
+      ]
     : [255, 255, 255];
 }
 
@@ -48,10 +52,10 @@ class Particle {
 
   update() {
     const { width, height, mouse, speed, flowScale } = this.state;
-    const angle = (
-      Math.cos(this.x * flowScale + this.y * flowScale * 1.3) +
-      Math.sin(this.y * flowScale * 0.9 - this.x * flowScale * 0.7)
-    ) * Math.PI;
+    const angle =
+      (Math.cos(this.x * flowScale + this.y * flowScale * 1.3) +
+        Math.sin(this.y * flowScale * 0.9 - this.x * flowScale * 0.7)) *
+      Math.PI;
     this.vx += Math.cos(angle) * 0.2 * speed;
     this.vy += Math.sin(angle) * 0.2 * speed;
 
@@ -110,7 +114,7 @@ class Particle {
       fillColor = `rgb(${r}, ${g}, ${b})`;
     }
     context.fillStyle = fillColor;
-    const alpha = 1 - Math.abs((this.age / this.life) - 0.5) * 2;
+    const alpha = 1 - Math.abs(this.age / this.life - 0.5) * 2;
     context.globalAlpha = alpha;
     context.fillRect(this.x, this.y, 2, 2);
   }
@@ -118,7 +122,7 @@ class Particle {
 
 export default function NeuralBackground({
   className,
-  color = "#6366f1",
+  color = '#6366f1',
   colorEnd,
   trailOpacity = 0.15,
   particleCount = 600,
@@ -133,7 +137,7 @@ export default function NeuralBackground({
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const state: ParticleState = {
@@ -196,20 +200,26 @@ export default function NeuralBackground({
     init();
     animate();
 
-    window.addEventListener("resize", handleResize);
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener('resize', handleResize);
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener('resize', handleResize);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
   }, [color, colorEnd, trailOpacity, particleCount, speed, flowScale]);
 
   return (
-    <div ref={containerRef} className={cn("relative w-full h-full bg-black overflow-hidden", className)}>
+    <div
+      ref={containerRef}
+      className={cn(
+        'relative w-full h-full bg-black overflow-hidden',
+        className,
+      )}
+    >
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );
