@@ -357,11 +357,7 @@
         {
           "title": "AI Cloud",
           "subtitle": "직지랩스 AI Cloud Service",
-          "items": [
-            "GPU Instance",
-            "Inference Service",
-            "Agent Service"
-          ]
+          "items": ["GPU Instance", "Inference Service", "Agent Service"]
         }
       ],
       "cluster": {

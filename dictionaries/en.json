@@ -150,11 +150,26 @@
       "inference": {
         "title": "Inference Endpoint in One Shot — Serverless MLOps",
         "steps": [
-          { "label": "Connect Repo", "desc": "Link customer GitHub/GitLab repository" },
-          { "label": "Auto Build", "desc": "Container image creation & vulnerability scan" },
-          { "label": "Runtime Config", "desc": "Model/framework selection, auto dependency injection" },
-          { "label": "Staging → Production", "desc": "Canary/Blue-Green deployment support" },
-          { "label": "Issue Endpoint", "desc": "Serverless API Key & domain instantly provided" }
+          {
+            "label": "Connect Repo",
+            "desc": "Link customer GitHub/GitLab repository"
+          },
+          {
+            "label": "Auto Build",
+            "desc": "Container image creation & vulnerability scan"
+          },
+          {
+            "label": "Runtime Config",
+            "desc": "Model/framework selection, auto dependency injection"
+          },
+          {
+            "label": "Staging → Production",
+            "desc": "Canary/Blue-Green deployment support"
+          },
+          {
+            "label": "Issue Endpoint",
+            "desc": "Serverless API Key & domain instantly provided"
+          }
         ],
         "features": [
           {
@@ -178,7 +193,10 @@
       "agents": {
         "title": "Just connect the endpoint, and the latest Agentic Workflow runs immediately",
         "features": [
-          { "title": "Model Selection", "desc": "Supports Qwen / Exaone, optimized for Korean" },
+          {
+            "title": "Model Selection",
+            "desc": "Supports Qwen / Exaone, optimized for Korean"
+          },
           {
             "title": "Private Cloud/VPC Deployment",
             "desc": "Data isolation/encryption, compliance with corporate security policies"
@@ -236,10 +254,26 @@
       "badge": "Completion planned Q3 2027 · Ultra-fast data hub for the AI era",
       "subtitle": "State-of-the-art PMDC (Purpose-Built Modular Data Center) designed for AI",
       "specs": [
-        { "index": "01", "title": "Building Overview", "desc": "Site: 575m² (174 pyeong)\nFloor area: 2,280m² (690 pyeong)\n\nScale: 5F above, 1F below ground" },
-        { "index": "02", "title": "Power Capacity", "desc": "Total power: 4MW\nIT power: 2.72MW\n---\n**Racks: 40kW × 60ea, 16kW × 20ea\n10 modules per rack\nPer module: 400kW×6, 160kW×2" },
-        { "index": "03", "title": "Facility Overview", "desc": "Internal modular design\n• Server room\n• Electrical room\n• Generator: outdoor integrated or ESS\n• UPS room, battery room\n• Office, corridor, lobby, restroom" },
-        { "index": "04", "title": "Features", "desc": "Availability Model\n• Power: redundant (primary + standby)\n• Distribution: redundant, UPS 5MW dual\n• Cooling: N+1 (chiller N+1, FCU N+1)\n\nPUE estimate: 1.1 ~ 1.3" }
+        {
+          "index": "01",
+          "title": "Building Overview",
+          "desc": "Site: 575m² (174 pyeong)\nFloor area: 2,280m² (690 pyeong)\n\nScale: 5F above, 1F below ground"
+        },
+        {
+          "index": "02",
+          "title": "Power Capacity",
+          "desc": "Total power: 4MW\nIT power: 2.72MW\n---\n**Racks: 40kW × 60ea, 16kW × 20ea\n10 modules per rack\nPer module: 400kW×6, 160kW×2"
+        },
+        {
+          "index": "03",
+          "title": "Facility Overview",
+          "desc": "Internal modular design\n• Server room\n• Electrical room\n• Generator: outdoor integrated or ESS\n• UPS room, battery room\n• Office, corridor, lobby, restroom"
+        },
+        {
+          "index": "04",
+          "title": "Features",
+          "desc": "Availability Model\n• Power: redundant (primary + standby)\n• Distribution: redundant, UPS 5MW dual\n• Cooling: N+1 (chiller N+1, FCU N+1)\n\nPUE estimate: 1.1 ~ 1.3"
+        }
       ]
     },
     "region": {
@@ -297,8 +331,16 @@
         "stats": [
           { "value": "100", "label": "MW", "desc": "Total power capacity" },
           { "value": "1,000", "label": "Racks", "desc": "Liquid-Cooled" },
-          { "value": "32,000", "label": "B200, H200 GPUs", "desc": "Latest GPUs" },
-          { "value": "25", "label": "sites: commissioning & operations", "desc": "DC deployment" }
+          {
+            "value": "32,000",
+            "label": "B200, H200 GPUs",
+            "desc": "Latest GPUs"
+          },
+          {
+            "value": "25",
+            "label": "sites: commissioning & operations",
+            "desc": "DC deployment"
+          }
         ]
       }
     },
@@ -342,30 +384,149 @@
       "rtx": "RTX"
     },
     "table": {
-      "headers": ["Instance", "vRAM", "vCPU", "On-demand", "Reserved 1 Month", "Reserved 1 Year"],
+      "headers": [
+        "Instance",
+        "vRAM",
+        "vCPU",
+        "On-demand",
+        "Reserved 1 Month",
+        "Reserved 1 Year"
+      ],
       "b200": [
-        { "name": "8 x B200 180GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩31,200", "1month": "₩27,768", "1year": "₩24,336" },
-        { "name": "4 x B200 180GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩15,680", "1month": "₩13,955", "1year": "₩12,230" },
-        { "name": "2 x B200 180GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩7,860", "1month": "₩6,995", "1year": "₩6,131" },
-        { "name": "B200 180GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩3,935", "1month": "₩3,502", "1year": "₩3,069" }
+        {
+          "name": "8 x B200 180GB SXM",
+          "vram": "1440GB",
+          "vcpu": "192vCore",
+          "ondemand": "₩31,200",
+          "1month": "₩27,768",
+          "1year": "₩24,336"
+        },
+        {
+          "name": "4 x B200 180GB SXM",
+          "vram": "720GB",
+          "vcpu": "96vCore",
+          "ondemand": "₩15,680",
+          "1month": "₩13,955",
+          "1year": "₩12,230"
+        },
+        {
+          "name": "2 x B200 180GB SXM",
+          "vram": "360GB",
+          "vcpu": "48vCore",
+          "ondemand": "₩7,860",
+          "1month": "₩6,995",
+          "1year": "₩6,131"
+        },
+        {
+          "name": "B200 180GB SXM",
+          "vram": "180GB",
+          "vcpu": "24vCore",
+          "ondemand": "₩3,935",
+          "1month": "₩3,502",
+          "1year": "₩3,069"
+        }
       ],
       "h200": [
-        { "name": "8 x H200 80GB SXM", "vram": "1440GB", "vcpu": "192vCore", "ondemand": "₩22,776", "1month": "₩20,271", "1year": "₩17,765" },
-        { "name": "4 x H200 80GB SXM", "vram": "720GB", "vcpu": "96vCore", "ondemand": "₩11,446", "1month": "₩10,187", "1year": "₩8,928" },
-        { "name": "2 x H200 80GB SXM", "vram": "360GB", "vcpu": "48vCore", "ondemand": "₩5,738", "1month": "₩5,107", "1year": "₩4,475" },
-        { "name": "H200 80GB SXM", "vram": "180GB", "vcpu": "24vCore", "ondemand": "₩2,873", "1month": "₩2,557", "1year": "₩2,241" }
+        {
+          "name": "8 x H200 80GB SXM",
+          "vram": "1440GB",
+          "vcpu": "192vCore",
+          "ondemand": "₩22,776",
+          "1month": "₩20,271",
+          "1year": "₩17,765"
+        },
+        {
+          "name": "4 x H200 80GB SXM",
+          "vram": "720GB",
+          "vcpu": "96vCore",
+          "ondemand": "₩11,446",
+          "1month": "₩10,187",
+          "1year": "₩8,928"
+        },
+        {
+          "name": "2 x H200 80GB SXM",
+          "vram": "360GB",
+          "vcpu": "48vCore",
+          "ondemand": "₩5,738",
+          "1month": "₩5,107",
+          "1year": "₩4,475"
+        },
+        {
+          "name": "H200 80GB SXM",
+          "vram": "180GB",
+          "vcpu": "24vCore",
+          "ondemand": "₩2,873",
+          "1month": "₩2,557",
+          "1year": "₩2,241"
+        }
       ],
       "h100": [
-        { "name": "8 x H100 SXM 80GB", "vram": "640GB", "vcpu": "192vCore", "ondemand": "₩33,600", "1month": "₩29,904", "1year": "₩26,208" },
-        { "name": "4 x H100 SXM 80GB", "vram": "320GB", "vcpu": "96vCore", "ondemand": "₩16,960", "1month": "₩15,094", "1year": "₩13,229" },
-        { "name": "2 x H100 SXM 80GB", "vram": "160GB", "vcpu": "48vCore", "ondemand": "₩8,520", "1month": "₩7,583", "1year": "₩6,646" },
-        { "name": "1 x H100 SXM 80GB", "vram": "80GB", "vcpu": "24vCore", "ondemand": "₩4,270", "1month": "₩3,800", "1year": "₩3,331" }
+        {
+          "name": "8 x H100 SXM 80GB",
+          "vram": "640GB",
+          "vcpu": "192vCore",
+          "ondemand": "₩33,600",
+          "1month": "₩29,904",
+          "1year": "₩26,208"
+        },
+        {
+          "name": "4 x H100 SXM 80GB",
+          "vram": "320GB",
+          "vcpu": "96vCore",
+          "ondemand": "₩16,960",
+          "1month": "₩15,094",
+          "1year": "₩13,229"
+        },
+        {
+          "name": "2 x H100 SXM 80GB",
+          "vram": "160GB",
+          "vcpu": "48vCore",
+          "ondemand": "₩8,520",
+          "1month": "₩7,583",
+          "1year": "₩6,646"
+        },
+        {
+          "name": "1 x H100 SXM 80GB",
+          "vram": "80GB",
+          "vcpu": "24vCore",
+          "ondemand": "₩4,270",
+          "1month": "₩3,800",
+          "1year": "₩3,331"
+        }
       ],
       "rtx": [
-        { "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "640GB", "vcpu": "128vCore", "ondemand": "₩7,880", "1month": "₩7,013", "1year": "₩6,146" },
-        { "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "320GB", "vcpu": "64vCore", "ondemand": "₩3,940", "1month": "₩3,507", "1year": "₩3,073" },
-        { "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "160GB", "vcpu": "32vCore", "ondemand": "₩1,990", "1month": "₩1,771", "1year": "₩1,552" },
-        { "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe", "vram": "80GB", "vcpu": "16vCore", "ondemand": "₩1,000", "1month": "₩890", "1year": "₩780" }
+        {
+          "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "640GB",
+          "vcpu": "128vCore",
+          "ondemand": "₩7,880",
+          "1month": "₩7,013",
+          "1year": "₩6,146"
+        },
+        {
+          "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "320GB",
+          "vcpu": "64vCore",
+          "ondemand": "₩3,940",
+          "1month": "₩3,507",
+          "1year": "₩3,073"
+        },
+        {
+          "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "160GB",
+          "vcpu": "32vCore",
+          "ondemand": "₩1,990",
+          "1month": "₩1,771",
+          "1year": "₩1,552"
+        },
+        {
+          "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe",
+          "vram": "80GB",
+          "vcpu": "16vCore",
+          "ondemand": "₩1,000",
+          "1month": "₩890",
+          "1year": "₩780"
+        }
       ]
     },
     "notes": [

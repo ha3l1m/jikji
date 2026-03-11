@@ -10,10 +10,22 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default: 'JIKJI',
-    template: 'JIKJI'
+    template: 'JIKJI',
   },
-  description: 'Accelerate Your AI Solutions with N3N. 복잡한 인프라 관리 없이 데이터센터부터 AI 서비스까지 한 번에 구축하세요.',
-  keywords: ['AI', 'Machine Learning', 'GPU Cloud', 'MLOps', 'AI Infrastructure', 'N3N', 'JIKJI', 'AI 데이터센터', 'GPUaaS', 'AI Platform'],
+  description:
+    'Accelerate Your AI Solutions with N3N. 복잡한 인프라 관리 없이 데이터센터부터 AI 서비스까지 한 번에 구축하세요.',
+  keywords: [
+    'AI',
+    'Machine Learning',
+    'GPU Cloud',
+    'MLOps',
+    'AI Infrastructure',
+    'N3N',
+    'JIKJI',
+    'AI 데이터센터',
+    'GPUaaS',
+    'AI Platform',
+  ],
   authors: [{ name: 'JIKJI AI' }],
   creator: 'JIKJI AI',
   publisher: 'JIKJI AI',
@@ -21,8 +33,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
     languages: {
-      'ko': '/',
-      'en': '/',
+      ko: '/',
+      en: '/',
     },
   },
   openGraph: {
@@ -31,7 +43,8 @@ export const metadata: Metadata = {
     alternateLocale: ['en_US'],
     siteName: 'JIKJI AI',
     title: 'JIKJI AI - AI 솔루션 가속화 플랫폼',
-    description: 'Accelerate Your AI Solutions with N3N. 복잡한 인프라 관리 없이 데이터센터부터 AI 서비스까지 한 번에 구축하세요.',
+    description:
+      'Accelerate Your AI Solutions with N3N. 복잡한 인프라 관리 없이 데이터센터부터 AI 서비스까지 한 번에 구축하세요.',
     images: [
       {
         url: './jikji_og_image.png',
@@ -65,7 +78,11 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ko" className={`${inter.variable} dark overflow-x-hidden`}>
       <body className="bg-[#01071B] text-white antialiased font-sans selection:bg-white/30 overflow-x-hidden">

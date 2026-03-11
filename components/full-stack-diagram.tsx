@@ -1,6 +1,14 @@
 'use client';
 
-import { ArrowRight, Server, Cpu, BarChart3, Zap, MessageSquare, Video } from 'lucide-react';
+import {
+  ArrowRight,
+  Server,
+  Cpu,
+  BarChart3,
+  Zap,
+  MessageSquare,
+  Video,
+} from 'lucide-react';
 
 const columns = [
   {
@@ -39,7 +47,10 @@ export function FullStackDiagram() {
   return (
     <div className="flex items-stretch gap-2 md:gap-4 w-full py-6 px-4">
       {columns.map((col, i) => (
-        <div key={col.id} className="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
+        <div
+          key={col.id}
+          className="flex items-center gap-2 md:gap-4 flex-1 min-w-0"
+        >
           {i > 0 && (
             <div className="flex-shrink-0 flex items-center">
               <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-indigo-400/70" />

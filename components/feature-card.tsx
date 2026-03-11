@@ -10,7 +10,12 @@ interface FeatureCardProps {
   index?: number;
 }
 
-export function FeatureCard({ title, description, icon: Icon, index = 0 }: FeatureCardProps) {
+export function FeatureCard({
+  title,
+  description,
+  icon: Icon,
+  index = 0,
+}: FeatureCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -28,7 +33,9 @@ export function FeatureCard({ title, description, icon: Icon, index = 0 }: Featu
       )}
 
       <h3 className="text-xl font-medium mb-3 text-white/90">{title}</h3>
-      <p className="text-white/50 leading-relaxed font-light flex-grow">{description}</p>
+      <p className="text-white/50 leading-relaxed font-light flex-grow">
+        {description}
+      </p>
     </motion.div>
   );
 }
