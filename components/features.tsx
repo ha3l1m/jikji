@@ -12,7 +12,7 @@ export function Features() {
 
   return (
     <section id="features" className="py-24 relative overflow-hidden bg-[#01071B] border-t border-white/5">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <SectionHeader title={t.features.title} subtitle={t.features.description} />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
