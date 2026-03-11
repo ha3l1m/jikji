@@ -324,7 +324,7 @@ export function InfraTeaser() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-xl md:text-2xl font-bold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
+              className="text-xl md:text-2xl font-bold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-b break-keep from-white to-white/60"
             >
               {t.infrastructure.region.title}
             </motion.h2>
