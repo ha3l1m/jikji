@@ -48,7 +48,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 relative z-10 text-center flex flex-col items-center">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
         {/* badge hidden */}
 
         <motion.p
@@ -67,7 +67,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[32px] md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-10 max-w-5xl mx-auto leading-[1.1] whitespace-nowrap md:whitespace-normal"
+          className="text-[32px] md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-10 max-w-5xl mx-auto leading-[1.1] whitespace-normal"
         >
           {t.hero.title}
         </motion.h1>

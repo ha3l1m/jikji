@@ -9,7 +9,7 @@ export function StatsBar() {
 
   return (
     <section className="border-t border-white/5 bg-[#01071B]">
-      <div className="mx-auto max-w-7xl px-6 py-10 md:py-12">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-10 md:py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, i) => (
             <motion.div
