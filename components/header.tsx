@@ -223,7 +223,7 @@ function SupportButton({ section, isLight }: { section: NavSection; isLight: boo
         className={`flex items-center justify-between gap-4 pl-4 pr-2 py-2 rounded-xl text-sm font-medium transition-colors border ${
           isLight
             ? 'bg-black/5 border-black/10 text-black/70 hover:bg-black/10 hover:text-black'
-            : 'bg-[#1A1B1E] text-[#8E9399] hover:text-[#E3E5E8] nav-hover'
+            : 'bg-[#1A1B1E] text-[#8E9399] hover:text-[#E3E5E8]'
         }`}
         style={isLight ? undefined : { borderColor: 'rgba(159,122,94,0.22)' }}
       >
