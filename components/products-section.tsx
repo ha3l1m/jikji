@@ -57,7 +57,7 @@ function GpuCloudContent() {
 
       {/* OneClick Start */}
       <div className="pt-8 pb-6">
-        <div className="mx-auto max-w-[1200px] px-6 flex flex-col items-center gap-14">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ function GpuCloudContent() {
 
       {/* Features Grid */}
       <div className="pt-6 pb-[72px]">
-        <div className="mx-auto max-w-[1200px] px-6 flex flex-col gap-10">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[200px_200px] gap-6 w-full">
             {/* Card 01 — large left, spans 2 rows */}
             <motion.div
@@ -405,7 +405,7 @@ function PlatformContent() {
 
   return (
     <div>
-      <div className="mx-auto max-w-[1200px] px-6 py-24">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-24">
         {/* AI Inference Platform */}
         <div id="ai-inference" className="mb-32">
           <motion.div

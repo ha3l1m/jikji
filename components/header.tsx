@@ -303,12 +303,12 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${isLight
+      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 max-w-[100vw] lg:max-w-none ${isLight
         ? 'border-black/10 bg-white/90'
         : 'border-white/10 bg-[#111111]/80'
         }`}
     >
-      <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
+      <div className="w-full max-w-[100vw] m-0 lg:mx-auto lg:max-w-[1200px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="flex items-center gap-2 py-4">
           <Logo light={isLight} />
         </div>
