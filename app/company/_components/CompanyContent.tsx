@@ -236,7 +236,11 @@ export default function CompanyContent() {
                     key={i}
                     className="text-base md:text-lg text-white/60 leading-relaxed break-keep"
                   >
-                    {line}
+                    {line.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
+                      part.startsWith('**') && part.endsWith('**')
+                        ? <strong key={j} className="text-white font-semibold">{part.slice(2, -2)}</strong>
+                        : part
+                    )}
                   </p>
                 ))}
               </div>
