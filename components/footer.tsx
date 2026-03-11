@@ -12,7 +12,7 @@ export function Footer() {
 
   return (
     <footer className="py-12 border-t border-white/10 bg-black">
-      <div className="mx-auto max-w-7xl px-6 flex flex-col lg:flex-row items-start justify-between gap-8">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start justify-between gap-8">
         <div className="flex flex-col md:flex-column items-start gap-8 md:gap-8">
           <div className="flex-shrink-0">
             <svg width="68" height="15" viewBox="0 0 138 32" fill="none" xmlns="http://www.w3.org/2000/svg">

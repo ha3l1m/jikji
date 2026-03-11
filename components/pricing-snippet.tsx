@@ -21,9 +21,9 @@ export function PricingSnippet() {
 
   return (
     <section id="pricing" className="py-24 bg-white border-t border-gray-100">
-      <div className="mx-auto max-w-[1200px] px-6">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         {/* Header + Tab selector */}
-        <div className="flex items-end justify-between mb-8">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -38,12 +38,12 @@ export function PricingSnippet() {
             </p>
           </motion.div>
 
-          <div className="inline-flex bg-gray-100 p-1 rounded-xl border border-gray-200 shrink-0">
+          <div className="w-full md:w-auto inline-flex bg-gray-100 p-1 rounded-xl border border-gray-200 shrink-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${activeTab === tab.id
+                className={`flex-1 md:flex-none px-3 md:px-6 py-2.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${activeTab === tab.id
                   ? 'bg-gray-900 text-white shadow-sm'
                   : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
                   }`}
