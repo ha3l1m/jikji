@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css'; // Global styles
 import { Inter } from 'next/font/google';
+import { RootProvider } from 'fumadocs-ui/provider/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -10,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default: 'JIKJI',
-    template: 'JIKJI'
+    template: '%s | JIKJI'
   },
   description: 'Accelerate Your AI Solutions with N3N. 복잡한 인프라 관리 없이 데이터센터부터 AI 서비스까지 한 번에 구축하세요.',
   keywords: ['AI', 'Machine Learning', 'GPU Cloud', 'MLOps', 'AI Infrastructure', 'N3N', 'JIKJI', 'AI 데이터센터', 'GPUaaS', 'AI Platform'],
@@ -67,9 +68,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${inter.variable} dark overflow-x-hidden`}>
+    <html lang="ko" className={`${inter.variable} dark overflow-x-hidden`} suppressHydrationWarning>
       <body className="bg-[#01071B] text-white antialiased font-sans selection:bg-white/30 overflow-x-hidden">
-        {children}
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );
