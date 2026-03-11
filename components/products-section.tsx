@@ -681,9 +681,8 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                onClick={() => setSelectedCard(idx)}
                 className={cn(
-                  'relative overflow-hidden flex flex-col items-start p-6 rounded-2xl group transition-all text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50',
+                  'relative overflow-hidden flex flex-col items-start p-6 rounded-2xl transition-all text-left cursor-default focus:outline-none',
                   arr.length === 5 && idx === 4 && 'sm:col-span-2',
                 )}
                 style={{
@@ -696,7 +695,7 @@ function PlatformContent() {
                 <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
                   style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
                 {/* Arrow — top right */}
-                <div className="absolute top-5 right-5 z-10">
+                <div className="absolute top-5 right-5 z-10 hidden">
                   <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white/70 group-hover:translate-x-0.5 transition-all" />
                 </div>
                 <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
