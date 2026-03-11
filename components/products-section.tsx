@@ -64,7 +64,7 @@ function GpuCloudContent() {
             className="flex flex-col items-center gap-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60">
-              GPU CLOUD
+              JIKJI GPUaaS
             </div>
             <div className="flex flex-col items-center gap-2">
               <h3 className="text-[28px] md:text-[48px] font-bold leading-tight text-center text-white">
@@ -565,7 +565,7 @@ function PlatformContent() {
             className="text-center mb-16"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60 mb-6">
-              AI INFERENCE
+              AI INFERENCE 서비스
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
@@ -838,8 +838,8 @@ function PlatformContent() {
                   idx === 1 && 'md:border-t-0',
                   idx % 2 === 1 && 'md:border-l border-white/10',
                   arr.length % 2 === 1 &&
-                    idx === arr.length - 1 &&
-                    'md:col-span-2',
+                  idx === arr.length - 1 &&
+                  'md:col-span-2',
                 )}
               >
                 {/* Top light reflection — first row only */}
@@ -930,8 +930,8 @@ function PlatformContent() {
                     idx === 1 && 'md:border-t-0',
                     idx % 2 === 1 && 'md:border-l border-white/10',
                     arr.length % 2 === 1 &&
-                      idx === arr.length - 1 &&
-                      'md:col-span-2',
+                    idx === arr.length - 1 &&
+                    'md:col-span-2',
                   )}
                 >
                   {/* Top light reflection — first row only */}
