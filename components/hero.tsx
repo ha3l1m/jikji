@@ -3,7 +3,7 @@
 import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
 import { EtheralShadow } from './ui/etheral-shadow';
-// import { DottedSurface } from './ui/dotted-surface';
+import { DottedSurface } from './ui/dotted-surface';
 // import { AuroraBackground } from './ui/aurora-background';
 // import NeuralBackground from './ui/flow-field-background';
 import Link from 'next/link';
@@ -55,6 +55,12 @@ export function Hero() {
           background:
             'radial-gradient(ellipse 80% 50% at 50% 20%, transparent 30%, #0E0E10 90%)',
         }}
+      />
+
+      {/* Dotted grid background */}
+      <DottedSurface
+        className="absolute inset-0 opacity-90"
+        style={{ maskImage: 'radial-gradient(ellipse 90% 70% at 50% 35%, black 30%, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse 90% 70% at 50% 35%, black 30%, transparent 80%)' }}
       />
 
       {/* Decorative gradient blobs */}

@@ -185,8 +185,9 @@ export default function CompanyContent() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Left: Image */}
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              
               viewport={{ once: true }}
               transition={{
                 duration: 0.7,
@@ -210,16 +211,14 @@ export default function CompanyContent() {
 
             {/* Right: Text */}
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-4"
+              className="w-4/5 mx-auto md:w-full md:mx-0 space-y-4"
             >
-              {/* Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm font-medium text-white/60">
-                Our Origin
-              </div>
+
 
               {/* Main headline */}
               <h2
@@ -230,7 +229,7 @@ export default function CompanyContent() {
               </h2>
 
               {/* Body */}
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-4">
                 {t.company.about.heritage_desc.split('\n').map((line, i) => (
                   <p
                     key={i}

@@ -11,3 +11,6 @@ skills/
 .kombai/
 tsconfig.tsbuildinfo
 docs/
+
+*.xlsx
+generate_copy_excel.py
