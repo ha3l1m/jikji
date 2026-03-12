@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "clean": "next clean",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "deploy": "bash ./deploy.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
