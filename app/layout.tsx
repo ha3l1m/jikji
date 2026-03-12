@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css'; // Global styles
 import { Inter } from 'next/font/google';
-import { RootProvider } from 'fumadocs-ui/provider/next';
+import { Providers } from '@/components/providers';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -87,7 +87,9 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${inter.variable} dark overflow-x-hidden`} suppressHydrationWarning>
       <body className="bg-[#01071B] text-white antialiased font-sans selection:bg-white/30 overflow-x-hidden">
-        <RootProvider>{children}</RootProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
