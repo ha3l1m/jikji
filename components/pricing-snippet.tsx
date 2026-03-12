@@ -25,7 +25,7 @@ export function PricingSnippet() {
     <section id="pricing" className="py-24 bg-white border-t border-gray-100">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         {/* Header + Tab selector */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-4 gap-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -115,12 +115,9 @@ export function PricingSnippet() {
           {t.pricing_page.notes.map((note, idx) => (
             <p key={idx} className="text-sm text-gray-400">
               *{' '}
-              {note.split('50%').map((part, i, arr) =>
-                i < arr.length - 1 ? (
-                  <span key={i}>
-                    {part}
-                    <span className="font-bold text-gray-500">50%</span>
-                  </span>
+              {note.split(/(50%\s+(?:할인 혜택|promotional discount))/).map((part, i) =>
+                /^50%/.test(part) ? (
+                  <span key={i} className="font-bold text-gray-500">{part}</span>
                 ) : (
                   <span key={i}>{part}</span>
                 ),
