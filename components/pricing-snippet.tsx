@@ -133,13 +133,13 @@ export function PricingSnippet() {
         <div className="mt-12 rounded-2xl bg-gray-900 px-10 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">
-              H100 GPU · MIG 가상화, 최대 1개월 무료 체험
+              {t.cta_banner.subtitle}
             </p>
             <p className="text-white text-xl md:text-2xl font-bold mb-1">
-              지금 바로 AI 인프라 경험해보세요
+              {t.cta_banner.title}
             </p>
             <p className="text-white/50 text-sm">
-              신청 후 개별 연락 · 상담 후 순차 할당 · 신용카드 불필요
+              {t.cta_banner.disclaimer}
             </p>
           </div>
           <Link
@@ -147,7 +147,7 @@ export function PricingSnippet() {
             target="_blank"
             className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
           >
-            프로모션 문의하기
+            {t.cta_banner.btn_inquiry}
           </Link>
         </div>
       </div>

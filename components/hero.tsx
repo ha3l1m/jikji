@@ -2,14 +2,14 @@
 
 import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
-import { EtheralShadow } from './ui/etheral-shadow';
-import { DottedSurface } from './ui/dotted-surface';
-// import { AuroraBackground } from './ui/aurora-background';
-// import NeuralBackground from './ui/flow-field-background';
+import NeuralBackground from './ui/flow-field-background';
 import Link from 'next/link';
 
 export function Hero() {
   const { t } = useI18n();
+
+  const mask =
+    'radial-gradient(ellipse 205% 70% at 50% 40%, black 50%, transparent 65%)';
 
   return (
     <section
@@ -19,34 +19,20 @@ export function Hero() {
         background: 'linear-gradient(180deg, #0E0E10 0%, #0E0E10 100%)',
       }}
     >
-      {/* Etheral shadow animation background */}
-      <EtheralShadow
-        className="pointer-events-none opacity-20"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          maskImage:
-            'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)',
-          WebkitMaskImage:
-            'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)',
-        }}
-        color="rgba(89, 91, 95, 1)"
-        animation={{ scale: 100, speed: 90 }}
-        noise={{ opacity: 0.5, scale: 1.2 }}
-        sizing="fill"
-      />
-
-      {/* Flow field animation background (hidden) */}
-      {/* <div className="absolute inset-0 opacity-20" style={{ mask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)', WebkitMask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)' }}>
+      {/* Wave animation background */}
+      <div
+        className="absolute inset-0"
+        style={{ opacity: 0.43, mask, WebkitMask: mask }}
+      >
         <NeuralBackground
-          color="#595B5F"
-          colorEnd="#595B5F"
-          trailOpacity={0.06}
-          particleCount={350}
-          speed={0.4}
+          color="#928a72"
+          colorEnd="#413934"
+          trailOpacity={0.08}
+          particleCount={510}
+          speed={0.35}
           flowScale={0.002}
         />
-      </div> */}
+      </div>
 
       {/* Gradient overlay */}
       <div
@@ -57,24 +43,18 @@ export function Hero() {
         }}
       />
 
-      {/* Dotted grid background */}
-      <DottedSurface
-        className="absolute inset-0 opacity-90"
-        style={{ maskImage: 'radial-gradient(ellipse 90% 70% at 50% 35%, black 30%, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse 90% 70% at 50% 35%, black 30%, transparent 80%)' }}
-      />
-
       {/* Decorative gradient blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Gold glow - center top */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-10 mix-blend-overlay rounded-full blur-3xl"
-          style={{ background: '#595B5F' }}
+          className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] mix-blend-overlay rounded-full blur-3xl"
+          style={{ background: '#ffe7a3', opacity: 0.13 }}
         />
         {/* Gold streak */}
         <div className="absolute left-[420px] top-[120px] w-44 h-32 mix-blend-overlay overflow-hidden">
           <div
             className="absolute left-[52px] top-[42px] w-20 h-6 origin-top-left rotate-[15deg] opacity-20 rounded-full blur-sm"
-            style={{ background: '#595B5F' }}
+            style={{ background: '#928a72' }}
           />
         </div>
       </div>
@@ -88,10 +68,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 leading-relaxed font-normal"
         >
-          <span className="md:hidden">
-            데이터센터부터 AI 서비스까지, 한 번에
-          </span>
-          <span className="hidden md:inline">{t.hero.description}</span>
+          {t.hero.description}
         </motion.p>
 
         <motion.h1

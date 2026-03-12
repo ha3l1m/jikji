@@ -366,7 +366,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
             }}
           >
             <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>2027 오픈</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>Opening 2027</span>
           </div>
           {/* Future DC markers */}
           {DC_LOCATIONS.slice(1).map((dc, i) => {

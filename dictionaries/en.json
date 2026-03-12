@@ -34,8 +34,8 @@
         {
           "label": "Documentation",
           "href": "https://example.com/docs",
-          "disabled": false,
-          "badge": ""
+          "disabled": true,
+          "badge": "Coming Soon"
         },
         {
           "label": "Help Center",
@@ -148,6 +148,8 @@
     },
     "platform": {
       "inference": {
+        "heading": "Serverless MLOps, Instant API",
+        "heading_sub": "Auto-deploy to inference endpoint in one step",
         "title": "Inference Endpoint in One Shot — Serverless MLOps",
         "steps": [
           {
@@ -191,6 +193,7 @@
         ]
       },
       "agents": {
+        "heading": "Connect the endpoint, works right away",
         "title": "Just connect the endpoint, and the latest Agentic Workflow runs immediately",
         "features": [
           {
@@ -216,31 +219,33 @@
         ]
       },
       "video": {
+        "heading": "Large-Scale Video Data, Real-Time",
+        "heading_sub": "Vision AI insights optimized for industrial sites",
         "title": "Analyzes large-scale video data in real-time through advanced Vision AI technology and proprietary algorithms, providing insights optimized for industrial sites.",
         "subtitle": "We provide vivid insights from the field.",
         "features": [
           {
-            "title": "VIDEO INTELLIGENCE",
+            "title": "Video Intelligence",
             "desc": "POD (Pixel On Demand)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)",
             "detail": "The core engine for real-time pixel-level collection and analysis of video data. Pixel On Demand selectively transmits only the required pixels, optimizing bandwidth."
           },
           {
-            "title": "DATA INTELLIGENCE",
+            "title": "Data Intelligence",
             "desc": "DTG(Dynamic Topology Generator)\nDATA PLATFORM",
             "detail": "Dynamically structures complex topological data from industrial sites to automate insight generation."
           },
           {
-            "title": "OPERATION INTELLIGENCE",
+            "title": "Operation Intelligence",
             "desc": "SOP (Standard Operation Procedure)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)",
             "detail": "AI algorithms integrated with Standard Operating Procedures (SOP) to support anomaly detection and automated response."
           },
           {
-            "title": "DATA VISUALIZATION",
+            "title": "Data Visualization",
             "desc": "LOCATION BASED VISUALIZATION\nMULTI LAYER & ZOOMABLE UI\nDIGITAL TIME-SPACE CREATION",
             "detail": "Intuitively visualizes field data through location-based multi-layer UI and digital spatiotemporal reconstruction technology."
           },
           {
-            "title": "SMART IoT SOLUTIONS",
+            "title": "Smart IoT Solutions",
             "desc": "SMART SENSOR FUSION\nIoT DEVICE MANAGEMENT\nEDGE COMPUTING GATEWAY",
             "detail": "Integrates and manages diverse IoT sensor data, processing field data in real-time through edge computing."
           }
@@ -251,7 +256,7 @@
   "infrastructure": {
     "aidc": {
       "title": "JIKJI Labs AI DC #1",
-      "badge": "Completion planned Q3 2027 · Ultra-fast data hub for the AI era",
+      "badge": "Opening Q3 2027 · Ultra-fast data hub for the AI era",
       "subtitle": "State-of-the-art PMDC (Purpose-Built Modular Data Center) designed for AI",
       "specs": [
         {
@@ -281,53 +286,53 @@
       "services": [
         {
           "title": "AI Data Center",
-          "subtitle": "Data Center Construction Solution",
+          "subtitle": "DC Construction Solution",
           "items": [
-            "Data center completion",
-            "Cooling & power design/installation",
-            "Fastest modular deployment",
-            "Domestic & global SCM partners"
+            "DC build-out",
+            "Cooling & power install",
+            "Fast modular deployment",
+            "Global SCM partners"
           ]
         },
         {
           "title": "Colocation",
-          "subtitle": "JIKJI Labs Space Rental Service",
+          "subtitle": "Rack Space Rental",
           "items": [
-            "RACK rental · metered power",
-            "High-density power system",
-            "Low-PUE cost minimization",
-            "DC monitoring · DCIM integration"
+            "Rack rental · metered power",
+            "High-density power",
+            "Low-PUE efficiency",
+            "Monitoring · DCIM"
           ]
         },
         {
           "title": "IT Infrastructure",
-          "subtitle": "JIKJI Labs IT Sales/Install/Ops",
+          "subtitle": "IT Supply & Ops",
           "items": [
             "Topology design",
-            "IT installation/configuration",
-            "GPU/CPU · Storage · Network supply",
+            "IT install & config",
+            "GPU/CPU · Storage · Network",
             "7/24 maintenance"
           ]
         },
         {
           "title": "Bare-metal",
-          "subtitle": "JIKJI Labs Bare-metal IDC Service",
+          "subtitle": "Bare-metal IDC Service",
           "items": [
             "IT rental · metered power",
-            "AI server Topology design/install",
+            "AI server topology & install",
             "GPU Clustering",
             "Infra ops · SLA · security"
           ]
         },
         {
           "title": "AI Cloud",
-          "subtitle": "JIKJI Labs AI Cloud Service",
+          "subtitle": "AI Cloud Service",
           "items": ["GPU Instance", "Inference Service", "Agent Service"]
         }
       ],
       "cluster": {
         "title": "JIKJI Labs' Distributed AI DC",
-        "subtitle": "Goal to create an AI Data Center cluster of 25 locations in the Seoul metropolitan area",
+        "subtitle": "25 AI Data Center sites across Seoul metro area",
         "stats": [
           { "value": "100", "label": "MW", "desc": "Total power capacity" },
           { "value": "1,000", "label": "Racks", "desc": "Liquid-Cooled" },
@@ -397,33 +402,33 @@
           "name": "8 x B200 180GB SXM",
           "vram": "1440GB",
           "vcpu": "192vCore",
-          "ondemand": "₩31,200",
-          "1month": "₩27,768",
-          "1year": "₩24,336"
+          "ondemand": "₩62,400",
+          "1month": "₩55,536",
+          "1year": "₩48,672"
         },
         {
           "name": "4 x B200 180GB SXM",
           "vram": "720GB",
           "vcpu": "96vCore",
-          "ondemand": "₩15,680",
-          "1month": "₩13,955",
-          "1year": "₩12,230"
+          "ondemand": "₩31,360",
+          "1month": "₩27,910",
+          "1year": "₩24,461"
         },
         {
           "name": "2 x B200 180GB SXM",
           "vram": "360GB",
           "vcpu": "48vCore",
-          "ondemand": "₩7,860",
-          "1month": "₩6,995",
-          "1year": "₩6,131"
+          "ondemand": "₩15,720",
+          "1month": "₩13,991",
+          "1year": "₩12,262"
         },
         {
           "name": "B200 180GB SXM",
           "vram": "180GB",
           "vcpu": "24vCore",
-          "ondemand": "₩3,935",
-          "1month": "₩3,502",
-          "1year": "₩3,069"
+          "ondemand": "₩7,870",
+          "1month": "₩7,004",
+          "1year": "₩6,139"
         }
       ],
       "h200": [
@@ -431,33 +436,33 @@
           "name": "8 x H200 80GB SXM",
           "vram": "1440GB",
           "vcpu": "192vCore",
-          "ondemand": "₩22,776",
-          "1month": "₩20,271",
-          "1year": "₩17,765"
+          "ondemand": "₩45,552",
+          "1month": "₩40,541",
+          "1year": "₩35,531"
         },
         {
           "name": "4 x H200 80GB SXM",
           "vram": "720GB",
           "vcpu": "96vCore",
-          "ondemand": "₩11,446",
-          "1month": "₩10,187",
-          "1year": "₩8,928"
+          "ondemand": "₩22,893",
+          "1month": "₩20,375",
+          "1year": "₩17,856"
         },
         {
           "name": "2 x H200 80GB SXM",
           "vram": "360GB",
           "vcpu": "48vCore",
-          "ondemand": "₩5,738",
-          "1month": "₩5,107",
-          "1year": "₩4,475"
+          "ondemand": "₩11,476",
+          "1month": "₩10,213",
+          "1year": "₩8,951"
         },
         {
           "name": "H200 80GB SXM",
           "vram": "180GB",
           "vcpu": "24vCore",
-          "ondemand": "₩2,873",
-          "1month": "₩2,557",
-          "1year": "₩2,241"
+          "ondemand": "₩5,745",
+          "1month": "₩5,113",
+          "1year": "₩4,481"
         }
       ],
       "h100": [
@@ -507,31 +512,32 @@
           "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe",
           "vram": "320GB",
           "vcpu": "64vCore",
-          "ondemand": "₩3,940",
-          "1month": "₩3,507",
-          "1year": "₩3,073"
+          "ondemand": "₩7,880",
+          "1month": "₩7,013",
+          "1year": "₩6,146"
         },
         {
           "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe",
           "vram": "160GB",
           "vcpu": "32vCore",
-          "ondemand": "₩1,990",
-          "1month": "₩1,771",
-          "1year": "₩1,552"
+          "ondemand": "₩3,980",
+          "1month": "₩3,542",
+          "1year": "₩3,104"
         },
         {
           "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe",
           "vram": "80GB",
           "vcpu": "16vCore",
-          "ondemand": "₩1,000",
-          "1month": "₩890",
-          "1year": "₩780"
+          "ondemand": "₩2,000",
+          "1month": "₩1,780",
+          "1year": "₩1,560"
         }
       ]
     },
     "notes": [
-      "All prices are per hour basis.",
-      "50% discount is applied during the promotional period."
+      "All prices are per GPU hour.",
+      "50% promotional discount is currently applied to all prices.",
+      "AI Platform Pricing is currently being prepared. Details will be announced upon launch."
     ],
     "consulting": {
       "title": "Custom Architecture & Consulting",
@@ -541,11 +547,11 @@
     }
   },
   "cta_banner": {
-    "title": "Experience High-Performance AI Infrastructure Now.",
-    "subtitle": "H100 GPU (MIG virtualization), up to 1 month free trial.",
+    "title": "Production-Ready AI Infrastructure. Try It Free.",
+    "subtitle": "H100 GPU · MIG Virtualization · 1-Month Free Trial",
     "btn_free": "Apply for Free",
     "btn_inquiry": "Contact Sales",
-    "disclaimer": "We will contact customers who applied for the promotion individually.\nGPU resources will be allocated sequentially after consultation. (No credit card required)"
+    "disclaimer": "We'll reach out personally to get you started. No credit card required."
   },
   "support_page": {
     "title": "We will contact customers who have applied for the promotion individually.\nAfter consultation, GPU resources will be allocated sequentially.",

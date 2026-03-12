@@ -184,6 +184,8 @@
     },
     "platform": {
       "inference": {
+        "heading": "Serverless MLOps, 배포하면 바로 API",
+        "heading_sub": "자동 배포부터 추론 Endpoint 연동까지 한 번에",
         "title": "추론 Endpoint를 한 번에 — Serverless MLOps",
         "steps": [
           {
@@ -227,6 +229,7 @@
         ]
       },
       "agents": {
+        "heading": "엔드포인트만 연결하면 바로 동작합니다",
         "title": "엔드포인트만 연결하면, 최신 Agentic Workflow가 바로 동작합니다",
         "features": [
           {
@@ -252,31 +255,33 @@
         ]
       },
       "video": {
+        "heading": "대규모 영상 데이터 실시간 분석",
+        "heading_sub": "첨단 Vision AI와 자체 알고리즘으로 산업 현장에 최적화된 인사이트 제공",
         "title": "첨단 Vision AI 기술과 자체 알고리즘을 통해 대규모 영상 데이터를 실시간으로 분석하고, 산업 현장에 최적화된 인사이트를 제공합니다.",
         "subtitle": "현장의 생생한 인사이트를 제공해 드립니다.",
         "features": [
           {
-            "title": "VIDEO INTELLIGENCE",
+            "title": "Video Intelligence",
             "desc": "POD (Pixel On Demand)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)",
             "detail": "영상 데이터를 픽셀 단위로 실시간 수집·분석하는 핵심 엔진. Pixel On Demand로 필요한 화소만 선택 전송해 대역폭을 최적화합니다."
           },
           {
-            "title": "DATA INTELLIGENCE",
+            "title": "Data Intelligence",
             "desc": "DTG(Dynamic Topology Generator)\nDATA PLATFORM",
             "detail": "산업 현장의 복잡한 위상 데이터를 동적으로 구조화하여 인사이트 도출을 자동화합니다."
           },
           {
-            "title": "OPERATION INTELLIGENCE",
+            "title": "Operation Intelligence",
             "desc": "SOP (Standard Operation Procedure)\nVIDEO INTELLIGENCE ENGINE\nRDS(Remote Desktop System)",
             "detail": "표준 운영 절차(SOP)와 연동된 AI 알고리즘으로 이상 감지 및 자동 대응을 지원합니다."
           },
           {
-            "title": "DATA VISUALIZATION",
+            "title": "Data Visualization",
             "desc": "LOCATION BASED VISUALIZATION\nMULTI LAYER & ZOOMABLE UI\nDIGITAL TIME-SPACE CREATION",
             "detail": "위치 기반 멀티레이어 UI와 디지털 시공간 재현 기술로 현장 데이터를 직관적으로 시각화합니다."
           },
           {
-            "title": "SMART IoT SOLUTIONS",
+            "title": "Smart IoT Solutions",
             "desc": "SMART SENSOR FUSION\nIoT DEVICE MANAGEMENT\nEDGE COMPUTING GATEWAY",
             "detail": "다양한 IoT 센서 데이터를 통합 관리하고, 엣지 컴퓨팅을 통해 현장 데이터를 실시간으로 처리합니다."
           }

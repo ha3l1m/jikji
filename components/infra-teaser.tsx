@@ -326,15 +326,6 @@ export function InfraTeaser() {
                   boxShadow: 'inset 0 1px 0 rgba(227,229,232,0.06)',
                 }}
               >
-                {/* Top light reflection */}
-                <div
-                  className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
-                  style={{
-                    height: '55%',
-                    background:
-                      'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 45%, transparent 70%)',
-                  }}
-                />
                 <h3 className="relative z-10 text-base font-bold text-white mb-1">
                   {service.title}
                 </h3>
@@ -434,14 +425,6 @@ export function InfraTeaser() {
                     boxShadow: 'inset 0 1px 0 rgba(227,229,232,0.06)',
                   }}
                 >
-                  <div
-                    className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
-                    style={{
-                      height: '60%',
-                      background:
-                        'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 45%, transparent 70%)',
-                    }}
-                  />
                   <div className="relative z-10">
                     <h3 className="text-base font-bold text-white mb-1">
                       {feature.title}

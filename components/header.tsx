@@ -108,9 +108,9 @@ function DesktopDropdown({
                 key={idx}
                 href={item.href}
                 external={item.external}
-                className={`flex items-center pl-7 pr-4 py-2 text-xs rounded-lg transition-colors ${isLight ? 'text-black/50 hover:text-black hover:bg-black/5' : 'text-[#8E9399] hover:text-[#E3E5E8] nav-hover'}`}
+                className={`flex items-center pl-7 pr-4 py-2 text-xs rounded-lg transition-colors ${isLight ? 'text-black/50 hover:text-black hover:bg-black/5' : 'text-[#8E9399] hover:text-[#E3E5E8] hover:bg-white/5'}`}
               >
-                <span className={`mr-2 w-1 h-1 rounded-full shrink-0 ${isLight ? 'bg-black/30' : 'bg-[#9F7A5E]/40'}`} />
+                <span className={`mr-2 w-1 h-1 rounded-full shrink-0 ${isLight ? 'bg-black/30' : 'bg-[#9F7A5E]'}`} />
                 {item.label}
               </NavLink>
             ) : item.disabled ? (
@@ -130,7 +130,7 @@ function DesktopDropdown({
                 key={idx}
                 href={item.href}
                 external={item.external}
-                className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-[#8E9399] hover:text-[#E3E5E8] nav-hover'}`}
+                className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-[#8E9399] hover:text-[#E3E5E8] hover:bg-white/5'}`}
               >
                 <span className="flex items-center gap-1">
                   {item.label}
@@ -269,7 +269,7 @@ function SupportButton({
         onClick={() => setOpen(!open)}
         className={`flex items-center justify-between gap-4 pl-4 pr-2 py-2 rounded-xl text-sm font-medium transition-colors border ${isLight
           ? 'bg-black/5 border-black/10 text-black/70 hover:bg-black/10 hover:text-black'
-          : 'bg-[#1A1B1E] text-[#8E9399] hover:text-[#E3E5E8] nav-hover'
+          : 'bg-[#1A1B1E] text-[#8E9399] hover:text-[#E3E5E8]'
           }`}
         style={isLight ? undefined : { borderColor: 'rgba(159,122,94,0.22)' }}
       >
@@ -286,7 +286,7 @@ function SupportButton({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
-            className="absolute top-full right-0 w-48 pt-2 z-50"
+            className="absolute top-full right-0 min-w-max pt-2 z-50"
           >
             <div
               className={`border rounded-2xl p-2 ${isLight ? 'bg-white/80 border-black/10' : ''}`}
@@ -294,7 +294,7 @@ function SupportButton({
             >
               {section.items.map((item, idx) =>
                 item.disabled ? (
-                  <div key={idx} className={`flex items-center gap-2 px-2 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-[#8E9399]/40'}`}>
+                  <div key={idx} className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg cursor-not-allowed select-none whitespace-nowrap ${isLight ? 'text-black/30' : 'text-[#8E9399]/40'}`}>
                     {item.label}
                     {item.badge && (
                       <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-[rgba(159,122,94,0.08)]'}`}>

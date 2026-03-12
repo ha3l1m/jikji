@@ -3,7 +3,7 @@
 import { useI18n } from './i18n-provider';
 import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import Image from 'next/image';
 import { AnimatedFeatureCard } from './ui/animated-feature-card';
 import { cn } from '@/lib/utils';
@@ -573,10 +573,10 @@ function PlatformContent() {
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
-                Serverless MLOps, 배포하면 바로 API
+                {t.products.platform.inference.heading}
               </h2>
               <p className="text-base text-white/50">
-                자동 배포부터 추론 Endpoint 연동까지 한 번에
+                {t.products.platform.inference.heading_sub}
               </p>
             </div>
           </motion.div>
@@ -885,7 +885,7 @@ function PlatformContent() {
               <span className="text-white/60">CHAT AGENT</span>
             </div>
             <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
-              엔드포인트만 연결하면 바로 동작합니다
+              {t.products.platform.agents.heading}
             </h2>
           </motion.div>
 
@@ -979,57 +979,54 @@ function PlatformContent() {
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight leading-tight text-white">
-                대규모 영상 데이터 실시간 분석
+                {t.products.platform.video.heading}
               </h2>
               <p className="text-base text-white/50 leading-relaxed">
-                첨단 Vision AI와 자체 알고리즘으로 산업 현장에 최적화된 인사이트 제공
+                {t.products.platform.video.heading_sub}
               </p>
             </div>
           </motion.div>
 
           {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div
+            className="rounded-2xl overflow-hidden grid grid-cols-2 md:grid-cols-5"
+            style={{
+              background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
+            }}
+          >
             {t.products.platform.video.features.map((item, idx, arr) => (
-              <motion.button
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
                 className={cn(
-                  'relative overflow-hidden flex flex-col items-start p-6 rounded-2xl transition-all text-left cursor-default focus:outline-none',
-                  arr.length === 5 && idx === 4 && 'sm:col-span-2',
+                  'relative overflow-hidden px-5 py-6 flex flex-col gap-1',
+                  idx > 0 && 'border-t border-white/10',
+                  idx < arr.length - 1 && 'md:border-t-0',
+                  idx === 0 && 'md:border-t-0',
+                  idx > 0 && 'md:border-l border-white/10',
+                  arr.length === 5 && idx === 4 && 'col-span-2 md:col-span-1',
                 )}
-                style={{
-                  background:
-                    'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
-                }}
               >
-                {/* Top light reflection */}
-                <div
-                  className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
-                  style={{
-                    height: '55%',
-                    background:
-                      'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
-                  }}
-                />
-                {/* Arrow — top right */}
-                <div className="absolute top-5 right-5 z-10 hidden">
-                  <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white/70 group-hover:translate-x-0.5 transition-all" />
-                </div>
-                <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
+                <div className="text-xs font-mono text-white/30 mb-3">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
-                <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
+                <h4 className="text-base font-bold text-white mb-1">
                   {item.title}
                 </h4>
-                <p className="relative z-10 text-sm text-white/50 leading-relaxed whitespace-pre-line">
-                  {item.desc}
-                </p>
-              </motion.button>
+                <ul className="flex flex-col gap-1 mt-1">
+                  {item.desc.split('\n').filter(Boolean).map((line, i) => (
+                    <li key={i} className="flex items-start gap-1.5 text-xs text-white/50 leading-relaxed">
+                      <span className="mt-[7px] w-1 h-1 rounded-full shrink-0 bg-white/30" />
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             ))}
           </div>
         </div>
