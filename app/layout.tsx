@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'JIKJI AI' }],
   creator: 'JIKJI AI',
   publisher: 'JIKJI AI',
-  metadataBase: new URL(process.env.BASE_URL || ''),
+  metadataBase: new URL(process.env.BASE_URL || 'http://localhost:3000'),
   alternates: {
     canonical: '/',
     languages: {

@@ -246,13 +246,6 @@ export function SeoulDottedMap({ className }: { className?: string }) {
         position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 3,
         background: 'linear-gradient(to bottom, rgba(10,10,14,0.55) 0%, rgba(10,10,14,0.15) 30%, transparent 55%)',
       }} />
-      {/* Ground glow — base plane reflection */}
-      <div style={{
-        position: 'absolute', bottom: '-6px', left: '15%', right: '15%',
-        height: '60px', pointerEvents: 'none', zIndex: 2,
-        background: 'radial-gradient(ellipse 80% 100% at 50% 100%, rgba(159,122,94,0.18) 0%, transparent 70%)',
-        filter: 'blur(10px)',
-      }} />
       {/* SVG arc overlay — pixel coordinate system via ResizeObserver */}
       {mapSize.w > 0 && (
         <svg
