@@ -12,4 +12,4 @@ skills/
 tsconfig.tsbuildinfo
 
 *.xlsx
-generate_copy_excel.py
+generate_copy_excel.py*.gs
