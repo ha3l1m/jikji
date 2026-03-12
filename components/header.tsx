@@ -83,7 +83,7 @@ function DesktopDropdown({
 }) {
   const linkCls = isLight
     ? 'flex items-center gap-1 text-sm font-medium text-black/60 hover:text-black transition-colors py-6'
-    : 'flex items-center gap-1 text-sm font-medium text-white/70 hover:text-white transition-colors py-6';
+    : 'flex items-center gap-1 text-sm font-medium text-[#8E9399] hover:text-[#E3E5E8] transition-colors py-6';
 
   if (!section.items || section.items.length === 0) {
     return (
@@ -101,37 +101,26 @@ function DesktopDropdown({
       </NavLink>
 
       <div className="absolute top-full left-0 hidden group-hover/nav:block w-56 pt-2">
-        <div
-          className={`border rounded-2xl p-2 ${isLight ? 'bg-white/80 border-black/10' : 'border-[#373737]'}`}
-          style={{
-            background: isLight ? undefined : 'rgba(26,26,26,0.98)',
-            boxShadow:
-              '0 4px 12px 0 rgba(0,0,0,0.4), 0 24px 48px 0 rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.06)',
-          }}
-        >
+        <div className={`border rounded-2xl p-2 ${isLight ? 'bg-white/80 border-black/10' : ''}`} style={{ background: isLight ? undefined : 'rgba(26,27,30,0.98)', borderColor: isLight ? undefined : 'rgba(159,122,94,0.18)', boxShadow: '0 4px 12px 0 rgba(0,0,0,0.4), 0 24px 48px 0 rgba(0,0,0,0.36), inset 0 1px 0 rgba(159,122,94,0.06)' }}>
           {section.items.map((item, idx) =>
             item.subItem ? (
               <NavLink
                 key={idx}
                 href={item.href}
                 external={item.external}
-                className={`flex items-center pl-7 pr-4 py-2 text-xs rounded-lg transition-colors ${isLight ? 'text-black/50 hover:text-black hover:bg-black/5' : 'text-white/50 hover:text-white hover:bg-white/5'}`}
+                className={`flex items-center pl-7 pr-4 py-2 text-xs rounded-lg transition-colors ${isLight ? 'text-black/50 hover:text-black hover:bg-black/5' : 'text-[#8E9399] hover:text-[#E3E5E8] nav-hover'}`}
               >
-                <span
-                  className={`mr-2 w-1 h-1 rounded-full shrink-0 ${isLight ? 'bg-black/30' : 'bg-white/30'}`}
-                />
+                <span className={`mr-2 w-1 h-1 rounded-full shrink-0 ${isLight ? 'bg-black/30' : 'bg-[#9F7A5E]/40'}`} />
                 {item.label}
               </NavLink>
             ) : item.disabled ? (
               <div
                 key={idx}
-                className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-white/30'}`}
+                className={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-[#8E9399]/40'}`}
               >
                 {item.label}
                 {item.badge && (
-                  <span
-                    className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-white/10'}`}
-                  >
+                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-[rgba(159,122,94,0.08)]'}`}>
                     {item.badge}
                   </span>
                 )}
@@ -141,7 +130,7 @@ function DesktopDropdown({
                 key={idx}
                 href={item.href}
                 external={item.external}
-                className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
+                className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-[#8E9399] hover:text-[#E3E5E8] nav-hover'}`}
               >
                 <span className="flex items-center gap-1">
                   {item.label}
@@ -278,11 +267,11 @@ function SupportButton({
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center justify-between gap-4 pl-4 pr-2 py-2 rounded-xl text-sm font-medium transition-colors border ${
-          isLight
-            ? 'bg-black/5 border-black/10 text-black/70 hover:bg-black/10 hover:text-black'
-            : 'bg-white/8 border-white/10 text-white/70 hover:bg-white/12 hover:text-white'
-        }`}
+        className={`flex items-center justify-between gap-4 pl-4 pr-2 py-2 rounded-xl text-sm font-medium transition-colors border ${isLight
+          ? 'bg-black/5 border-black/10 text-black/70 hover:bg-black/10 hover:text-black'
+          : 'bg-[#1A1B1E] text-[#8E9399] hover:text-[#E3E5E8] nav-hover'
+          }`}
+        style={isLight ? undefined : { borderColor: 'rgba(159,122,94,0.22)' }}
       >
         {section.label}
         <ChevronDown
@@ -300,24 +289,15 @@ function SupportButton({
             className="absolute top-full right-0 w-48 pt-2 z-50"
           >
             <div
-              className={`border rounded-2xl p-2 ${isLight ? 'bg-white/80 border-black/10' : 'border-[#373737]'}`}
-              style={{
-                background: isLight ? undefined : 'rgba(26,26,26,0.98)',
-                boxShadow:
-                  '0 4px 12px 0 rgba(0,0,0,0.4), 0 24px 48px 0 rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.06)',
-              }}
+              className={`border rounded-2xl p-2 ${isLight ? 'bg-white/80 border-black/10' : ''}`}
+              style={{ background: isLight ? undefined : 'rgba(26,27,30,0.98)', borderColor: isLight ? undefined : 'rgba(159,122,94,0.18)', boxShadow: '0 4px 12px 0 rgba(0,0,0,0.4), 0 24px 48px 0 rgba(0,0,0,0.36), inset 0 1px 0 rgba(159,122,94,0.06)' }}
             >
               {section.items.map((item, idx) =>
                 item.disabled ? (
-                  <div
-                    key={idx}
-                    className={`flex items-center gap-2 px-2.5 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-white/30'}`}
-                  >
+                  <div key={idx} className={`flex items-center gap-2 px-2 py-2.5 text-sm rounded-lg cursor-not-allowed select-none ${isLight ? 'text-black/30' : 'text-[#8E9399]/40'}`}>
                     {item.label}
                     {item.badge && (
-                      <span
-                        className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-white/10'}`}
-                      >
+                      <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-current ${isLight ? 'bg-black/8' : 'bg-[rgba(159,122,94,0.08)]'}`}>
                         {item.badge}
                         {/* external: true 로 변경 추후 */}
                       </span>
@@ -329,7 +309,7 @@ function SupportButton({
                     href={item.href}
                     external={item.external}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
+                    className={`flex items-center justify-between px-4 py-2.5 text-sm rounded-lg transition-colors ${isLight ? 'text-black/70 hover:text-black hover:bg-black/5' : 'text-[#8E9399] hover:text-[#E3E5E8]'}`}
                   >
                     <span className="flex items-center gap-1">
                       {item.label}
@@ -377,11 +357,11 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 max-w-[100vw] lg:max-w-none ${
-        isLight
-          ? 'border-black/10 bg-white/90'
-          : 'border-white/10 bg-[#111111]/80'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 max-w-[100vw] lg:max-w-none ${isLight
+        ? 'border-black/10 bg-white/90'
+        : 'bg-[#111111]/80'
+        }`}
+      style={isLight ? undefined : { borderColor: 'rgba(159,122,94,0.18)' }}
     >
       <div className="w-full max-w-[100vw] m-0 lg:mx-auto lg:max-w-[1200px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="flex items-center gap-2 py-4">
@@ -424,6 +404,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="lg:hidden absolute top-full left-0 right-0 bg-[#111111] border-b border-white/10 p-6 max-h-[calc(100vh-70px)] overflow-y-auto"
+            style={{ borderColor: 'rgba(159,122,94,0.18)' }}
           >
             <div className="flex flex-col gap-2 mb-6">
               {navSections.map((section, idx) => (
@@ -435,7 +416,7 @@ export function Header() {
               ))}
             </div>
 
-            <div className="h-px bg-white/10 my-4" />
+            <div className="h-px my-4" style={{ background: 'rgba(159,122,94,0.18)' }} />
 
             <div className="flex flex-col gap-4">
               <ShinyButton

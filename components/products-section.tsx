@@ -564,8 +564,9 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60 mb-6">
-              AI INFERENCE 서비스
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium mb-6">
+              <span className="text-white/60">PLATFORM</span>
+              <span className="text-white/30">— AI INFERENCE</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
@@ -875,8 +876,9 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60 mb-2">
-              CHAT AGENT
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium mb-6">
+              <span className="text-white/60">PLATFORM</span>
+              <span className="text-white/30">— CHAT AGENT</span>
             </div>
             <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
               엔드포인트만 연결하면 바로 동작합니다
@@ -966,16 +968,16 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center flex flex-col items-center gap-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60">
-              N3N VIDEO AI
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium">
+              <span className="text-white/60">PLATFORM</span>
+              <span className="text-white/30">— N3N VIDEO AI</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight leading-tight text-white">
                 대규모 영상 데이터 실시간 분석
               </h2>
               <p className="text-base text-white/50 leading-relaxed">
-                첨단 Vision AI와 자체 알고리즘으로 산업 현장에 최적화된 인사이트
-                제공
+                첨단 Vision AI와 자체 알고리즘으로 산업 현장에 최적화된 인사이트 제공
               </p>
             </div>
           </motion.div>
