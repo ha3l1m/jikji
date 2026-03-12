@@ -315,7 +315,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
           >
             <div
               style={{
-                background: 'rgba(201,168,76,0.3)',
+                background: 'rgba(212,157,115,0.3)',
                 borderRadius: '50%',
                 height: 14,
                 width: 14,
@@ -323,7 +323,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
                 margin: '-7px 0 0 -7px',
                 zIndex: 1,
                 opacity: 0,
-                boxShadow: '0 0 8px rgba(201,168,76,0.4)',
+                boxShadow: '0 0 8px rgba(212,157,115,0.4)',
                 animation: 'shadowAppear 0.15s ease-out 0.3s forwards',
               }}
             >
@@ -337,7 +337,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
                   animation: 'pinPulsate 1s ease-out infinite',
                   animationDelay: '0.6s',
                   opacity: 0,
-                  boxShadow: '0 0 1px 3px rgba(201,168,76,0.6)',
+                  boxShadow: '0 0 1px 3px rgba(212,157,115,0.6)',
                 }}
               />
             </div>
