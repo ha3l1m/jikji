@@ -35,7 +35,7 @@ export function PricingSnippet() {
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-2">
               {t.pricing_page.title}
             </h2>
-            <p className="hidden md:block text-base text-gray-400 font-light">
+            <p className="text-base text-gray-500 font-normal">
               {t.pricing_page.subtitle}
             </p>
           </motion.div>

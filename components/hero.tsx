@@ -86,7 +86,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 leading-relaxed font-light"
+          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 leading-relaxed font-normal"
         >
           <span className="md:hidden">
             데이터센터부터 AI 서비스까지, 한 번에

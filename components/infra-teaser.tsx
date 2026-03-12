@@ -4,7 +4,6 @@ import { motion } from 'motion/react';
 import { useI18n } from './i18n-provider';
 import { SeoulDottedMap } from './seoul-dotted-map';
 import {
-  ArrowRight,
   Shield,
   Database,
   Cloud,
@@ -13,7 +12,6 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const isolationIcons: LucideIcon[] = [Zap, Shield, Database, Cloud, Cpu];
 
@@ -124,7 +122,7 @@ export function InfraTeaser() {
           </div>
 
           {/* CTA below both columns */}
-          <div className="flex justify-center mt-12">
+          {/* <div className="flex justify-center mt-12">
             <Link
               href="https://forms.gle/2hcY59NMnXeYeJKQ6"
               target="_blank"
@@ -133,7 +131,7 @@ export function InfraTeaser() {
               AI Infrastructure 문의하기
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -464,7 +462,7 @@ export function InfraTeaser() {
           </div>
 
           {/* CTA */}
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <Link
               href="https://forms.gle/2hcY59NMnXeYeJKQ6"
               target="_blank"
@@ -473,7 +471,7 @@ export function InfraTeaser() {
               {t.infrastructure.isolation.cta}
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
