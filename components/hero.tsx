@@ -8,22 +8,16 @@ import Link from 'next/link';
 export function Hero() {
   const { t } = useI18n();
 
-  const mask =
-    'radial-gradient(ellipse 205% 70% at 50% 40%, black 50%, transparent 65%)';
-
   return (
     <section
       id="hero"
-      className="relative min-h-[85vh] pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden"
+      className="relative pt-28 pb-8 md:pt-36 md:pb-10 overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #0E0E10 0%, #0E0E10 100%)',
+        background: '#0E0E10',
       }}
     >
-      {/* Wave animation background */}
-      <div
-        className="absolute inset-0"
-        style={{ opacity: 0.43, mask, WebkitMask: mask }}
-      >
+      {/* Wave animation background — full bleed */}
+      <div className="absolute inset-0" style={{ opacity: 0.55 }}>
         <NeuralBackground
           color="#928a72"
           colorEnd="#413934"
@@ -34,12 +28,12 @@ export function Hero() {
         />
       </div>
 
-      {/* Gradient overlay */}
+      {/* Subtle darkening overlay for text legibility */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 50% at 50% 20%, transparent 30%, #0E0E10 90%)',
+            'linear-gradient(to bottom, rgba(14,14,16,0.25) 0%, rgba(14,14,16,0.45) 80%, #0E0E10 100%)',
         }}
       />
 
@@ -59,14 +53,15 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+      <div className="mx-auto max-w-[1280px] px-0 relative z-10 text-center flex flex-col items-center">
         {/* badge hidden */}
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 leading-relaxed font-normal"
+          className="text-lg md:text-xl max-w-2xl mx-auto mb-2 leading-relaxed font-normal"
+          style={{ color: '#ffffff' }}
         >
           {t.hero.description}
         </motion.p>

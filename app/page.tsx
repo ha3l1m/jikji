@@ -1,5 +1,6 @@
 import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
+import { VisionSection } from '@/components/vision-section';
 import { ProductsSection } from '@/components/products-section';
 import { InfraTeaser } from '@/components/infra-teaser';
 import { PricingSnippet } from '@/components/pricing-snippet';
@@ -14,6 +15,7 @@ export default function Home() {
         <ScrollOnMount />
         <Header />
         <Hero />
+        <VisionSection />
         <ProductsSection />
         <InfraTeaser />
         <PricingSnippet />
