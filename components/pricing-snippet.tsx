@@ -7,7 +7,9 @@ import Link from 'next/link';
 
 export function PricingSnippet() {
   const { t } = useI18n();
-  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'h100' | 'rtx'>('b200');
+  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'h100' | 'rtx'>(
+    'b200',
+  );
 
   const tabs = [
     { id: 'b200' as const, label: t.pricing_page.tabs.b200 },
@@ -43,10 +45,11 @@ export function PricingSnippet() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 md:flex-none px-3 md:px-6 py-2.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${activeTab === tab.id
-                  ? 'bg-gray-900 text-white shadow-sm'
-                  : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
-                  }`}
+                className={`flex-1 md:flex-none px-3 md:px-6 py-2.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${
+                  activeTab === tab.id
+                    ? 'bg-gray-900 text-white shadow-sm'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
+                }`}
               >
                 {tab.label}
               </button>
@@ -69,7 +72,10 @@ export function PricingSnippet() {
                 <thead>
                   <tr className="border-b border-gray-200 bg-gray-50">
                     {headers.map((h, i) => (
-                      <th key={i} className={`px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap${i >= 3 ? ' text-right' : ''}`}>
+                      <th
+                        key={i}
+                        className={`px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap${i >= 3 ? ' text-right' : ''}`}
+                      >
                         {h}
                       </th>
                     ))}
@@ -78,12 +84,24 @@ export function PricingSnippet() {
                 <tbody className="divide-y divide-gray-100">
                   {rows.map((row, i) => (
                     <tr key={i} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-5 text-sm font-medium text-gray-900 whitespace-nowrap">{row.name}</td>
-                      <td className="px-6 py-5 text-sm text-gray-500 whitespace-nowrap">{row.vram}</td>
-                      <td className="px-6 py-5 text-sm text-gray-500 whitespace-nowrap">{row.vcpu}</td>
-                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">{row.ondemand}</td>
-                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">{row['1month']}</td>
-                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">{row['1year']}</td>
+                      <td className="px-6 py-5 text-sm font-medium text-gray-900 whitespace-nowrap">
+                        {row.name}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-500 whitespace-nowrap">
+                        {row.vram}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-500 whitespace-nowrap">
+                        {row.vcpu}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">
+                        {row.ondemand}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">
+                        {row['1month']}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">
+                        {row['1year']}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -95,19 +113,34 @@ export function PricingSnippet() {
         {/* Notes */}
         <div className="mt-8 space-y-2">
           {t.pricing_page.notes.map((note, idx) => (
-            <p key={idx} className="text-sm text-gray-400">* {note.split('50%').map((part, i, arr) =>
-              i < arr.length - 1 ? <span key={i}>{part}<span className="font-bold text-gray-500">50%</span></span> : <span key={i}>{part}</span>
-            )}</p>
+            <p key={idx} className="text-sm text-gray-400">
+              *{' '}
+              {note.split('50%').map((part, i, arr) =>
+                i < arr.length - 1 ? (
+                  <span key={i}>
+                    {part}
+                    <span className="font-bold text-gray-500">50%</span>
+                  </span>
+                ) : (
+                  <span key={i}>{part}</span>
+                ),
+              )}
+            </p>
           ))}
         </div>
-
 
         {/* Inline CTA Banner */}
         <div className="mt-12 rounded-2xl bg-gray-900 px-10 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">H100 GPU · MIG 가상화, 최대 1개월 무료 체험</p>
-            <p className="text-white text-xl md:text-2xl font-bold mb-1">지금 바로 AI 인프라 경험해보세요</p>
-            <p className="text-white/50 text-sm">신청 후 개별 연락 · 상담 후 순차 할당 · 신용카드 불필요</p>
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">
+              H100 GPU · MIG 가상화, 최대 1개월 무료 체험
+            </p>
+            <p className="text-white text-xl md:text-2xl font-bold mb-1">
+              지금 바로 AI 인프라 경험해보세요
+            </p>
+            <p className="text-white/50 text-sm">
+              신청 후 개별 연락 · 상담 후 순차 할당 · 신용카드 불필요
+            </p>
           </div>
           <Link
             href="https://forms.gle/2hcY59NMnXeYeJKQ6"

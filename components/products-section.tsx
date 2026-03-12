@@ -24,7 +24,6 @@ export function ProductsSection() {
   );
 }
 
-
 /* ─────────────────────────────────────────
    GPU CLOUD CONTENT
    ───────────────────────────────────────── */
@@ -65,7 +64,7 @@ function GpuCloudContent() {
             className="flex flex-col items-center gap-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60">
-              GPU CLOUD
+              JIKJI GPUaaS
             </div>
             <div className="flex flex-col items-center gap-2">
               <h3 className="text-[28px] md:text-[48px] font-bold leading-tight text-center text-white">
@@ -79,21 +78,25 @@ function GpuCloudContent() {
 
           {/* 3 Animated Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            {(['oneclick', 'framework', 'storage'] as const).map((variant, idx) => (
-              <motion.div
-                key={variant}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <AnimatedFeatureCard
-                  variant={variant}
-                  cardTitle={t.products.gpucloud.oneclick.items[idx].title}
-                  cardDescription={t.products.gpucloud.oneclick.items[idx].desc}
-                />
-              </motion.div>
-            ))}
+            {(['oneclick', 'framework', 'storage'] as const).map(
+              (variant, idx) => (
+                <motion.div
+                  key={variant}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <AnimatedFeatureCard
+                    variant={variant}
+                    cardTitle={t.products.gpucloud.oneclick.items[idx].title}
+                    cardDescription={
+                      t.products.gpucloud.oneclick.items[idx].desc
+                    }
+                  />
+                </motion.div>
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -116,25 +119,41 @@ function GpuCloudContent() {
               }}
             >
               {/* Top light reflection */}
-              <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
-                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
-              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">01</div>
+              <div
+                className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
+                style={{
+                  height: '55%',
+                  background:
+                    'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                }}
+              />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
+                01
+              </div>
               <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[0].title}
               </h4>
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[0].desc}
               </p>
-              <div className="absolute bottom-2 left-3 right-4 pointer-events-none"
+              <div
+                className="absolute bottom-2 left-3 right-4 pointer-events-none"
                 style={{
                   height: '54%',
-                  maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
+                  maskImage:
+                    'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
                   maskComposite: 'intersect',
-                  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
+                  WebkitMaskImage:
+                    'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
                   WebkitMaskComposite: 'source-in',
                 }}
               >
-                <Image src="/images/optimize2.png" alt="" fill className="object-contain object-bottom" />
+                <Image
+                  src="/images/optimize2.png"
+                  alt=""
+                  fill
+                  className="object-contain object-bottom"
+                />
               </div>
             </motion.div>
 
@@ -151,9 +170,17 @@ function GpuCloudContent() {
                 boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
               }}
             >
-              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
-                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
-              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">02</div>
+              <div
+                className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{
+                  height: '55%',
+                  background:
+                    'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                }}
+              />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
+                02
+              </div>
               <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[1].title}
               </h4>
@@ -175,9 +202,17 @@ function GpuCloudContent() {
                 boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
               }}
             >
-              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
-                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
-              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">04</div>
+              <div
+                className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{
+                  height: '55%',
+                  background:
+                    'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                }}
+              />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
+                04
+              </div>
               <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[3].title}
               </h4>
@@ -198,11 +233,19 @@ function GpuCloudContent() {
                 border: '1px solid rgba(255,255,255,0.1)',
                 boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
               }}
-              onClick={() => setShieldActive(v => !v)}
+              onClick={() => setShieldActive((v) => !v)}
             >
-              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
-                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
-              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">03</div>
+              <div
+                className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{
+                  height: '55%',
+                  background:
+                    'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                }}
+              />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
+                03
+              </div>
               <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[2].title}
               </h4>
@@ -210,7 +253,13 @@ function GpuCloudContent() {
                 {t.products.gpucloud.features.items[2].desc}
               </p>
               <div className="hidden">
-                <Image src="/images/security.png" alt="" width={96} height={96} className="object-contain" />
+                <Image
+                  src="/images/security.png"
+                  alt=""
+                  width={96}
+                  height={96}
+                  className="object-contain"
+                />
               </div>
             </motion.div>
 
@@ -227,16 +276,23 @@ function GpuCloudContent() {
                 boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
               }}
             >
-              <div className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
-                style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
-              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">05</div>
+              <div
+                className="absolute inset-x-0 top-0 h-1/2 pointer-events-none rounded-t-2xl"
+                style={{
+                  height: '55%',
+                  background:
+                    'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                }}
+              />
+              <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
+                05
+              </div>
               <h4 className="relative z-10 text-base md:text-xl font-bold text-white mb-2">
                 {t.products.gpucloud.features.items[4].title}
               </h4>
               <p className="relative z-10 text-sm text-white/50 leading-relaxed">
                 {t.products.gpucloud.features.items[4].desc}
               </p>
-
             </motion.div>
           </div>
         </div>
@@ -249,13 +305,17 @@ function GpuCloudContent() {
    AGENT TERMINAL
    ───────────────────────────────────────── */
 function AgentTerminal() {
-  const Kw = (s: string) => <span style={{ color: '#E3E5E8' }}>{s}</span>;    // command — Glass Highlight
-  const Flg = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>;    // flags — Metallic Silver
-  const Str = (s: string) => <span style={{ color: '#D49D73' }}>{s}</span>;    // strings — Warm Amber
-  const Key = (s: string) => <span style={{ color: '#9F7A5E' }}>{s}</span>;    // JSON keys — Copper Bronze
-  const Bool = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>;    // booleans — Metallic Silver
-  const Pnc = (s: string) => <span style={{ color: 'rgba(142,147,153,0.5)' }}>{s}</span>;  // punctuation — dimmed
-  const Cmt = (s: string) => <span style={{ color: 'rgba(142,147,153,0.25)' }}>{s}</span>; // continuation \
+  const Kw = (s: string) => <span style={{ color: '#E3E5E8' }}>{s}</span>; // command — Glass Highlight
+  const Flg = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>; // flags — Metallic Silver
+  const Str = (s: string) => <span style={{ color: '#D49D73' }}>{s}</span>; // strings — Warm Amber
+  const Key = (s: string) => <span style={{ color: '#9F7A5E' }}>{s}</span>; // JSON keys — Copper Bronze
+  const Bool = (s: string) => <span style={{ color: '#8E9399' }}>{s}</span>; // booleans — Metallic Silver
+  const Pnc = (s: string) => (
+    <span style={{ color: 'rgba(142,147,153,0.5)' }}>{s}</span>
+  ); // punctuation — dimmed
+  const Cmt = (s: string) => (
+    <span style={{ color: 'rgba(142,147,153,0.25)' }}>{s}</span>
+  ); // continuation \
 
   return (
     <motion.div
@@ -270,7 +330,8 @@ function AgentTerminal() {
         className="absolute pointer-events-none"
         style={{
           inset: '-40px',
-          background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(159,122,94,0.12) 0%, transparent 70%)',
+          background:
+            'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(159,122,94,0.12) 0%, transparent 70%)',
           filter: 'blur(28px)',
         }}
       />
@@ -287,32 +348,103 @@ function AgentTerminal() {
         {/* Title bar */}
         <div
           className="flex items-center gap-1.5 px-4 py-3 border-b"
-          style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(227,229,232,0.06)' }}
+          style={{
+            background: 'rgba(255,255,255,0.02)',
+            borderColor: 'rgba(227,229,232,0.06)',
+          }}
         >
-          <span className="size-3 rounded-full" style={{ background: 'rgba(142,147,153,0.25)' }} />
-          <span className="size-3 rounded-full" style={{ background: 'rgba(142,147,153,0.18)' }} />
-          <span className="size-3 rounded-full" style={{ background: 'rgba(142,147,153,0.12)' }} />
+          <span
+            className="size-3 rounded-full"
+            style={{ background: 'rgba(142,147,153,0.25)' }}
+          />
+          <span
+            className="size-3 rounded-full"
+            style={{ background: 'rgba(142,147,153,0.18)' }}
+          />
+          <span
+            className="size-3 rounded-full"
+            style={{ background: 'rgba(142,147,153,0.12)' }}
+          />
         </div>
 
         {/* Code body */}
         <pre className="px-6 py-4 text-[11.5px] leading-[1.75] font-mono overflow-x-hidden whitespace-pre-wrap break-all">
-          <span>{Kw('curl')} {Flg('-s')} {Str('https://api.jikjilabs.local/v1/chat/completions')} {Cmt('\\')}{'\n'}</span>
-          <span>{'  '}{Flg('-H')} {Str('"Authorization: Bearer <API_KEY>"')} {Cmt('\\')}{'\n'}</span>
-          <span>{'  '}{Flg('-H')} {Str('"Content-Type: application/json"')} {Cmt('\\')}{'\n'}</span>
-          <span>{'  '}{Flg('-d')} {Pnc("'{")}{'\n'}</span>
-          <span>{'    '}{Key('"model"')}{Pnc(':')}{Str('"llama"')}{Pnc(',')}{'\n'}</span>
-          <span>{'    '}{Key('"messages"')}{Pnc(':[')}
-            {Pnc('{')}{Key('"role"')}{Pnc(':')}{Str('"user"')}{Pnc(',')}
-            {Key('"content"')}{Pnc(':')}{Str('"회사 소개 한 줄"')}{Pnc('}],')}
-            {'\n'}</span>
-          <span>{'    '}{Key('"retrieval"')}{Pnc(':{')}
-            {Key('"enabled"')}{Pnc(':')}{Bool('true')}{Pnc(',')}
-            {Key('"web_search"')}{Pnc(':')}{Bool('true')}{Pnc('},')}{'\n'}</span>
-          <span>{'    '}{Key('"memory"')}{Pnc(':{')}
-            {Key('"session_id"')}{Pnc(':')}{Str('"cust-42"')}{Pnc('}')}{'\n'}</span>
-          <span>{'  '}{Pnc("}'")}<span className="inline-block w-[2px] h-[0.9em] ml-0.5 animate-pulse align-middle" style={{ background: '#9F7A5E' }} /></span>
+          <span>
+            {Kw('curl')} {Flg('-s')}{' '}
+            {Str('https://api.jikjilabs.local/v1/chat/completions')} {Cmt('\\')}
+            {'\n'}
+          </span>
+          <span>
+            {'  '}
+            {Flg('-H')} {Str('"Authorization: Bearer <API_KEY>"')} {Cmt('\\')}
+            {'\n'}
+          </span>
+          <span>
+            {'  '}
+            {Flg('-H')} {Str('"Content-Type: application/json"')} {Cmt('\\')}
+            {'\n'}
+          </span>
+          <span>
+            {'  '}
+            {Flg('-d')} {Pnc("'{")}
+            {'\n'}
+          </span>
+          <span>
+            {'    '}
+            {Key('"model"')}
+            {Pnc(':')}
+            {Str('"llama"')}
+            {Pnc(',')}
+            {'\n'}
+          </span>
+          <span>
+            {'    '}
+            {Key('"messages"')}
+            {Pnc(':[')}
+            {Pnc('{')}
+            {Key('"role"')}
+            {Pnc(':')}
+            {Str('"user"')}
+            {Pnc(',')}
+            {Key('"content"')}
+            {Pnc(':')}
+            {Str('"회사 소개 한 줄"')}
+            {Pnc('}],')}
+            {'\n'}
+          </span>
+          <span>
+            {'    '}
+            {Key('"retrieval"')}
+            {Pnc(':{')}
+            {Key('"enabled"')}
+            {Pnc(':')}
+            {Bool('true')}
+            {Pnc(',')}
+            {Key('"web_search"')}
+            {Pnc(':')}
+            {Bool('true')}
+            {Pnc('},')}
+            {'\n'}
+          </span>
+          <span>
+            {'    '}
+            {Key('"memory"')}
+            {Pnc(':{')}
+            {Key('"session_id"')}
+            {Pnc(':')}
+            {Str('"cust-42"')}
+            {Pnc('}')}
+            {'\n'}
+          </span>
+          <span>
+            {'  '}
+            {Pnc("}'")}
+            <span
+              className="inline-block w-[2px] h-[0.9em] ml-0.5 animate-pulse align-middle"
+              style={{ background: '#9F7A5E' }}
+            />
+          </span>
         </pre>
-
       </div>
     </motion.div>
   );
@@ -329,7 +461,9 @@ interface VideoModalProps {
 function VideoModal({ item, onClose }: VideoModalProps) {
   useEffect(() => {
     if (!item) return;
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
   }, [item, onClose]);
@@ -357,11 +491,16 @@ function VideoModal({ item, onClose }: VideoModalProps) {
               background: '#ffffff',
               boxShadow: '0 32px 80px rgba(0,0,0,0.22)',
             }}
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header bar */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-black/8" style={{ background: '#f5f5f7' }}>
-              <span className="text-sm font-semibold text-black/70 uppercase tracking-wide">{item.title}</span>
+            <div
+              className="flex items-center justify-between px-6 py-4 border-b border-black/8"
+              style={{ background: '#f5f5f7' }}
+            >
+              <span className="text-sm font-semibold text-black/70 uppercase tracking-wide">
+                {item.title}
+              </span>
               <button
                 onClick={onClose}
                 className="p-2 rounded-lg text-black/30 hover:text-black hover:bg-black/8 transition-colors"
@@ -374,19 +513,27 @@ function VideoModal({ item, onClose }: VideoModalProps) {
             {/* Body */}
             <div className="p-8 flex flex-col gap-6 max-h-[70vh] overflow-y-auto">
               {/* Detail text */}
-              <p className="text-sm text-black/60 leading-relaxed whitespace-pre-line">{item.detail}</p>
+              <p className="text-sm text-black/60 leading-relaxed whitespace-pre-line">
+                {item.detail}
+              </p>
 
               {/* Sub-items */}
-              {item.desc && item.desc.split('\n').filter(Boolean).length > 0 && (
-                <div className="border-t border-black/8 pt-6 flex flex-col gap-3">
-                  {item.desc.split('\n').filter(Boolean).map((tech, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className="flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-black/25" />
-                      <span className="text-sm text-black/70 leading-relaxed">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
+              {item.desc &&
+                item.desc.split('\n').filter(Boolean).length > 0 && (
+                  <div className="border-t border-black/8 pt-6 flex flex-col gap-3">
+                    {item.desc
+                      .split('\n')
+                      .filter(Boolean)
+                      .map((tech, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span className="flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-black/25" />
+                          <span className="text-sm text-black/70 leading-relaxed">
+                            {tech}
+                          </span>
+                        </div>
+                      ))}
+                  </div>
+                )}
             </div>
           </motion.div>
         </motion.div>
@@ -401,7 +548,10 @@ function VideoModal({ item, onClose }: VideoModalProps) {
 function PlatformContent() {
   const { t } = useI18n();
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
-  const selectedItem = selectedCard !== null ? t.products.platform.video.features[selectedCard] : null;
+  const selectedItem =
+    selectedCard !== null
+      ? t.products.platform.video.features[selectedCard]
+      : null;
 
   return (
     <div>
@@ -414,8 +564,9 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60 mb-6">
-              AI INFERENCE
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium mb-6">
+              <span className="text-white/60">PLATFORM</span>
+              <span className="text-white/30">— AI INFERENCE</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
@@ -430,11 +581,26 @@ function PlatformContent() {
           {/* 5-Step Pipeline Diagram */}
           <div className="mb-14 relative px-2">
             {/* Desktop: single row with traveling pulse connector */}
-            <div className="absolute top-[21px] left-[10%] right-[10%] hidden md:block overflow-hidden" style={{ height: '2px' }}>
-              <div className="absolute left-0 right-0" style={{ top: '0px', height: '1px', background: 'linear-gradient(90deg, #9F7A5E50, #9F7A5E80 50%, #9F7A5E50)' }} />
+            <div
+              className="absolute top-[21px] left-[10%] right-[10%] hidden md:block overflow-hidden"
+              style={{ height: '2px' }}
+            >
+              <div
+                className="absolute left-0 right-0"
+                style={{
+                  top: '0px',
+                  height: '1px',
+                  background:
+                    'linear-gradient(90deg, #9F7A5E50, #9F7A5E80 50%, #9F7A5E50)',
+                }}
+              />
               <motion.div
                 className="absolute top-0 h-full"
-                style={{ width: '15%', background: 'linear-gradient(90deg, transparent, #FFCF9E 50%, transparent)' }}
+                style={{
+                  width: '15%',
+                  background:
+                    'linear-gradient(90deg, transparent, #FFCF9E 50%, transparent)',
+                }}
                 animate={{ x: ['-100%', '500%'] }}
                 transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
               />
@@ -455,28 +621,71 @@ function PlatformContent() {
                     <motion.div
                       className="absolute inset-0 rounded-full"
                       animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
-                      transition={{ duration: 1.0, repeat: Infinity, repeatDelay: 4.0, delay: idx * 1.0, ease: 'easeOut' }}
+                      transition={{
+                        duration: 1.0,
+                        repeat: Infinity,
+                        repeatDelay: 4.0,
+                        delay: idx * 1.0,
+                        ease: 'easeOut',
+                      }}
                       style={{ background: 'rgba(212,157,115,0.4)' }}
                     />
-                    <div className="absolute inset-0 rounded-full flex items-center justify-center" style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}>
-                      <div className="w-3.5 h-3.5 rounded-full" style={{ background: '#9F7A5E', boxShadow: '0 0 6px rgba(212,157,115,0.5)' }} />
+                    <div
+                      className="absolute inset-0 rounded-full flex items-center justify-center"
+                      style={{
+                        background: '#1A1B1E',
+                        border: '1px solid #E3E5E820',
+                        boxShadow: '0 0 14px rgba(212,157,115,0.15)',
+                      }}
+                    >
+                      <div
+                        className="w-3.5 h-3.5 rounded-full"
+                        style={{
+                          background: '#9F7A5E',
+                          boxShadow: '0 0 6px rgba(212,157,115,0.5)',
+                        }}
+                      />
                     </div>
                   </div>
-                  <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>{String(idx + 1).padStart(2, '0')}</p>
-                  <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>{step.label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>{step.desc}</p>
+                  <p
+                    className="text-[10px] font-mono tracking-widest mb-1.5"
+                    style={{ color: '#9F7A5E' }}
+                  >
+                    {String(idx + 1).padStart(2, '0')}
+                  </p>
+                  <p
+                    className="text-sm font-semibold leading-snug mb-1.5"
+                    style={{ color: '#E3E5E8' }}
+                  >
+                    {step.label}
+                  </p>
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: '#8E9399' }}
+                  >
+                    {step.desc}
+                  </p>
                 </motion.div>
               ))}
             </div>
 
             {/* Mobile: 2-col rows with horizontal connectors */}
             <div className="md:hidden flex flex-col gap-8">
-              {([[0, 1], [2, 3]] as const).map((pair, pairIdx) => (
+              {(
+                [
+                  [0, 1],
+                  [2, 3],
+                ] as const
+              ).map((pair, pairIdx) => (
                 <div key={pairIdx} className="relative grid grid-cols-2 gap-8">
                   {/* Horizontal connector line at dot center */}
                   <div
                     className="absolute top-[21px] inset-x-0 pointer-events-none"
-                    style={{ height: '1px', background: 'linear-gradient(90deg, transparent 2%, #9F7A5E80 15%, #9F7A5E80 85%, transparent 98%)' }}
+                    style={{
+                      height: '1px',
+                      background:
+                        'linear-gradient(90deg, transparent 2%, #9F7A5E80 15%, #9F7A5E80 85%, transparent 98%)',
+                    }}
                   />
                   {pair.map((stepIdx) => (
                     <motion.div
@@ -491,16 +700,50 @@ function PlatformContent() {
                         <motion.div
                           className="absolute inset-0 rounded-full"
                           animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
-                          transition={{ duration: 1.0, repeat: Infinity, repeatDelay: 4.0, delay: stepIdx * 1.0, ease: 'easeOut' }}
+                          transition={{
+                            duration: 1.0,
+                            repeat: Infinity,
+                            repeatDelay: 4.0,
+                            delay: stepIdx * 1.0,
+                            ease: 'easeOut',
+                          }}
                           style={{ background: 'rgba(212,157,115,0.4)' }}
                         />
-                        <div className="absolute inset-0 rounded-full flex items-center justify-center" style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}>
-                          <div className="w-3.5 h-3.5 rounded-full" style={{ background: '#9F7A5E', boxShadow: '0 0 6px rgba(212,157,115,0.5)' }} />
+                        <div
+                          className="absolute inset-0 rounded-full flex items-center justify-center"
+                          style={{
+                            background: '#1A1B1E',
+                            border: '1px solid #E3E5E820',
+                            boxShadow: '0 0 14px rgba(212,157,115,0.15)',
+                          }}
+                        >
+                          <div
+                            className="w-3.5 h-3.5 rounded-full"
+                            style={{
+                              background: '#9F7A5E',
+                              boxShadow: '0 0 6px rgba(212,157,115,0.5)',
+                            }}
+                          />
                         </div>
                       </div>
-                      <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>{String(stepIdx + 1).padStart(2, '0')}</p>
-                      <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>{t.products.platform.inference.steps[stepIdx].label}</p>
-                      <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>{t.products.platform.inference.steps[stepIdx].desc}</p>
+                      <p
+                        className="text-[10px] font-mono tracking-widest mb-1.5"
+                        style={{ color: '#9F7A5E' }}
+                      >
+                        {String(stepIdx + 1).padStart(2, '0')}
+                      </p>
+                      <p
+                        className="text-sm font-semibold leading-snug mb-1.5"
+                        style={{ color: '#E3E5E8' }}
+                      >
+                        {t.products.platform.inference.steps[stepIdx].label}
+                      </p>
+                      <p
+                        className="text-xs leading-relaxed"
+                        style={{ color: '#8E9399' }}
+                      >
+                        {t.products.platform.inference.steps[stepIdx].desc}
+                      </p>
                     </motion.div>
                   ))}
                 </div>
@@ -509,7 +752,11 @@ function PlatformContent() {
               <div className="relative flex justify-center">
                 <div
                   className="absolute top-[21px] inset-x-0 pointer-events-none"
-                  style={{ height: '1px', background: 'linear-gradient(90deg, transparent 2%, #9F7A5E80 15%, #9F7A5E80 85%, transparent 98%)' }}
+                  style={{
+                    height: '1px',
+                    background:
+                      'linear-gradient(90deg, transparent 2%, #9F7A5E80 15%, #9F7A5E80 85%, transparent 98%)',
+                  }}
                 />
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
@@ -522,22 +769,57 @@ function PlatformContent() {
                     <motion.div
                       className="absolute inset-0 rounded-full"
                       animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
-                      transition={{ duration: 1.0, repeat: Infinity, repeatDelay: 4.0, delay: 4.0, ease: 'easeOut' }}
+                      transition={{
+                        duration: 1.0,
+                        repeat: Infinity,
+                        repeatDelay: 4.0,
+                        delay: 4.0,
+                        ease: 'easeOut',
+                      }}
                       style={{ background: 'rgba(212,157,115,0.4)' }}
                     />
-                    <div className="absolute inset-0 rounded-full flex items-center justify-center" style={{ background: '#1A1B1E', border: '1px solid #E3E5E820', boxShadow: '0 0 14px rgba(212,157,115,0.15)' }}>
-                      <div className="w-3.5 h-3.5 rounded-full" style={{ background: '#9F7A5E', boxShadow: '0 0 6px rgba(212,157,115,0.5)' }} />
+                    <div
+                      className="absolute inset-0 rounded-full flex items-center justify-center"
+                      style={{
+                        background: '#1A1B1E',
+                        border: '1px solid #E3E5E820',
+                        boxShadow: '0 0 14px rgba(212,157,115,0.15)',
+                      }}
+                    >
+                      <div
+                        className="w-3.5 h-3.5 rounded-full"
+                        style={{
+                          background: '#9F7A5E',
+                          boxShadow: '0 0 6px rgba(212,157,115,0.5)',
+                        }}
+                      />
                     </div>
                   </div>
-                  <p className="text-[10px] font-mono tracking-widest mb-1.5" style={{ color: '#9F7A5E' }}>05</p>
-                  <p className="text-sm font-semibold leading-snug mb-1.5" style={{ color: '#E3E5E8' }}>{t.products.platform.inference.steps[4].label}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: '#8E9399' }}>{t.products.platform.inference.steps[4].desc}</p>
+                  <p
+                    className="text-[10px] font-mono tracking-widest mb-1.5"
+                    style={{ color: '#9F7A5E' }}
+                  >
+                    05
+                  </p>
+                  <p
+                    className="text-sm font-semibold leading-snug mb-1.5"
+                    style={{ color: '#E3E5E8' }}
+                  >
+                    {t.products.platform.inference.steps[4].label}
+                  </p>
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: '#8E9399' }}
+                  >
+                    {t.products.platform.inference.steps[4].desc}
+                  </p>
                 </motion.div>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
+          <div
+            className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
             style={{
               background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
               border: '1px solid rgba(255,255,255,0.1)',
@@ -556,12 +838,22 @@ function PlatformContent() {
                   idx > 0 && 'border-t border-white/10',
                   idx === 1 && 'md:border-t-0',
                   idx % 2 === 1 && 'md:border-l border-white/10',
-                  arr.length % 2 === 1 && idx === arr.length - 1 && 'md:col-span-2',
+                  arr.length % 2 === 1 &&
+                  idx === arr.length - 1 &&
+                  'md:col-span-2',
                 )}
               >
                 {/* Top light reflection — first row only */}
-                {idx < 2 && <div className="absolute inset-x-0 top-0 pointer-events-none"
-                  style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />}
+                {idx < 2 && (
+                  <div
+                    className="absolute inset-x-0 top-0 pointer-events-none"
+                    style={{
+                      height: '55%',
+                      background:
+                        'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                    }}
+                  />
+                )}
                 <div className="relative z-10 text-xs font-mono text-white/30 mb-4">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
@@ -584,8 +876,9 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60 mb-2">
-              CHAT AGENT
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium mb-6">
+              <span className="text-white/60">PLATFORM</span>
+              <span className="text-white/30">— CHAT AGENT</span>
             </div>
             <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight max-w-4xl mx-auto leading-tight text-white">
               엔드포인트만 연결하면 바로 동작합니다
@@ -610,14 +903,16 @@ function PlatformContent() {
                     backdropFilter: 'blur(6px)',
                     WebkitBackdropFilter: 'blur(6px)',
                     maskImage: 'linear-gradient(to bottom, transparent, black)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, transparent, black)',
+                    WebkitMaskImage:
+                      'linear-gradient(to bottom, transparent, black)',
                   }}
                 />
               </div>
             </motion.div>
 
             {/* Feature cards below */}
-            <div className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 w-full"
+            <div
+              className="rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 w-full"
               style={{
                 background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
                 border: '1px solid rgba(255,255,255,0.1)',
@@ -636,14 +931,28 @@ function PlatformContent() {
                     idx > 0 && 'border-t border-white/10',
                     idx === 1 && 'md:border-t-0',
                     idx % 2 === 1 && 'md:border-l border-white/10',
-                    arr.length % 2 === 1 && idx === arr.length - 1 && 'md:col-span-2',
+                    arr.length % 2 === 1 &&
+                    idx === arr.length - 1 &&
+                    'md:col-span-2',
                   )}
                 >
                   {/* Top light reflection — first row only */}
-                  {idx < 2 && <div className="absolute inset-x-0 top-0 pointer-events-none"
-                    style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />}
-                  <h4 className="relative z-10 text-base font-bold text-white">{item.title}</h4>
-                  <p className="relative z-10 text-sm text-white/50 leading-relaxed">{item.desc}</p>
+                  {idx < 2 && (
+                    <div
+                      className="absolute inset-x-0 top-0 pointer-events-none"
+                      style={{
+                        height: '55%',
+                        background:
+                          'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                      }}
+                    />
+                  )}
+                  <h4 className="relative z-10 text-base font-bold text-white">
+                    {item.title}
+                  </h4>
+                  <p className="relative z-10 text-sm text-white/50 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -659,8 +968,9 @@ function PlatformContent() {
             viewport={{ once: true }}
             className="text-center flex flex-col items-center gap-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium text-white/60">
-              N3N VIDEO AI
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] md:text-sm font-medium">
+              <span className="text-white/60">PLATFORM</span>
+              <span className="text-white/30">— N3N VIDEO AI</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <h2 className="text-[28px] md:text-[48px] font-bold tracking-tight leading-tight text-white">
@@ -681,22 +991,28 @@ function PlatformContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                onClick={() => setSelectedCard(idx)}
                 className={cn(
-                  'relative overflow-hidden flex flex-col items-start p-6 rounded-2xl group transition-all text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50',
+                  'relative overflow-hidden flex flex-col items-start p-6 rounded-2xl transition-all text-left cursor-default focus:outline-none',
                   arr.length === 5 && idx === 4 && 'sm:col-span-2',
                 )}
                 style={{
-                  background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
+                  background:
+                    'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
                   border: '1px solid rgba(255,255,255,0.1)',
                   boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)',
                 }}
               >
                 {/* Top light reflection */}
-                <div className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
-                  style={{ height: '55%', background: 'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)' }} />
+                <div
+                  className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
+                  style={{
+                    height: '55%',
+                    background:
+                      'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 45%, transparent 70%)',
+                  }}
+                />
                 {/* Arrow — top right */}
-                <div className="absolute top-5 right-5 z-10">
+                <div className="absolute top-5 right-5 z-10 hidden">
                   <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white/70 group-hover:translate-x-0.5 transition-all" />
                 </div>
                 <div className="relative z-10 text-xs font-mono text-white/30 mb-4">

@@ -232,8 +232,8 @@ export function SeoulDottedMap({ className }: { className?: string }) {
       {/* Canvas with fade mask */}
       <div
         style={{
-          maskImage: 'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
+          maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 68%, transparent 90%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 68%, transparent 90%)',
         }}
       >
         <canvas
@@ -241,6 +241,18 @@ export function SeoulDottedMap({ className }: { className?: string }) {
           style={{ width: '100%', height: 'auto', display: 'block' }}
         />
       </div>
+      {/* Depth fog — far side (top) dimmer to enhance perspective recession */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 3,
+        background: 'linear-gradient(to bottom, rgba(10,10,14,0.55) 0%, rgba(10,10,14,0.15) 30%, transparent 55%)',
+      }} />
+      {/* Ground glow — base plane reflection */}
+      <div style={{
+        position: 'absolute', bottom: '-6px', left: '15%', right: '15%',
+        height: '60px', pointerEvents: 'none', zIndex: 2,
+        background: 'radial-gradient(ellipse 80% 100% at 50% 100%, rgba(159,122,94,0.18) 0%, transparent 70%)',
+        filter: 'blur(10px)',
+      }} />
       {/* SVG arc overlay — pixel coordinate system via ResizeObserver */}
       {mapSize.w > 0 && (
         <svg
@@ -256,8 +268,14 @@ export function SeoulDottedMap({ className }: { className?: string }) {
           }}
         >
           <defs>
-            <filter id="arcGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
+            <filter id="arcGlowSoft" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="7" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+              </feMerge>
+            </filter>
+            <filter id="arcGlowSharp" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -274,22 +292,17 @@ export function SeoulDottedMap({ className }: { className?: string }) {
             const y2 = parseFloat(dc.top) / 100 * mapSize.h;
 
             const cx = (x1 + x2) / 2;
-            const cy = Math.min(y1, y2) - mapSize.h * 0.18;
+            const cy = Math.min(y1, y2) - mapSize.h * 0.34;
+            const d = `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`;
+            const anim = { animation: `arcDraw 0.55s ease-out forwards`, strokeDasharray: 2000, strokeDashoffset: 2000 };
 
             return (
-              <path
-                key={`arc-${idx}-${visibleDCs}`}
-                d={`M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`}
-                fill="none"
-                stroke="rgba(215,195,150,0.55)"
-                strokeWidth="1.5"
-                filter="url(#arcGlow)"
-                style={{
-                  animation: `arcDraw 0.55s ease-out forwards`,
-                  strokeDasharray: 2000,
-                  strokeDashoffset: 2000,
-                }}
-              />
+              <g key={`arc-${idx}-${visibleDCs}`}>
+                {/* wide soft glow */}
+                <path d={d} fill="none" stroke="rgba(212,157,115,0.28)" strokeWidth="6" filter="url(#arcGlowSoft)" style={anim} />
+                {/* crisp line */}
+                <path d={d} fill="none" stroke="rgba(212,157,115,0.7)" strokeWidth="1.5" filter="url(#arcGlowSharp)" style={anim} />
+              </g>
             );
           })}
         </svg>
@@ -342,7 +355,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
             className="dc-speech-bubble"
             style={{
               position: 'absolute',
-              left: '90%',
+              left: '68%',
               top: '75%',
               transform: 'translate(-50%, calc(-100% - 6px))',
               zIndex: 50,
@@ -380,14 +393,14 @@ export function SeoulDottedMap({ className }: { className?: string }) {
               >
                 <div
                   style={{
-                    background: 'rgba(215,195,150,0.15)',
+                    background: 'rgba(159,122,94,0.22)',
                     borderRadius: '50%',
                     height: 10,
                     width: 10,
                     position: 'absolute',
                     margin: '-5px 0 0 -5px',
                     zIndex: 1,
-                    boxShadow: '0 0 6px rgba(215,195,150,0.3)',
+                    boxShadow: '0 0 6px rgba(159,122,94,0.4)',
                   }}
                 >
                   <div
@@ -400,7 +413,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
                       animation: 'pinPulsate 1.2s ease-out infinite',
                       animationDelay: `${idx * 0.2}s`,
                       opacity: 0,
-                      boxShadow: '0 0 1px 2px rgba(215,195,150,0.35)',
+                      boxShadow: '0 0 1px 2px rgba(159,122,94,0.45)',
                     }}
                   />
                 </div>
