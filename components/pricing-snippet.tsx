@@ -142,7 +142,7 @@ export function PricingSnippet() {
           <Link
             href="https://forms.gle/2hcY59NMnXeYeJKQ6"
             target="_blank"
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-[10px] bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
           >
             {t.cta_banner.btn_inquiry}
           </Link>

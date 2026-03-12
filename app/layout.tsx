@@ -90,6 +90,9 @@ export default function RootLayout({
         <Providers>
           {children}
         </Providers>
+        {/* Figma capture script — remove after handoff */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
       </body>
     </html>
   );

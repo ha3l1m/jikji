@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative pt-28 pb-8 md:pt-36 md:pb-10 overflow-hidden"
+      className="relative pt-36 pb-0 md:pt-48 md:pb-0 overflow-hidden"
       style={{
         background: '#0E0E10',
       }}
