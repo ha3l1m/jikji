@@ -3,17 +3,7 @@
 import { motion } from 'motion/react';
 import { useI18n } from './i18n-provider';
 import { SeoulDottedMap } from './seoul-dotted-map';
-import {
-  Shield,
-  Database,
-  Cloud,
-  Cpu,
-  Zap,
-  type LucideIcon,
-} from 'lucide-react';
 import Image from 'next/image';
-
-const isolationIcons: LucideIcon[] = [Zap, Shield, Database, Cloud, Cpu];
 
 export function InfraTeaser() {
   const { t } = useI18n();
@@ -155,7 +145,7 @@ export function InfraTeaser() {
                   {t.infrastructure.aidc.badge}
                 </div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 pb-6 text-white text-center md:text-left">
                 {t.infrastructure.aidc.title}
               </h2>
               {/* <p className="text-base text-white/50 mb-10 text-center md:text-left">
@@ -407,58 +397,62 @@ export function InfraTeaser() {
             </p>
           </motion.div>
 
-          {/* Feature cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-            {t.infrastructure.isolation.features.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                className={`relative rounded-2xl p-6 overflow-hidden flex flex-col gap-3${idx === 4 ? ' sm:col-span-2 lg:col-span-1' : ''}`}
-                style={{
-                  background:
-                    'linear-gradient(180deg, #1A1B1E 0%, #131416 100%)',
-                  border: '1px solid rgba(227,229,232,0.08)',
-                  boxShadow: 'inset 0 1px 0 rgba(227,229,232,0.06)',
-                }}
-              >
-                <div
-                  className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
+          {/* Two-column: image + cards */}
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
+            {/* Left: Product image */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden"
+              style={{
+                WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 100%)',
+                maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 100%)',
+              }}
+            >
+              <Image
+                src="/images/pmdc.png"
+                alt="JIKJI PMDC"
+                fill
+                className="object-cover object-center"
+              />
+            </motion.div>
+
+            {/* Right: Feature cards */}
+            <div className="grid grid-cols-2 gap-4 content-start">
+              {t.infrastructure.isolation.features.map((feature, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.08 }}
+                  className={`relative rounded-2xl p-6 overflow-hidden flex flex-col gap-3${idx === 4 ? ' col-span-2' : ''}`}
                   style={{
-                    height: '60%',
-                    background:
-                      'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 45%, transparent 70%)',
-                  }}
-                />
-                <div
-                  className="hidden w-10 h-10 rounded-xl flex items-center justify-center shrink-0 relative z-10"
-                  style={{
-                    background: 'rgba(180,120,20,0.12)',
-                    border: '1px solid rgba(196,146,42,0.25)',
+                    background: 'linear-gradient(180deg, #1A1B1E 0%, #131416 100%)',
+                    border: '1px solid rgba(227,229,232,0.08)',
+                    boxShadow: 'inset 0 1px 0 rgba(227,229,232,0.06)',
                   }}
                 >
-                  {(() => {
-                    const Icon = isolationIcons[idx];
-                    return (
-                      <Icon className="w-5 h-5" style={{ color: '#C4922A' }} />
-                    );
-                  })()}
-                </div>
-                <div className="relative z-10">
-                  <h3 className="text-base font-bold text-white mb-1">
-                    {feature.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: '#8E9399' }}
-                  >
-                    {feature.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                  <div
+                    className="absolute inset-x-0 top-0 pointer-events-none rounded-t-2xl"
+                    style={{
+                      height: '60%',
+                      background:
+                        'radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 45%, transparent 70%)',
+                    }}
+                  />
+                  <div className="relative z-10">
+                    <h3 className="text-base font-bold text-white mb-1">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: '#8E9399' }}>
+                      {feature.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* CTA */}
