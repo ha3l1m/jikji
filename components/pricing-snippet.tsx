@@ -3,16 +3,18 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useI18n } from './i18n-provider';
-import { SectionHeader } from './section-header';
-import { Mail } from 'lucide-react';
+import Link from 'next/link';
 
 export function PricingSnippet() {
   const { t } = useI18n();
-  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'rtx'>('b200');
+  const [activeTab, setActiveTab] = useState<'b200' | 'h200' | 'h100' | 'rtx'>(
+    'b200',
+  );
 
   const tabs = [
     { id: 'b200' as const, label: t.pricing_page.tabs.b200 },
     { id: 'h200' as const, label: t.pricing_page.tabs.h200 },
+    { id: 'h100' as const, label: t.pricing_page.tabs.h100 },
     { id: 'rtx' as const, label: t.pricing_page.tabs.rtx },
   ];
 
@@ -20,28 +22,33 @@ export function PricingSnippet() {
   const headers = t.pricing_page.table.headers;
 
   return (
-    <section id="pricing" className="py-24 bg-[#050505] border-t border-white/5 relative overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#5EA5EA]/10 rounded-full blur-[100px] opacity-40 pointer-events-none" />
+    <section id="pricing" className="py-24 bg-white border-t border-gray-100">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        {/* Header + Tab selector */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-2">
+              {t.pricing_page.title}
+            </h2>
+            <p className="text-base text-gray-500 font-normal">
+              {t.pricing_page.subtitle}
+            </p>
+          </motion.div>
 
-      <div className="mx-auto max-w-7xl px-6 relative z-10">
-        <SectionHeader
-          title={t.pricing_page.title}
-          subtitle={t.pricing_page.subtitle}
-        />
-
-        {/* Tab selector */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex bg-[#111] p-1 rounded-xl border border-white/10">
+          <div className="w-full md:w-auto inline-flex bg-gray-100 p-1 rounded-xl border border-gray-200 shrink-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                className={`flex-1 md:flex-none px-3 md:px-6 py-2.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${
                   activeTab === tab.id
-                    ? 'bg-white text-black shadow-sm'
-                    : 'text-white/60 hover:text-white hover:bg-white/5'
+                    ? 'bg-gray-900 text-white shadow-sm'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'
                 }`}
               >
                 {tab.label}
@@ -58,28 +65,43 @@ export function PricingSnippet() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="bg-[#0A0A0A] border border-white/10 rounded-2xl overflow-hidden shadow-2xl mb-6"
+            className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm mb-6"
           >
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-white/10 bg-white/5">
+                  <tr className="border-b border-gray-200 bg-gray-50">
                     {headers.map((h, i) => (
-                      <th key={i} className="px-6 py-4 text-sm font-medium text-white/60 whitespace-nowrap">
+                      <th
+                        key={i}
+                        className={`px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap${i >= 3 ? ' text-right' : ''}`}
+                      >
                         {h}
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5">
+                <tbody className="divide-y divide-gray-100">
                   {rows.map((row, i) => (
-                    <tr key={i} className="hover:bg-white/[0.02] transition-colors">
-                      <td className="px-6 py-5 text-sm font-medium text-white whitespace-nowrap">{row.name}</td>
-                      <td className="px-6 py-5 text-sm text-white/60 whitespace-nowrap">{row.vram}</td>
-                      <td className="px-6 py-5 text-sm text-white/60 whitespace-nowrap">{row.vcpu}</td>
-                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap">{row.ondemand}</td>
-                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap">{row['1month']}</td>
-                      <td className="px-6 py-5 text-sm text-white/90 font-mono whitespace-nowrap">{row['1year']}</td>
+                    <tr key={i} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-6 py-5 text-sm font-medium text-gray-900 whitespace-nowrap">
+                        {row.name}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-500 whitespace-nowrap">
+                        {row.vram}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-500 whitespace-nowrap">
+                        {row.vcpu}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">
+                        {row.ondemand}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">
+                        {row['1month']}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-900 font-mono whitespace-nowrap text-right">
+                        {row['1year']}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -88,32 +110,46 @@ export function PricingSnippet() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="mb-14" />
+        {/* Notes */}
+        <div className="mt-8 space-y-2">
+          {t.pricing_page.notes.map((note, idx) => (
+            <p key={idx} className="text-sm text-gray-400">
+              *{' '}
+              {note.split('50%').map((part, i, arr) =>
+                i < arr.length - 1 ? (
+                  <span key={i}>
+                    {part}
+                    <span className="font-bold text-gray-500">50%</span>
+                  </span>
+                ) : (
+                  <span key={i}>{part}</span>
+                ),
+              )}
+            </p>
+          ))}
+        </div>
 
-        {/* Consulting CTA card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-[#5EA5EA]/15 to-[#8B5CF6]/15 border border-[#5EA5EA]/20 rounded-3xl p-8 md:p-12 text-center max-w-3xl mx-auto"
-        >
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-            {t.pricing_page.consulting.title}
-          </h3>
-          <p className="text-lg text-white/80 mb-2 font-medium">
-            {t.pricing_page.consulting.desc1}
-          </p>
-          <p className="text-white/60 mb-8 whitespace-pre-line leading-relaxed">
-            {t.pricing_page.consulting.desc2}
-          </p>
-          <a
-            href="mailto:business@jikji.ai"
-            className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-white/90 transition-colors"
+        {/* Inline CTA Banner */}
+        <div className="mt-12 rounded-2xl bg-gray-900 px-10 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">
+              H100 GPU · MIG 가상화, 최대 1개월 무료 체험
+            </p>
+            <p className="text-white text-xl md:text-2xl font-bold mb-1">
+              지금 바로 AI 인프라 경험해보세요
+            </p>
+            <p className="text-white/50 text-sm">
+              신청 후 개별 연락 · 상담 후 순차 할당 · 신용카드 불필요
+            </p>
+          </div>
+          <Link
+            href="https://forms.gle/2hcY59NMnXeYeJKQ6"
+            target="_blank"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 font-semibold text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
           >
-            <Mail className="w-4 h-4 text-[#5EA5EA]" />
-            {t.pricing_page.consulting.contact}
-          </a>
-        </motion.div>
+            프로모션 문의하기
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -14,7 +14,9 @@ const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.email({ message: 'Invalid email address.' }),
   company: z.string().min(2, { message: 'Company name is required.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  message: z
+    .string()
+    .min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -34,7 +36,10 @@ export function QuoteForm() {
   const { isSubmitting, isSuccess, onSubmit } = useFormSubmit(reset);
 
   return (
-    <section id="quote" className="py-24 relative overflow-hidden bg-[#050505] border-t border-white/5">
+    <section
+      id="quote"
+      className="py-24 relative overflow-hidden bg-[#01071B] border-t border-white/5"
+    >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
 
       <div className="mx-auto max-w-3xl px-6 relative z-10">
@@ -45,7 +50,7 @@ export function QuoteForm() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl"
+          className="bg-[#01071B] border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl"
         >
           {isSuccess ? (
             <motion.div
@@ -54,8 +59,12 @@ export function QuoteForm() {
               className="flex flex-col items-center justify-center py-12 text-center"
             >
               <CheckCircle2 className="w-16 h-16 text-emerald-500 mb-6" />
-              <h3 className="text-2xl font-medium mb-2 text-white/90">{t.quote.form.success}</h3>
-              <p className="text-white/50 font-light">We will get back to you shortly.</p>
+              <h3 className="text-2xl font-medium mb-2 text-white/90">
+                {t.quote.form.success}
+              </h3>
+              <p className="text-white/50 font-light">
+                We will get back to you shortly.
+              </p>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -86,7 +95,10 @@ export function QuoteForm() {
               />
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-white/70">
+                <label
+                  htmlFor="message"
+                  className="text-sm font-medium text-white/70"
+                >
                   {t.quote.form.message}
                 </label>
                 <textarea
@@ -96,7 +108,11 @@ export function QuoteForm() {
                   className="w-full bg-[#111] border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all resize-none font-light"
                   placeholder="Tell us about your project..."
                 />
-                {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
+                {errors.message && (
+                  <p className="text-red-400 text-xs mt-1">
+                    {errors.message.message}
+                  </p>
+                )}
               </div>
 
               <button
@@ -104,7 +120,11 @@ export function QuoteForm() {
                 disabled={isSubmitting}
                 className="w-full bg-white text-black font-medium rounded-lg px-8 py-4 hover:bg-white/90 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-4"
               >
-                {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : t.quote.form.submit}
+                {isSubmitting ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  t.quote.form.submit
+                )}
               </button>
             </form>
           )}

@@ -2,137 +2,121 @@
 
 import { useI18n } from './i18n-provider';
 import { motion } from 'motion/react';
-import { FullStackDiagram } from './full-stack-diagram';
-import NeuralBackground from './ui/flow-field-background';
+import { EtheralShadow } from './ui/etheral-shadow';
+import { DottedSurface } from './ui/dotted-surface';
+// import { AuroraBackground } from './ui/aurora-background';
+// import NeuralBackground from './ui/flow-field-background';
 import Link from 'next/link';
-import { ArrowRight, Server, Cpu, BarChart3, MessageSquare } from 'lucide-react';
 
 export function Hero() {
   const { t } = useI18n();
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#050505]">
-      {/* Flow field animation background */}
-      <div className="absolute inset-0 opacity-60" style={{ mask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)', WebkitMask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)' }}>
+    <section
+      id="hero"
+      className="relative min-h-[85vh] pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden"
+      style={{
+        background: 'linear-gradient(180deg, #0E0E10 0%, #0E0E10 100%)',
+      }}
+    >
+      {/* Etheral shadow animation background */}
+      <EtheralShadow
+        className="pointer-events-none opacity-20"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          maskImage:
+            'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, black 0%, black 50%, transparent 100%)',
+        }}
+        color="rgba(89, 91, 95, 1)"
+        animation={{ scale: 100, speed: 90 }}
+        noise={{ opacity: 0.5, scale: 1.2 }}
+        sizing="fill"
+      />
+
+      {/* Flow field animation background (hidden) */}
+      {/* <div className="absolute inset-0 opacity-20" style={{ mask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)', WebkitMask: 'radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 80%)' }}>
         <NeuralBackground
-          color="#5EA5EA"
-          colorEnd="#8B5CF6"
+          color="#595B5F"
+          colorEnd="#595B5F"
           trailOpacity={0.06}
-          particleCount={400}
-          speed={0.5}
+          particleCount={350}
+          speed={0.4}
+          flowScale={0.002}
         />
-      </div>
-      {/* Gradient overlay to fade the animation toward the edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_20%,transparent_30%,#050505_90%)] pointer-events-none" />
+      </div> */}
 
-      {/* Decorative gradient blobs + star dots */}
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 50% at 50% 20%, transparent 30%, #0E0E10 90%)',
+        }}
+      />
+
+      {/* Dotted grid background */}
+      <DottedSurface
+        className="absolute inset-0 opacity-90"
+        style={{ maskImage: 'radial-gradient(ellipse 90% 70% at 50% 35%, black 30%, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse 90% 70% at 50% 35%, black 30%, transparent 80%)' }}
+      />
+
+      {/* Decorative gradient blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Green blob - left */}
-        <div className="absolute left-[100px] top-0 w-[691px] h-[818px] mix-blend-overlay overflow-hidden">
-          <div className="absolute left-[128px] top-[-192px] w-96 h-[882px] opacity-10 bg-green-200" />
-        </div>
-        {/* Pink blob - right */}
-        <div className="absolute left-[907px] top-0 w-[519px] h-[724px] mix-blend-overlay overflow-hidden">
-          <div className="absolute left-[99px] top-[-59px] w-80 h-[684px] opacity-20 bg-pink-200" />
-        </div>
-        {/* Cyan circle - center */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-20 mix-blend-overlay bg-cyan-200 rounded-full blur-3xl" />
-        {/* White streak */}
+        {/* Gold glow - center top */}
+        <div
+          className="absolute left-1/2 -translate-x-1/2 top-[-125px] w-[572px] h-[572px] opacity-10 mix-blend-overlay rounded-full blur-3xl"
+          style={{ background: '#595B5F' }}
+        />
+        {/* Gold streak */}
         <div className="absolute left-[420px] top-[120px] w-44 h-32 mix-blend-overlay overflow-hidden">
-          <div className="absolute left-[52px] top-[42px] w-20 h-6 origin-top-left rotate-[15deg] opacity-40 bg-white" />
+          <div
+            className="absolute left-[52px] top-[42px] w-20 h-6 origin-top-left rotate-[15deg] opacity-20 rounded-full blur-sm"
+            style={{ background: '#595B5F' }}
+          />
         </div>
-        {/* Blurred pill */}
-        <div className="absolute left-[1022px] top-[404px] w-28 h-9 origin-top-left -rotate-[25deg] opacity-5 mix-blend-overlay bg-white rounded-[55px] blur-lg" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 relative z-10 text-center flex flex-col items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/80 mb-4 backdrop-blur-md"
-        >
-          <span>{t.hero.badge}</span>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-8 max-w-5xl mx-auto leading-[1.1]"
-        >
-          {t.hero.title}
-        </motion.h1>
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+        {/* badge hidden */}
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-8 leading-relaxed font-light"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 leading-relaxed font-normal"
         >
-          {t.hero.description}
+          <span className="md:hidden">
+            데이터센터부터 AI 서비스까지, 한 번에
+          </span>
+          <span className="hidden md:inline">{t.hero.description}</span>
         </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-[32px] md:text-7xl lg:text-[80px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-10 max-w-5xl mx-auto leading-[1.1] whitespace-normal"
+        >
+          {t.hero.title}
+        </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.5, delay: 0.45 }}
+          className="mb-12 flex flex-row items-center justify-center gap-3 md:gap-4"
         >
-          <a
-            href="mailto:business@jikji.ai"
-            className="inline-flex items-center justify-center px-10 py-3.5 rounded-[10px] bg-white hover:bg-white/90 text-black font-semibold text-base transition-colors"
+          <Link
+            href="https://forms.gle/2hcY59NMnXeYeJKQ6"
+            className="inline-flex items-center justify-center px-6 py-3 md:px-10 md:py-3.5 rounded-[10px] bg-white hover:bg-white/90 text-black font-semibold text-sm md:text-base transition-colors"
+            target="_blank"
           >
             {t.hero.cta_primary}
-          </a>
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-[10px] bg-white/5 hover:bg-white/10 border border-white/15 text-white font-medium text-base transition-colors"
-          >
-            {t.hero.cta_secondary}
-            <ArrowRight className="w-4 h-4" />
           </Link>
-        </motion.div>
-
-        {/* Desktop diagram */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-20 relative w-full max-w-5xl mx-auto rounded-2xl border border-white/10 shadow-2xl bg-[#0A0A0A] hidden md:block"
-        >
-          <FullStackDiagram />
-        </motion.div>
-
-        {/* Mobile fallback — simplified stacked cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-12 w-full flex flex-col gap-3 md:hidden"
-        >
-          {[
-            { title: 'AI Infrastructure', items: ['직지 edge 데이터센터', 'GPUaaS'], icons: [Server, Cpu], borderColor: 'border-[#5EA5EA]/40', glowColor: 'shadow-[0_0_20px_rgba(94,165,234,0.1)]' },
-            { title: 'AI Platform', items: ['AI & MLOps Platform', '배포·추론 API'], icons: [BarChart3, BarChart3], borderColor: 'border-violet-500/40', glowColor: 'shadow-[0_0_20px_rgba(139,92,246,0.1)]' },
-            { title: 'AI Applications', items: ['Chat Agent 서비스', 'N3N 영상 AI'], icons: [MessageSquare, MessageSquare], borderColor: 'border-purple-400/50', glowColor: 'shadow-[0_0_20px_rgba(168,85,247,0.15)]' },
-          ].map((col) => (
-            <div key={col.title} className={`rounded-2xl border ${col.borderColor} ${col.glowColor} bg-white/[0.04] p-4`}>
-              <h3 className="text-white font-bold text-sm mb-3">{col.title}</h3>
-              <div className="flex gap-2">
-                {col.items.map((label, i) => {
-                  const Icon = col.icons[i];
-                  return (
-                    <div key={label} className="flex-1 flex items-center gap-2 bg-white/[0.06] rounded-xl px-3 py-2 border border-white/10">
-                      <div className="w-7 h-7 rounded-lg bg-[#5EA5EA]/10 border border-[#5EA5EA]/20 flex items-center justify-center shrink-0">
-                        <Icon className="w-3.5 h-3.5 text-[#5EA5EA]" />
-                      </div>
-                      <span className="text-white/70 text-xs font-medium leading-snug">{label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+          {/* cta_secondary hidden */}
         </motion.div>
       </div>
     </section>

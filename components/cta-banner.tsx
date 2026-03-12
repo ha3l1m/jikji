@@ -2,57 +2,47 @@
 
 import { motion } from 'motion/react';
 import { useI18n } from './i18n-provider';
+import { useRouter } from 'next/navigation';
+import { ShinyButton } from './ui/shiny-button';
 
 export function CTABanner() {
   const { t } = useI18n();
+  const router = useRouter();
 
   return (
-    <section id="contact" className="py-20 bg-[#0A0A0A] border-t border-white/5">
-      <div className="mx-auto max-w-4xl px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
-        >
-          {t.hero.title}
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-lg text-white/50 max-w-xl mx-auto mb-10 font-light"
-        >
-          {t.hero.description}
-        </motion.p>
-
+    <section id="contact" className="py-24 bg-white border-t border-gray-100">
+      <div className="mx-auto max-w-5xl px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.6 }}
         >
-          {/* Animated border CTA — same style as infrastructure page */}
-          <div className="relative inline-flex rounded-full p-[1px] overflow-hidden">
-            <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#B3D9F5_0%,#5EA5EA_50%,#B3D9F5_100%)]" />
-            <a
-              href="mailto:business@jikji.ai"
-              className="relative z-10 inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white transition-all bg-zinc-950 bg-gradient-to-tr from-zinc-300/5 via-[#5EA5EA]/20 to-transparent hover:from-zinc-300/10 hover:via-[#5EA5EA]/30"
+          {/* Title — single line */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4 whitespace-nowrap">
+            {t.cta_banner.title}
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-gray-500 font-light mb-10">
+            {t.cta_banner.subtitle}
+          </p>
+
+          {/* Single button */}
+          <div className="flex items-center justify-center mb-8">
+            <ShinyButton
+              className="!py-3 !px-8 !text-base"
+              // onClick={() => router.push('/support')}
+              onClick={() => router.push('https://forms.gle/2hcY59NMnXeYeJKQ6')}
             >
-              {t.hero.cta_primary}
-            </a>
+              {t.cta_banner.btn_inquiry}
+            </ShinyButton>
           </div>
 
-          <a
-            href="#features"
-            onClick={(e) => { e.preventDefault(); document.getElementById('features')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/30 font-medium text-sm transition-colors"
-          >
-            {t.hero.cta_secondary}
-          </a>
+          {/* Disclaimer */}
+          <p className="text-sm text-gray-400 whitespace-pre-line leading-relaxed">
+            {t.cta_banner.disclaimer}
+          </p>
         </motion.div>
       </div>
     </section>

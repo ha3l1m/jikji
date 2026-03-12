@@ -1,10 +1,10 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
+import { createMDX } from 'fumadocs-mdx/next';
+
+const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: false,
   },
@@ -12,9 +12,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   output: 'export',
-  basePath: '/jikji',
-  assetPrefix: '/jikji/',
   transpilePackages: ['motion'],
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

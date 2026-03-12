@@ -1,25 +1,25 @@
 import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
-import { StatsBar } from '@/components/stats-bar';
-import { Features } from '@/components/features';
 import { ProductsSection } from '@/components/products-section';
 import { InfraTeaser } from '@/components/infra-teaser';
 import { PricingSnippet } from '@/components/pricing-snippet';
-import { CTABanner } from '@/components/cta-banner';
 import { Footer } from '@/components/footer';
+import { I18nProvider } from '@/components/i18n-provider';
+import { ScrollOnMount } from '@/components/scroll-on-mount';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black selection:bg-white/30">
-      <Header />
-      <Hero />
-      <StatsBar />
-      <Features />
-      <ProductsSection />
-      <InfraTeaser />
-      <PricingSnippet />
-      <CTABanner />
-      <Footer />
-    </main>
+    <I18nProvider>
+      <main className="min-h-screen bg-black selection:bg-white/30">
+        <ScrollOnMount />
+        <Header />
+        <Hero />
+        <ProductsSection />
+        <InfraTeaser />
+        <PricingSnippet />
+        {/* <CTABanner /> */}
+        <Footer />
+      </main>
+    </I18nProvider>
   );
 }

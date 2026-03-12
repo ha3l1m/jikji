@@ -1,13 +1,21 @@
 'use client';
 
-import { ArrowRight, Server, Cpu, BarChart3, Zap, MessageSquare, Video } from 'lucide-react';
+import {
+  ArrowRight,
+  Server,
+  Cpu,
+  BarChart3,
+  Zap,
+  MessageSquare,
+  Video,
+} from 'lucide-react';
 
 const columns = [
   {
     id: 'infrastructure',
     title: 'AI Infrastructure',
     borderColor: 'border-indigo-500/50',
-    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.15)]',
+    glowColor: 'shadow-[0_0_30px_rgba(85,114,226,0.15)]',
     items: [
       { label: '직지 edge\n데이터센터', icon: Server },
       { label: 'GPUaaS', icon: Cpu },
@@ -17,7 +25,7 @@ const columns = [
     id: 'platform',
     title: 'AI Platform',
     borderColor: 'border-violet-500/50',
-    glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.15)]',
+    glowColor: 'shadow-[0_0_30px_rgba(64,100,235,0.15)]',
     items: [
       { label: 'AI & MLOps\nPlatform', icon: BarChart3 },
       { label: '배포·추론\nAPI 서비스', icon: Zap },
@@ -27,7 +35,7 @@ const columns = [
     id: 'applications',
     title: 'AI Applications',
     borderColor: 'border-purple-400/70',
-    glowColor: 'shadow-[0_0_40px_rgba(168,85,247,0.25)]',
+    glowColor: 'shadow-[0_0_40px_rgba(64,100,235,0.25)]',
     items: [
       { label: 'Chat Agent\n서비스', icon: MessageSquare },
       { label: 'N3N 영상\nAI 서비스', icon: Video },
@@ -39,7 +47,10 @@ export function FullStackDiagram() {
   return (
     <div className="flex items-stretch gap-2 md:gap-4 w-full py-6 px-4">
       {columns.map((col, i) => (
-        <div key={col.id} className="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
+        <div
+          key={col.id}
+          className="flex items-center gap-2 md:gap-4 flex-1 min-w-0"
+        >
           {i > 0 && (
             <div className="flex-shrink-0 flex items-center">
               <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-indigo-400/70" />

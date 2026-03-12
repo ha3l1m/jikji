@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useLayoutEffect, useCallback, useState } from 'react';
 import { useInView } from 'motion/react';
 
 const W = 800;
@@ -70,6 +70,36 @@ export function SeoulDottedMap({ className }: { className?: string }) {
   const rafRef = useRef<number>(0);
   const dotsRef = useRef<DotData[]>([]);
   const inView = useInView(containerRef, { once: true, margin: '-80px' });
+  const [tiltDone, setTiltDone] = useState(false);
+  const [visibleDCs, setVisibleDCs] = useState(1);
+  const [mapSize, setMapSize] = useState({ w: 0, h: 0 });
+
+  useLayoutEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => {
+      setMapSize({ w: el.offsetWidth, h: el.offsetHeight });
+    });
+    ro.observe(el);
+    setMapSize({ w: el.offsetWidth, h: el.offsetHeight });
+    return () => ro.disconnect();
+  }, []);
+
+
+  const DC_LOCATIONS = [
+    // DC#1 — existing, Gangdong area
+    { left: '90%', top: '75%', label: 'First AI DC', year: '2027' },
+    // DC#2 — Gangnam
+    { left: '68%', top: '68%', label: null, year: null },
+    // DC#3 — Jung-gu / Yongsan
+    { left: '50%', top: '52%', label: null, year: null },
+    // DC#4 — Mapo
+    { left: '32%', top: '44%', label: null, year: null },
+    // DC#5 — Dobong / Nowon
+    { left: '62%', top: '24%', label: null, year: null },
+    // DC#6 — Guro / Yangcheon (bottom-left)
+    { left: '22%', top: '72%', label: null, year: null },
+  ];
 
   const draw = useCallback((progress: number) => {
     const canvas = canvasRef.current;
@@ -89,7 +119,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     for (const { fx, fy, nu, nv } of dots) {
       const sph = sphereProject(nu, nv, tilt);
       const globeFade = Math.max(0.25, Math.min(1, sph.zr + 0.6));
-      const opacity = (1 - progress) * 0.28 + progress * globeFade * 0.38;
+      const opacity = progress * ((1 - progress) * 0.28 + progress * globeFade * 0.38);
       if (opacity < 0.01) continue;
 
       const x = Math.round(fx + (sph.x - fx) * progress);
@@ -122,19 +152,39 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     if (!ctx) return;
     ctx.scale(dpr, dpr);
 
-    // Use an offscreen canvas to leverage isPointInPath against SVG Path2D
+    // Render all district paths onto an offscreen canvas as a merged bitmap
     const offscreen = document.createElement('canvas');
     offscreen.width = SVG_SIZE;
     offscreen.height = SVG_SIZE;
     const offCtx = offscreen.getContext('2d')!;
-    const paths = DISTRICT_PATHS.map((d) => new Path2D(d));
+
+    // Fill all districts
+    offCtx.fillStyle = 'white';
+    DISTRICT_PATHS.forEach((d) => {
+      const p = new Path2D(d);
+      offCtx.fill(p, 'evenodd');
+    });
+
+    // Stroke all districts with a small width to close inter-district gaps
+    offCtx.strokeStyle = 'white';
+    offCtx.lineWidth = 4;
+    DISTRICT_PATHS.forEach((d) => {
+      const p = new Path2D(d);
+      offCtx.stroke(p);
+    });
+
+    // Read the full pixel data once
+    const imageData = offCtx.getImageData(0, 0, SVG_SIZE, SVG_SIZE);
+    const pixels = imageData.data;
 
     const dots: DotData[] = [];
     for (let row = STEP / 2; row < H; row += STEP) {
       for (let col = STEP / 2; col < W; col += STEP) {
-        const svgX = col * (SVG_SIZE / W);
-        const svgY = row * (SVG_SIZE / H);
-        if (paths.some((p) => offCtx.isPointInPath(p, svgX, svgY, 'evenodd'))) {
+        const svgX = Math.round(col * (SVG_SIZE / W));
+        const svgY = Math.round(row * (SVG_SIZE / H));
+        const idx = (svgY * SVG_SIZE + svgX) * 4;
+        // Check alpha channel — any non-zero means this pixel is inside a district
+        if (pixels[idx + 3] > 0) {
           dots.push({
             fx: col,
             fy: row,
@@ -158,27 +208,239 @@ export function SeoulDottedMap({ className }: { className?: string }) {
     const loop = (now: number) => {
       const t = Math.min((now - t0) / DURATION, 1);
       draw(ease(t));
-      if (t < 1) rafRef.current = requestAnimationFrame(loop);
+      if (t < 1) {
+        rafRef.current = requestAnimationFrame(loop);
+      } else {
+        setTiltDone(true);
+      }
     };
     rafRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafRef.current);
   }, [inView, draw]);
 
+  useEffect(() => {
+    if (!tiltDone) return;
+    if (visibleDCs >= DC_LOCATIONS.length) return;
+    const timer = setTimeout(() => {
+      setVisibleDCs((n) => n + 1);
+    }, visibleDCs === 1 ? 1500 : 800);
+    return () => clearTimeout(timer);
+  }, [tiltDone, visibleDCs]);
+
   return (
-    <div
-      ref={containerRef}
-      className={className}
-      style={{
-        maskImage:
-          'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
-        WebkitMaskImage:
-          'linear-gradient(to bottom, transparent, black 8%, black 88%, transparent)',
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        style={{ width: '100%', height: 'auto', display: 'block' }}
-      />
+    <div ref={containerRef} className={className} style={{ position: 'relative' }}>
+      {/* Canvas with fade mask */}
+      <div
+        style={{
+          maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 68%, transparent 90%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 68%, transparent 90%)',
+        }}
+      >
+        <canvas
+          ref={canvasRef}
+          style={{ width: '100%', height: 'auto', display: 'block' }}
+        />
+      </div>
+      {/* Depth fog — far side (top) dimmer to enhance perspective recession */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 3,
+        background: 'linear-gradient(to bottom, rgba(10,10,14,0.55) 0%, rgba(10,10,14,0.15) 30%, transparent 55%)',
+      }} />
+      {/* SVG arc overlay — pixel coordinate system via ResizeObserver */}
+      {mapSize.w > 0 && (
+        <svg
+          width={mapSize.w}
+          height={mapSize.h}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            overflow: 'visible',
+            pointerEvents: 'none',
+            zIndex: 5,
+          }}
+        >
+          <defs>
+            <filter id="arcGlowSoft" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="7" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+              </feMerge>
+            </filter>
+            <filter id="arcGlowSharp" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          {DC_LOCATIONS.slice(1).map((dc, i) => {
+            const idx = i + 1;
+            if (visibleDCs <= idx) return null;
+
+            const x1 = parseFloat(DC_LOCATIONS[0].left) / 100 * mapSize.w;
+            const y1 = parseFloat(DC_LOCATIONS[0].top) / 100 * mapSize.h;
+            const x2 = parseFloat(dc.left) / 100 * mapSize.w;
+            const y2 = parseFloat(dc.top) / 100 * mapSize.h;
+
+            const cx = (x1 + x2) / 2;
+            const cy = Math.min(y1, y2) - mapSize.h * 0.34;
+            const d = `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`;
+            const anim = { animation: `arcDraw 0.55s ease-out forwards`, strokeDasharray: 2000, strokeDashoffset: 2000 };
+
+            return (
+              <g key={`arc-${idx}-${visibleDCs}`}>
+                {/* wide soft glow */}
+                <path d={d} fill="none" stroke="rgba(212,157,115,0.28)" strokeWidth="6" filter="url(#arcGlowSoft)" style={anim} />
+                {/* crisp line */}
+                <path d={d} fill="none" stroke="rgba(212,157,115,0.7)" strokeWidth="1.5" filter="url(#arcGlowSharp)" style={anim} />
+              </g>
+            );
+          })}
+        </svg>
+      )}
+      {/* Location marker — outside mask so it never gets clipped */}
+      {tiltDone && (
+        <>
+          {/* Pulse circle — original position */}
+          <div
+            style={{
+              position: 'absolute',
+              left: '90%',
+              top: '75%',
+              zIndex: 10,
+              isolation: 'isolate',
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(201,168,76,0.3)',
+                borderRadius: '50%',
+                height: 14,
+                width: 14,
+                position: 'absolute',
+                margin: '-7px 0 0 -7px',
+                zIndex: 1,
+                opacity: 0,
+                boxShadow: '0 0 8px rgba(201,168,76,0.4)',
+                animation: 'shadowAppear 0.15s ease-out 0.3s forwards',
+              }}
+            >
+              <div
+                style={{
+                  borderRadius: '50%',
+                  height: 40,
+                  width: 40,
+                  position: 'absolute',
+                  margin: '-13px 0 0 -13px',
+                  animation: 'pinPulsate 1s ease-out infinite',
+                  animationDelay: '0.6s',
+                  opacity: 0,
+                  boxShadow: '0 0 1px 3px rgba(201,168,76,0.6)',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Speech bubble — independent, centered above pulse anchor */}
+          <div
+            className="dc-speech-bubble"
+            style={{
+              position: 'absolute',
+              left: '68%',
+              top: '75%',
+              transform: 'translate(-50%, calc(-100% - 6px))',
+              zIndex: 50,
+              background: 'rgba(10,10,15,0.85)',
+              borderRadius: '10px',
+              border: '1px solid rgba(255,255,255,0.15)',
+              padding: '8px 14px',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 0 18px rgba(0,0,0,0.4), 0 0 6px rgba(0,0,0,0.3)',
+              animation: 'bubbleBounce 0.5s cubic-bezier(.58,.1,.58,.7) 0.35s both',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1px',
+            }}
+          >
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>2027 오픈</span>
+          </div>
+          {/* Future DC markers */}
+          {DC_LOCATIONS.slice(1).map((dc, i) => {
+            const idx = i + 1;
+            if (visibleDCs <= idx) return null;
+            return (
+              <div
+                key={`marker-${idx}`}
+                style={{
+                  position: 'absolute',
+                  left: dc.left,
+                  top: dc.top,
+                  zIndex: 10,
+                  opacity: 0,
+                  animation: 'shadowAppear 0.2s ease-out forwards',
+                }}
+              >
+                <div
+                  style={{
+                    background: 'rgba(159,122,94,0.22)',
+                    borderRadius: '50%',
+                    height: 10,
+                    width: 10,
+                    position: 'absolute',
+                    margin: '-5px 0 0 -5px',
+                    zIndex: 1,
+                    boxShadow: '0 0 6px rgba(159,122,94,0.4)',
+                  }}
+                >
+                  <div
+                    style={{
+                      borderRadius: '50%',
+                      height: 28,
+                      width: 28,
+                      position: 'absolute',
+                      margin: '-9px 0 0 -9px',
+                      animation: 'pinPulsate 1.2s ease-out infinite',
+                      animationDelay: `${idx * 0.2}s`,
+                      opacity: 0,
+                      boxShadow: '0 0 1px 2px rgba(159,122,94,0.45)',
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </>
+      )}
+      <style>{`
+        @keyframes bubbleBounce {
+          0%   { opacity: 0; transform: translateY(8px) scale(0.85); }
+          30%  { opacity: 1; transform: translateY(-4px) scale(1.06); }
+          55%  { transform: translateY(2px) scale(0.97); }
+          75%  { transform: translateY(-2px) scale(1.02); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @media (max-width: 768px) {
+          .dc-speech-bubble {
+            left: 68% !important;
+          }
+        }
+        @keyframes shadowAppear {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        @keyframes pinPulsate {
+          0% { transform: scale(0.1, 0.1); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: scale(1.2, 1.2); opacity: 0; }
+        }
+        @keyframes arcDraw {
+          to { stroke-dashoffset: 0; }
+        }
+      `}</style>
     </div>
   );
 }
