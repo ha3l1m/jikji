@@ -64,7 +64,7 @@ function sphereProject(nu: number, nv: number, tilt: number) {
 
 type DotData = { fx: number; fy: number; nu: number; nv: number };
 
-export function SeoulDottedMap({ className }: { className?: string }) {
+export function SeoulDottedMap({ className, locale = 'ko' }: { className?: string; locale?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
@@ -366,7 +366,7 @@ export function SeoulDottedMap({ className }: { className?: string }) {
             }}
           >
             <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: 'rgba(255,255,255,0.75)' }}>First AI DC</span>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>Opening 2027</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '16px', lineHeight: '20px', color: '#ffffff' }}>{locale === 'ko' ? '2027 오픈' : 'Opening 2027'}</span>
           </div>
           {/* Future DC markers */}
           {DC_LOCATIONS.slice(1).map((dc, i) => {

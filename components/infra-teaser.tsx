@@ -6,7 +6,7 @@ import { SeoulDottedMap } from './seoul-dotted-map';
 import Image from 'next/image';
 
 export function InfraTeaser() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const cluster = t.infrastructure.region.cluster;
 
   return (
@@ -61,14 +61,14 @@ export function InfraTeaser() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-sm text-white/50 font-light"
+                  className="text-sm text-white/50 font-normal"
                 >
                   {cluster.subtitle}
                 </motion.p>
               </div>
               <div style={{ perspective: '580px' }}>
                 <div style={{ transform: 'rotateX(46deg)', transformOrigin: 'center 60%' }}>
-                  <SeoulDottedMap className="w-full max-w-lg mx-auto" />
+                  <SeoulDottedMap className="w-full max-w-lg mx-auto" locale={locale} />
                 </div>
               </div>
             </motion.div>
