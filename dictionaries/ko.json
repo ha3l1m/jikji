@@ -449,33 +449,33 @@
           "name": "8 x B200 180GB SXM",
           "vram": "1440GB",
           "vcpu": "192vCore",
-          "ondemand": "₩62,400",
-          "1month": "₩55,536",
-          "1year": "₩48,672"
+          "ondemand": "₩59,280",
+          "1month": "₩52,759",
+          "1year": "₩46,238"
         },
         {
           "name": "4 x B200 180GB SXM",
           "vram": "720GB",
           "vcpu": "96vCore",
-          "ondemand": "₩31,360",
-          "1month": "₩27,910",
-          "1year": "₩24,461"
+          "ondemand": "₩29,792",
+          "1month": "₩26,515",
+          "1year": "₩23,238"
         },
         {
           "name": "2 x B200 180GB SXM",
           "vram": "360GB",
           "vcpu": "48vCore",
-          "ondemand": "₩15,720",
-          "1month": "₩13,991",
-          "1year": "₩12,262"
+          "ondemand": "₩14,934",
+          "1month": "₩13,291",
+          "1year": "₩11,649"
         },
         {
           "name": "B200 180GB SXM",
           "vram": "180GB",
           "vcpu": "24vCore",
-          "ondemand": "₩7,870",
-          "1month": "₩7,004",
-          "1year": "₩6,139"
+          "ondemand": "₩7,477",
+          "1month": "₩6,654",
+          "1year": "₩5,832"
         }
       ],
       "h200": [
@@ -483,33 +483,33 @@
           "name": "8 x H200 80GB SXM",
           "vram": "1440GB",
           "vcpu": "192vCore",
-          "ondemand": "₩45,552",
-          "1month": "₩40,541",
-          "1year": "₩35,531"
+          "ondemand": "₩43,274",
+          "1month": "₩38,514",
+          "1year": "₩33,754"
         },
         {
           "name": "4 x H200 80GB SXM",
           "vram": "720GB",
           "vcpu": "96vCore",
-          "ondemand": "₩22,893",
-          "1month": "₩20,375",
-          "1year": "₩17,856"
+          "ondemand": "₩21,748",
+          "1month": "₩19,356",
+          "1year": "₩16,964"
         },
         {
           "name": "2 x H200 80GB SXM",
           "vram": "360GB",
           "vcpu": "48vCore",
-          "ondemand": "₩11,476",
-          "1month": "₩10,213",
-          "1year": "₩8,951"
+          "ondemand": "₩10,902",
+          "1month": "₩9,703",
+          "1year": "₩8,503"
         },
         {
           "name": "H200 80GB SXM",
           "vram": "180GB",
           "vcpu": "24vCore",
-          "ondemand": "₩5,745",
-          "1month": "₩5,113",
-          "1year": "₩4,481"
+          "ondemand": "₩5,458",
+          "1month": "₩4,857",
+          "1year": "₩4,257"
         }
       ],
       "h100": [
@@ -517,67 +517,59 @@
           "name": "8 x H100 SXM 80GB",
           "vram": "640GB",
           "vcpu": "192vCore",
-          "ondemand": "₩33,600",
-          "1month": "₩29,904",
-          "1year": "₩26,208"
+          "ondemand": "₩31,920",
+          "1month": "₩28,409",
+          "1year": "₩24,898"
         },
         {
           "name": "4 x H100 SXM 80GB",
           "vram": "320GB",
           "vcpu": "96vCore",
-          "ondemand": "₩16,960",
-          "1month": "₩15,094",
-          "1year": "₩13,229"
+          "ondemand": "₩16,112",
+          "1month": "₩14,340",
+          "1year": "₩12,567"
         },
         {
           "name": "2 x H100 SXM 80GB",
           "vram": "160GB",
           "vcpu": "48vCore",
-          "ondemand": "₩8,520",
-          "1month": "₩7,583",
-          "1year": "₩6,646"
+          "ondemand": "₩8,094",
+          "1month": "₩7,204",
+          "1year": "₩6,313"
         },
         {
           "name": "1 x H100 SXM 80GB",
           "vram": "80GB",
           "vcpu": "24vCore",
-          "ondemand": "₩4,270",
-          "1month": "₩3,800",
-          "1year": "₩3,331"
+          "ondemand": "₩4,057",
+          "1month": "₩3,610",
+          "1year": "₩3,164"
         }
       ],
       "rtx": [
         {
-          "name": "8 x RTX Pro 6000 Blackwell 96GB PCIe",
-          "vram": "640GB",
-          "vcpu": "128vCore",
-          "ondemand": "₩7,880",
-          "1month": "₩7,013",
-          "1year": "₩6,146"
-        },
-        {
           "name": "4 x RTX Pro 6000 Blackwell 96GB PCIe",
           "vram": "320GB",
           "vcpu": "64vCore",
-          "ondemand": "₩7,880",
-          "1month": "₩7,013",
-          "1year": "₩6,146"
+          "ondemand": "₩7,486",
+          "1month": "₩6,663",
+          "1year": "₩5,839"
         },
         {
           "name": "2 x RTX Pro 6000 Blackwell 96GB PCIe",
           "vram": "160GB",
           "vcpu": "32vCore",
-          "ondemand": "₩3,980",
-          "1month": "₩3,542",
-          "1year": "₩3,104"
+          "ondemand": "₩3,781",
+          "1month": "₩3,365",
+          "1year": "₩2,949"
         },
         {
           "name": "1 x RTX Pro 6000 Blackwell 96GB PCIe",
           "vram": "80GB",
           "vcpu": "16vCore",
-          "ondemand": "₩2,000",
-          "1month": "₩1,780",
-          "1year": "₩1,560"
+          "ondemand": "₩1,900",
+          "1month": "₩1,691",
+          "1year": "₩1,482"
         }
       ]
     },
